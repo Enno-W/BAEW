@@ -35,7 +35,7 @@ format:
   apaquarto-pdf:
     documentmode: man
 ---
-
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Enno-W/BAEW/HEAD)
 # Method
 
 ## Participants
