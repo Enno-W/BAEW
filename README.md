@@ -1,21 +1,9 @@
 # r-conda
+Hier ist meine Bachelorarbeit am Lehrgebiet Gesundheitspsychologie der Fernuni Hagen. 
+Dieses Projekt ist mit Binder installiert - der Link zu dem Template dazu ist unter der Überschrift des Github-Projekts zu finden. 
+Der Link [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Enno-W/BAEW/HEAD) öffnet eine Server-Instanz von R, in der die Berechnungen in den Skripts direkt im Browser reproduziert werden können. 
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/betatim/r-conda/master?urlpath=rstudio)
+Alle Berechnungen sind im Ordner "Script". 
+Die Ergebnisse der Berechnungen werden dann als Objekte gespeichert und in das .qmd- Dokument im Ordner "Markdown" eingespeist. Mit dem Objektnamen kann der Rechenweg aller Ergebnisse nachvollzogen werden. 
 
-> R and RStudio in repo2docker without waiting for packages to compile!
-
-Jupyter+R: [![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org/v2/gh/binder-examples/r-conda/master?filepath=index.ipynb)
-
-RStudio: [![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org/v2/gh/binder-examples/r-conda/master?urlpath=rstudio)
-
-Binder supports using R and RStudio, with libraries pinned to a specific versions.
-
-Install R itself and your required R packages via conda packages. Installing conda packages is faster than
-installing CRAN packages. This is because CRAN packages need compiling during the install process and conda
-packages do not.
-
-For some R packages there is no corresponding conda-forge package yet, in that case take a look at https://github.com/binder-examples/r. Note that these two approaches cannot be combined, so you cannot install R packages via Conda and via an `install.R` file at the same time. You can check if a required R package is available on the Conda Forge website at https://conda-forge.org/feedstock-outputs/ by searching for `r-PACKAGENAME`. You can install R packges from other sources using a `postBuild` script.
-
-Both [RStudio](https://www.rstudio.com/) and [IRKernel](https://irkernel.github.io/)
-are installed by default, so you can use either the Jupyter notebook interface or
-the RStudio interface.
+Präregistriert auf OSF: https://osf.io/2euwd/
