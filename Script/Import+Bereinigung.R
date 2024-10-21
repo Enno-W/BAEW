@@ -12,11 +12,16 @@
 # df<- df_from_xlsx1 %>% select(-contains("_ave"))
 # save(df,file= "241021PRIMOCA_data.Rdata") # export, to avoid potential complications with Excel
 #### Test if any complications occured during the conversion ####
+df2<-readxl::read_excel(magic_path("240913PRIMOCA_data.xlsx"), sheet = 1)
+df2<- df_from_xlsx1 %>% select(-contains("_ave"))
 load(magic_path("241021PRIMOCA_data.Rdata"))
-df_from_xlsx1<-readxl::read_excel(magic_path("240913PRIMOCA_data.xlsx"), sheet = 1)
-df_from_xlsx1<- df_from_xlsx1 %>% select(-contains("_ave"))
 all.equal(df_from_xlsx1,df)# TRUE, no complications
-rm(df_from_xlsx1)
 #### Removing NA's#####
-df %>% filter(Programme == 1)
-
+df<-df %>% filter(Programme == 1)
+#### Grouping the different kinds of sports and goals ####
+df$Sport2 <- NA
+df$Sport2[19] <- "Laufen" # Here, I add a second sport for participant 19
+patterns <- c(  "Kraftsport" = "kraft",   "Laufen" = "lauf")
+df <- replace_patterns(df, "Sport", patterns)
+df <- handle_hyphen(df, "WeeklyKM_base")
+df <- handle_hyphen(df, "WeeklyH_base")
