@@ -12,16 +12,20 @@
 # df<- df_from_xlsx1 %>% select(-contains("_ave"))
 # save(df,file= "241021PRIMOCA_data.Rdata") # export, to avoid potential complications with Excel
 #### Test if any complications occured during the conversion ####
-df2<-readxl::read_excel(magic_path("240913PRIMOCA_data.xlsx"), sheet = 1)
-df2<- df_from_xlsx1 %>% select(-contains("_ave"))
+#df2<-readxl::read_excel(magic_path("240913PRIMOCA_data.xlsx"), sheet = 1)
+#df2<- df_from_xlsx1 %>% select(-contains("_ave"))
 load(magic_path("241021PRIMOCA_data.Rdata"))
-all.equal(df_from_xlsx1,df)# TRUE, no complications
+#all.equal(df_from_xlsx1,df)# TRUE, no complications
 #### Removing NA's#####
 df<-df %>% filter(Programme == 1)
 #### Grouping the different kinds of sports and goals ####
 df$Sport2 <- NA
 df$Sport2[19] <- "Laufen" # Here, I add a second sport for participant 19
 patterns <- c(  "Kraftsport" = "kraft",   "Laufen" = "lauf")
-df <- replace_patterns(df, "Sport", patterns)
-df <- handle_hyphen(df, "WeeklyKM_base")
+df <- replace_patterns(df, "Sport", patterns)# See the script "Functions.R" to examine the function
+df <- handle_hyphen(df, "WeeklyKM_base")# See the script "Functions.R" to examine the function
+df <- df %>%
+  mutate(
+    WeeklyH_base = gsub(",", ".", WeeklyH_base)
+  )
 df <- handle_hyphen(df, "WeeklyH_base")

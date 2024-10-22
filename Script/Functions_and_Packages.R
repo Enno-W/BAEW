@@ -1,16 +1,33 @@
+##### Packages ####
+if (!requireNamespace("needs", quietly = TRUE)) {
+  install.packages("needs")
+}
+library(needs)
+needs(xfun, tidyverse, Rcmdr)
+xfun::install_github("Enno-W/excelbib")
+library(excelbib)
+# Create .bib file from the excel list
+xlsx_to_bib(magic_path("References_BAEW.xlsx"))
+
 #### Average two numbers if there is a hyphen####
 handle_hyphen <- function(data, column_name) {
-  # Use non-standard evaluation to refer to column dynamically
   data %>%
     mutate(
-      !!column_name := ifelse(grepl("-", .[[column_name]]),
-                              # Split, convert to numeric, and calculate the mean
-                              sapply(strsplit(.[[column_name]], "-"), function(x) mean(as.numeric(x))),
-                              # If no hyphen, keep the original value
-                              as.numeric(.[[column_name]])
+      {{column_name}} := ifelse(
+        is.na(.[[column_name]]), 
+        NA,  # If the value is NA, keep it as NA
+        ifelse(
+          grepl("-", .[[column_name]]), 
+          sapply(strsplit(.[[column_name]], "-"), function(x) mean(as.numeric(x), na.rm = TRUE)), 
+          ifelse(
+            .[[column_name]] == "", NA,  # Handle empty strings explicitly
+            as.character(.[[column_name]])  # Convert other values to numeric, suppressing warnings
+          )
+        )
       )
     )
 }
+
 
 df <- handle_hyphen(df, "WeeklyKM_base") # example use
 #### Group similar words in a character variable ####
@@ -31,12 +48,12 @@ replace_patterns <- function(data, column_name, patterns) {
     )
 }
 
-# Example usage
-# Define the patterns and their replacements
-patterns <- c(  "Kraftsport" = "kraft",   "Laufen" = "lauf")
+## Example usage
+## Define the patterns and their replacements
+#patterns <- c(  "Kraftsport" = "kraft",   "Laufen" = "lauf")
 
-# Apply the function to the 'Sport' column
-df <- replace_patterns(df, "Sport", patterns)
+## Apply the function to the 'Sport' column
+#df <- replace_patterns(df, "Sport", patterns)
 
 # Now df will have the patterns replaced in the 'Sport' column
 
@@ -78,6 +95,6 @@ generate_correlation_table <- function(df, display_names) {
     padding(padding.top = 5, padding.bottom = 5)
 }
 
-# Example usage
-correlation_names <- c("Age", "Gender","Weekly Kilometers")
-x<-generate_correlation_table(df[,c("Age","Gender","WeeklyKM_base")], correlation_names)
+## Example usage
+#correlation_names <- c("Age", "Gender","Weekly Kilometers")
+#x<-generate_correlation_table(df[,c("Age","Gender","WeeklyKM_base")], correlation_names)

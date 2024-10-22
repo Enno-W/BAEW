@@ -43,27 +43,22 @@ knitr:
   opts_chunk: 
     message: false
     warning: false
+project:
+     execute-dir: project
 ---
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Enno-W/BAEW/HEAD)
 
 # Method
-
-```{r Document setup}
-#Packages
-if (!requireNamespace("needs", quietly = TRUE)) {
-  install.packages("needs")
-}
-library(needs)
-needs(xfun, tidyverse, Rcmdr)
-xfun::install_github("Enno-W/excelbib")
-library(excelbib)
-# Create .bib file from the excel list
-xlsx_to_bib(magic_path("References_BAEW.xlsx"))
-```
-
 ```{r Running scripts}
-source(magic_path("Functions.R"));source(magic_path("Import+Bereinigung.R"))
+#| echo: false
+#| eval: false # skip evaluation
+if (!requireNamespace("xfun", quietly = TRUE)) {
+  install.packages("xfun")
+}
+library(xfun)
+source(magic_path("Functions_and_Packages.R"))
+source(magic_path("Import+Bereinigung.R"))
 source(magic_path("Values.R")); source(magic_path("Graphs.R"))
 ```
 
