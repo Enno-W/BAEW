@@ -29,3 +29,19 @@ df <- df %>%
     WeeklyH_base = gsub(",", ".", WeeklyH_base)
   )
 df <- handle_hyphen(df, "WeeklyH_base")
+df <- mean_by_pattern(df, "goal", "Goal_ave")
+df <- mean_by_pattern(df, "commit", "Commit_ave")
+df <- mean_by_pattern(df, "sessionkm", "SessionKM_ave")
+df <- mean_by_pattern(df, "sessionh", "SesseionH_ave")
+df <- mean_by_pattern(df, "sessionrpe", "SessionRPE_ave")
+df <- mean_by_pattern(select(df,-Pride_base), "pride", "Pride_ave")
+
+patterns <- list(
+  goal = "Goal_ave",
+  commit = "Commit_ave",
+  sessionkm = "SessionKM_ave"
+)# This creates a list, where the search string is the value and the new variable name is the name for that value, respectively
+# Loop through the list and apply the function
+for (pattern in names(patterns)) {
+  df <- mean_by_pattern(df, pattern, patterns[[pattern]])
+}
