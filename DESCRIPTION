@@ -1,0 +1,25 @@
+Type: Compendium
+Package: BachelorArbeitEnnoWinkler
+Title: Reproducible version of my Bachelor thesis
+Version: 0.0.1
+Authors@R: 
+    person("Enno", "Winkler", , "enno_winkler@outlook.com", role = c("aut", "cre"))
+Description: Here is the reproducible version of meine Bachelorarbeit
+License: What license it uses
+Depends: 
+    conflicted,
+    dplyr,
+    excelbib,
+    flextable,
+    ftExtra,
+    Hmisc,
+    knitr,
+    needs,
+    renv,
+    rmarkdown,
+    tidyverse,
+    xfun
+Remotes: 
+    Enno-W/excelbib
+Encoding: UTF-8
+LazyData: true
