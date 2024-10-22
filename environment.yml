@@ -3,4 +3,8 @@ channels:
 dependencies:
   - r-base=4.1.0
   - r-tidyverse
+  - r-needs
+  - r-xfun
+  - r-Hmisc
+  - r-flextable
   
