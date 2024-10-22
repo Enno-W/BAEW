@@ -98,3 +98,28 @@ generate_correlation_table <- function(df, display_names) {
 ## Example usage
 #correlation_names <- c("Age", "Gender","Weekly Kilometers")
 #x<-generate_correlation_table(df[,c("Age","Gender","WeeklyKM_base")], correlation_names)
+#### Generate mean values for values wit 
+
+# Define the function
+means_by_patterns <- function(data, column_name, patterns) {
+  data %>%
+    rowwise() %>%
+    mutate(
+      # Iterate over patterns to match columns and calculate the mean
+      !!column_name := case_when(
+        !!!map(patterns, function(pattern) {
+          # Select columns that match the pattern
+          matching_cols <- select(data, matches(pattern))
+          # Calculate the row-wise mean of the matching columns, ignoring NAs
+          if (ncol(matching_cols) > 0) {
+            return(mean(c_across(matching_cols), na.rm = TRUE))
+          } else {
+            return(NA_real_)
+          }
+        }),
+        # Fallback if no pattern matches
+        TRUE ~ .[[column_name]]
+      )
+    ) %>%
+    ungroup()  # Ungroup after row-wise operation
+}
