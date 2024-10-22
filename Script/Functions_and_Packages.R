@@ -29,7 +29,7 @@ handle_hyphen <- function(data, column_name) {
 }
 
 
-df <- handle_hyphen(df, "WeeklyKM_base") # example use
+#df <- handle_hyphen(df, "WeeklyKM_base") # example use
 #### Group similar words in a character variable ####
 # Define the function
 replace_patterns <- function(data, column_name, patterns) {
@@ -102,10 +102,10 @@ generate_correlation_table <- function(df, display_names) {
 
 # Define the function
 #df$mean_goals <- rowMeans(df[, grepl("goal", names(df),ignore.case = T)], na.rm = TRUE)
-mean_by_pattern<-function(df,searchstring,new_var_name){
-  df[[new_var_name]] <- rowMeans (df[,grepl(searchstring, names (df), ignore.case = T)], na.rm = T)
-  return(df)
+mean_by_pattern<-function(df,searchstring){
+  new_var <- rowMeans (df[,grepl(searchstring, names (df), ignore.case = T)], na.rm = T)
+  return(new_var)
 }
 
-#df<-mean_by_pattern(df,"goal", "Goal_ave") example use
+#df$meannew<-mean_by_pattern(df,"goal") #example use
 
