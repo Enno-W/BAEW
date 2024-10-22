@@ -21,7 +21,7 @@ handle_hyphen <- function(data, column_name) {
           sapply(strsplit(.[[column_name]], "-"), function(x) mean(as.numeric(x), na.rm = TRUE)), 
           ifelse(
             .[[column_name]] == "", NA,  # Handle empty strings explicitly
-            as.character(.[[column_name]])  # Convert other values to numeric, suppressing warnings
+            as.character(.[[column_name]])  # Keep the rest as characters
           )
         )
       )
@@ -29,7 +29,7 @@ handle_hyphen <- function(data, column_name) {
 }
 
 
-df <- handle_hyphen(df, "WeeklyKM_base") # example use
+#df <- handle_hyphen(df, "WeeklyKM_base") # example use
 #### Group similar words in a character variable ####
 # Define the function
 replace_patterns <- function(data, column_name, patterns) {
@@ -101,25 +101,11 @@ generate_correlation_table <- function(df, display_names) {
 #### Generate mean values for values wit 
 
 # Define the function
-means_by_patterns <- function(data, column_name, patterns) {
-  data %>%
-    rowwise() %>%
-    mutate(
-      # Iterate over patterns to match columns and calculate the mean
-      !!column_name := case_when(
-        !!!map(patterns, function(pattern) {
-          # Select columns that match the pattern
-          matching_cols <- select(data, matches(pattern))
-          # Calculate the row-wise mean of the matching columns, ignoring NAs
-          if (ncol(matching_cols) > 0) {
-            return(mean(c_across(matching_cols), na.rm = TRUE))
-          } else {
-            return(NA_real_)
-          }
-        }),
-        # Fallback if no pattern matches
-        TRUE ~ .[[column_name]]
-      )
-    ) %>%
-    ungroup()  # Ungroup after row-wise operation
+#df$mean_goals <- rowMeans(df[, grepl("goal", names(df),ignore.case = T)], na.rm = TRUE)
+mean_by_pattern<-function(df,searchstring){
+  new_var <- rowMeans (df[,grepl(searchstring, names (df), ignore.case = T)], na.rm = T)
+  return(new_var)
 }
+
+#df$meannew<-mean_by_pattern(df,"goal") #example use
+
