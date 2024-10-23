@@ -3,7 +3,7 @@ if (!requireNamespace("needs", quietly = TRUE)) {
   install.packages("needs")
 }
 library(needs)
-needs(xfun, tidyverse)
+needs(xfun, tidyverse, psych)
 xfun::install_github("Enno-W/excelbib")
 library(excelbib)
 # Create .bib file from the excel list
@@ -108,4 +108,27 @@ mean_by_pattern<-function(df,searchstring){
 }
 
 #df$meannew<-mean_by_pattern(df,"goal") #example use
+####Descriptives-Funktion: Berechnet Typische deskriptive Werte für alle Variablen eines gegebenen Datensatzes: ######
+#Calculate mean, sd, range, min, max of all variables. 
+library(dplyr)
+
+mean_sd_median_min_max <- function(df) {
+  result <- df %>%
+    # Select only numeric columns
+    select(where(is.numeric)) %>%
+    # Summarise with the desired statistics
+    summarise(across(everything(), 
+                     list(mean = ~round(mean(., na.rm = TRUE), digits = 2), 
+                          sd = ~round(sd(., na.rm = TRUE), digits = 2),
+                          median = ~round(median(., na.rm = TRUE), digits = 2),
+                          min = ~min(., na.rm = TRUE),
+                          max = ~max(., na.rm = TRUE))))
+  
+  # Create named list
+  result_list <- setNames(as.list(result), paste(names(result), sep = ""))
+  
+  return(result_list)
+}
+#descriptives_list<-mean_sd_median_min_max(df)
+
 

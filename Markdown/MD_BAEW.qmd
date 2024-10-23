@@ -107,6 +107,8 @@ Instrumente: Session RPE, Attributionsstil, PANAS
 
 # Ergebnisse
 
+die leute waren `r descriptives_list$Age_mean` alt
+
 `r ave_corr_table`
 
 # Diskussion
