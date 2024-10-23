@@ -1,8 +1,10 @@
 .Rproj.user
+.RData
 .Rhistory
 .Ruserdata
 
 /.quarto/
 Info/
 
-/.xlsx
+.xlsx
+MD_BAEW.html
