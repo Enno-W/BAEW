@@ -1,0 +1,15 @@
+install.packages(
+ c( 
+  "conflicted",
+  "dplyr",
+  "excelbib",
+  "flextable",
+  "ftExtra",
+  "Hmisc",
+  "knitr",
+  "needs",
+  "renv",
+  "rmarkdown",
+  "tidyverse",
+  "xfun")
+)
