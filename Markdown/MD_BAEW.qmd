@@ -47,8 +47,6 @@ project:
      execute-dir: project
 ---
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Enno-W/BAEW/HEAD)
-
 # Method
 
 ```{r Running scripts}
@@ -101,7 +99,10 @@ Instrumente: Session RPE, Attributionsstil, PANAS
 
 die leute waren `r descriptives_list$Age_mean` alt
 
+::: {.landscape}
 `r ave_corr_table`
+:::
+
 
 # Diskussion
 
