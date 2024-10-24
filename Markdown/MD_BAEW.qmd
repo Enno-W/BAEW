@@ -67,13 +67,13 @@ source(magic_path("Import+Bereinigung.R"))
 source(magic_path("Values.R")); source(magic_path("Graphs.R"))
 ```
 
+Die Richtlinien hinsichtlich der WHO zu regelmäßiger körperlicher Aktivität [@WHO2010] werden von nur etwa 26% der erwachsenen Bevölkerung in Deutschland in Bezug auf Muskel- und Ausdauertraining erreicht [@RKI_2022]. Die Folgen Physischer Inaktivität...
+
 ## Physische Aktivität und Bewegung
 
 Physische Aktivität (physical activity [PA]), auch *körperliche Aktivität* [z.B. @Krug2013] wird in vielen Definitionen als mechanistisch verstanden. So definiert @caspersen1985physical physische Aktivität als jedwede Aktivität der Skelettmuskeln, die einen Energieumsatz zur Folge hat. Andere Autor:innen unterscheiden sich in der Definition von physischer Aktivät in den Bedeutungsnuancen. So spezifizieren beispielsweise @hollmann2009sportmedizin, dass die Aktivität in einer *Steigerung* des Energieumsatzes resultieren muss, um als PA zu gelten. Zweifelsohne sind klare und einfache Definitionen essenziell für den wissenschaftlichen Zugang zu diesem Phänomen. @Piggin2020 argumentiert jedoch, dass diese reduktionistische Auffassung von PA wird dem komplexen Erleben und Verhalten im Zusammenhang mit physicher Aktivität nicht gerecht wird und steht einer ganzheitlichen Betrachtung im Wege steht. Das ist auch im Einklang mit dem Biopsychosozialen Ansatz \[\[\[LIT\]\]\]. Um den Zusammenhang psychischer Phänomene (Affekt, Attribution) mit PA in dem Kontext der Gesundheitsförderung zu diskutieren, übernehme ich daher die Definition von @Piggin2020: "Physical activity involves people moving, acting and performing within culturally specific spaces and contexts, and influenced by a unique array of interests, emotions, ideas, instructions and relationships." (S. 5).
 
-Bewegungsadhärenz
-
-## 
+Bewegungsadhärenz (exercise adherence, z.B. [@Mcauley1994]) beinhaltet das Einhalten von selbst-oder fremdgesetzten Zielen im Zusammenhang mit PA [@Buckworth2007] und hat in der Regel das Ziel der Bewegungsförderung in einem gesundheitlichen Kontext [@Ainsworth2020]. 
 
 ## Affekt
 
