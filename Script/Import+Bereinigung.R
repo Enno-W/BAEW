@@ -38,3 +38,7 @@ df$Pride_ave <- mean_by_pattern(select(df,-Pride_base), "pride")
 df$Pride_hubris <- mean_by_pattern(select(df,-Hubris_base), "hubris")
 df$PA_ave <- mean_by_pattern(select(df,-PA_base), "pa_")
 df$NA_ave <- mean_by_pattern(select(df,-NA_base), "na_")
+
+
+df <- df %>%
+  mutate(Gender = recode(Gender, "1" = "Männlich", "2" = "Weiblich", "3" = "Divers"))
