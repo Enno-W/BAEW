@@ -106,7 +106,6 @@ mean_by_pattern<-function(df,searchstring){
   new_var <- rowMeans (df[,grepl(searchstring, names (df), ignore.case = T)], na.rm = T)
   return(new_var)
 }
-
 #df$meannew<-mean_by_pattern(df,"goal") #example use
 ####Descriptives-Funktion: Berechnet Typische deskriptive Werte für alle Variablen eines gegebenen Datensatzes: ######
 #Calculate mean, sd, range, min, max of all variables. 

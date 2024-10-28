@@ -47,7 +47,7 @@ project:
      execute-dir: project
 ---
 
-```{r Running scripts}
+```{r}
 #| echo: false
 #| eval: true 
 if (!requireNamespace("xfun", quietly = TRUE)) {
@@ -66,6 +66,9 @@ source(magic_path("Values.R")); source(magic_path("Graphs.R"))
 ```
 
 Die Empfehlungen zu regelmäßiger physischer Aktivität [PA, @caspersen1985physical] der WHO [@WHO2010] werden von nur etwa 26% der erwachsenen Bevölkerung in Deutschland in Bezug auf Muskel- und Ausdauertraining erreicht [@RKI_2022]. Das hat großen gesundheitlichen und finanziellen Schaden zur Folge. @Ding2016 gingen der Frage nach, welche Kosten sich jährlich und weltweit durch Produktivitätsausfälle und Behandlungskosten als Folge von Inaktivität ergeben. Als Endergebnis nennen die Autor:innen, dass der Gesamtbetrag einer konservativen Schätzung nach zwischen 19 und 182 Milliarden, einer weniger konservativen Schätzung nach allerdings zwischen 47 und 339 Milliarden Dollar liegt. Dabei sind die gesundheitlichen Vorteile von PA ermutigend. Menschen, die ein relativ hohes Niveau an PA berichten, zeigen eine deutlich reduzierte Mortalität [@Warburton2006]. Auch Studien mit direkten Messmethoden kommen zu diesem Ergebnis. So fanden @Myers2004 in einer Analyse der Trainingskapazität von Männern im fortgeschrittenen Erwachsenenalter eine um etwa 20% reduzierte Mortalität pro Zuwachs des Aktivitätsniveaus um ein metabolisches Äquivalent. Eine Erklärung dafür ist, dass aktivere Individuen seltener an chronischen Krankheiten erkranken. @Lee2012 berichten in einer Meta-Analyse, dass die Krankheitslast von Herz-Kreislaufkrankheiten, Krebs und Diabetes bei Inaktivität um 6-10% erhöht ist und dass damit eine um mehr als ein halbes Jahr verkürzte durchschnittliche Lebenserwartung einhergeht. Körperliche Aktivität bringt auch Vorteile für die psychische Gesundheit. Das geschieht sowohl durch die Veränderung physiologischer als auch psychologischer Zustände im Körper [@Mikkelsen2017]. Einschränkend ist anzumerken, dass sich eine solche Wirkung nicht immer zeigt. Beispielsweise zeigt sich PA effektiv in der Behandlung, nicht aber in der Prävention von Depression [@Carter2016; @Paluska2000].
+
+Der Fokus von Studien zur Bewegungsförderung lag bisher auf Interventionen, die inaktive Personen dazu ermutigen, sich mehr zu bewegen und auf der Adhärenz zu solchen Interventionen [siehe z.B. @Gillison2009]. Weniger Studien befassten sich mit der Frage, welche Faktoren die Aufrechterhaltung einer Bewegungsgewohnheit von Personen, die bereits gewohnheitsmäßig aktiv sind, beeinflussen [z.B. @Stetson2005]. 
+Das Rückfallpräventionsmodell (Relapse Prevention Model, @Marlatt1984) könnte einen geeigneten Rahmen zur Untersuchung dieser Fragestellung darstellen.
 
 ## Physische Aktivität und Bewegung
 
@@ -88,6 +91,12 @@ In dieser Arbeit
 -   Zusammenhang Bewegungsmangel - Krankheiten
 
 -   Messmethoden allgemein –\> Vorteile von Session RPE
+
+## Das Rückfallmodell
+
+Das Rückfallmodell von @Marlatt1984 beleuchtet die Mechanismen der Aufrechterhaltung von Gesundheitsverhalten und ist auch im Kontext von Sport und Bewegung erklärungsmächtig [@Marcus1997]. Das Modell wurde in Bezug auf Populationen mit bewegungsarmer Lebensweise [@Marcus1993; @Martin1984]; und bereits aktive Populationen [@Stetson2005] angewendet. Innerhalb dieses Modells ist die wichtige Rolle der Selbstwirksamkeit bereits gut untersucht, in Bezug auf andere Variablen ist die Studienlage allerdings noch dünn [@Amireault2013]. @Marlatt1984 erklären in ihrem Modell, dass Rückfälle vor allem durch den Umgang mit Hochrisikosituationen erklärt werden können. Dabei sei negatives Gefühlserleben der häufigste Auslöser einer Hochrisikosituation. Ob es nun zu einem Aussetzer oder zu einen kompletten Rückfall kommt, hängt zudem laut des Modells von @Marlatt1984 wesentlich von der Ursachenzuschreibung auf das vergangene Verhalten ab, und zwar sollte sich eine internal-variable Kontrollüberzeugung positiv auswirken. Wenn negatives Gefühlserleben und eine undienliche Attribution nach einem Ausrutscher häufiger zu Rückfällen fühlen, dann sollten ein tendenziell negatives Affekterleben und ein external - stabiler Attributionsstil schlechtere Trainingsadhärenz und mehr Rückfälle vorhersagen.
+
+## Hypothesen und Forschungsfrage
 
 ## Stichprobe:
 
