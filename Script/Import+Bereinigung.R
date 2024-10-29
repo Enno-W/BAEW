@@ -8,7 +8,7 @@
 # df_from_xlsx1$Achievement[3]
 # df_from_xlsx2$Achievement[3]# The differences is due to the scientific notation of long numbers in read_excel. I keep all digits, in "df".
 # rm(df_from_xlsx2)
-# # The calculation of averages is cumbersome to validate in excel, and some rounding differences occur with the Excel-calculated averages. So, I removed them:
+# The calculation of averages is cumbersome to validate in excel, and some rounding differences occur with the Excel-calculated averages. So, I removed them:
 # df<- df_from_xlsx1 %>% select(-contains("_ave"))
 # save(df,file= "241021PRIMOCA_data.Rdata") # export, to avoid potential complications with Excel
 #### Test if any complications occured during the conversion ####
@@ -17,7 +17,9 @@
 load(magic_path("241021PRIMOCA_data.Rdata"))
 #all.equal(df_from_xlsx1,df)# TRUE, no complications
 #### Removing NA's#####
-df<-df %>% filter(Programme == 1)
+raw_data_n <-nrow(df)
+df<-df %>% filter(Programme == 1|is.na(Programme))
+filtered_n <-nrow(df)
 #### Grouping the different kinds of sports and goals ####
 df$Sport2 <- NA
 df$Sport2[19] <- "Laufen" # Here, I add a second sport for participant 19

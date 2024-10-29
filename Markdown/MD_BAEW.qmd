@@ -124,7 +124,9 @@ Die Positive and Negative Affect Scale (Panas, [@Watson1988])
 
 [[simr::powerSim]]
 
-Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfohlen [LIT]. Basierend auf einer Poweranalyse mit 1 – β = `r round (pwr_result$power, 2)`, α =`r round (pwr_result$sig.level, 2)`, und *r* = `r round (pwr_result$r, 1)` ergab sich eine ideale Teilnehmerzahl von `r round (pwr_result$n, 0)`
+Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfohlen [LIT]. Basierend auf einer Poweranalyse mit 1 – β = `r round (pwr_result$power, 2)`, α = `r round (pwr_result$sig.level, 2)`, und *r* = `r round (pwr_result$r, 1)` ergab sich eine ideale Teilnehmerzahl von `r round (pwr_result$n, 0)`. *N* = `r raw_data_n` Fälle ergaben sich in dem Rohdatensatz. *n* = `r raw_data_n - filtered_n` wurden von der Analyse und weiteren Befragungen ausgeschlossen, weil sie angaben, nicht an einem systematischen Trainings- oder Bewegungsprogramm teilzunehmen.
+
+
 Daten von aktiven, erwachsenen Freizeitsportler:innen (Alter ± Standardabweichung: 35.85 ± 12.89 Jahre; 6 weiblich; 12 männlich; 3 divers) liegen bereits aus dem Forschungsprojekt vor. Die deskriptiven Statistiken zu den demografischen Daten sind in Tabelle 1. 
 
 **Tabelle 1**
@@ -134,7 +136,7 @@ Daten von aktiven, erwachsenen Freizeitsportler:innen (Alter ± Standardabweichu
 demographicstable
 
 ```
-*Hinweis: Die Sportarten wurden in einer offenen Frage erfragt. Eine männliche Person gab zwei Sportarten an — Kraftsport und Laufen. Es wurde hier die erste Antwort (Kraftsport) gezählt.*
+*Hinweis: Die Sportarten wurden in einer offenen Frage erfragt. Eine männliche Person gab zwei Sportarten an — Kraftsport und Laufen. Es wurde hier die erste Antwort (Kraftsport) gezählt. Vier Personen gaben keine demographischen Daten an (N= *
 
 Die Teilnehmenden waren durchschnittlich `r descriptives_list$Age_mean` alt (*SD* = `r descriptives_list$Age_sd`)
 
