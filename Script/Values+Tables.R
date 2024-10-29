@@ -23,3 +23,12 @@ demographicstable<- data %>%
   padding(padding.top = 5, padding.bottom = 5) %>%
   align(align = "center", part = "header") %>%
   align(align = "center", part = "body")
+
+
+#### Power analysis ####
+pwr_result <- pwr.r.test(n = NULL,         
+                     r = 0.5,           
+                     sig.level = 0.05,  
+                     power = 0.95,      
+                     alternative = "greater") 
+

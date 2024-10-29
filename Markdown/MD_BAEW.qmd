@@ -31,8 +31,8 @@ keywords: [keyword1, keyword2, keyword3]
 bibliography: bibliography.bib
 lang: de
 format:
- #apaquarto-html: default
- apaquarto-docx: default
+ apaquarto-html: default
+ #apaquarto-docx: default
  #apaquarto-typst: 
    #keep-typ: true
   #apaquarto-pdf:
@@ -69,6 +69,8 @@ Die Empfehlungen zu regelmäßiger physischer Aktivität [PA, @caspersen1985phys
 
 Der Fokus von Studien zur Bewegungsförderung lag bisher auf Interventionen, die inaktive Personen dazu ermutigen, sich mehr zu bewegen und auf der Adhärenz zu solchen Interventionen [siehe z.B. @Gillison2009]. Weniger Studien befassten sich mit der Frage, welche Faktoren die Aufrechterhaltung einer Bewegungsgewohnheit von Personen, die bereits gewohnheitsmäßig aktiv sind, beeinflussen [z.B. @Stetson2005]. Das Rückfallpräventionsmodell (Relapse Prevention Model, @Marlatt1984) könnte einen geeigneten Rahmen zur Untersuchung dieser Fragestellung darstellen.
 
+# Theorie
+
 ## Physische Aktivität und Bewegung
 
 Physische Aktivität (physical activity [PA]), auch *körperliche Aktivität* [z.B. @Krug2013] wird in vielen Definitionen als mechanistisch verstanden. So definiert @caspersen1985physical physische Aktivität als jedwede Aktivität der Skelettmuskeln, die einen Energieumsatz zur Folge hat. Andere Autor:innen unterscheiden sich in der Definition von physischer Aktivät in den Bedeutungsnuancen. So spezifizieren beispielsweise @hollmann2009sportmedizin, dass die Aktivität in einer *Steigerung* des Energieumsatzes resultieren muss, um als PA zu gelten. Zweifelsohne sind klare und einfache Definitionen essenziell für den wissenschaftlichen Zugang zu diesem Phänomen. @Piggin2020 argumentiert jedoch, dass diese reduktionistische Auffassung von PA wird dem komplexen Erleben und Verhalten im Zusammenhang mit physicher Aktivität nicht gerecht wird und steht einer ganzheitlichen Betrachtung im Wege steht. Das ist auch im Einklang mit dem Biopsychosozialen Ansatz \[\[\[LIT\]\]\]. Um den Zusammenhang psychischer Phänomene (Affekt, Attribution) mit PA in dem Kontext der Gesundheitsförderung zu diskutieren, übernehme ich daher die Definition von @Piggin2020: "Physical activity involves people moving, acting and performing within culturally specific spaces and contexts, and influenced by a unique array of interests, emotions, ideas, instructions and relationships." (S. 5).
@@ -76,6 +78,8 @@ Physische Aktivität (physical activity [PA]), auch *körperliche Aktivität* [z
 Bewegungsadhärenz (exercise adherence, z.B. [@Mcauley1994]) beinhaltet das Einhalten von selbst-oder fremdgesetzten Zielen im Zusammenhang mit PA [@Buckworth2007] und hat in der Regel das Ziel der Bewegungsförderung in einem gesundheitlichen Kontext [@Ainsworth2020].
 
 ## Affekt
+
+
 
 In dieser Arbeit
 
@@ -91,15 +95,36 @@ In dieser Arbeit
 
 -   Messmethoden allgemein –\> Vorteile von Session RPE
 
+## Attribution
+
 ## Das Rückfallmodell
 
 Das Rückfallmodell von @Marlatt1984 beleuchtet die Mechanismen der Aufrechterhaltung von Gesundheitsverhalten und ist auch im Kontext von Sport und Bewegung erklärungsmächtig [@Marcus1997]. Das Modell wurde in Bezug auf Populationen mit bewegungsarmer Lebensweise [@Marcus1993; @Martin1984]; und bereits aktive Populationen [@Stetson2005] angewendet. Innerhalb dieses Modells ist die wichtige Rolle der Selbstwirksamkeit bereits gut untersucht, in Bezug auf andere Variablen ist die Studienlage allerdings noch dünn [@Amireault2013]. @Marlatt1984 erklären in ihrem Modell, dass Rückfälle vor allem durch den Umgang mit Hochrisikosituationen erklärt werden können. Dabei sei negatives Gefühlserleben der häufigste Auslöser einer Hochrisikosituation. Ob es nun zu einem Aussetzer oder zu einen kompletten Rückfall kommt, hängt zudem laut des Modells von @Marlatt1984 wesentlich von der Ursachenzuschreibung auf das vergangene Verhalten ab, und zwar sollte sich eine internal-variable Kontrollüberzeugung positiv auswirken. Wenn negatives Gefühlserleben und eine undienliche Attribution nach einem Ausrutscher häufiger zu Rückfällen fühlen, dann sollten ein tendenziell negatives Affekterleben und ein external - stabiler Attributionsstil schlechtere Trainingsadhärenz und mehr Rückfälle vorhersagen.
 
 ## Hypothesen und Forschungsfrage
 
+# Methode
+
+## Instrumente
+
+*Session RPE*
+
+Die Session Rate of Perceived Exhaustion [Sessionn-RPE, @Foster2001] misst die wahrgenommene körperliche Belastung einer Trainingseinheit auf einer Skala von 0-10. Das Item lautet "How was your workout?" und die Skala soll etwa 30 Minuten nach Beenden des Trainings ausgefüllt werden. Auf den Stufen ß-5 ist jeder Wert beschriftet (0 = Rest, 1 = Very, Very Easy; 2 = Easy; 3 = Moderate; 4 = Somewhat hard; 5 = Hard). Auf den Stufen 6-10 sind nur Stufe 7 (Very Hard) und der Maximalwert (10 = Maximum) beschriftet. Diese Methode der Messung der Trainingsintensität wurde vielfach validiert [@Foster2021]. Die Übereinstimmung mit Messungen der Herzfrequenz bei vielen verschiedenen Arten von Sport ist hoch [@Foster2001; @Day2004]. 
+
+*Attributionsstil*
+
+
+[@Peterson1982]
+
+*Positive and Negative Affect Scale (PANAS)*
+
+Die Positive and Negative Affect Scale (Panas, [@Watson1988])
+
 ## Stichprobe:
 
-Daten von aktiven, erwachsenen Freizeitsportler:innen (Alter ± Standardabweichung: 35.85 ± 12.89 Jahre; 6 weiblich; 12 männlich; 3 divers) liegen bereits aus dem Forschungsprojekt vor. Die deskriptiven Statistiken zu den demografischen Daten sind in Tabelle 1
+[[simr::powerSim]]
+
+Daten von aktiven, erwachsenen Freizeitsportler:innen (Alter ± Standardabweichung: 35.85 ± 12.89 Jahre; 6 weiblich; 12 männlich; 3 divers) liegen bereits aus dem Forschungsprojekt vor. Die deskriptiven Statistiken zu den demografischen Daten sind in Tabelle 1. 
 
 **Tabelle 1**
 
@@ -108,9 +133,9 @@ Daten von aktiven, erwachsenen Freizeitsportler:innen (Alter ± Standardabweichu
 demographicstable
 
 ```
-*Hinweis: Die Sportarten wurden in einer offenen Frage erfragt. Eine männliche Person gab zwei Sportarten an — Kraftsport und Laufen. Es wurde hier die erste Antwort (Kraftsport) gezählt. *
+*Hinweis: Die Sportarten wurden in einer offenen Frage erfragt. Eine männliche Person gab zwei Sportarten an — Kraftsport und Laufen. Es wurde hier die erste Antwort (Kraftsport) gezählt.*
 
-die leute waren `r descriptives_list$Age_mean` alt
+Die Teilnehmenden waren durchschnittlich `r descriptives_list$Age_mean` alt (*SD* = `r descriptives_list$Age_sd`)
 
 ## Durchführung:
 
@@ -118,9 +143,7 @@ Die Freizeitsportler:innen berichteten vor der Studie ihr generelles Affekterleb
 
 Darauf folgte die Trainingsphase, in der die Trainierenden über einen Zeitraum von maximal zwei Monaten sechs Trainingseinheiten dokumentieren sollten. In den Befragungen dazu wurde nach einer Trainingseinheit die wahrgenommene Trainingsintensität mithilfe des Session-RPE-Fragebogens von @Foster2021 erfasst. Nach jeder Trainingseinheit wurde der Affekt mit der PANAS erhoben. Außerdem wurde das Kilometerziel sowie die Dauer des Laufs und die tatsächlich erreichten Kilometer erfasst. Bezüglich des Vorgehens beim Verfassen der Arbeit ist ein Zeitplan am Ende des Dokuments angehängt. [@Amireault2013]
 
-# Methode
 
-Instrumente: Session RPE, Attributionsstil, PANAS
 
 # Ergebnisse
 
