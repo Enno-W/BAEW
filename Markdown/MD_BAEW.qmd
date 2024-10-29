@@ -124,6 +124,7 @@ Die Positive and Negative Affect Scale (Panas, [@Watson1988])
 
 [[simr::powerSim]]
 
+Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfohlen [LIT]. Basierend auf einer Poweranalyse mit 1 – β = `r round (pwr_result$power, 2)`, α =`r round (pwr_result$sig.level, 2)`, und *r* = `r round (pwr_result$r, 1)` ergab sich eine ideale Teilnehmerzahl von `r round (pwr_result$n, 0)`
 Daten von aktiven, erwachsenen Freizeitsportler:innen (Alter ± Standardabweichung: 35.85 ± 12.89 Jahre; 6 weiblich; 12 männlich; 3 divers) liegen bereits aus dem Forschungsprojekt vor. Die deskriptiven Statistiken zu den demografischen Daten sind in Tabelle 1. 
 
 **Tabelle 1**
