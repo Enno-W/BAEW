@@ -99,18 +99,16 @@ Das Rückfallmodell von @Marlatt1984 beleuchtet die Mechanismen der Aufrechterha
 
 ## Stichprobe:
 
-Daten von aktiven, erwachsenen Freizeitsportler:innen (Alter ± Standardabweichung: 35.85 ± 12.89 Jahre; 6 weiblich; 12 männlich; 3 divers) liegen bereits aus dem Forschungsprojekt vor. Die deskriptiven Statistiken zu den demografischen Daten sind in @tbl-demogrtable
+Daten von aktiven, erwachsenen Freizeitsportler:innen (Alter ± Standardabweichung: 35.85 ± 12.89 Jahre; 6 weiblich; 12 männlich; 3 divers) liegen bereits aus dem Forschungsprojekt vor. Die deskriptiven Statistiken zu den demografischen Daten sind in Tabelle 1
 
-```{r apatb-demogrtable}
+**Tabelle 1**
 
-#| label: tbl-demogrtable
-#| tbl-cap: Tabelle der Absoluten und Relativen Häufigkeiten Demografischer Variablen in der Stichprobe
-#| apa-note: Die Sportarten wurden in einer offenen Frage erfragt. Eine männliche Person gab zwei Sportarten an — Kraftsport und Laufen. Es wurde hier die erste Antwort (Kraftsport) gezählt. 
-#| ft.align: left
-#| 
+*Tabelle der Absoluten und Relativen Häufigkeiten Demografischer Variablen in der Stichprobe*
+```{r}
 demographicstable
 
 ```
+*Hinweis: Die Sportarten wurden in einer offenen Frage erfragt. Eine männliche Person gab zwei Sportarten an — Kraftsport und Laufen. Es wurde hier die erste Antwort (Kraftsport) gezählt. *
 
 die leute waren `r descriptives_list$Age_mean` alt
 
@@ -127,14 +125,16 @@ Instrumente: Session RPE, Attributionsstil, PANAS
 # Ergebnisse
 
 ::: landscape
+
+**Tabelle 2**
+
+*Korrelationstabelle der gemittelten durchschnittlichen Werte aus den Werten der einzelnen Sessions*
 ```{r apatb-korrelationstabelle}
-#| apa-cap: Korrelationstabelle der gemittelten durchschnittlichen Werte aus den Werten der einzelnen Sessions
-#| apa-note: "*p < 0.05; **p < 0.01"
-#| ft.align: left
 
 ave_corr_table
 
 ```
+Hinweis: *p < 0.05; **p < 0.01
 :::
 
 # Diskussion
