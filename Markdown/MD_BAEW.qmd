@@ -31,8 +31,8 @@ keywords: [keyword1, keyword2, keyword3]
 bibliography: bibliography.bib
 lang: de
 format:
- apaquarto-html: default
- #apaquarto-docx: default
+ #apaquarto-html: default
+ apaquarto-docx: default
  #apaquarto-typst: 
    #keep-typ: true
   #apaquarto-pdf:
@@ -79,8 +79,6 @@ Bewegungsadhärenz (exercise adherence, z.B. [@Mcauley1994]) beinhaltet das Einh
 
 ## Affekt
 
-
-
 In dieser Arbeit
 
 -   Definition PA
@@ -107,60 +105,75 @@ Das Rückfallmodell von @Marlatt1984 beleuchtet die Mechanismen der Aufrechterha
 
 ## Instrumente
 
+Da es sich um ein Sample mit internationalen studierenden handelte, wurde bei allen Fragebögen die englische Version verwendet.
+
+*Demografische Variablen*
+
+In der Baseline-Erhebung wurden das Alter, das Geschlecht, die Sportart und das Sportziel (z.B. "Marathon") abgefragt.
+
 *Session RPE*
 
-Die Session Rate of Perceived Exhaustion [Sessionn-RPE, @Foster2001] misst die wahrgenommene körperliche Belastung einer Trainingseinheit auf einer Skala von 0-10. Das Item lautet "How was your workout?" und die Skala soll etwa 30 Minuten nach Beenden des Trainings ausgefüllt werden. Auf den Stufen ß-5 ist jeder Wert beschriftet (0 = Rest, 1 = Very, Very Easy; 2 = Easy; 3 = Moderate; 4 = Somewhat hard; 5 = Hard). Auf den Stufen 6-10 sind nur Stufe 7 (Very Hard) und der Maximalwert (10 = Maximum) beschriftet. Diese Methode der Messung der Trainingsintensität wurde vielfach validiert [@Foster2021]. Die Übereinstimmung mit Messungen der Herzfrequenz bei vielen verschiedenen Arten von Sport ist hoch [@Foster2001; @Day2004]. 
+Die Session Rate of Perceived Exhaustion [Sessionn-RPE, @Foster2001] misst die wahrgenommene körperliche Belastung einer Trainingseinheit auf einer Skala von 0-10. Das Item lautet "How was your workout?" und die Skala soll etwa 30 Minuten nach Beenden des Trainings ausgefüllt werden. Auf den Stufen ß-5 ist jeder Wert beschriftet (0 = Rest, 1 = Very, Very Easy; 2 = Easy; 3 = Moderate; 4 = Somewhat hard; 5 = Hard). Auf den Stufen 6-10 sind nur Stufe 7 (Very Hard) und der Maximalwert (10 = Maximum) beschriftet. Diese Methode der Messung der Trainingsintensität wurde vielfach validiert und die Reliabilität der Skala ist gut [@Foster2021]. Die Übereinstimmung mit Messungen der Herzfrequenz bei vielen verschiedenen Arten von Sport ist hoch [@Foster2001; @Day2004].
 
 *Attributionsstil*
 
-
-[@Peterson1982]
+Zur Erfassung des Attributionsstils wurde [@Peterson1982] eingesetzt. Den Versuchspersonen wurden 16 verschiedene Szenarien präsentiert, die einen Erfolg oder Misserfolg schilderten, z.B. "You meet a friend who compliments you on your appearance." Es wurde dann die Ursache für den Erfolg oder Misserfolg in einer offenen Frage abgefragt, damit die Teilnehmenden sich beim Antworten auf die darauffolgenden Fragen nur auf diese eine Ursache beziehen. Danach wurden auf einem semantischen Differenzial mit Werten von 1-7, z.B. mit den Polen "Totally due to other people or circumstances" und "totally due to me" die drei Dimensionen Internalität, Stabilität und Globalität erfasst. Der Mittelwert aller 16 Situationen wurde für jede Dimension gebildet. Die Reliablität und Validität der Daten aus diesem Fragebogen wird u.a. von [@Corr1996] unterstützt.
 
 *Positive and Negative Affect Scale (PANAS)*
 
-Die Positive and Negative Affect Scale (Panas, [@Watson1988])
+Die Positive and Negative Affect Scale (Panas, [@Watson1988]) erfasst auf einer Skala von 1 ("not at all") bis 5 ("extremely") den positiven und negativen Affekt, mit jeweils 10 Items für positiven und 10 Items für negativen Affekt. Jedes Item ist nur ein einzelnes Wort, z.B. "interested" für positiven Affekt, oder "distressed" für negativen Affekt. Da es keine negativ gepolten Items gibt, werden die einzelnen Werte zu einem Gesamtwert für positiven und negativen Affekt gemittelt. Neben der Originalstudie von @Watson1988 wurde die die Skala auch in neueren Studien als reliabel und valide erklärt [@Crawford2004].
+
+*Weitere Instrumente*
+
+In diesem Forschungsprojekt wurden außerdem authentischer und überheblicher Stolz (authentic and hubristic pride, @Tracy2007), und implizite Motive [@winter1994manual; @Sokolowski2000] erfasst. In dieser Arbeit werden diese Daten nicht berücksichtigt.
 
 ## Stichprobe:
 
-[[simr::powerSim]]
+\[\[simr::powerSim\]\]
 
-Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfohlen [LIT]. Basierend auf einer Poweranalyse mit 1 – β = `r round (pwr_result$power, 2)`, α = `r round (pwr_result$sig.level, 2)`, und *r* = `r round (pwr_result$r, 1)` ergab sich eine ideale Teilnehmerzahl von `r round (pwr_result$n, 0)`. *N* = `r raw_data_n` Fälle ergaben sich in dem Rohdatensatz. *n* = `r raw_data_n - filtered_n` wurden von der Analyse und weiteren Befragungen ausgeschlossen, weil sie angaben, nicht an einem systematischen Trainings- oder Bewegungsprogramm teilzunehmen.
+Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfohlen \[LIT\]. Basierend auf einer Poweranalyse mit 1 – β = `r round (pwr_result$power, 2)`, α = `r round (pwr_result$sig.level, 2)`, und *r* = `r round (pwr_result$r, 1)` ergab sich eine ideale Teilnehmerzahl von `r round (pwr_result$n, 0)`. *N* = `r raw_data_n` Fälle ergaben sich in dem Rohdatensatz. *n* = `r raw_data_n - filtered_n` wurden von der Analyse und weiteren Befragungen ausgeschlossen, weil sie angaben, nicht an einem systematischen Trainings- oder Bewegungsprogramm teilzunehmen. Die deskriptiven Statistiken zu den demografischen Daten sind in Tabelle 1.
 
-
-Daten von aktiven, erwachsenen Freizeitsportler:innen (Alter ± Standardabweichung: 35.85 ± 12.89 Jahre; 6 weiblich; 12 männlich; 3 divers) liegen bereits aus dem Forschungsprojekt vor. Die deskriptiven Statistiken zu den demografischen Daten sind in Tabelle 1. 
+Daten von aktiven, erwachsenen Freizeitsportler:innen (Alter ± Standardabweichung: 35.85 ± 12.89 Jahre; 6 weiblich; 12 männlich; 3 divers) liegen bereits aus dem Forschungsprojekt vor.
 
 **Tabelle 1**
 
 *Tabelle der Absoluten und Relativen Häufigkeiten Demografischer Variablen in der Stichprobe*
+
 ```{r}
 demographicstable
 
 ```
-*Hinweis: Die Sportarten wurden in einer offenen Frage erfragt. Eine männliche Person gab zwei Sportarten an — Kraftsport und Laufen. Es wurde hier die erste Antwort (Kraftsport) gezählt. Vier Personen gaben keine demographischen Daten an (N= *
+
+*Hinweis: Die Sportarten wurden in einer offenen Frage erfragt. Eine männliche Person gab zwei Sportarten an — Kraftsport und Laufen. Es wurde hier die erste Antwort (Kraftsport) gezählt. Vier Personen gaben keine demographischen Daten an (N=*
 
 Die Teilnehmenden waren durchschnittlich `r descriptives_list$Age_mean` alt (*SD* = `r descriptives_list$Age_sd`)
 
 ## Durchführung:
 
+*Prozedur*
+
 Die Freizeitsportler:innen berichteten vor der Studie ihr generelles Affekterleben innerhalb der letzten zehn Tage mit der Positive and Negative Affect-Scale (PANAS) von @Watson1988. Der Prä-Test enthielt außerdem die Skala von @Peterson1982 zum Attributionsstil und die Items zu demografischen Daten.
 
 Darauf folgte die Trainingsphase, in der die Trainierenden über einen Zeitraum von maximal zwei Monaten sechs Trainingseinheiten dokumentieren sollten. In den Befragungen dazu wurde nach einer Trainingseinheit die wahrgenommene Trainingsintensität mithilfe des Session-RPE-Fragebogens von @Foster2021 erfasst. Nach jeder Trainingseinheit wurde der Affekt mit der PANAS erhoben. Außerdem wurde das Kilometerziel sowie die Dauer des Laufs und die tatsächlich erreichten Kilometer erfasst. Bezüglich des Vorgehens beim Verfassen der Arbeit ist ein Zeitplan am Ende des Dokuments angehängt. [@Amireault2013]
 
+*Statistische Analyse*
 
+Diese Arbeit wurde mit R (Version`r getRversion()` ) und Quarto (Version 1.6.32) erstellt. Die reproduzierbare Version dieses Artikels ist auf GitHub unter <https://github.com/Enno-W/BAEW> verfügbar.
 
 # Ergebnisse
 
 ::: landscape
-
 **Tabelle 2**
 
 *Korrelationstabelle der gemittelten durchschnittlichen Werte aus den Werten der einzelnen Sessions*
+
 ```{r apatb-korrelationstabelle}
 
 ave_corr_table
 
 ```
-Hinweis: *p < 0.05; **p < 0.01
+
+Hinweis: \*p \< 0.05; \*\*p \< 0.01
 :::
 
 # Diskussion
