@@ -21,7 +21,7 @@ handle_hyphen <- function(data, column_name) {
           sapply(strsplit(.[[column_name]], "-"), function(x) mean(as.numeric(x), na.rm = TRUE)), 
           ifelse(
             .[[column_name]] == "", NA,  # Handle empty strings explicitly
-            as.character(.[[column_name]])  # Keep the rest as characters
+            as.numeric(.[[column_name]])  # Keep the rest as characters
           )
         )
       )
