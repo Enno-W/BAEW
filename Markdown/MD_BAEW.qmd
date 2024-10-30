@@ -77,21 +77,11 @@ Physische Aktivität (physical activity [PA]), auch *körperliche Aktivität* [z
 
 Bewegungsadhärenz (exercise adherence, z.B. [@Mcauley1994]) beinhaltet das Einhalten von selbst-oder fremdgesetzten Zielen im Zusammenhang mit PA [@Buckworth2007] und hat in der Regel das Ziel der Bewegungsförderung in einem gesundheitlichen Kontext [@Ainsworth2020].
 
-## Affekt
-
-In dieser Arbeit
-
--   Definition PA
-
--   Gesundheitliche Vorteile PA
-
 -   Empfohlene PA
 
--   Sportmangel Prävalenz
+Messung von Physischer Aktivität
 
--   Zusammenhang Bewegungsmangel - Krankheiten
-
--   Messmethoden allgemein –\> Vorteile von Session RPE
+## Affekt
 
 ## Attribution
 
@@ -107,25 +97,17 @@ Das Rückfallmodell von @Marlatt1984 beleuchtet die Mechanismen der Aufrechterha
 
 Da es sich um ein Sample mit internationalen studierenden handelte, wurde bei allen Fragebögen die englische Version verwendet.
 
-*Demografische Variablen*
+*Demografische Variablen:* In der Baseline-Erhebung wurden das Alter, das Geschlecht, die Sportart und das Sportziel (z.B. "Marathon") abgefragt.
 
-In der Baseline-Erhebung wurden das Alter, das Geschlecht, die Sportart und das Sportziel (z.B. "Marathon") abgefragt.
+*Session RPE:* Die Session Rate of Perceived Exhaustion [Sessionn-RPE, @Foster2001] misst die wahrgenommene körperliche Belastung einer Trainingseinheit auf einer Skala von 0-10. Das Item lautet "How was your workout?" und die Skala soll etwa 30 Minuten nach Beenden des Trainings ausgefüllt werden. Auf den Stufen ß-5 ist jeder Wert beschriftet (0 = Rest, 1 = Very, Very Easy; 2 = Easy; 3 = Moderate; 4 = Somewhat hard; 5 = Hard). Auf den Stufen 6-10 sind nur Stufe 7 (Very Hard) und der Maximalwert (10 = Maximum) beschriftet. Diese Methode der Messung der Trainingsintensität wurde vielfach validiert und die Reliabilität der Skala ist gut [@Foster2021]. Die Übereinstimmung mit Messungen der Herzfrequenz bei vielen verschiedenen Arten von Sport ist hoch [@Foster2001; @Day2004].
 
-*Session RPE*
+*Attributionsstil:* Zur Erfassung des Attributionsstils wurde das Attribution Style Questionnaire [@Peterson1982] eingesetzt. Den Versuchspersonen wurden 16 verschiedene Szenarien präsentiert, die einen Erfolg oder Misserfolg schilderten, z.B. "You meet a friend who compliments you on your appearance." Es wurde dann die Ursache für den Erfolg oder Misserfolg in einer offenen Frage abgefragt, damit die Teilnehmenden sich beim Antworten auf die darauffolgenden Fragen nur auf diese eine Ursache beziehen. Danach wurden auf einem semantischen Differenzial mit Werten von 1-7, z.B. mit den Polen "Totally due to other people or circumstances" und "totally due to me" die drei Dimensionen Internalität, Stabilität und Globalität erfasst. Der Mittelwert aller 16 Situationen wurde für jede Dimension gebildet. Die Reliablität und Validität der Daten aus diesem Fragebogen wird u.a. von [@Corr1996] unterstützt.
 
-Die Session Rate of Perceived Exhaustion [Sessionn-RPE, @Foster2001] misst die wahrgenommene körperliche Belastung einer Trainingseinheit auf einer Skala von 0-10. Das Item lautet "How was your workout?" und die Skala soll etwa 30 Minuten nach Beenden des Trainings ausgefüllt werden. Auf den Stufen ß-5 ist jeder Wert beschriftet (0 = Rest, 1 = Very, Very Easy; 2 = Easy; 3 = Moderate; 4 = Somewhat hard; 5 = Hard). Auf den Stufen 6-10 sind nur Stufe 7 (Very Hard) und der Maximalwert (10 = Maximum) beschriftet. Diese Methode der Messung der Trainingsintensität wurde vielfach validiert und die Reliabilität der Skala ist gut [@Foster2021]. Die Übereinstimmung mit Messungen der Herzfrequenz bei vielen verschiedenen Arten von Sport ist hoch [@Foster2001; @Day2004].
+*Positive and Negative Affect Scale (PANAS):* Die Positive and Negative Affect Scale (Panas, [@Watson1988]) erfasst auf einer Skala von 1 ("not at all") bis 5 ("extremely") den positiven und negativen Affekt, mit jeweils 10 Items für positiven und 10 Items für negativen Affekt. Jedes Item ist nur ein einzelnes Wort, z.B. "interested" für positiven Affekt, oder "distressed" für negativen Affekt. Da es keine negativ gepolten Items gibt, werden die einzelnen Werte zu einem Gesamtwert für positiven und negativen Affekt gemittelt. Neben der Originalstudie von @Watson1988 wurde die die Skala auch in neueren Studien als reliabel und valide erklärt [@Crawford2004].
 
-*Attributionsstil*
+*Trainingsbezogene Variablen:* Im Baseline-Fragebogen wruden die wöchentliche Trainingszeit in Stunden und die Lauf-Kilometerzahl abgefragt. Zu jeder Trainingseinheit wurden ebenso die Trainingszeit und Kilometerzahl, bezogen auf das einzelne Training, abgefragt. Dazu wurden die Versuchspersonen gefragt, wie sehr die Intention, das Trainingsziel zu erreichen, ausgeprägt war (Commitment, visuelle Analogskala von 1-100), und zu wieviel Prozent sie ihr Trainingsziel erreicht war (Goal Attainment)
 
-Zur Erfassung des Attributionsstils wurde [@Peterson1982] eingesetzt. Den Versuchspersonen wurden 16 verschiedene Szenarien präsentiert, die einen Erfolg oder Misserfolg schilderten, z.B. "You meet a friend who compliments you on your appearance." Es wurde dann die Ursache für den Erfolg oder Misserfolg in einer offenen Frage abgefragt, damit die Teilnehmenden sich beim Antworten auf die darauffolgenden Fragen nur auf diese eine Ursache beziehen. Danach wurden auf einem semantischen Differenzial mit Werten von 1-7, z.B. mit den Polen "Totally due to other people or circumstances" und "totally due to me" die drei Dimensionen Internalität, Stabilität und Globalität erfasst. Der Mittelwert aller 16 Situationen wurde für jede Dimension gebildet. Die Reliablität und Validität der Daten aus diesem Fragebogen wird u.a. von [@Corr1996] unterstützt.
-
-*Positive and Negative Affect Scale (PANAS)*
-
-Die Positive and Negative Affect Scale (Panas, [@Watson1988]) erfasst auf einer Skala von 1 ("not at all") bis 5 ("extremely") den positiven und negativen Affekt, mit jeweils 10 Items für positiven und 10 Items für negativen Affekt. Jedes Item ist nur ein einzelnes Wort, z.B. "interested" für positiven Affekt, oder "distressed" für negativen Affekt. Da es keine negativ gepolten Items gibt, werden die einzelnen Werte zu einem Gesamtwert für positiven und negativen Affekt gemittelt. Neben der Originalstudie von @Watson1988 wurde die die Skala auch in neueren Studien als reliabel und valide erklärt [@Crawford2004].
-
-*Weitere Instrumente*
-
-In diesem Forschungsprojekt wurden außerdem authentischer und überheblicher Stolz (authentic and hubristic pride, @Tracy2007), und implizite Motive [@winter1994manual; @Sokolowski2000] erfasst. In dieser Arbeit werden diese Daten nicht berücksichtigt.
+*Weitere Instrumente:* In diesem Forschungsprojekt wurden außerdem authentischer und überheblicher Stolz (authentic and hubristic pride, @Tracy2007), und implizite Motive [@winter1994manual; @Sokolowski2000] erfasst. In dieser Arbeit werden diese Daten nicht berücksichtigt.
 
 ## Stichprobe:
 
