@@ -1,7 +1,11 @@
-# Creating a list with all commonly used descriptive statistics
+#### Creating a list with all commonly used descriptive statistics####
 descriptives_list<-mean_sd_median_min_max(df)
 
-#demographics table
+#### counting excluded participants ####
+raw_data_n <-nrow(df)
+filtered_n <-nrow(df)
+
+####demographics table####
 demographicsdata<- select(df, Age, Gender, Sport) %>% tbl_summary( percent = "column", by = Gender) %>%  add_p() %>% add_overall()
 
 data <- as.data.frame(demographicsdata) %>%
@@ -33,7 +37,6 @@ pwr_result <- pwr.r.test(n = NULL,
                      alternative = "greater") 
 
 #### Variable to count training sessions ####
-
 #function to return "No" if something is FALSE, and vice versa...
 is.training.completed <- function(x) {
     if (is.na(x)) {
