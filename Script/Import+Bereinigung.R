@@ -52,12 +52,14 @@ is.training.completed <- function(x) {
 # Running that whole thing through a for loop
 for (i in 1:6) {
   goal_col <- paste0("Goal_", i)
-  newvar_col <- paste0("complete_", i)
+  newvar_col <- paste0("complete.", i)
   df[[newvar_col]] <- sapply(df[[goal_col]], FUN = is.training.completed)
 }
 # count the number of "Yes!"es in those
-df$completed_count<- apply(select(df, starts_with(match = "complete_")), 1, function(x) length(which(x=="Yes!"))) # the "1" stands for rows here. see https://stackoverflow.com/questions/24015557/count-occurrences-of-value-in-a-set-of-variables-in-r-per-row
-
-imp <- mice(df, m=5, maxit=5, method="pmm") # number of multiple imputations, maximum iterations, method: predictive mean matching
+df$completed_count<- apply(select(df, starts_with(match = "complete.")), 1, function(x) length(which(x=="Yes!"))) # the "1" stands for rows here. see https://stackoverflow.com/questions/24015557/count-occurrences-of-value-in-a-set-of-variables-in-r-per-row
+df_imp0<-df %>% select(!matches("_1|_2|_3|_4|_5|_6|_fear|_hope|Achievement|Affiliation|Power|Programme"))
+imp <- mice(df_imp0, m=5, maxit=5, method="pmm") # number of multiple imputations, maximum iterations, method: predictive mean matching
 # I have to read more here: https://bookdown.org/mwheymans/bookmi/multiple-imputation.html#multiple-imputation-in-r
-df_imputed<-complete(imp)
+df_imp<-complete(imp)
+ select(is.numeric(df_imp))
+df_described<-stat.desc(select(df, where(is.numeric))) %>% as.data.frame()
