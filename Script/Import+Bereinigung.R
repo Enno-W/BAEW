@@ -33,10 +33,31 @@ df$NA_ave <- mean_by_pattern(select(df,-NA_base), "na_")
 ####rename the gender ####
 df <- df %>%
   mutate(Gender = recode(Gender, "1" = "Männlich", "2" = "Weiblich", "3" = "Divers"))
+####change character varialbes to numeric####
+df$WeeklyKM_base<- as.numeric(df$WeeklyKM_base)
+df$WeeklyH_base<- as.numeric(df$WeeklyH_base)
 #### Handling NAs####
 df$Goal_ave[8]
 df[df=="NaN"]<-NA
 df$Goal_ave[8]
+#### Variable to count training sessions ####
+#function to return "No" if something is FALSE, and vice versa...
+is.training.completed <- function(x) {
+  if (is.na(x)) {
+    return("No!")
+  } else {
+    return("Yes!")
+  }
+}
+# Running that whole thing through a for loop
+for (i in 1:6) {
+  goal_col <- paste0("Goal_", i)
+  newvar_col <- paste0("complete_", i)
+  df[[newvar_col]] <- sapply(df[[goal_col]], FUN = is.training.completed)
+}
+# count the number of "Yes!"es in those
+df$completed_count<- apply(select(df, starts_with(match = "complete_")), 1, function(x) length(which(x=="Yes!"))) # the "1" stands for rows here. see https://stackoverflow.com/questions/24015557/count-occurrences-of-value-in-a-set-of-variables-in-r-per-row
+
 imp <- mice(df, m=5, maxit=5, method="pmm") # number of multiple imputations, maximum iterations, method: predictive mean matching
 # I have to read more here: https://bookdown.org/mwheymans/bookmi/multiple-imputation.html#multiple-imputation-in-r
-df2<-complete(imp)
+df_imputed<-complete(imp)

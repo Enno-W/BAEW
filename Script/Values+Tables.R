@@ -36,20 +36,3 @@ pwr_result <- pwr.r.test(n = NULL,
                      power = 0.95,      
                      alternative = "greater") 
 
-#### Variable to count training sessions ####
-#function to return "No" if something is FALSE, and vice versa...
-is.training.completed <- function(x) {
-    if (is.na(x)) {
-      return("No!")
-    } else {
-      return("Yes!")
-    }
-}
-# Running that whole thing through a for loop
-for (i in 1:6) {
-  goal_col <- paste0("Goal_", i)
-  newvar_col <- paste0("complete_", i)
-  df[[newvar_col]] <- sapply(df[[goal_col]], FUN = is.training.completed)
-}
-# count the number of "Yes!"es in those
-df$completed_count<- apply(select(df, starts_with(match = "complete_")), 1, function(x) length(which(x=="Yes!"))) # the "1" stands for rows here. see https://stackoverflow.com/questions/24015557/count-occurrences-of-value-in-a-set-of-variables-in-r-per-row

@@ -134,6 +134,8 @@ Die Teilnehmenden waren durchschnittlich `r descriptives_list$Age_mean` alt (*SD
 
 *Prozedur*
 
+Die Teilnehmenden waren in einem Kurs für
+
 Die Freizeitsportler:innen berichteten vor der Studie ihr generelles Affekterleben innerhalb der letzten zehn Tage mit der Positive and Negative Affect-Scale (PANAS) von @Watson1988. Der Prä-Test enthielt außerdem die Skala von @Peterson1982 zum Attributionsstil und die Items zu demografischen Daten.
 
 Darauf folgte die Trainingsphase, in der die Trainierenden über einen Zeitraum von maximal zwei Monaten sechs Trainingseinheiten dokumentieren sollten. In den Befragungen dazu wurde nach einer Trainingseinheit die wahrgenommene Trainingsintensität mithilfe des Session-RPE-Fragebogens von @Foster2021 erfasst. Nach jeder Trainingseinheit wurde der Affekt mit der PANAS erhoben. Außerdem wurde das Kilometerziel sowie die Dauer des Laufs und die tatsächlich erreichten Kilometer erfasst. Bezüglich des Vorgehens beim Verfassen der Arbeit ist ein Zeitplan am Ende des Dokuments angehängt. [@Amireault2013]
