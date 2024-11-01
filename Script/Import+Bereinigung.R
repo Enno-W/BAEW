@@ -62,4 +62,7 @@ imp <- mice(df_imp0, m=5, maxit=5, method="pmm") # number of multiple imputation
 # I have to read more here: https://bookdown.org/mwheymans/bookmi/multiple-imputation.html#multiple-imputation-in-r
 df_imp<-complete(imp)
  select(is.numeric(df_imp))
-df_described<-stat.desc(select(df, where(is.numeric))) %>% as.data.frame()
+df_described<-stat.desc(select(df_imp, where(is.numeric)),basic = F, norm = T) %>% as.data.frame()
+notnormal<-df_described["normtest.p",] %>%
+  select(where(~ . < 0.05))
+rownames()
