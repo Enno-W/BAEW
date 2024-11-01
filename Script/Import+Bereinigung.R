@@ -62,5 +62,4 @@ df_imp0<-df %>% select(!matches("_1|_2|_3|_4|_5|_6"))
 imp <- mice(df_imp0, m=5, maxit=5, method="pmm") # number of multiple imputations, maximum iterations, method: predictive mean matching
 # https://bookdown.org/mwheymans/bookmi/multiple-imputation.html#multiple-imputation-in-r
 df_imp<-complete(imp)
-## extract not normally distributed variables
-vars_not_normal<- which_var_not_normal (df_imp)
+

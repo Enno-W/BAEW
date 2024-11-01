@@ -36,3 +36,6 @@ pwr_result <- pwr.r.test(n = NULL,
                      power = 0.95,      
                      alternative = "greater") 
 
+#### Distribution tests #####
+## extract not normally distributed variables
+vars_not_normal<- which_var_not_normal (df_imp)
