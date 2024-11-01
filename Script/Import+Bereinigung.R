@@ -4,7 +4,8 @@ load(magic_path("241021PRIMOCA_data.Rdata"))
 sum(is.na(df))
 #### Removing Participants based on the filter varialbe "Programme"#####
 df<-df %>% filter(Programme == 1|is.na(Programme))
-
+#### Removing Variables that are not considered in this thesis ####
+df<- df %>% select(!matches("_fear|_hope|Achievement|Affiliation|Power|Programme|Pride|Hubris"))
 #### Grouping the different kinds of sports and goals ####
 df$Sport2 <- NA
 df$Sport2[19] <- "Laufen" # Here, I add a second sport for participant 19
@@ -57,12 +58,9 @@ for (i in 1:6) {
 }
 # count the number of "Yes!"es in those
 df$completed_count<- apply(select(df, starts_with(match = "complete.")), 1, function(x) length(which(x=="Yes!"))) # the "1" stands for rows here. see https://stackoverflow.com/questions/24015557/count-occurrences-of-value-in-a-set-of-variables-in-r-per-row
-df_imp0<-df %>% select(!matches("_1|_2|_3|_4|_5|_6|_fear|_hope|Achievement|Affiliation|Power|Programme"))
+df_imp0<-df %>% select(!matches("_1|_2|_3|_4|_5|_6"))
 imp <- mice(df_imp0, m=5, maxit=5, method="pmm") # number of multiple imputations, maximum iterations, method: predictive mean matching
-# I have to read more here: https://bookdown.org/mwheymans/bookmi/multiple-imputation.html#multiple-imputation-in-r
+# https://bookdown.org/mwheymans/bookmi/multiple-imputation.html#multiple-imputation-in-r
 df_imp<-complete(imp)
- select(is.numeric(df_imp))
-df_described<-stat.desc(select(df_imp, where(is.numeric)),basic = F, norm = T) %>% as.data.frame()
-notnormal<-df_described["normtest.p",] %>%
-  select(where(~ . < 0.05))
-rownames()
+## extract not normally distributed variables
+vars_not_normal<- which_var_not_normal (df_imp)

@@ -130,4 +130,9 @@ mean_sd_median_min_max <- function(df) {
 }
 #descriptives_list<-mean_sd_median_min_max(df)
 
+#### Return all variables that are not normally distribute in the dataset####
+which_var_not_normal<- function(df) {
+  names<-df %>% select(where(is.numeric)) %>% stat.desc (basic=F, norm=T) %>% as.data.frame() %>%.["normtest.p",] %>%   .[, . < 0.5 ] %>% names()
+  return(names)
+}
 
