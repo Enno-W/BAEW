@@ -1,1 +1,1 @@
-ave_corr_table<-df %>% select(ends_with("_ave")) %>% generate_correlation_table(c("Average Goal Attainment", "Average Commitment", "Average KM per Session", "Average hours per Session", "Average SessionRPE", "Average Pride", "Average Positive Affect", "Average Negative Affect"))
+hist.WeeklyH_ave <- ggplot(df_imp)
