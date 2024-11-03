@@ -128,11 +128,27 @@ mean_sd_median_min_max <- function(df) {
   
   return(result_list)
 }
-#descriptives_list<-mean_sd_median_min_max(df)
 
 #### Return all variables that are not normally distribute in the dataset####
 which_var_not_normal<- function(df) {
   names<-df %>% select(where(is.numeric)) %>% stat.desc (basic=F, norm=T) %>% as.data.frame() %>%.["normtest.p",] %>%   .[, . < 0.5 ] %>% names()
   return(names)
+}
+##### Show Histograms of all variables #####
+print_all_histograms <- function(df, bins_n=20) {
+  df_long <- df %>%
+    pivot_longer(cols = where(is.numeric), names_to = "variable", values_to = "value") %>% filter(!is.na(value))
+  
+  plot<- ggplot(df_long, aes(value)) +
+    geom_histogram(aes(y = after_stat(density)), colour = "black", fill = "white", bins = bins_n) +
+    labs(x = NULL, y = NULL) +
+    scale_y_continuous(guide = "none") +
+    facet_wrap(~variable, scales = "free") + # Create separate panels for each variable
+    stat_function(fun = dnorm,
+                  args = list(mean = mean(df_long$value, na.rm = TRUE),
+                              sd = sd(df_long$value, na.rm = TRUE)),
+                  colour = "black", linewidth = 1)
+  
+  print (plot)
 }
 

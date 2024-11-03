@@ -1,20 +1,22 @@
-ggplot(df, aes(WeeklyKM_base))+
-  geom_histogram(aes(y=..density..), colour ="black", fill="white", bins = 20)+
-  labs(x = "Weekly KM Baseline", y = NULL)+
-scale_y_continuous(guide = "none")+
-  stat_function(fun = dnorm, args=list(mean =mean (df$WeeklyKM_base, na.rm = T ), sd= sd(df$WeeklyKM_base, na.rm=T)), colour="black", linewidth =1)
+print_all_histograms <- function(df, bins_n=20) {
+  df_long <- df %>%
+    pivot_longer(cols = where(is.numeric), names_to = "variable", values_to = "value") %>% filter(!is.na(value))
+  
+ plot<- ggplot(df_long, aes(value)) +
+    geom_histogram(aes(y = after_stat(density)), colour = "black", fill = "white", bins = bins_n) +
+    labs(x = NULL, y = NULL) +
+    scale_y_continuous(guide = "none") +
+    facet_wrap(~variable, scales = "free") + # Create separate panels for each variable
+    stat_function(fun = dnorm,
+                  args = list(mean = mean(df_long$value, na.rm = TRUE),
+                              sd = sd(df_long$value, na.rm = TRUE)),
+                  colour = "black", linewidth = 1)
+ 
+ print (plot)
+}
 
-df_long <- df %>%
-  pivot_longer(cols = where(is.numeric), names_to = "variable", values_to = "value")
+
+print_all_histograms(df, bins_n = 30)
 
 
-ggplot(df_long, aes(value)) +
-  geom_histogram(aes(y = ..density..), colour = "black", fill = "white", bins = 20) +
-  labs(x = NULL, y = NULL) +
-  scale_y_continuous(guide = "none") +
-  facet_wrap(~variable, scales = "free") + # Create separate panels for each variable
-  stat_function(fun = dnorm,
-                args = list(mean = mean(df_long$value, na.rm = TRUE),
-                            sd = sd(df_long$value, na.rm = TRUE)),
-                colour = "black", linewidth = 1)
-df %>% sum(is.finite(df))
+

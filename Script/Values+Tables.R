@@ -41,3 +41,4 @@ pwr_result <- pwr.r.test(n = NULL,
 ## extract not normally distributed variables
 vars_not_normal<- which_var_not_normal (df_imp)
 desc_vars_not_normal<- stat.desc(df_imp[, names(vars_not_normal)])
+

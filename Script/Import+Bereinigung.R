@@ -58,8 +58,13 @@ for (i in 1:6) {
 }
 # count the number of "Yes!"es in those
 df$completed_count<- apply(select(df, starts_with(match = "complete.")), 1, function(x) length(which(x=="Yes!"))) # the "1" stands for rows here. see https://stackoverflow.com/questions/24015557/count-occurrences-of-value-in-a-set-of-variables-in-r-per-row
+
+##### Multiple Imputation to deal with NAs #####
 df_imp0<-df %>% select(!matches("_1|_2|_3|_4|_5|_6"))
 imp <- mice(df_imp0, m=5, maxit=5, method="pmm") # number of multiple imputations, maximum iterations, method: predictive mean matching
 # https://bookdown.org/mwheymans/bookmi/multiple-imputation.html#multiple-imputation-in-r
 df_imp<-complete(imp)
+### Checking NAs
+sum(is.na(df_long[, c("variable", "value")]))
 
+sum(is.character(df_long))
