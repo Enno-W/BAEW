@@ -50,7 +50,7 @@ project:
 ```{r}
 #| echo: false
 #| eval: true 
-#| output: false
+#| output: true
 if (!requireNamespace("xfun", quietly = TRUE)) {
   install.packages("xfun")
 }
@@ -118,16 +118,14 @@ Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfo
 
 Daten von aktiven, erwachsenen Freizeitsportler:innen (Alter ± Standardabweichung: 35.85 ± 12.89 Jahre; 6 weiblich; 12 männlich; 3 divers) liegen bereits aus dem Forschungsprojekt vor.
 
-**Tabelle 1**
-
-*Tabelle der Absoluten und Relativen Häufigkeiten Demografischer Variablen in der Stichprobe*
-
-```{r}
+::: landscape
+```{r Tabelle 1}
+#| label: tbl-demogrtable
+#| tbl-cap: Tabelle der Absoluten und Relativen Häufigkeiten Demografischer Variablen in der Stichprobe
+#| apa-note: Die Sportarten wurden in einer offenen Frage erfragt. Eine männliche Person gab zwei Sportarten an — Kraftsport und Laufen. Es wurde hier die erste Antwort (Kraftsport) gezählt. Vier Personen gaben keine demographischen Daten an.
 demographicstable
-
 ```
-
-*Hinweis: Die Sportarten wurden in einer offenen Frage erfragt. Eine männliche Person gab zwei Sportarten an — Kraftsport und Laufen. Es wurde hier die erste Antwort (Kraftsport) gezählt. Vier Personen gaben keine demographischen Daten an (N=*
+:::
 
 Die Teilnehmenden waren durchschnittlich `r descriptives_list$Age_mean` alt (*SD* = `r descriptives_list$Age_sd`)
 
@@ -148,19 +146,14 @@ Diese Arbeit wurde mit R (Version`r getRversion()` ) und Quarto (Version 1.6.32)
 # Ergebnisse
 
 ::: landscape
-**Tabelle 2**
-
-*Korrelationstabelle der gemittelten durchschnittlichen Werte aus den Werten der einzelnen Sessions*
-
-```{r apatb-korrelationstabelle}
-
+```{r}
+#| label: tbl-corrtable
+#| tbl-cap: Korrelationstabelle der gemittelten durchschnittlichen Werte aus den Werten der einzelnen Sessions
+#| apa-note: \*p \< 0.05; \*\*p \< 0.01
 ave_corr_table
 
 ```
-
-Hinweis: \*p \< 0.05; \*\*p \< 0.01
 :::
-
 # Diskussion
 
 # Literaturverzeichnis
