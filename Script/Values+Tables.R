@@ -29,7 +29,7 @@ demographicstable<- data %>%
   align(align = "center", part = "body")
 
 #### correlation table ####
-ave_corr_table<-df %>% select(ends_with("_ave")) %>% generate_correlation_table(c("Average Goal Attainment", "Average Commitment", "Average KM per Session", "Average hours per Session", "Average SessionRPE", "Average Pride", "Average Positive Affect", "Average Negative Affect"))
+ave_corr_table<-df %>% select(ends_with("_ave")) %>% generate_correlation_table(c("Average Goal Attainment", "Average Commitment", "Average KM per Session", "Average hours per Session", "Average SessionRPE",  "Average Positive Affect", "Average Negative Affect"))
 #### Power analysis ####
 pwr_result <- pwr.r.test(n = NULL,         
                      r = 0.5,           
@@ -39,6 +39,5 @@ pwr_result <- pwr.r.test(n = NULL,
 
 #### Distribution tests #####
 ## extract not normally distributed variables
-vars_not_normal<- which_var_not_normal (df_imp)
-desc_vars_not_normal<- stat.desc(df_imp[, names(vars_not_normal)])
-
+vars_not_normal<- which_var_not_normal (df) 
+desc_vars_not_normal<- stat.desc(df[,vars_not_normal])

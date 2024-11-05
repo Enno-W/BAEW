@@ -31,8 +31,8 @@ keywords: [keyword1, keyword2, keyword3]
 bibliography: bibliography.bib
 lang: de
 format:
- #apaquarto-html: default
- apaquarto-docx: default
+ apaquarto-html: default
+ #apaquarto-docx: default
  #apaquarto-typst: 
    #keep-typ: true
   #apaquarto-pdf:
@@ -50,6 +50,7 @@ project:
 ```{r}
 #| echo: false
 #| eval: true 
+#| output: false
 if (!requireNamespace("xfun", quietly = TRUE)) {
   install.packages("xfun")
 }

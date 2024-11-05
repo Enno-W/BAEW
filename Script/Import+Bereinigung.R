@@ -26,10 +26,8 @@ df$Commit_ave <- mean_by_pattern(df, "commit")
 df$SessionKM_ave <- mean_by_pattern(df, "sessionkm")
 df$SesseionH_ave <- mean_by_pattern(df, "sessionh")
 df$SessionRPE_ave <- mean_by_pattern(df, "sessionrpe")
-df$Pride_ave <- mean_by_pattern(select(df,-Pride_base), "pride")
-df$Pride_hubris <- mean_by_pattern(select(df,-Hubris_base), "hubris")
-df$PA_ave <- mean_by_pattern(select(df,-PA_base), "pa_")
-df$NA_ave <- mean_by_pattern(select(df,-NA_base), "na_")
+df$PA_ave <- mean_by_pattern(df, "pa_")
+df$NA_ave <- mean_by_pattern(df,"na_")
 
 ####rename the gender ####
 df <- df %>%
@@ -64,7 +62,4 @@ df_imp0<-df %>% select(!matches("_1|_2|_3|_4|_5|_6"))
 imp <- mice(df_imp0, m=5, maxit=5, method="pmm") # number of multiple imputations, maximum iterations, method: predictive mean matching
 # https://bookdown.org/mwheymans/bookmi/multiple-imputation.html#multiple-imputation-in-r
 df_imp<-complete(imp)
-### Checking NAs
-sum(is.na(df_long[, c("variable", "value")]))
 
-sum(is.character(df_long))
