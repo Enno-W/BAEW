@@ -41,3 +41,5 @@ pwr_result <- pwr.r.test(n = NULL,
 ## extract not normally distributed variables
 vars_not_normal<- which_var_not_normal (df) 
 desc_vars_not_normal<- stat.desc(df[,vars_not_normal])
+
+#### Multilevel Analysis ####

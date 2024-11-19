@@ -118,14 +118,12 @@ Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfo
 
 Daten von aktiven, erwachsenen Freizeitsportler:innen (Alter ± Standardabweichung: 35.85 ± 12.89 Jahre; 6 weiblich; 12 männlich; 3 divers) liegen bereits aus dem Forschungsprojekt vor.
 
-::: landscape
 ```{r Tabelle 1}
 #| label: tbl-demogrtable
 #| tbl-cap: Tabelle der Absoluten und Relativen Häufigkeiten Demografischer Variablen in der Stichprobe
 #| apa-note: Die Sportarten wurden in einer offenen Frage erfragt. Eine männliche Person gab zwei Sportarten an — Kraftsport und Laufen. Es wurde hier die erste Antwort (Kraftsport) gezählt. Vier Personen gaben keine demographischen Daten an.
 demographicstable
 ```
-:::
 
 Die Teilnehmenden waren durchschnittlich `r descriptives_list$Age_mean` alt (*SD* = `r descriptives_list$Age_sd`)
 
@@ -141,13 +139,13 @@ Darauf folgte die Trainingsphase, in der die Trainierenden über einen Zeitraum 
 
 ### *Statistische Analyse*
 
-Diese Arbeit wurde mit R (Version`r getRversion()` ) und Quarto (Version 1.6.32) erstellt. Die reproduzierbare Version dieses Artikels ist auf GitHub unter <https://github.com/Enno-W/BAEW> verfügbar.
+Diese Arbeit wurde mit R (Version `r getRversion()` ) und Quarto (Version 1.6.32) erstellt. Die reproduzierbare Version dieses Artikels ist auf GitHub unter <https://github.com/Enno-W/BAEW> verfügbar.
 
 Zur Bereinigung der Daten wurden zunächst die Versuchspersonen von der Analyse ausgeschlossen, die angaben, dass sie nicht aktiv an einem Sportprogramm teilnehmen. Die Variablen zu Stolz und der Motivstruktur wurden eliminert, da sie in dieser Arbeit nicht berücksichtigt werden. Für Werte, bei denen die Versuchspersonen einen Bereich (z.B. 10-15 km) angegeben hatten, wurde der Durchschnitt der beiden Werte gebildet. Da die Skalen von Affekt und Attribution keine gegensätzlich gepolten Items beinhalten, wurde keine Umpolung vorgenommen.
 
 Die Daten bestanden aus einem Baseline-Test und Angaben aus einem Fragebogen zu sechs darauffolgenden Trainingseinheiten. Diese wöchentlichen Angaben wurden zu Mittelwerten zusammengefasst (siehe @tbl-corrtable). Außerdem wurde ausgezählt, wie viele Trainingseinheiten eine Person ausgefüllt hatte.
 
-Eine Überprüfung der Voraussetzungen für weitere Analyse erfolgte anhand von visueller Inspektion von Histogrammen und Q-Q-Plots aller numerischen Variablen, sowie Shapiro-Wilk-Tests der Normalität. Die Variablen `r vars_not_normal` waren signifikant, was auf eine Abweichung von der Normalverteilung hindeutet. 
+Eine Überprüfung der Voraussetzungen für weitere Analyse erfolgte anhand von visueller Inspektion von Histogrammen und Q-Q-Plots aller numerischen Variablen, sowie Shapiro-Wilk-Tests der Normalität. Die Variablen `r vars_not_normal` waren signifikant, was auf eine Abweichung von der Normalverteilung hindeutet.
 
 # Ergebnisse
 
