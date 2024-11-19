@@ -57,4 +57,6 @@ for (i in 1:6) {
 # count the number of "Yes!"es in those
 df$completed_count<- apply(select(df, starts_with(match = "complete.")), 1, function(x) length(which(x=="Yes!"))) # the "1" stands for rows here. see https://stackoverflow.com/questions/24015557/count-occurrences-of-value-in-a-set-of-variables-in-r-per-row
 
+# ID Variable
+df$ID<-1:nrow(df)
 

@@ -41,5 +41,27 @@ pwr_result <- pwr.r.test(n = NULL,
 ## extract not normally distributed variables
 vars_not_normal<- which_var_not_normal (df) 
 desc_vars_not_normal<- stat.desc(df[,vars_not_normal])
-
 #### Multilevel Analysis ####
+#Convert Data to long format
+weekly_measures<-select(df, matches("_[1-6]$")) %>% names()# This is a regex, a regular expression to find a certain pattern. The Dollar sign is for "Ends with". Learn more here: https://github.com/ziishaned/learn-regex/blob/master/translations/README-de.md
+wiiide_df <- select(df, !"Goal_ave")%>%
+  pivot_longer(
+    cols = starts_with("Goal_"),        # Columns for weekly goal measurements
+    names_to = "Time",                 # New column for time variable
+    values_to = "Goal"                 # Dependent variable
+  ) %>%
+  mutate(
+    Time = as.numeric(gsub("Goal_", "", Time))  # Extract numeric timepoints
+  )
+# Models
+# Random intercept model
+hierarchical_model_basic<- lmer(
+  Goal ~ Locus + Dynamics + PA_base + NA_base + (1 | ID),
+  data = wiiide_df
+)
+
+
+# Summarize the model
+summary(model)
+summary(model_with_slope)
+

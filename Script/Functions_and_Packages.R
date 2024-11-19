@@ -3,7 +3,7 @@ if (!requireNamespace("needs", quietly = TRUE)) {
   install.packages("needs")
 }
 library(needs)
-needs(xfun, tidyverse, psych, remotes, Hmisc, flextable, gtsummary, cardx, svglite, pwr, pastecs)
+needs(xfun, tidyverse, psych, remotes, Hmisc, flextable, gtsummary, cardx, svglite, pwr, pastecs, lme4, performance,lmerTest, reshape2)
 xfun::install_github("Enno-W/excelbib")
 library(excelbib)
 # Create .bib file from the excel list
