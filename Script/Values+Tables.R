@@ -42,26 +42,28 @@ pwr_result <- pwr.r.test(n = NULL,
 vars_not_normal<- which_var_not_normal (df) 
 desc_vars_not_normal<- stat.desc(df[,vars_not_normal])
 #### Multilevel Analysis ####
-#Convert Data to long format
+#Convert Data to long format For "Goal" only
 weekly_measures<-select(df, matches("_[1-6]$")) %>% names()# This is a regex, a regular expression to find a certain pattern. The Dollar sign is for "Ends with". Learn more here: https://github.com/ziishaned/learn-regex/blob/master/translations/README-de.md
-wiiide_df <- select(df, !"Goal_ave")%>%
+
+long_df <- df %>%
   pivot_longer(
-    cols = starts_with("Goal_"),        # Columns for weekly goal measurements
-    names_to = "Time",                 # New column for time variable
-    values_to = "Goal"                 # Dependent variable
+    cols = all_of(weekly_measures), # 
+    names_to = c(".value", "Time"),   # Split into a base name and the timepoint
+    names_pattern = "(.*)_(\\d+)"     # Regex to split column names like "Goal_1"
   ) %>%
   mutate(
-    Time = as.numeric(gsub("Goal_", "", Time))  # Extract numeric timepoints
+    Time = as.numeric(Time)           # Convert extracted timepoint to numeric
   )
+# Test that the transformation worked as intended: We have 33 obs. in "df", and here, each individual gets 6 rows for each measurement point. 
+nrow(long_df)== nrow(df)*6
+df$Goal_5[1]==long_df$Goal[5]# The 5th measurement point of "Goal" is equal to the variable "Goal_5" of participant number 1 in the original df. 
+
 # Models
-# Random intercept model
-hierarchical_model_basic<- lmer(
-  Goal ~ Locus + Dynamics + PA_base + NA_base + (1 | ID),
-  data = wiiide_df
-)
-
-
-# Summarize the model
-summary(model)
-summary(model_with_slope)
-
+# Nullmodell
+null_model<- lme(Goal ~ 1, data=long_df, random= ~1|ID, method="ML", na.action = na.omit) # See the documentation for lme: ?lme --> other options: na.exclude, na.pass...#
+# The "1" stands for the "intercept"
+#The formula means: Fixed effects: for "Goal", only the intercepts are estimated. Random effects: "The intercept varies between participants". 
+summary(null_model)
+icc(nullmodell)# a very low ICC
+time_model <- lme(Goal ~ 1+ Time, data=long_df, random= ~1|ID, method="ML", na.action = na.omit)
+summary(time_model)# This model barely fits better than the null model
