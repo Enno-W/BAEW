@@ -69,7 +69,7 @@ null_model<- lme(Goal ~ 1,
 # The "1" stands for the "intercept"
 #The formula means: Fixed effects: for "Goal", only the intercepts are estimated. Random effects: "The intercept varies between participants". 
 summary(null_model)
-icc(nullmodell)# a very low ICC
+icc(null_model)
 time_model <- lme(Goal ~ 1+ Time, 
                   data=long_df, 
                   random= ~1|ID, method="ML", 
@@ -94,3 +94,22 @@ time_varying_and_stable_model_with_covar <- lme(Goal ~ 1+ Time+PositiveAffect+Ne
                                      random= ~1|ID, method="ML", 
                                      na.action = na.omit, correlation = corAR1(form = ~ Time|ID))# I am not using ~ 1|ID)), because the gap between measurement points was not uniform and some data are missing. 
 summary(time_varying_and_stable_model_with_covar)
+# Checking Assumptions http://www.regorz-statistik.de/inhalte/r_HLM_2.html
+l1_residuals <- hlm_resid(time_varying_and_stable_model_with_covar, level=1) # Funktion aus HLMdiag-Package
+#Now, I use the ".ls.resid" to make a graph. these are the "Least squares residuals", and they have the advantage that influences from level 2 and 1 are not mixed up. 
+ggplot(data = l1_residuen, aes(.ls.resid)) +
+  geom_histogram(aes(y = ..density..), bins=10) +
+  stat_function(fun = dnorm,
+                args = list(mean = mean(l1_residuen$.ls.resid),
+                            sd = sd(l1_residuen$.ls.resid)), size=2) # Seems pretty normal to me. 
+# Shapiro test of normality
+shapiro.test(l1_residuen$.ls.resid)# yup, normally distributed
+
+# Testing for homoscedasticity: The varianz of residuals must be constant for all values
+ggplot(data=l1_residuen, aes(x=.ls.fitted, y=.ls.resid)) +
+  geom_point() 
+res_vergleich <- transmute(l1_residuen, res_abs = abs(.ls.resid), class)
+
+attach(res_vergleich)
+summary(aov(res_abs ~ as.factor(class)))
+detach(res_vergleich)
