@@ -58,7 +58,10 @@ long_df<-long_df %>% rename( PositiveAffect=PA,NegativeAffect="NA")
 # Test that the transformation worked as intended: We have 33 obs. in "df", and here, each individual gets 6 rows for each measurement point. 
 nrow(long_df)== nrow(df)*6
 df$Goal_5[1]==long_df$Goal[5]# The 5th measurement point of "Goal" is equal to the variable "Goal_5" of participant number 1 in the original df. 
-
+# Time to revisit multiple imputation: 
+imp <- mice(long_df, m=5, maxit=5, method="pmm") # number of multiple imputations, maximum iterations, method: predictive mean matching
+# https://bookdown.org/mwheymans/bookmi/multiple-imputation.html#multiple-imputation-in-r
+long_df<-complete(imp)
 # Models
 # Nullmodell
 null_model<- lme(Goal ~ 1, 
@@ -90,11 +93,11 @@ time_varying_and_stable_model <- lme(Goal ~ 1+ Time+PositiveAffect+NegativeAffec
 summary(time_varying_and_stable_model)
 #Level 1 Residuals (aka, at the time level), have thus far been viewed as uncorrelated. Here I introduce a covariation matrix for them.
 time_varying_and_stable_model_with_covar <- lme(Goal ~ 1+ Time+PositiveAffect+NegativeAffect+PA_base+NA_base+Locus+Dynamics, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
-                                     data=long_df, 
+                                     data=long_df_imp, 
                                      random= ~1|ID, method="ML", 
                                      na.action = na.omit, correlation = corAR1(form = ~ Time|ID))# I am not using ~ 1|ID)), because the gap between measurement points was not uniform and some data are missing. 
 summary(time_varying_and_stable_model_with_covar)
-# Checking Assumptions http://www.regorz-statistik.de/inhalte/r_HLM_2.html
+##### Checking Assumptions http://www.regorz-statistik.de/inhalte/r_HLM_2.html#####
 l1_residuals <- hlm_resid(time_varying_and_stable_model_with_covar, level=1) # Funktion aus HLMdiag-Package
 #Now, I use the ".ls.resid" to make a graph. these are the "Least squares residuals", and they have the advantage that influences from level 2 and 1 are not mixed up. 
 ggplot(data = l1_residuen, aes(.ls.resid)) +
@@ -107,9 +110,6 @@ shapiro.test(l1_residuen$.ls.resid)# yup, normally distributed
 
 # Testing for homoscedasticity: The varianz of residuals must be constant for all values
 ggplot(data=l1_residuen, aes(x=.ls.fitted, y=.ls.resid)) +
-  geom_point() 
-res_vergleich <- transmute(l1_residuen, res_abs = abs(.ls.resid), class)
+  geom_point() # It looks like a random cloud, visually I do not see homoscedasticity. But apparently, the test is significant: This means, homoscedasticity is violated. 
 
-attach(res_vergleich)
-summary(aov(res_abs ~ as.factor(class)))
-detach(res_vergleich)
+
