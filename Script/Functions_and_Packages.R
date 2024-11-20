@@ -61,6 +61,7 @@ replace_patterns <- function(data, column_name, patterns) {
 generate_correlation_table <- function(df, display_names) {
   library(Hmisc)
   library(flextable)
+  library(officer)
   # Compute correlation matrix
   correlation_matrix <- rcorr(as.matrix(df))
   correlation_matrix_r <- round(correlation_matrix$r, digits = 2)
@@ -80,8 +81,8 @@ generate_correlation_table <- function(df, display_names) {
   # Append stars to the lower triangle of the correlation matrix
   correlation_matrix_clean[lower.tri(correlation_matrix_clean)] <- paste(correlation_matrix_clean[lower.tri(correlation_matrix_clean)], stars_matrix[lower.tri(stars_matrix)], sep = "")
   # Compute mean and standard deviation of variables
-  means <- colMeans(df, na.rm = T)
-  sds <- apply(df, 2, sd, na.rm = T)# 2 stands for "colums" here
+  means <- colMeans(df, na.rm = T) %>% round(2)
+  sds <- apply(df, 2, sd, na.rm = T) %>% round(2)# 2 stands for "colums" here
   
   # Create data frame
   correlation_df <- data.frame(Measure = display_names, Mean = means,SD = sds, correlation_matrix_clean)
@@ -90,9 +91,25 @@ generate_correlation_table <- function(df, display_names) {
   
   # Create flextable
   flextable(correlation_df) %>%
-    theme_apa() %>%
-    line_spacing(part = "all") %>%
-    padding(padding.top = 5, padding.bottom = 5)
+    set_header_labels(
+      Measure = "Measure", 
+      Mean = "Mean", 
+      SD = "SD"
+    ) %>%
+    add_header_row(
+      values = c("", "Descriptive Statistics", "Correlations"), 
+      colwidths = c(1, 2, ncol(correlation_matrix_clean))
+    ) %>%
+    align(align = "center", part = "all") %>%
+    autofit() %>%
+    bold(part = "header") %>%
+    font(fontname = "Times New Roman", part = "all") %>%
+    fontsize(size = 12, part = "all") %>%
+    padding(padding.top = 3, padding.bottom = 3, part = "all") %>%
+    border_remove() %>%
+    hline_top(border = fp_border(width = 1.5), part = "header") %>%
+    hline_bottom(border = fp_border(width = 1.5), part = "body") %>%
+    hline(border = fp_border(width = 1), part = "header")
 }
 
 ## Example usage
