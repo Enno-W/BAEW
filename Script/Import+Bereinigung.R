@@ -7,10 +7,8 @@ sum(is.na(df))
 df<-df %>% filter(Programme == 1|is.na(Programme))
 
 #### NAs and Outliers ####
-df$NA_amount <- rowSums(is.na(df))
-df<-df %>% filter(NA_amount<51)
-
-
+# df$NA_amount <- rowSums(is.na(df))
+# df<-df %>% filter(NA_amount<51)#removing participants with more than 50 outliers
 
 #### Removing Variables that are not considered in this thesis ####
 df<- df %>% select(!matches("_fear|_hope|Achievement|Affiliation|Power|Programme|Pride|Hubris"))
@@ -43,10 +41,10 @@ df <- df %>%
 ####change character varialbes to numeric####
 df$WeeklyKM_base<- as.numeric(df$WeeklyKM_base)
 df$WeeklyH_base<- as.numeric(df$WeeklyH_base)
+
 #### Handling NAs####
-df$Goal_ave[8]
 df[df=="NaN"]<-NA
-df$Goal_ave[8]
+
 #### Variable to count training sessions ####
 #function to return "No" if something is FALSE, and vice versa...
 is.training.completed <- function(x) {

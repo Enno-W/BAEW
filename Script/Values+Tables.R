@@ -41,8 +41,9 @@ pwr_result <- pwr.r.test(n = NULL,
 
 #### Distribution tests #####
 ## extract not normally distributed variables
-vars_not_normal<- which_var_not_normal (df) 
+vars_not_normal<- select(df, !matches("_[1-6]$")) %>% which_var_not_normal () 
 desc_vars_not_normal<- stat.desc(df[,vars_not_normal])
+
 #### Multilevel Analysis ####
 
 #####Convert Data to long format#####
@@ -58,6 +59,7 @@ long_df <- df %>%
     Time = as.numeric(Time)           # Convert extracted timepoint to numeric
   )
 long_df<-long_df %>% rename( PositiveAffect=PA,NegativeAffect="NA")
+
 # Test that the transformation worked as intended: We have 33 obs. in "df", and here, each individual gets 6 rows for each measurement point. 
 nrow(long_df)== nrow(df)*6
 df$Goal_5[1]==long_df$Goal[5]# The 5th measurement point of "Goal" is equal to the variable "Goal_5" of participant number 1 in the original df. 
@@ -103,7 +105,7 @@ time_varying_and_stable_model_with_covar <- lme(Goal ~ 1+ Time+PositiveAffect+Ne
                                      na.action = na.omit, correlation = corAR1(form = ~ Time|ID))# I am not using ~ 1|ID)), because the gap between measurement points was not uniform and some data are missing. 
 summary(time_varying_and_stable_model_with_covar)
 ##### Checking Assumptions http://www.regorz-statistik.de/inhalte/r_HLM_2.html#####
-l1_residuals <- hlm_resid(time_varying_and_stable_model, level=1) # Funktion aus HLMdiag-Package
+l1_residuals <- hlm_resid(time_varying_and_stable_model_with_covar, level=1) # Funktion aus HLMdiag-Package
 #Now, I use the ".ls.resid" to make a graph. these are the "Least squares residuals", and they have the advantage that influences from level 2 and 1 are not mixed up. 
 ggplot(data = l1_residuals, aes(.ls.resid)) +
   geom_histogram(aes(y = ..density..), bins=10) +
@@ -111,17 +113,17 @@ ggplot(data = l1_residuals, aes(.ls.resid)) +
                 args = list(mean = mean(l1_residuals$.ls.resid),
                             sd = sd(l1_residuals$.ls.resid)), size=2) # Seems pretty normal to me. 
 # Shapiro test of normality
-shapiro.test(l1_residuals$.ls.resid)# yup, normally distributed
+shapiro.test(l1_residuals$.ls.resid)# not normally distributed after removing Participants with too many NaS
 
 # Testing for homoscedasticity: The varianz of residuals must be constant for all values
 ggplot(data=l1_residuals, aes(x=.ls.fitted, y=.ls.resid)) +
-  geom_point() # It looks like a random cloud, visually I do not see homoscedasticity. But apparently, the test is significant: This means, homoscedasticity is violated. 
+  geom_point() # Weird linear patterns emerge: This means, homoscedasticity is violated. 
 
 # Outliers
 ggplot(data = l1_residuals, aes(y= .ls.resid)) + theme_gray() + geom_boxplot()#overall
 ggplot(data = l1_residuals, aes( x= .ls.resid, y= as.factor(ID))) + theme_gray() + geom_boxplot() # per group, the outliers are pretty random and the width varies substantially between groups
 
-# Überprüfung der gewöhnlichen Residuen
+#### Überprüfung der gewöhnlichen, nicht least squares Residuen#####
 
 ggplot(data = l1_residuals, aes(.resid)) +
   geom_histogram(aes(y = ..density..), bins=10) +
@@ -141,5 +143,4 @@ ggplot(data=l1_residuals, aes(x=.fitted, y=.resid)) +
 ggplot(data = l1_residuals, aes(y= .resid)) + theme_gray() + geom_boxplot()
 
 ggplot(data = l1_residuals, aes(x= .resid, y= as.factor(ID))) + theme_gray() + geom_boxplot()
-#### Voraussetzungen auf level 2####
 
