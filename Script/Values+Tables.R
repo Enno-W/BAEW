@@ -79,29 +79,15 @@ null_model<- lme(Goal ~ 1,
 # The "1" stands for the "intercept"
 #The formula means: Fixed effects: for "Goal", only the intercepts are estimated. Random effects: "The intercept varies between participants". 
 summary(null_model)
-icc(null_model)
-time_model <- lme(Goal ~ 1+ Time, 
-                  data=long_df, 
-                  random= ~1|ID, method="ML", 
-                  na.action = na.omit)
-summary(time_model)# This model barely fits better than the null model
-# Time varying covariates: Affect
-time_varying_model <- lme(Goal ~ 1+ Time+PositiveAffect+NegativeAffect, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
-                  data=long_df, 
-                  random= ~1|ID, method="ML", 
-                  na.action = na.omit)
-time_varying_model$coefficients$fixed["PositiveAffect"]
-summary(time_varying_model)
-##Stable Covariates: Affect and Attribution
-time_varying_and_stable_model <- lme(Goal ~ 1+ Time+PositiveAffect+NegativeAffect+PA_base+NA_base+Locus+Dynamics, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
-                          data=long_df, 
-                          random= ~1|ID, method="ML", 
-                          na.action = na.omit)
-summary(time_varying_and_stable_model)
-#Level 1 Residuals (aka, at the time level), have thus far been viewed as uncorrelated. Here I introduce a covariation matrix for them.
-time_varying_and_stable_model_with_covar <- lme(Goal ~ 1+ Time+PositiveAffect+NegativeAffect+PA_base+NA_base+Locus+Dynamics, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
+icc(null_model) # The ICC is a lot lower with multiple imputation
+#### Model with fixed and Random effects
+#Center the time varying predictors to disentangle the repeated measurements from PA and NA traits
+long_df$PositiveAffect_centered <- long_df$PositiveAffect - ave(long_df$PositiveAffect, long_df$ID, FUN = mean)
+long_df$NegativeAffect_centered <- long_df$NegativeAffect - ave(long_df$NegativeAffect, long_df$ID, FUN = mean)
+
+time_varying_and_stable_model_with_covar <- lme(Goal ~ 1+ Time+PA_base+NA_base+Locus+Dynamics+PositiveAffect_centered+NegativeAffect_centered, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
                                      data=long_df, 
-                                     random= ~1|ID, method="ML", 
+                                     random= ~ 1 |ID, method="ML", # The "|" sort of means "group by"
                                      na.action = na.omit, correlation = corAR1(form = ~ Time|ID))# I am not using ~ 1|ID)), because the gap between measurement points was not uniform and some data are missing. 
 summary(time_varying_and_stable_model_with_covar)
 ##### Checking Assumptions http://www.regorz-statistik.de/inhalte/r_HLM_2.html#####
@@ -137,6 +123,12 @@ shapiro.test(l1_residuals$.resid) # not normally distributed
 
 ggplot(data=l1_residuals, aes(x=.fitted, y=.resid)) +
   geom_point()
+
+
+qqmath(~resid(time_varying_and_stable_model_with_covar), # Interesting, especially low values of "goal" are messy
+       type = c("p", "g"), 
+       xlab = "Theoretical Quantiles", 
+       ylab = "Standardized Residuals")
 
 # Ausreißer
 
