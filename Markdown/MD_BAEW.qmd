@@ -32,7 +32,7 @@ bibliography: bibliography.bib
 lang: de
 format:
  apaquarto-html: default
- #apaquarto-docx: default
+ apaquarto-docx: default
  #apaquarto-typst: 
    #keep-typ: true
   #apaquarto-pdf:
@@ -50,7 +50,7 @@ project:
 ```{r}
 #| echo: false
 #| eval: true 
-#| output: true
+#| output: false
 if (!requireNamespace("xfun", quietly = TRUE)) {
   install.packages("xfun")
 }
@@ -88,9 +88,29 @@ Messung von Physischer Aktivität
 
 ## Das Rückfallmodell
 
-Das Rückfallmodell von @Marlatt1984 beleuchtet die Mechanismen der Aufrechterhaltung von Gesundheitsverhalten und ist auch im Kontext von Sport und Bewegung erklärungsmächtig [@Marcus1997]. Das Modell wurde in Bezug auf Populationen mit bewegungsarmer Lebensweise [@Marcus1993; @Martin1984]; und bereits aktive Populationen [@Stetson2005] angewendet. Innerhalb dieses Modells ist die wichtige Rolle der Selbstwirksamkeit bereits gut untersucht, in Bezug auf andere Variablen ist die Studienlage allerdings noch dünn [@Amireault2013]. @Marlatt1984 erklären in ihrem Modell, dass Rückfälle vor allem durch den Umgang mit Hochrisikosituationen erklärt werden können. Dabei sei negatives Gefühlserleben der häufigste Auslöser einer Hochrisikosituation. Ob es nun zu einem Aussetzer oder zu einen kompletten Rückfall kommt, hängt zudem laut des Modells von @Marlatt1984 wesentlich von der Ursachenzuschreibung auf das vergangene Verhalten ab, und zwar sollte sich eine internal-variable Kontrollüberzeugung positiv auswirken. Wenn negatives Gefühlserleben und eine undienliche Attribution nach einem Ausrutscher häufiger zu Rückfällen fühlen, dann sollten ein tendenziell negatives Affekterleben und ein external - stabiler Attributionsstil schlechtere Trainingsadhärenz und mehr Rückfälle vorhersagen.
+Das Rückfallmodell von @Marlatt1984 beleuchtet die Mechanismen der Aufrechterhaltung von Gesundheitsverhalten. Es basiert auf der Theorie des Sozialen Lernens [@bandura1977social] und beinhaltet sowohl kognitive als auch behaviorale Komponenten. @Marlatt1984 erklären, dass in diesem Modell die Initiierung von Gesundheitsverhalten und die Aufrechterhaltung dessen als zwei komplett verschiedene Prozesse verstanden werden. Somit ist also in diesem theoretischen Rahmen irrelevant, wie ein Individuum ein Gesundheitsverhalten, wie z.B. das Nichtrauchen oder regelmäßige PA, aufgenommen hat. Es wird allein die Frage betrachtet, wie Individuen auf Ausfälle bzw. Rückfälle vorbereitet werden können. Rückfälle werden hier nicht als Versagen behandelt, sondern als Teil des Prozesses zu einem stabilen Gesundheitsverhalten. Das Modell ist ist auch auf den Kontext von Sport und Bewegung anwendbar [z.B. @Marcus1997]. Es wurde in Bezug auf Populationen mit bewegungsarmer Lebensweise [@Marcus1993; @Martin1984]; und bereits aktive Populationen [@Stetson2005] angewendet.
+
+Zentrale Konstrukte in diesem Modell sind nach @Marlatt1984 Hochrisikosituationen (high risk situations), wahrgenommene Kontrolle (perceived control), Coping-Reaktion (coping response), Positive Erwartungen (positive outcome expectancies), und der Verstoß gegen Abstinenz (abstinence violation effect).
+
+Hochrisikosituationen sind Situationen, in denen die Wahrscheinlichkeit eines Rückfalls erhöht ist. Die drei im Sample von @Marlatt1984 am häufigsten berichteten Situationen sind negative emotionale Zustände (55%), sozialer Druck (20%),und zwischenmenschliche Konflikte (16%). Im Kontext von PA könnte ein solcher Zustand von negativen Gefühlen nach dem Sport herrühren.
+
+Individuen erleben wahrgenommene Kontrolle, wenn sie erfolgreich Abstinenz ausüben oder, im Kontext von PA also von sedentärem Verhalten absehen. Wahrgenommene Kontrolle steigt, je länger die Abstinenz andauert und sinkt in einer Hochrisikosituation.
+
+Coping-Reaktionen verbessern die wahrgenommene Kontrolle in einer Hochrisikosituation allerdings erheblich. Hierbei handelt es sich um ein Repertoire von Verhaltensweisen, um mit Hochrisikosituationen umzugehen. Als Beispiel in Bezug auf Sport und Bewegung sei die Angewohnheit genannt, trotz schlechten Wetters mit entsprechender Kleidung laufen zu gehen.
+
+Positive Erwartungen stammen von der erwarteten sofortigen Belohnung durch das Unterlassen von Gesundheitsverhalten, wie z.B. wenn das Unterlassen einer Lauf-Einheit kurzfristig belohnend erscheint.
+
+Verstöße gegen die Abstinenz werden von persönlicher Attribution begleitet. Das Rückfallmodell postuliert, dass eine internal-variable Attribution dienlich ist. Nach einem Rückfall zu sedentärem Verhalten wäre es demnach dienlich, die Ursache bei sich selbst zu sehen und als veränderbar zu betrachten.
+
+Innerhalb dieses Modells ist die wichtige Rolle der Selbstwirksamkeit bereits gut untersucht, in Bezug auf andere Variablen ist die Studienlage allerdings noch dünn [@Amireault2013].
 
 ## Hypothesen und Forschungsfrage
+
+Es ergibt sich die Forschungsfrage, inwiefern situationaler Affekt (jeweils nach der Trainingseinheit) und der Attributionsstil den Trainingsausfall vorhersagen. Wenn negatives Gefühlserleben und eine undienliche Attribution nach einem Rückfall häufiger zum schlussenlichen Unterlassen des Gesundheitsverhaltens fühlen, dann sollten ein tendenziell negatives Affekterleben und ein external - stabiler Attributionsstil weniger Trainingseinheiten und eine schwächer ausgeprägte Erreichung des gesetzen Ziels erreichen.
+
+H1: Ein internal - variabler Attributionsstil sagt weniger Trainingsausfälle (H1.1), sowie eine geringere Zielerreichung vorher (H1.2)
+
+H2: Ein tendenziell negativeres Affekterleben sagt mehr Trainingsausfälle (H2.1) und eine geringer Zielerreichung vorher (H2.2).
 
 # Methode
 
@@ -111,8 +131,6 @@ Da es sich um ein Sample mit internationalen studierenden handelte, wurde bei al
 *Weitere Instrumente:* In diesem Forschungsprojekt wurden außerdem authentischer und überheblicher Stolz (authentic and hubristic pride, @Tracy2007), und implizite Motive [@winter1994manual; @Sokolowski2000] erfasst. In dieser Arbeit werden diese Daten nicht berücksichtigt.
 
 ## Stichprobe:
-
-\[\[simr::powerSim\]\]
 
 Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfohlen \[LIT\]. Basierend auf einer Poweranalyse mit 1 – β = `r round (pwr_result$power, 2)`, α = `r round (pwr_result$sig.level, 2)`, und *r* = `r round (pwr_result$r, 1)` ergab sich eine ideale Teilnehmerzahl von `r round (pwr_result$n, 0)`. *N* = `r raw_data_n` Fälle ergaben sich in dem Rohdatensatz. *n* = `r raw_data_n - filtered_n` wurden von der Analyse und weiteren Befragungen ausgeschlossen, weil sie angaben, nicht an einem systematischen Trainings- oder Bewegungsprogramm teilzunehmen. Die deskriptiven Statistiken zu den demografischen Daten sind in Tabelle 1.
 

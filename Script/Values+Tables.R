@@ -90,6 +90,7 @@ time_varying_and_stable_model_with_covar <- lme(Goal ~ 1+ Time+PA_base+NA_base+L
                                      random= ~ 1 |ID, method="ML", # The "|" sort of means "group by"
                                      na.action = na.omit, correlation = corAR1(form = ~ Time|ID))# I am not using ~ 1|ID)), because the gap between measurement points was not uniform and some data are missing. 
 summary(time_varying_and_stable_model_with_covar)
+
 ##### Checking Assumptions http://www.regorz-statistik.de/inhalte/r_HLM_2.html#####
 l1_residuals <- hlm_resid(time_varying_and_stable_model_with_covar, level=1) # Funktion aus HLMdiag-Package
 #Now, I use the ".ls.resid" to make a graph. these are the "Least squares residuals", and they have the advantage that influences from level 2 and 1 are not mixed up. 
@@ -135,4 +136,4 @@ qqmath(~resid(time_varying_and_stable_model_with_covar), # Interesting, especial
 ggplot(data = l1_residuals, aes(y= .resid)) + theme_gray() + geom_boxplot()
 
 ggplot(data = l1_residuals, aes(x= .resid, y= as.factor(ID))) + theme_gray() + geom_boxplot()
-
+# Assumptions of normality and homoscedasticity are violated. Possible solutions could come from "robustlmm" package - to deal with "contamination", or using robust standard errors with "clubSandwich" and lme4
