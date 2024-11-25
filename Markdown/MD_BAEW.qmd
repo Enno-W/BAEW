@@ -50,7 +50,6 @@ project:
 ```{r}
 #| echo: false
 #| eval: true 
-#| output: false
 if (!requireNamespace("xfun", quietly = TRUE)) {
   install.packages("xfun")
 }
@@ -78,105 +77,89 @@ Physische Aktivität (physical activity [PA]), auch *körperliche Aktivität* [z
 
 Bewegungsadhärenz (exercise adherence, z.B. [@Mcauley1994]) beinhaltet das Einhalten von selbst-oder fremdgesetzten Zielen im Zusammenhang mit PA [@Buckworth2007] und hat in der Regel das Ziel der Bewegungsförderung in einem gesundheitlichen Kontext [@Ainsworth2020].
 
+## Affekt
+
+
+
+In dieser Arbeit
+
+-   Definition PA
+
+-   Gesundheitliche Vorteile PA
+
 -   Empfohlene PA
 
-Messung von Physischer Aktivität
+-   Sportmangel Prävalenz
 
-## Affekt
+-   Zusammenhang Bewegungsmangel - Krankheiten
+
+-   Messmethoden allgemein –\> Vorteile von Session RPE
 
 ## Attribution
 
 ## Das Rückfallmodell
 
-Das Rückfallmodell von @Marlatt1984 beleuchtet die Mechanismen der Aufrechterhaltung von Gesundheitsverhalten. Es basiert auf der Theorie des Sozialen Lernens [@bandura1977social] und beinhaltet sowohl kognitive als auch behaviorale Komponenten. @Marlatt1984 erklären, dass in diesem Modell die Initiierung von Gesundheitsverhalten und die Aufrechterhaltung dessen als zwei komplett verschiedene Prozesse verstanden werden. Somit ist also in diesem theoretischen Rahmen irrelevant, wie ein Individuum ein Gesundheitsverhalten, wie z.B. das Nichtrauchen oder regelmäßige PA, aufgenommen hat. Es wird allein die Frage betrachtet, wie Individuen auf Ausfälle bzw. Rückfälle vorbereitet werden können. Rückfälle werden hier nicht als Versagen behandelt, sondern als Teil des Prozesses zu einem stabilen Gesundheitsverhalten. Das Modell ist ist auch auf den Kontext von Sport und Bewegung anwendbar [z.B. @Marcus1997]. Es wurde in Bezug auf Populationen mit bewegungsarmer Lebensweise [@Marcus1993; @Martin1984]; und bereits aktive Populationen [@Stetson2005] angewendet.
-
-Zentrale Konstrukte in diesem Modell sind nach @Marlatt1984 Hochrisikosituationen (high risk situations), wahrgenommene Kontrolle (perceived control), Coping-Reaktion (coping response), Positive Erwartungen (positive outcome expectancies), und der Verstoß gegen Abstinenz (abstinence violation effect).
-
-Hochrisikosituationen sind Situationen, in denen die Wahrscheinlichkeit eines Rückfalls erhöht ist. Die drei im Sample von @Marlatt1984 am häufigsten berichteten Situationen sind negative emotionale Zustände (55%), sozialer Druck (20%),und zwischenmenschliche Konflikte (16%). Im Kontext von PA könnte ein solcher Zustand von negativen Gefühlen nach dem Sport herrühren.
-
-Individuen erleben wahrgenommene Kontrolle, wenn sie erfolgreich Abstinenz ausüben oder, im Kontext von PA also von sedentärem Verhalten absehen. Wahrgenommene Kontrolle steigt, je länger die Abstinenz andauert und sinkt in einer Hochrisikosituation.
-
-Coping-Reaktionen verbessern die wahrgenommene Kontrolle in einer Hochrisikosituation allerdings erheblich. Hierbei handelt es sich um ein Repertoire von Verhaltensweisen, um mit Hochrisikosituationen umzugehen. Als Beispiel in Bezug auf Sport und Bewegung sei die Angewohnheit genannt, trotz schlechten Wetters mit entsprechender Kleidung laufen zu gehen.
-
-Positive Erwartungen stammen von der erwarteten sofortigen Belohnung durch das Unterlassen von Gesundheitsverhalten, wie z.B. wenn das Unterlassen einer Lauf-Einheit kurzfristig belohnend erscheint.
-
-Verstöße gegen die Abstinenz werden von persönlicher Attribution begleitet. Das Rückfallmodell postuliert, dass eine internal-variable Attribution dienlich ist. Nach einem Rückfall zu sedentärem Verhalten wäre es demnach dienlich, die Ursache bei sich selbst zu sehen und als veränderbar zu betrachten.
-
-Kritik am Rückfallmodell
-
-Innerhalb dieses Modells ist die wichtige Rolle der Selbstwirksamkeit bereits gut untersucht, in Bezug auf andere Variablen ist die Studienlage allerdings noch dünn [@Amireault2013].
+Das Rückfallmodell von @Marlatt1984 beleuchtet die Mechanismen der Aufrechterhaltung von Gesundheitsverhalten und ist auch im Kontext von Sport und Bewegung erklärungsmächtig [@Marcus1997]. Das Modell wurde in Bezug auf Populationen mit bewegungsarmer Lebensweise [@Marcus1993; @Martin1984]; und bereits aktive Populationen [@Stetson2005] angewendet. Innerhalb dieses Modells ist die wichtige Rolle der Selbstwirksamkeit bereits gut untersucht, in Bezug auf andere Variablen ist die Studienlage allerdings noch dünn [@Amireault2013]. @Marlatt1984 erklären in ihrem Modell, dass Rückfälle vor allem durch den Umgang mit Hochrisikosituationen erklärt werden können. Dabei sei negatives Gefühlserleben der häufigste Auslöser einer Hochrisikosituation. Ob es nun zu einem Aussetzer oder zu einen kompletten Rückfall kommt, hängt zudem laut des Modells von @Marlatt1984 wesentlich von der Ursachenzuschreibung auf das vergangene Verhalten ab, und zwar sollte sich eine internal-variable Kontrollüberzeugung positiv auswirken. Wenn negatives Gefühlserleben und eine undienliche Attribution nach einem Ausrutscher häufiger zu Rückfällen fühlen, dann sollten ein tendenziell negatives Affekterleben und ein external - stabiler Attributionsstil schlechtere Trainingsadhärenz und mehr Rückfälle vorhersagen.
 
 ## Hypothesen und Forschungsfrage
-
-Es ergibt sich die Forschungsfrage, inwiefern situationaler Affekt (jeweils nach der Trainingseinheit) und der Attributionsstil den Trainingsausfall vorhersagen. Wenn negatives Gefühlserleben und eine undienliche Attribution nach einem Rückfall häufiger zum schlussenlichen Unterlassen des Gesundheitsverhaltens fühlen, dann sollten ein tendenziell negatives Affekterleben und ein external - stabiler Attributionsstil weniger Trainingseinheiten und eine schwächer ausgeprägte Erreichung des gesetzen Ziels erreichen.
-
-H1: Ein internal - variabler Attributionsstil sagt weniger Trainingsausfälle (H1.1), sowie eine geringere Zielerreichung vorher (H1.2)
-
-H2: Ein tendenziell negativeres Affekterleben sagt mehr Trainingsausfälle (H2.1) und eine geringer Zielerreichung vorher (H2.2).
 
 # Methode
 
 ## Instrumente
 
-Da es sich um ein Sample mit internationalen studierenden handelte, wurde bei allen Fragebögen die englische Version verwendet.
+*Session RPE*
 
-*Demografische Variablen:* In der Baseline-Erhebung wurden das Alter, das Geschlecht, die Sportart und das Sportziel (z.B. "Marathon") abgefragt.
+Die Session Rate of Perceived Exhaustion [Sessionn-RPE, @Foster2001] misst die wahrgenommene körperliche Belastung einer Trainingseinheit auf einer Skala von 0-10. Das Item lautet "How was your workout?" und die Skala soll etwa 30 Minuten nach Beenden des Trainings ausgefüllt werden. Auf den Stufen ß-5 ist jeder Wert beschriftet (0 = Rest, 1 = Very, Very Easy; 2 = Easy; 3 = Moderate; 4 = Somewhat hard; 5 = Hard). Auf den Stufen 6-10 sind nur Stufe 7 (Very Hard) und der Maximalwert (10 = Maximum) beschriftet. Diese Methode der Messung der Trainingsintensität wurde vielfach validiert [@Foster2021]. Die Übereinstimmung mit Messungen der Herzfrequenz bei vielen verschiedenen Arten von Sport ist hoch [@Foster2001; @Day2004]. 
 
-*Session RPE:* Die Session Rate of Perceived Exhaustion [Sessionn-RPE, @Foster2001] misst die wahrgenommene körperliche Belastung einer Trainingseinheit auf einer Skala von 0-10. Das Item lautet "How was your workout?" und die Skala soll etwa 30 Minuten nach Beenden des Trainings ausgefüllt werden. Auf den Stufen ß-5 ist jeder Wert beschriftet (0 = Rest, 1 = Very, Very Easy; 2 = Easy; 3 = Moderate; 4 = Somewhat hard; 5 = Hard). Auf den Stufen 6-10 sind nur Stufe 7 (Very Hard) und der Maximalwert (10 = Maximum) beschriftet. Diese Methode der Messung der Trainingsintensität wurde vielfach validiert und die Reliabilität der Skala ist gut [@Foster2021]. Die Übereinstimmung mit Messungen der Herzfrequenz bei vielen verschiedenen Arten von Sport ist hoch [@Foster2001; @Day2004].
+*Attributionsstil*
 
-*Attributionsstil:* Zur Erfassung des Attributionsstils wurde das Attribution Style Questionnaire [@Peterson1982] eingesetzt. Den Versuchspersonen wurden 16 verschiedene Szenarien präsentiert, die einen Erfolg oder Misserfolg schilderten, z.B. "You meet a friend who compliments you on your appearance." Es wurde dann die Ursache für den Erfolg oder Misserfolg in einer offenen Frage abgefragt, damit die Teilnehmenden sich beim Antworten auf die darauffolgenden Fragen nur auf diese eine Ursache beziehen. Danach wurden auf einem semantischen Differenzial mit Werten von 1-7, z.B. mit den Polen "Totally due to other people or circumstances" und "totally due to me" die drei Dimensionen Internalität, Stabilität und Globalität erfasst. Der Mittelwert aller 16 Situationen wurde für jede Dimension gebildet. Die Reliablität und Validität der Daten aus diesem Fragebogen wird u.a. von [@Corr1996] unterstützt.
 
-*Positive and Negative Affect Scale (PANAS):* Die Positive and Negative Affect Scale (Panas, [@Watson1988]) erfasst auf einer Skala von 1 ("not at all") bis 5 ("extremely") den positiven und negativen Affekt, mit jeweils 10 Items für positiven und 10 Items für negativen Affekt. Jedes Item ist nur ein einzelnes Wort, z.B. "interested" für positiven Affekt, oder "distressed" für negativen Affekt. Da es keine negativ gepolten Items gibt, werden die einzelnen Werte zu einem Gesamtwert für positiven und negativen Affekt gemittelt. Neben der Originalstudie von @Watson1988 wurde die die Skala auch in neueren Studien als reliabel und valide erklärt [@Crawford2004].
+[@Peterson1982]
 
-*Trainingsbezogene Variablen:* Im Baseline-Fragebogen wruden die wöchentliche Trainingszeit in Stunden und die Lauf-Kilometerzahl abgefragt. Zu jeder Trainingseinheit wurden ebenso die Trainingszeit und Kilometerzahl, bezogen auf das einzelne Training, abgefragt. Dazu wurden die Versuchspersonen gefragt, wie sehr die Intention, das Trainingsziel zu erreichen, ausgeprägt war (Commitment, visuelle Analogskala von 1-100), und zu wieviel Prozent sie ihr Trainingsziel erreicht war (Goal Attainment)
+*Positive and Negative Affect Scale (PANAS)*
 
-*Weitere Instrumente:* In diesem Forschungsprojekt wurden außerdem authentischer und überheblicher Stolz (authentic and hubristic pride, @Tracy2007), und implizite Motive [@winter1994manual; @Sokolowski2000] erfasst. In dieser Arbeit werden diese Daten nicht berücksichtigt.
+Die Positive and Negative Affect Scale (Panas, [@Watson1988])
 
 ## Stichprobe:
 
-Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfohlen \[LIT\]. Basierend auf einer Poweranalyse mit 1 – β = `r round (pwr_result$power, 2)`, α = `r round (pwr_result$sig.level, 2)`, und *r* = `r round (pwr_result$r, 1)` ergab sich eine ideale Teilnehmerzahl von `r round (pwr_result$n, 0)`. *N* = `r raw_data_n` Fälle ergaben sich in dem Rohdatensatz. *n* = `r raw_data_n - filtered_n` wurden von der Analyse und weiteren Befragungen ausgeschlossen, weil sie angaben, nicht an einem systematischen Trainings- oder Bewegungsprogramm teilzunehmen. Die deskriptiven Statistiken zu den demografischen Daten sind in Tabelle 1.
+[[simr::powerSim]]
 
-Daten von aktiven, erwachsenen Freizeitsportler:innen (Alter ± Standardabweichung: 35.85 ± 12.89 Jahre; 6 weiblich; 12 männlich; 3 divers) liegen bereits aus dem Forschungsprojekt vor.
+Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfohlen [LIT]. Basierend auf einer Poweranalyse mit 1 – β = `r round (pwr_result$power, 2)`, α = `r round (pwr_result$sig.level, 2)`, und *r* = `r round (pwr_result$r, 1)` ergab sich eine ideale Teilnehmerzahl von `r round (pwr_result$n, 0)`. *N* = `r raw_data_n` Fälle ergaben sich in dem Rohdatensatz. *n* = `r raw_data_n - filtered_n` wurden von der Analyse und weiteren Befragungen ausgeschlossen, weil sie angaben, nicht an einem systematischen Trainings- oder Bewegungsprogramm teilzunehmen.
 
-```{r Tabelle 1}
-#| label: tbl-demogrtable
-#| tbl-cap: Tabelle der Absoluten und Relativen Häufigkeiten Demografischer Variablen in der Stichprobe
-#| apa-note: Die Sportarten wurden in einer offenen Frage erfragt. Eine männliche Person gab zwei Sportarten an — Kraftsport und Laufen. Es wurde hier die erste Antwort (Kraftsport) gezählt. Vier Personen gaben keine demographischen Daten an.
+
+Daten von aktiven, erwachsenen Freizeitsportler:innen (Alter ± Standardabweichung: 35.85 ± 12.89 Jahre; 6 weiblich; 12 männlich; 3 divers) liegen bereits aus dem Forschungsprojekt vor. Die deskriptiven Statistiken zu den demografischen Daten sind in Tabelle 1. 
+
+**Tabelle 1**
+
+*Tabelle der Absoluten und Relativen Häufigkeiten Demografischer Variablen in der Stichprobe*
+```{r}
 demographicstable
 ```
+*Hinweis: Die Sportarten wurden in einer offenen Frage erfragt. Eine männliche Person gab zwei Sportarten an — Kraftsport und Laufen. Es wurde hier die erste Antwort (Kraftsport) gezählt. Vier Personen gaben keine demographischen Daten an (N= *
 
 Die Teilnehmenden waren durchschnittlich `r descriptives_list$Age_mean` alt (*SD* = `r descriptives_list$Age_sd`)
 
 ## Durchführung:
 
-### *Prozedur*
-
-Die Teilnehmenden waren in einem
-
 Die Freizeitsportler:innen berichteten vor der Studie ihr generelles Affekterleben innerhalb der letzten zehn Tage mit der Positive and Negative Affect-Scale (PANAS) von @Watson1988. Der Prä-Test enthielt außerdem die Skala von @Peterson1982 zum Attributionsstil und die Items zu demografischen Daten.
 
 Darauf folgte die Trainingsphase, in der die Trainierenden über einen Zeitraum von maximal zwei Monaten sechs Trainingseinheiten dokumentieren sollten. In den Befragungen dazu wurde nach einer Trainingseinheit die wahrgenommene Trainingsintensität mithilfe des Session-RPE-Fragebogens von @Foster2021 erfasst. Nach jeder Trainingseinheit wurde der Affekt mit der PANAS erhoben. Außerdem wurde das Kilometerziel sowie die Dauer des Laufs und die tatsächlich erreichten Kilometer erfasst. Bezüglich des Vorgehens beim Verfassen der Arbeit ist ein Zeitplan am Ende des Dokuments angehängt. [@Amireault2013]
 
-### *Statistische Analyse*
 
-Diese Arbeit wurde mit R (Version `r getRversion()` ) und Quarto (Version 1.6.32) erstellt. Die reproduzierbare Version dieses Artikels ist auf GitHub unter <https://github.com/Enno-W/BAEW> verfügbar.
-
-Zur Bereinigung der Daten wurden zunächst die Versuchspersonen von der Analyse ausgeschlossen, die angaben, dass sie nicht aktiv an einem Sportprogramm teilnehmen. Die Variablen zu Stolz und der Motivstruktur wurden eliminert, da sie in dieser Arbeit nicht berücksichtigt werden. Für Werte, bei denen die Versuchspersonen einen Bereich (z.B. 10-15 km) angegeben hatten, wurde der Durchschnitt der beiden Werte gebildet. Da die Skalen von Affekt und Attribution keine gegensätzlich gepolten Items beinhalten, wurde keine Umpolung vorgenommen.
-
-Die Daten bestanden aus einem Baseline-Test und Angaben aus einem Fragebogen zu sechs darauffolgenden Trainingseinheiten. Diese wöchentlichen Angaben wurden zu Mittelwerten zusammengefasst (siehe @tbl-corrtable). Außerdem wurde ausgezählt, wie viele Trainingseinheiten eine Person ausgefüllt hatte.
-
-Eine Überprüfung der Voraussetzungen für weitere Analyse erfolgte anhand von visueller Inspektion von Histogrammen und Q-Q-Plots aller numerischen Variablen, sowie Shapiro-Wilk-Tests der Normalität. Die Variablen `r vars_not_normal` waren signifikant, was auf eine Abweichung von der Normalverteilung hindeutet.
 
 # Ergebnisse
 
 ::: landscape
-```{r}
-#| label: tbl-corrtable
-#| tbl-cap: Korrelationstabelle der gemittelten durchschnittlichen Werte aus den Werten der einzelnen Sessions
-#| apa-note: \*p \< 0.05; \*\*p \< 0.01
+
+**Tabelle 2**
+
+*Korrelationstabelle der gemittelten durchschnittlichen Werte aus den Werten der einzelnen Sessions*
+```{r apatb-korrelationstabelle}
+
 ave_corr_table
 
 ```
+Hinweis: *p < 0.05; **p < 0.01
 :::
 
 # Diskussion

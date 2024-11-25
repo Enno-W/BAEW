@@ -29,9 +29,14 @@ demographicstable<- data %>%
   align(align = "center", part = "body")
 
 #### correlation table ####
-ave_corr_table<-df %>% 
-  select(ends_with("_ave")) %>% 
-  generate_correlation_table(c("Average Goal Attainment", "Average Commitment", "Average KM per Session", "Average hours per Session", "Average SessionRPE",  "Average Positive Affect", "Average Negative Affect"))
+average_variables<-df %>% select(ends_with("_ave")) %>% names()
+base_variables<-df %>% select(ends_with("_base")) %>% names()
+correlation_variables<-c("Age", "Locus", "Dynamics", "completed_count", average_variables, base_variables)
+ave_corr_table<-df[,correlation_variables] %>% 
+  generate_correlation_table(c("Alter", "Locus", "Variabilität", "Abgeschlossene\nTrainingseinheiten", "Durchschnitt\nZiellerreichung", 
+                               "Durchschnitt\nCommitment", "Durchschnitt KM pro Einheit", "Durchschnitt\nH pro Einheit", "Durchschnitt\nSessionRPE", 
+                               "Durchnschnitt\nPositiver Affekt", "Durchschnitt\nNegativer Affekt", "Baseline\nWöchentliche KM", "Baseline\nWöchentliche H", "Baseline\nWöchentliche RPE", 
+                               "Baseline\nPositiver Affekt", "Baseline\nNegativer Affekt"))
 #### Power analysis ####
 pwr_result <- pwr.r.test(n = NULL,         
                      r = 0.5,           
@@ -60,17 +65,17 @@ icc(null_model) # The ICC is a lot lower with multiple imputation
 long_df$PositiveAffect_centered <- long_df$PositiveAffect - ave(long_df$PositiveAffect, long_df$ID, FUN = mean)
 long_df$NegativeAffect_centered <- long_df$NegativeAffect - ave(long_df$NegativeAffect, long_df$ID, FUN = mean)
 
-time_varying_and_stable_model_with_covar <- lme(Goal ~ 1+ Time+PA_base+NA_base+Locus+Dynamics+PositiveAffect_centered+NegativeAffect_centered, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
+commitment_model <- lme(Commitment ~ 1+ Time+PA_base+NA_base+Locus+Dynamics+PositiveAffect_centered+NegativeAffect_centered, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
                                      data=long_df, 
                                      random= ~ 1 |ID, method="ML", # The "|" sort of means "group by"
                                      na.action = na.omit, correlation = corAR1(form = ~ Time|ID))# I am not using ~ 1|ID)), because the gap between measurement points was not uniform and some data are missing. 
-summary(time_varying_and_stable_model_with_covar)
+summary(commitment_model)
 
 ##### Checking Assumptions http://www.regorz-statistik.de/inhalte/r_HLM_2.html#####
-l1_residuals <- hlm_resid(time_varying_and_stable_model_with_covar, level=1) # Funktion aus HLMdiag-Package
+l1_residuals <- hlm_resid(commitment_model, level=1) # Funktion aus HLMdiag-Package
 #Now, I use the ".ls.resid" to make a graph. these are the "Least squares residuals", and they have the advantage that influences from level 2 and 1 are not mixed up. 
 ggplot(data = l1_residuals, aes(.ls.resid)) +
-  geom_histogram(aes(y = ..density..), bins=10) +
+  geom_histogram(aes(y = after_stat(density)), bins=10) +
   stat_function(fun = dnorm,
                 args = list(mean = mean(l1_residuals$.ls.resid),
                             sd = sd(l1_residuals$.ls.resid)), size=2) # Seems pretty normal to me. 
@@ -88,7 +93,7 @@ ggplot(data = l1_residuals, aes( x= .ls.resid, y= as.factor(ID))) + theme_gray()
 #### Überprüfung der gewöhnlichen, nicht least squares Residuen#####
 
 ggplot(data = l1_residuals, aes(.resid)) +
-  geom_histogram(aes(y = ..density..), bins=10) +
+  geom_histogram(aes(y = after_stat(density)), bins=10) +
   stat_function(fun = dnorm,
                 args = list(mean = mean(l1_residuals$.resid),
                             sd = sd(l1_residuals$.resid)), size=2)
@@ -101,7 +106,61 @@ ggplot(data=l1_residuals, aes(x=.fitted, y=.resid)) +
   geom_point()
 
 
-qqmath(~resid(time_varying_and_stable_model_with_covar), # Interesting, especially low values of "goal" are messy
+qqmath(~resid(commitment_model), # Interesting, especially low values of "goal" are messy
+       type = c("p", "g"), 
+       xlab = "Theoretical Quantiles", 
+       ylab = "Standardized Residuals")
+
+# Ausreißer
+
+ggplot(data = l1_residuals, aes(y= .resid)) + theme_gray() + geom_boxplot()
+
+ggplot(data = l1_residuals, aes(x= .resid, y= as.factor(ID))) + theme_gray() + geom_boxplot()
+# Assumptions of normality and homoscedasticity are violated. Possible solutions could come from "robustlmm" package - to deal with "contamination", or using robust standard errors with "clubSandwich" and lme4
+
+#### Model for "goal" ####
+goal_model <- lme(Goal ~ 1+ Time+PA_base+NA_base+Locus+Dynamics+PositiveAffect_centered+NegativeAffect_centered, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
+                        data=long_df, 
+                        random= ~ 1 |ID, method="ML", # The "|" sort of means "group by"
+                        na.action = na.omit, correlation = corAR1(form = ~ Time|ID))# I am not using ~ 1|ID)), because the gap between measurement points was not uniform and some data are missing. 
+summary(goal_model)
+
+##### Checking Assumptions http://www.regorz-statistik.de/inhalte/r_HLM_2.html#####
+l1_residuals <- hlm_resid(goal_model, level=1) # Funktion aus HLMdiag-Package
+#Now, I use the ".ls.resid" to make a graph. these are the "Least squares residuals", and they have the advantage that influences from level 2 and 1 are not mixed up. 
+ggplot(data = l1_residuals, aes(.ls.resid)) +
+  geom_histogram(aes(y = after_stat(density)), bins=10) +
+  stat_function(fun = dnorm,
+                args = list(mean = mean(l1_residuals$.ls.resid),
+                            sd = sd(l1_residuals$.ls.resid)), size=2) # Seems pretty normal to me. 
+# Shapiro test of normality
+shapiro.test(l1_residuals$.ls.resid)# not normally distributed after removing Participants with too many NaS
+
+# Testing for homoscedasticity: The varianz of residuals must be constant for all values
+ggplot(data=l1_residuals, aes(x=.ls.fitted, y=.ls.resid)) +
+  geom_point() # Weird linear patterns emerge: This means, homoscedasticity is violated. 
+
+# Outliers
+ggplot(data = l1_residuals, aes(y= .ls.resid)) + theme_gray() + geom_boxplot()#overall
+ggplot(data = l1_residuals, aes( x= .ls.resid, y= as.factor(ID))) + theme_gray() + geom_boxplot() # per group, the outliers are pretty random and the width varies substantially between groups
+
+#### Überprüfung der gewöhnlichen, nicht least squares Residuen#####
+
+ggplot(data = l1_residuals, aes(.resid)) +
+  geom_histogram(aes(y = after_stat(density)), bins=10) +
+  stat_function(fun = dnorm,
+                args = list(mean = mean(l1_residuals$.resid),
+                            sd = sd(l1_residuals$.resid)), size=2)
+
+shapiro.test(l1_residuals$.resid) # not normally distributed
+
+# Homoskedastizität
+
+ggplot(data=l1_residuals, aes(x=.fitted, y=.resid)) +
+  geom_point()
+
+
+qqmath(~resid(commitment_model), # Interesting, especially low values of "goal" are messy
        type = c("p", "g"), 
        xlab = "Theoretical Quantiles", 
        ylab = "Standardized Residuals")
