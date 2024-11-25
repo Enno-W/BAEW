@@ -7,8 +7,8 @@ sum(is.na(df))
 df<-df %>% filter(Programme == 1|is.na(Programme))
 
 #### NAs and Outliers ####
-# df$NA_amount <- rowSums(is.na(df))
-# df<-df %>% filter(NA_amount<51)#removing participants with more than 50 outliers
+df$NA_amount <- rowSums(is.na(df))
+df<-df %>% filter(NA_amount<51)#removing participants with more than 50 outliers
 
 #### Removing Variables that are not considered in this thesis ####
 df<- df %>% select(!matches("_fear|_hope|Achievement|Affiliation|Power|Programme|Pride|Hubris"))
@@ -65,4 +65,28 @@ df$completed_count<- apply(select(df, starts_with(match = "complete.")), 1, func
 
 # ID Variable
 df$ID<-1:nrow(df)
+
+
+#####Convert Data to long format#####
+weekly_measures<-select(df, matches("_[1-6]$")) %>% names()# This is a regex, a regular expression to find a certain pattern. The Dollar sign is for "Ends with". Learn more here: https://github.com/ziishaned/learn-regex/blob/master/translations/README-de.md
+
+long_df <- df %>%
+  pivot_longer(
+    cols = all_of(weekly_measures), # 
+    names_to = c(".value", "Time"),   # Split into a base name and the timepoint
+    names_pattern = "(.*)_(\\d+)"     # Regex to split column names like "Goal_1"
+  ) %>%
+  mutate(
+    Time = as.numeric(Time)           # Convert extracted timepoint to numeric
+  )
+long_df<-long_df %>% rename( PositiveAffect=PA,NegativeAffect="NA")
+
+# Test that the transformation worked as intended: We have 33 obs. in "df", and here, each individual gets 6 rows for each measurement point. 
+nrow(long_df)== nrow(df)*6
+df$Goal_5[1]==long_df$Goal[5]# The 5th measurement point of "Goal" is equal to the variable "Goal_5" of participant number 1 in the original df. 
+
+#multiple imputation
+imp <- mice(long_df, m=5, maxit=5, method="pmm") # number of multiple imputations, maximum iterations, method: predictive mean matching
+# https://bookdown.org/mwheymans/bookmi/multiple-imputation.html#multiple-imputation-in-r
+long_df<-complete(imp)
 

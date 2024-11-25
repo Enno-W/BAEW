@@ -31,7 +31,7 @@ keywords: [keyword1, keyword2, keyword3]
 bibliography: bibliography.bib
 lang: de
 format:
- apaquarto-html: default
+ #apaquarto-html: default
  apaquarto-docx: default
  #apaquarto-typst: 
    #keep-typ: true
@@ -102,6 +102,8 @@ Positive Erwartungen stammen von der erwarteten sofortigen Belohnung durch das U
 
 Verstöße gegen die Abstinenz werden von persönlicher Attribution begleitet. Das Rückfallmodell postuliert, dass eine internal-variable Attribution dienlich ist. Nach einem Rückfall zu sedentärem Verhalten wäre es demnach dienlich, die Ursache bei sich selbst zu sehen und als veränderbar zu betrachten.
 
+Kritik am Rückfallmodell
+
 Innerhalb dieses Modells ist die wichtige Rolle der Selbstwirksamkeit bereits gut untersucht, in Bezug auf andere Variablen ist die Studienlage allerdings noch dünn [@Amireault2013].
 
 ## Hypothesen und Forschungsfrage
@@ -149,7 +151,7 @@ Die Teilnehmenden waren durchschnittlich `r descriptives_list$Age_mean` alt (*SD
 
 ### *Prozedur*
 
-Die Teilnehmenden waren in einem Kurs für
+Die Teilnehmenden waren in einem
 
 Die Freizeitsportler:innen berichteten vor der Studie ihr generelles Affekterleben innerhalb der letzten zehn Tage mit der Positive and Negative Affect-Scale (PANAS) von @Watson1988. Der Prä-Test enthielt außerdem die Skala von @Peterson1982 zum Attributionsstil und die Items zu demografischen Daten.
 
