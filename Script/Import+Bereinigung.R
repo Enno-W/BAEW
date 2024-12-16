@@ -2,14 +2,17 @@
 ####Importing the dataset####
 load(magic_path("241021PRIMOCA_data.Rdata"))
 sum(is.na(df))
+#### counting excluded participants ####
+raw_data_n <-nrow(df)
 
 #### Removing Participants based on the filter varialbe "Programme"#####
-df<-df %>% filter(Programme == 1|is.na(Programme))
-
+df_filtered<-df %>% filter(Programme == 1|is.na(Programme))
+filtered_n <-nrow(df_filtered)
 #### NAs and Outliers ####
-df$NA_amount <- rowSums(is.na(df))
-df<-df %>% filter(NA_amount<51)#removing participants with more than 50 outliers
-
+df_filtered$NA_amount <- rowSums(is.na(df_filtered))
+df_less_na<-df_filtered %>% filter(NA_amount<50)#removing participants with more than 50 missings
+na_removed_n <-nrow(df_less_na)
+df<-df_less_na
 #### Removing Variables that are not considered in this thesis ####
 df<- df %>% select(!matches("_fear|_hope|Achievement|Affiliation|Power|Programme|Pride|Hubris"))
 #### Grouping the different kinds of sports and goals ####

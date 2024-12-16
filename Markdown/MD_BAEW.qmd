@@ -31,8 +31,8 @@ keywords: [keyword1, keyword2, keyword3]
 bibliography: bibliography.bib
 lang: de
 format:
- #apaquarto-html: default
- apaquarto-docx: default
+ apaquarto-html: default
+ #apaquarto-docx: default
  #apaquarto-typst: 
    #keep-typ: true
   #apaquarto-pdf:
@@ -110,7 +110,7 @@ Es ergibt sich die Forschungsfrage, inwiefern situationaler Affekt (jeweils nach
 
 H1: Ein internal - variabler Attributionsstil sagt weniger Trainingsausfälle (H1.1), sowie eine geringere Zielerreichung vorher (H1.2)
 
-H2: Ein tendenziell negativeres Affekterleben sagt mehr Trainingsausfälle (H2.1) und eine geringer Zielerreichung vorher (H2.2).
+H2: Ein tendenziell negativeres Affekterleben sagt mehr Trainingsausfälle (H2.1) und eine geringere Zielerreichung vorher (H2.2).
 
 # Methode
 
@@ -132,38 +132,50 @@ Da es sich um ein Sample mit internationalen studierenden handelte, wurde bei al
 
 ## Stichprobe:
 
-Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfohlen \[LIT\]. Basierend auf einer Poweranalyse mit 1 – β = `r round (pwr_result$power, 2)`, α = `r round (pwr_result$sig.level, 2)`, und *r* = `r round (pwr_result$r, 1)` ergab sich eine ideale Teilnehmerzahl von `r round (pwr_result$n, 0)`. *N* = `r raw_data_n` Fälle ergaben sich in dem Rohdatensatz. *n* = `r raw_data_n - filtered_n` wurden von der Analyse und weiteren Befragungen ausgeschlossen, weil sie angaben, nicht an einem systematischen Trainings- oder Bewegungsprogramm teilzunehmen. Die deskriptiven Statistiken zu den demografischen Daten sind in Tabelle 1.
+Die Teilnehmenden waren Freizeitsportler:innen mit einem bestimmten Trainingsziel.
 
-Daten von aktiven, erwachsenen Freizeitsportler:innen (Alter ± Standardabweichung: 35.85 ± 12.89 Jahre; 6 weiblich; 12 männlich; 3 divers) liegen bereits aus dem Forschungsprojekt vor.
+Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfohlen \[LIT\]. Basierend auf einer Poweranalyse mit 1 – β = `r round (pwr_result$power, 2)`, α = `r round (pwr_result$sig.level, 2)`, und *r* = `r round (pwr_result$r, 1)` ergab sich eine ideale Teilnehmerzahl von `r round (pwr_result$n, 0)`. Die Frage der Poweranalyse für Mehrebenenanalysen ist allerdings komplex [@Hox2017-dx]. Der Versuch, post-hoc Power des bestimmten Modells durch Simulation mit dem Paket `simr` [@Green2016] zu bestimmen, scheiterte, was teils auf die geringe Stichprobe, teils auf die Datenstruktur zurückgeführt werden kann. *N* = `r raw_data_n` Fälle ergaben sich in dem Rohdatensatz. *n* = `r raw_data_n - filtered_n` wurden von der Analyse und weiteren Befragungen ausgeschlossen, weil sie angaben, nicht an einem systematischen Trainings- oder Bewegungsprogramm teilzunehmen. Aufgrund von mehr als 50 fehlenden Datenpunkten wurden *n* = `r filtered_n - na_removed_n` Teilnehmende ausgeschlossen. Die deskriptiven Statistiken zu den demografischen Daten sind in Tabelle 1.
 
+::: landscape
 ```{r Tabelle 1}
 #| label: tbl-demogrtable
 #| tbl-cap: Tabelle der Absoluten und Relativen Häufigkeiten Demografischer Variablen in der Stichprobe
 #| apa-note: Die Sportarten wurden in einer offenen Frage erfragt. Eine männliche Person gab zwei Sportarten an — Kraftsport und Laufen. Es wurde hier die erste Antwort (Kraftsport) gezählt. Vier Personen gaben keine demographischen Daten an.
-demographicstable
-```
 
-Die Teilnehmenden waren durchschnittlich `r descriptives_list$Age_mean` alt (*SD* = `r descriptives_list$Age_sd`)
+demographicstable
+
+```
+:::
+
+Die Teilnehmenden waren durchschnittlich `r descriptives_list$Age_mean` Jahre alt (*SD* = `r descriptives_list$Age_sd`). Sie trainierten wöchentlich *M =* `r descriptives_list$WeeklyKM_base_mean` km (*SD =* `r descriptives_list$WeeklyKM_base_sd`); *M =* `r descriptives_list$WeeklyH_base_mean` Stunden (*SD =* `r descriptives_list$WeeklyH_base_sd`); und erlebten die Anstrengung der Trainingseinheiten mit *M =* `r descriptives_list$WeeklyRPE_base_mean` (*SD =* `r descriptives_list$WeeklyRPE_base_sd`) auf der Session-RPE-Skala.
 
 ## Durchführung:
 
 ### *Prozedur*
 
-Die Teilnehmenden waren in einem
+Diese Studie wurde von der Ethikkommission der Uni Leipzig genehmigt (Fallnr. 2023.05.03 \_cb_196).
 
-Die Freizeitsportler:innen berichteten vor der Studie ihr generelles Affekterleben innerhalb der letzten zehn Tage mit der Positive and Negative Affect-Scale (PANAS) von @Watson1988. Der Prä-Test enthielt außerdem die Skala von @Peterson1982 zum Attributionsstil und die Items zu demografischen Daten.
+Die Teilnehmenden wurden über Inserate in sozialen Medien und persönliche Kontakte rekrutiert, es handelt sich also um eine Gelegenheitsstichprobe. Es gab zwei Inklusionskriterien: Die Teilnehmenden mussten erwachsen sein und ein konkretes Trainingsziel verfolgen. Ebenso wurde darauf hingewiesen, dass bei Krankheiten oder relevanten Verletzungen eine Studienteilnahme nicht möglich ist.
 
-Darauf folgte die Trainingsphase, in der die Trainierenden über einen Zeitraum von maximal zwei Monaten sechs Trainingseinheiten dokumentieren sollten. In den Befragungen dazu wurde nach einer Trainingseinheit die wahrgenommene Trainingsintensität mithilfe des Session-RPE-Fragebogens von @Foster2021 erfasst. Nach jeder Trainingseinheit wurde der Affekt mit der PANAS erhoben. Außerdem wurde das Kilometerziel sowie die Dauer des Laufs und die tatsächlich erreichten Kilometer erfasst. Bezüglich des Vorgehens beim Verfassen der Arbeit ist ein Zeitplan am Ende des Dokuments angehängt. [@Amireault2013]
+Die Freizeitsportler:innen berichteten vor der Studie in einer separaten Sitzung ihr generelles Affekterleben innerhalb der letzten zehn Tage mit der Positive and Negative Affect-Scale (PANAS) von @Watson1988. Der Prä-Test enthielt außerdem die Skala von @Peterson1982 zum Attributionsstil und die Items zu demografischen Daten.
 
-### *Statistische Analyse*
+Darauf folgte die Trainingsphase, in der die Trainierenden über einen Zeitraum von maximal zwei Monaten sechs Trainingseinheiten dokumentieren sollten. Dazu wurden sie per E-Mail benachrichtigt und sie wurden gebeten, nach der Trainingseinheit einen Fragebogen auszufüllen. In den Befragungen wurden jeweils der positive und negative Affekt, Session RPE und die trainingsbezogenen Variablen abgefragt.
+
+Die Daten der einzelnen Versuchspersonen wurden mittels eines Pseudonyms zugeordnet, das keinen Rückschluss auf Einzelpersonen ermöglichte. Nach der Datenerhebung wurden der Datensatz komplett anonymisiert. Die Versuchspersonen wurden schriftlich debrieft.
+
+## Statistische Analyse
 
 Diese Arbeit wurde mit R (Version `r getRversion()` ) und Quarto (Version 1.6.32) erstellt. Die reproduzierbare Version dieses Artikels ist auf GitHub unter <https://github.com/Enno-W/BAEW> verfügbar.
 
-Zur Bereinigung der Daten wurden zunächst die Versuchspersonen von der Analyse ausgeschlossen, die angaben, dass sie nicht aktiv an einem Sportprogramm teilnehmen. Die Variablen zu Stolz und der Motivstruktur wurden eliminert, da sie in dieser Arbeit nicht berücksichtigt werden. Für Werte, bei denen die Versuchspersonen einen Bereich (z.B. 10-15 km) angegeben hatten, wurde der Durchschnitt der beiden Werte gebildet. Da die Skalen von Affekt und Attribution keine gegensätzlich gepolten Items beinhalten, wurde keine Umpolung vorgenommen.
+Versuchspersonen, die angaben, kein konkretes Trainingsziel zu verfolgen oder mehr als 50 fehlende Werte hatten, wurden von der weiteren Analyse ausgeschlossen. Die Variablen zu Stolz und der Motivstruktur wurden eliminert, da sie in dieser Arbeit nicht berücksichtigt werden. Für Werte, bei denen die Versuchspersonen einen Bereich (z.B. 10-15 km) angegeben hatten, wurde der Durchschnitt der beiden Werte gebildet. Da die Skalen von Affekt und Attribution keine gegensätzlich gepolten Items beinhalten, wurde keine Umpolung vorgenommen.
+
+In dem bereinigten Datensatz befanden sich immer noch `r sum(is.na(df_less_na))` fehlende Werte, die per multipler Imputation [@Li2015] per *predictive mean matching* mit `r imp$m` Iterationen geschätzt wurden.
 
 Die Daten bestanden aus einem Baseline-Test und Angaben aus einem Fragebogen zu sechs darauffolgenden Trainingseinheiten. Diese wöchentlichen Angaben wurden zu Mittelwerten zusammengefasst (siehe @tbl-corrtable). Außerdem wurde ausgezählt, wie viele Trainingseinheiten eine Person ausgefüllt hatte.
 
-Eine Überprüfung der Voraussetzungen für weitere Analyse erfolgte anhand von visueller Inspektion von Histogrammen und Q-Q-Plots aller numerischen Variablen, sowie Shapiro-Wilk-Tests der Normalität. Die Variablen `r vars_not_normal` waren signifikant, was auf eine Abweichung von der Normalverteilung hindeutet.
+Eine Überprüfung der Voraussetzungen für die weitere Analyse erfolgte anhand von visueller Inspektion von Histogrammen und Q-Q-Plots aller numerischen Variablen, sowie Shapiro-Wilk-Tests der Normalität. Die wöchentlichen Variablen (Kilometer, Stunden und Session RPE bei der Baseline), das Alter, die Variabilität der Attribution sowie der Positive und negative Affekt, und auch der Affekt bei der Baseline sowie die Anzahl der abgeschlossenen Trainingseinheiten <!--# see the object "vars_not_normal" --> waren signifikant. Bei diesen Variablen ist also nicht von einer Normalverteilung auszugehen.
+
+Zur Überprüfung der Hypothesen diente als Haupttest eine Mehrebenenanalyse. Die Residuen der aufgestellten Modelle erfüllten allerdings die Voraussetzung der Homoskedastizität und Normalverteilung nicht. Daher wurde explorativ
 
 # Ergebnisse
 
@@ -177,6 +189,8 @@ ave_corr_table
 :::
 
 # Diskussion
+
+Multiple imputation
 
 # Literaturverzeichnis
 
