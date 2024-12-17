@@ -1,8 +1,8 @@
 #### Creating a list with all commonly used descriptive statistics + other descriptive values####
 descriptives_list<-mean_sd_median_min_max(df)
 vars_not_normal<-which_var_not_normal(df[, c("Dynamics", "Locus")])
-
-
+which_var_not_normal(df[,1:10])
+shapiro.test(df$WeeklyH_base) 
 stat.desc(df$Locus, basic = F, norm = T)
 stat.desc(df$Dynamics, basic = F, norm = T)
 hist(df$Locus, breaks = 15)
