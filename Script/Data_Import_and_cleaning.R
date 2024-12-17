@@ -70,7 +70,28 @@ df$completed_count<- apply(select(df, starts_with(match = "complete.")), 1, func
 # ID Variable
 df$ID<-1:nrow(df)
 
+### Variable to count training sessions ####
+#function to return "No" if something is FALSE, and vice versa...
+is.training.completed <- function(x) {
+  if (is.na(x)) {
+    return("No!")
+  } else {
+    return("Yes!")
+  }
+}
+# Running that whole thing through a for loop
+for (i in 1:6) {
+  goal_col <- paste0("Goal_", i)
+  newvar_col <- paste0("complete_", i)
+  df[[newvar_col]] <- sapply(df[[goal_col]], FUN = is.training.completed)
+}
+# count the number of "Yes!"es in those
+df$completed_count<- apply(select(df, starts_with(match = "complete_")), 1, function(x) length(which(x=="Yes!"))) # the "1" stands for rows here. see https://stackoverflow.com/questions/24015557/count-occurrences-of-value-in-a-set-of-variables-in-r-per-row
+
 ####Multiple imputation####
-#imp <- mice(df, m=5, maxit=5, method="pmm") # number of multiple imputations, maximum iterations, method: predictive mean matching
+imp <- mice(df, m=5, maxit=5, method="pmm") # number of multiple imputations, maximum iterations, method: predictive mean matching
 # https://bookdown.org/mwheymans/bookmi/multiple-imputation.html#multiple-imputation-in-r
-#df<-complete(imp)
+df<-complete(imp)
+
+
+save(df, file = "df.Rdata")

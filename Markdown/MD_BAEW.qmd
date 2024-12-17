@@ -169,7 +169,7 @@ Diese Arbeit wurde mit R (Version `r getRversion()` ) und Quarto (Version 1.6.32
 
 Versuchspersonen, die angaben, kein konkretes Trainingsziel zu verfolgen oder mehr als 50 fehlende Werte hatten, wurden von der weiteren Analyse ausgeschlossen. Die Variablen zu Stolz und der Motivstruktur wurden eliminert, da sie in dieser Arbeit nicht berücksichtigt werden. Für Werte, bei denen die Versuchspersonen einen Bereich (z.B. 10-15 km) angegeben hatten, wurde der Durchschnitt der beiden Werte gebildet. Da die Skalen von Affekt und Attribution keine gegensätzlich gepolten Items beinhalten, wurde keine Umpolung vorgenommen.
 
-In dem bereinigten Datensatz befanden sich immer noch `r sum(is.na(df_less_na))` fehlende Werte, die per multipler Imputation [@Li2015] per *predictive mean matching* mit `r imp$m` Iterationen geschätzt wurden.
+In dem bereinigten Datensatz befanden sich immer noch `r sum(is.na(df_less_na))` fehlende Werte, die per multipler Imputation [@Li2015] per *predictive mean matching* mit 5 Iterationen geschätzt wurden.
 
 Die Daten bestanden aus einem Baseline-Test und Angaben aus einem Fragebogen zu sechs darauffolgenden Trainingseinheiten. Diese wöchentlichen Angaben wurden zu Mittelwerten zusammengefasst (siehe @tbl-corrtable). Außerdem wurde ausgezählt, wie viele Trainingseinheiten eine Person ausgefüllt hatte.
 
@@ -179,10 +179,9 @@ Zur Überprüfung der Hypothesen diente als Haupttest eine Mehrebenenanalyse. Di
 
 # Ergebnisse
 
+## Deskriptive Statistiken
 
-## Deskriptive Ergebnisse
-
-
+*Attributionsstil:* 
 
 ::: landscape
 ```{r}

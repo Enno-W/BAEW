@@ -1,9 +1,11 @@
 #### Creating a list with all commonly used descriptive statistics + other descriptive values####
 descriptives_list<-mean_sd_median_min_max(df)
+vars_not_normal<-which_var_not_normal(df[, c("Dynamics", "Locus")])
 
-stat.desc(long_df$Goal_ave, basic = F, norm = T)
-df
 
+stat.desc(df$Locus, basic = F, norm = T)
+stat.desc(df$Dynamics, basic = F, norm = T)
+hist(df$Locus, breaks = 15)
 #### counting excluded participants ####
 raw_data_n <-nrow(df)
 filtered_n <-nrow(df)
@@ -48,24 +50,7 @@ pwr_result <- pwr.r.test(n = NULL,
                      power = 0.95,      
                      alternative = "greater") 
 
-#### Variable to count training sessions ####
-#function to return "No" if something is FALSE, and vice versa...
-is.training.completed <- function(x) {
-    if (is.na(x)) {
-      return("No!")
-    } else {
-      return("Yes!")
-    }
-}
-# Running that whole thing through a for loop
-for (i in 1:6) {
-  goal_col <- paste0("Goal_", i)
-  newvar_col <- paste0("complete_", i)
-  df[[newvar_col]] <- sapply(df[[goal_col]], FUN = is.training.completed)
-}
-# count the number of "Yes!"es in those
-df$completed_count<- apply(select(df, starts_with(match = "complete_")), 1, function(x) length(which(x=="Yes!"))) # the "1" stands for rows here. see https://stackoverflow.com/questions/24015557/count-occurrences-of-value-in-a-set-of-variables-in-r-per-row
-
+#
 #### Multilevel Analysis ####
 # Nullmodell
 null_model<- lme(Goal ~ 1, 
@@ -97,27 +82,27 @@ summary(h2.1_model)
 
 
 # Hypothesis 1.2
-goal_model <- lme(Goal ~ 1+ Time+Locus+Dynamics, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
+goal_model1 <- lme(Goal ~ 1+ Time+Locus+Dynamics, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
                   data=long_df, 
                   random= ~ 1 |ID, method="ML", # The "|" sort of means "group by"
                   na.action = na.omit, correlation = corAR1(form = ~ Time|ID))# I am not using ~ 1|ID)), because the gap between measurement points was not uniform and some data are missing. 
-summary(goal_model)
+summary(goal_model1)
 
-goal_model <- lme(Goal ~ 1+ Time+NA_base+NegativeAffect_centered, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
+goal_model2 <- lme(Goal ~ 1+ Time+NA_base+NegativeAffect_centered, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
                   data=long_df, 
                   random= ~ 1 |ID, method="ML", # The "|" sort of means "group by"
                   na.action = na.omit, correlation = corAR1(form = ~ Time|ID))# I am not using ~ 1|ID)), because the gap between measurement points was not uniform and some data are missing. 
-summary(goal_model)
+summary(goal_model2)
 
 #Hypothesis 2.2 + 1.2
-goal_model <- lme(Goal ~ 1+ Time+Locus+Dynamics+NA_base+NegativeAffect_centered, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
+goal_model3 <- lme(Goal ~ 1+ Time+Locus+Dynamics+NA_base+NegativeAffect_centered, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
                   data=long_df, 
                   random= ~ 1 |ID, method="ML", # The "|" sort of means "group by"
                   na.action = na.omit, correlation = corAR1(form = ~ Time|ID))# I am not using ~ 1|ID)), because the gap between measurement points was not uniform and some data are missing. 
-summary(goal_model)
+summary(goal_model3)
 
 ##### Checking Assumptions http://www.regorz-statistik.de/inhalte/r_HLM_2.html#####
-l1_residuals <- hlm_resid(commitment_model, level=1) # Funktion aus HLMdiag-Package
+l1_residuals <- hlm_resid(goal_model3, level=1) # Funktion aus HLMdiag-Package
 #Now, I use the ".ls.resid" to make a graph. these are the "Least squares residuals", and they have the advantage that influences from level 2 and 1 are not mixed up. 
 ggplot(data = l1_residuals, aes(.ls.resid)) +
   geom_histogram(aes(y = after_stat(density)), bins=10) +
@@ -142,7 +127,7 @@ shapiro.test(l1_residuals$.resid) # not normally distributed
 # Homoskedastizität
 ggplot(data=l1_residuals, aes(x=.fitted, y=.resid)) +
   geom_point()
-qqmath(~resid(commitment_model), # Interesting, especially low values of "goal" are messy
+qqmath(~resid(goal_model3), # Interesting, especially low values of "goal" are messy
        type = c("p", "g"), 
        xlab = "Theoretical Quantiles", 
        ylab = "Standardized Residuals")
@@ -182,7 +167,7 @@ shapiro.test(l1_residuals$.resid) # not normally distributed
 # Homoskedastizität
 ggplot(data=l1_residuals, aes(x=.fitted, y=.resid)) +
   geom_point()
-qqmath(~resid(commitment_model), # Interesting, especially low values of "goal" are messy
+qqmath(~resid(goal_model3), # Interesting, especially low values of "goal" are messy
        type = c("p", "g"), 
        xlab = "Theoretical Quantiles", 
        ylab = "Standardized Residuals")
