@@ -179,6 +179,11 @@ Zur Überprüfung der Hypothesen diente als Haupttest eine Mehrebenenanalyse. Di
 
 # Ergebnisse
 
+
+## Deskriptive Ergebnisse
+
+
+
 ::: landscape
 ```{r}
 #| label: tbl-corrtable
