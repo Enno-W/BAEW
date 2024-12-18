@@ -1,6 +1,6 @@
 print_all_histograms(df, bins_n = 30)
 print_all_histograms(df[correlation_variables])
-violin_plots<-print_all_violin_boxplots(df[correlation_variables], facet_nrow = 3, custom_labels = c(
+custom_labels<-c(
   Age = "Alter",
   Locus = "Locus",
   Dynamics = "Variabilität",
@@ -15,4 +15,6 @@ violin_plots<-print_all_violin_boxplots(df[correlation_variables], facet_nrow = 
   WeeklyRPE_base = "Baseline\nWöchentliche RPE",
   NA_base = "Baseline\nNegativer Affekt"
 )
+
+violin_plots<-print_all_violin_boxplots(df[correlation_variables], facet_nrow = 3, custom_labels = custom_labels
 )

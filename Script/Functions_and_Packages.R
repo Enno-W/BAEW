@@ -171,7 +171,7 @@ print_all_histograms <- function(df, bins_n=20) {
 
 
 #### Print violin Boxplots####
-print_all_violin_boxplots <- function(df, group_col = NULL, dodge_width = 1, facet_nrow = 2, point_jitter = 0.1) {
+print_all_violin_boxplots <- function(df, group_col = NULL, dodge_width = 1, facet_nrow = 2, point_jitter = 0.1, custom_labels = NULL) {
   # Ensure the required libraries are loaded
   library(ggplot2)
   library(dplyr)
@@ -188,6 +188,13 @@ print_all_violin_boxplots <- function(df, group_col = NULL, dodge_width = 1, fac
       mutate(Group = as.factor(df[[group_col]]))
   } else {
     df_long$Group <- "1" # Default group if no grouping is provided
+  }
+  
+  # Create a named vector for custom labels if provided
+  if (!is.null(custom_labels)) {
+    label_mapping <- custom_labels
+  } else {
+    label_mapping <- setNames(unique(df_long$variable), unique(df_long$variable)) # Default to current names
   }
   
   # Create the plot
@@ -215,8 +222,9 @@ print_all_violin_boxplots <- function(df, group_col = NULL, dodge_width = 1, fac
           axis.title.y = element_blank(),
           axis.text.x = element_blank(),
           axis.ticks.x = element_blank()) +
-    # Faceting
-    facet_wrap(~variable, scales = "free", nrow = facet_nrow)
+    # Faceting with custom labels
+    facet_wrap(~variable, scales = "free", nrow = facet_nrow, 
+               labeller = labeller(variable = label_mapping))
   
   # Print the plot
   print(plot)

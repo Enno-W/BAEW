@@ -45,6 +45,9 @@ knitr:
     warning: false
 project:
      execute-dir: project
+     
+floatsintext: true
+numbered-lines: true
 ---
 
 ```{r}
@@ -178,6 +181,18 @@ Eine Überprüfung der Voraussetzungen für die weitere Analyse erfolgte anhand 
 In der Präregistrierung wurde als Haupttest eine Mehrebenenanalyse spezifiziert. Die Voraussage der Trainingsausfälle durch ein Mehrebeneenmodell scheiterte daran, dass diese Variable nur 6 diskrete Ausprägungen hatte und das Modell somit nicht konvergieren konnte. Als Alternative wurden Hypothesen 1.1 und 2.1 mit einem verallgemeinerten Linearen Modell (GLMM) getestet. Für Hypothesen 1.2 und 2.2 konnte ein Mehrebenenmodell berechnet werden. Die Residuen der aufgestellten Modelle erfüllten allerdings die Voraussetzung der Homoskedastizität und Normalverteilung nicht. Daher wurde explorativ
 
 # Ergebnisse
+
+::: landscape
+```{r}
+#| label: fig-myplot
+#| fig-cap: The Figure Caption
+#| apa-note: This is the note below the figure.
+#| fig-height: 5
+#| fig-width: 10
+
+violin_plots
+```
+:::
 
 ## Deskriptive Statistiken
 
