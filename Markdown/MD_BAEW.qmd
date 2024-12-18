@@ -108,9 +108,9 @@ Kritik am Rückfallmodell Innerhalb dieses Modells ist die wichtige Rolle der Se
 
 Es ergibt sich die Forschungsfrage, inwiefern situationaler Affekt (jeweils nach der Trainingseinheit) und der Attributionsstil den Trainingsausfall vorhersagen. Wenn negatives Gefühlserleben und eine undienliche Attribution nach einem Rückfall häufiger zum schlussenlichen Unterlassen des Gesundheitsverhaltens fühlen, dann sollten ein tendenziell negatives Affekterleben und ein external - stabiler Attributionsstil weniger Trainingseinheiten und eine schwächer ausgeprägte Erreichung des gesetzen Ziels erreichen.
 
-H1: Ein internal - variabler Attributionsstil sagt weniger Trainingsausfälle (H1.1), sowie eine geringere Zielerreichung vorher (H1.2)
+H1: Ein internal - variabler Attributionsstil sagt weniger Trainingsausfälle (H1.1), sowie eine geringere wahrgenommene Zielerreichung vorher (H1.2)
 
-H2: Ein tendenziell negativeres Affekterleben sagt mehr Trainingsausfälle (H2.1) und eine geringere Zielerreichung vorher (H2.2).
+H2: Ein tendenziell negativeres Affekterleben sagt mehr Trainingsausfälle (H2.1) und eine geringere wahrgenommene Zielerreichung vorher (H2.2).
 
 # Methode
 
@@ -175,13 +175,13 @@ Die Daten bestanden aus einem Baseline-Test und Angaben aus einem Fragebogen zu 
 
 Eine Überprüfung der Voraussetzungen für die weitere Analyse erfolgte anhand von visueller Inspektion von Histogrammen und Q-Q-Plots aller numerischen Variablen, sowie Shapiro-Wilk-Tests der Normalität. Die wöchentlichen Variablen (Kilometer, Stunden und Session RPE bei der Baseline), das Alter, die Variabilität der Attribution sowie der Positive und negative Affekt, und auch der Affekt bei der Baseline sowie die Anzahl der abgeschlossenen Trainingseinheiten <!--# see the object "vars_not_normal" --> waren signifikant. Bei diesen Variablen ist also nicht von einer Normalverteilung auszugehen.
 
-Zur Überprüfung der Hypothesen diente als Haupttest eine Mehrebenenanalyse. Die Residuen der aufgestellten Modelle erfüllten allerdings die Voraussetzung der Homoskedastizität und Normalverteilung nicht. Daher wurde explorativ
+In der Präregistrierung wurde als Haupttest eine Mehrebenenanalyse spezifiziert. Die Voraussage der Trainingsausfälle durch ein Mehrebeneenmodell scheiterte daran, dass diese Variable nur 6 diskrete Ausprägungen hatte und das Modell somit nicht konvergieren konnte. Als Alternative wurden Hypothesen 1.1 und 2.1 mit einem verallgemeinerten Linearen Modell (GLMM) getestet. Für Hypothesen 1.2 und 2.2 konnte ein Mehrebenenmodell berechnet werden. Die Residuen der aufgestellten Modelle erfüllten allerdings die Voraussetzung der Homoskedastizität und Normalverteilung nicht. Daher wurde explorativ
 
 # Ergebnisse
 
 ## Deskriptive Statistiken
 
-*Attributionsstil:* 
+*Attributionsstil:*
 
 ::: landscape
 ```{r}

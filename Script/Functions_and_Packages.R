@@ -169,3 +169,55 @@ print_all_histograms <- function(df, bins_n=20) {
   print (plot)
 }
 
+
+#### Print violin Boxplots####
+print_all_violin_boxplots <- function(df, group_col = NULL, dodge_width = 1, facet_nrow = 2, point_jitter = 0.1) {
+  # Ensure the required libraries are loaded
+  library(ggplot2)
+  library(dplyr)
+  library(tidyr)
+  
+  # Convert the data to a long format, keeping only numeric columns
+  df_long <- df %>%
+    pivot_longer(cols = where(is.numeric), names_to = "variable", values_to = "value") %>%
+    filter(!is.na(value))
+  
+  # Add group column to the long format if provided
+  if (!is.null(group_col)) {
+    df_long <- df_long %>%
+      mutate(Group = as.factor(df[[group_col]]))
+  } else {
+    df_long$Group <- "1" # Default group if no grouping is provided
+  }
+  
+  # Create the plot
+  plot <- ggplot(df_long, aes(x = variable, y = value, fill = Group)) +
+    # Violin plot
+    geom_violin(aes(fill = Group), linewidth = 1, color = "black", 
+                show.legend = FALSE, position = position_dodge(width = dodge_width)) +
+    # Boxplot
+    geom_boxplot(aes(fill = Group), outlier.size = 2, outlier.shape = 16, 
+                 width = 0.1, position = position_dodge(width = dodge_width), show.legend = FALSE) +
+    # Raw data points with horizontal jitter
+    geom_point(position = position_jitter(width = point_jitter, height = 0), 
+               size = 1.5, alpha = 0.6, aes(color = Group), show.legend = FALSE) +
+    # Summary mean points
+    stat_summary(mapping = aes(color = Group), fun = mean, geom = "point", shape = 4, size = 3, 
+                 position = position_dodge(width = dodge_width), show.legend = FALSE) +
+    # Custom scales
+    scale_color_manual(values = c("black", "black")) +
+    scale_fill_manual(values = c("1" = "white", "2" = "grey"),
+                      labels = c("1" = "Group 1", "2" = "Group 2"),
+                      name = "Group") +
+    # Theme settings
+    theme_classic(base_size = 14, base_family = "sans") +
+    theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank(),
+          axis.text.x = element_blank(),
+          axis.ticks.x = element_blank()) +
+    # Faceting
+    facet_wrap(~variable, scales = "free", nrow = facet_nrow)
+  
+  # Print the plot
+  print(plot)
+}

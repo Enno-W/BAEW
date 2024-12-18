@@ -1,6 +1,6 @@
 #### Creating a list with all commonly used descriptive statistics + other descriptive values####
 descriptives_list<-mean_sd_median_min_max(df)
-vars_not_normal<-which_var_not_normal(df[, c("Dynamics", "Locus")])
+vars_not_normal<-which_var_not_normal(df)
 which_var_not_normal(df[,1:10])
 shapiro.test(df$WeeklyH_base) 
 stat.desc(df$Locus, basic = F, norm = T)
@@ -37,11 +37,12 @@ demographicstable<- data %>%
 average_variables<-df %>% select(ends_with("_ave")) %>% names()
 base_variables<-df %>% select(ends_with("_base")) %>% names()
 correlation_variables<-c("Age", "Locus", "Dynamics", "completed_count", average_variables, base_variables)
+correlation_variables <- correlation_variables[!correlation_variables %in% c("PA_ave", "PA_base", "Commit_ave")]# Excluding not needed variables
 ave_corr_table<-df[,correlation_variables] %>% 
   generate_correlation_table(c("Alter", "Locus", "Variabilität", "Abgeschlossene\nTrainingseinheiten", "Durchschnitt\nZiellerreichung", 
-                               "Durchschnitt\nCommitment", "Durchschnitt KM pro Einheit", "Durchschnitt\nH pro Einheit", "Durchschnitt\nSessionRPE", 
-                               "Durchnschnitt\nPositiver Affekt", "Durchschnitt\nNegativer Affekt", "Baseline\nWöchentliche KM", "Baseline\nWöchentliche H", "Baseline\nWöchentliche RPE", 
-                               "Baseline\nPositiver Affekt", "Baseline\nNegativer Affekt"))
+                               "Durchschnitt km pro Einheit", "Durchschnitt\nh pro Einheit", "Durchschnitt\nSessionRPE", 
+                               "Durchschnitt\nNegativer Affekt", "Baseline\nWöchentliche KM", "Baseline\nWöchentliche H", "Baseline\nWöchentliche RPE", 
+                               "Baseline\nNegativer Affekt"))
 
 #### Power analysis ####
 pwr_result <- pwr.r.test(n = NULL,         
