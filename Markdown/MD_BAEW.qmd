@@ -139,7 +139,6 @@ Die Teilnehmenden waren Freizeitsportler:innen mit einem bestimmten Trainingszie
 
 Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfohlen \[LIT\]. Basierend auf einer Poweranalyse mit 1 – β = `r round (pwr_result$power, 2)`, α = `r round (pwr_result$sig.level, 2)`, und *r* = `r round (pwr_result$r, 1)` ergab sich eine ideale Teilnehmerzahl von `r round (pwr_result$n, 0)`. Die Frage der Poweranalyse für Mehrebenenanalysen ist allerdings komplex [@Hox2017-dx]. Der Versuch, post-hoc Power des bestimmten Modells durch Simulation mit dem Paket `simr` [@Green2016] zu bestimmen, scheiterte, was teils auf die geringe Stichprobe, teils auf die Datenstruktur zurückgeführt werden kann. *N* = `r raw_data_n` Fälle ergaben sich in dem Rohdatensatz. *n* = `r raw_data_n - filtered_n` wurden von der Analyse und weiteren Befragungen ausgeschlossen, weil sie angaben, nicht an einem systematischen Trainings- oder Bewegungsprogramm teilzunehmen. Aufgrund von mehr als 50 fehlenden Datenpunkten wurden *n* = `r filtered_n - na_removed_n` Teilnehmende ausgeschlossen. Die deskriptiven Statistiken zu den demografischen Daten sind in Tabelle 1.
 
-::: landscape
 ```{r Tabelle 1}
 #| label: tbl-demogrtable
 #| tbl-cap: Tabelle der Absoluten und Relativen Häufigkeiten Demografischer Variablen in der Stichprobe
@@ -148,7 +147,6 @@ Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfo
 demographicstable
 
 ```
-:::
 
 Die Teilnehmenden waren durchschnittlich `r descriptives_list$Age_mean` Jahre alt (*SD* = `r descriptives_list$Age_sd`). Sie trainierten wöchentlich *M =* `r descriptives_list$WeeklyKM_base_mean` km (*SD =* `r descriptives_list$WeeklyKM_base_sd`); *M =* `r descriptives_list$WeeklyH_base_mean` Stunden (*SD =* `r descriptives_list$WeeklyH_base_sd`); und erlebten die Anstrengung der Trainingseinheiten mit *M =* `r descriptives_list$WeeklyRPE_base_mean` (*SD =* `r descriptives_list$WeeklyRPE_base_sd`) auf der Session-RPE-Skala.
 
@@ -170,21 +168,27 @@ Die Daten der einzelnen Versuchspersonen wurden mittels eines Pseudonyms zugeord
 
 Diese Arbeit wurde mit R (Version `r getRversion()` ) und Quarto (Version 1.6.32) erstellt. Die reproduzierbare Version dieses Artikels ist auf GitHub unter <https://github.com/Enno-W/BAEW> verfügbar.
 
-Versuchspersonen, die angaben, kein konkretes Trainingsziel zu verfolgen oder mehr als 50 fehlende Werte hatten, wurden von der weiteren Analyse ausgeschlossen. Die Variablen zu Stolz und der Motivstruktur wurden eliminert, da sie in dieser Arbeit nicht berücksichtigt werden. Für Werte, bei denen die Versuchspersonen einen Bereich (z.B. 10-15 km) angegeben hatten, wurde der Durchschnitt der beiden Werte gebildet. Da die Skalen von Affekt und Attribution keine gegensätzlich gepolten Items beinhalten, wurde keine Umpolung vorgenommen.
+Versuchspersonen, die angaben, kein konkretes Trainingsziel zu verfolgen oder mehr als 50 fehlende Werte hatten, wurden von der weiteren Analyse ausgeschlossen. Die Variablen zu Stolz und der Motivstruktur wurden eliminert, da sie in dieser Arbeit nicht berücksichtigt werden. Für Werte, bei denen die Versuchspersonen einen Bereich (z.B. 10-15 km) angegeben hatten, wurde der Durchschnitt der beiden Werte gebildet. Da die Skalen von Affekt und Attribution keine gegensätzlich gepolten Items beinhalten, wurde keine Umpolung vorgenommen. Angaben zur Sportart mit dem Wortbestandteil "lauf" wurden zu "Laufen", und mit "kraft" zu "Kraftsport" zusammengefasst.
 
-In dem bereinigten Datensatz befanden sich immer noch `r sum(is.na(df_less_na))` fehlende Werte, die per multipler Imputation [@Li2015] per *predictive mean matching* mit 5 Iterationen geschätzt wurden.
+In dem bereinigten Datensatz befanden sich immer noch `r sum(is.na(df_less_na))` fehlende Werte, die per multipler Imputation per *predictive mean matching* mit 5 Iterationen geschätzt wurden. Bei diesem Verfahren werden in mehreren Durchläufen bzw. Iterationen plausible Werte anhand der Verteilungen und Beziehungen der Variablen untereinander geschätzt [@Li2015].
 
-Die Daten bestanden aus einem Baseline-Test und Angaben aus einem Fragebogen zu sechs darauffolgenden Trainingseinheiten. Diese wöchentlichen Angaben wurden zu Mittelwerten zusammengefasst (siehe @tbl-corrtable). Außerdem wurde ausgezählt, wie viele Trainingseinheiten eine Person ausgefüllt hatte.
+Die Daten bestanden aus einem Baseline-Test und Angaben aus einem Fragebogen zu sechs darauffolgenden Trainingseinheiten. Diese wöchentlichen Angaben wurden zu Mittelwerten zusammengefasst. Außerdem wurde ausgezählt, wie viele Trainingseinheiten eine Person ausgefüllt hatte.
 
-Eine Überprüfung der Voraussetzungen für die weitere Analyse erfolgte anhand von visueller Inspektion von Histogrammen und Q-Q-Plots aller numerischen Variablen, sowie Shapiro-Wilk-Tests der Normalität. Die wöchentlichen Variablen (Kilometer, Stunden und Session RPE bei der Baseline), das Alter, die Variabilität der Attribution sowie der Positive und negative Affekt, und auch der Affekt bei der Baseline sowie die Anzahl der abgeschlossenen Trainingseinheiten <!--# see the object "vars_not_normal" --> waren signifikant. Bei diesen Variablen ist also nicht von einer Normalverteilung auszugehen.
+Eine Überprüfung der Voraussetzungen für die weitere Analyse erfolgte anhand von **visueller Inspektion von Histogrammen und Q-Q-Plots aller numerischen Variablen**, sowie Shapiro-Wilk-Tests der Normalität.
+<!-- Include the figures in markdown?? -->
 
-In der Präregistrierung wurde als Haupttest eine Mehrebenenanalyse spezifiziert. Die Voraussage der Trainingsausfälle durch ein Mehrebeneenmodell scheiterte daran, dass diese Variable nur 6 diskrete Ausprägungen hatte und das Modell somit nicht konvergieren konnte. Als Alternative wurden Hypothesen 1.1 und 2.1 mit einem verallgemeinerten Linearen Modell (GLMM) getestet. Für Hypothesen 1.2 und 2.2 konnte ein Mehrebenenmodell berechnet werden. Die Residuen der aufgestellten Modelle erfüllten allerdings die Voraussetzung der Homoskedastizität und Normalverteilung nicht. Daher wurde explorativ
+In der Präregistrierung wurde als Haupttest eine Mehrebenenanalyse spezifiziert. Zur Aufstellung der Mehrebenenmodelle wurde der Datensatz in ein Langformat transformiert, und zwar so, dass jeder Messzeitpunkt in einer Zeile aufgeführt war. So entstanden für jede Versuchsperson sechs Zeilen für die 6 Messzeitpunkte. Die Werte, die nur zu einem Messzeitpunkt erhoben wurden, wie etwa Attributionsstil oder Alter, wiederholten sich in jeder dieser sechs Zeilen. Die Voraussage der Trainingsausfälle durch ein Mehrebeneenmodell scheiterte daran, dass diese Variable nur 6 diskrete Ausprägungen (Anzahl der abgeschlossenen Trainingseinheiten) hatte und das Modell somit nicht konvergieren konnte. Als Alternative wurden Hypothesen 1.1 und 2.1 mit einem verallgemeinerten Linearen Modell (GLMM) getestet. Für Hypothesen 1.2 und 2.2 konnte ein Mehrebenenmodell berechnet werden. Dafür wurden die wiederholten Angaben zu negativem Affekt zentriert. Die Residuen der aufgestellten Modelle erfüllten allerdings die Voraussetzung der Homoskedastizität und Normalverteilung nicht. Daher wurde explorativ ...
 
 # Ergebnisse
 
-::: landscape
+## Deskriptive Statistiken
+
+@fig-overview zeigt eine Übersicht der Variablen, zur Überprüfung der Hypothesen herangezogen wurden. 
+
+Die wöchentlichen Variablen (Kilometer, Stunden und Session RPE bei der Baseline), das Alter, die Variabilität der Attribution sowie der Positive und negative Affekt, und auch der Affekt bei der Baseline sowie die Anzahl der abgeschlossenen Trainingseinheiten <!--# see the object "vars_not_normal" --> waren signifikant. Bei diesen Variablen ist also nicht von einer Normalverteilung auszugehen.
+
 ```{r}
-#| label: fig-myplot
+#| label: fig-overview
 #| fig-cap: The Figure Caption
 #| apa-note: This is the note below the figure.
 #| fig-height: 5
@@ -192,11 +196,7 @@ In der Präregistrierung wurde als Haupttest eine Mehrebenenanalyse spezifiziert
 
 violin_plots
 ```
-:::
 
-## Deskriptive Statistiken
-
-*Attributionsstil:*
 
 ::: landscape
 ```{r}
@@ -206,6 +206,14 @@ violin_plots
 ave_corr_table
 ```
 :::
+
+
+
+
+
+*Attributionsstil:*
+
+
 
 # Diskussion
 

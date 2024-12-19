@@ -151,6 +151,13 @@ which_var_not_normal<- function(df) {
   names<-df %>% select(where(is.numeric)) %>% stat.desc (basic=F, norm=T) %>% as.data.frame() %>%.["normtest.p",] %>%   .[, . < 0.05 ] %>% names()
   return(names)
 }
+
+which_var_not_normal_p<- function(df) {
+  names<-df %>% select(where(is.numeric)) %>% stat.desc (basic=F, norm=T) %>% as.data.frame() %>%.["normtest.p",] %>%   .[, . < 0.05 ] %>% names()
+  not_normal_data<-df[,names]  %>% stat.desc (basic=F, norm=T) %>% as.data.frame() %>%.["normtest.p",]
+  return(not_normal_data)
+}
+
 ##### Show Histograms of all variables #####
 print_all_histograms <- function(df, bins_n=20) {
   df_long <- df %>%
