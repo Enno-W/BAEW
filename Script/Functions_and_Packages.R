@@ -112,6 +112,57 @@ generate_correlation_table <- function(df, display_names) {
     hline(border = fp_border(width = 1), part = "header")
 }
 
+
+generate_correlation_table2 <- function(df, display_names) {
+  library(Hmisc)
+  library(flextable)
+  library(officer)
+  
+  # Compute correlation matrix
+  correlation_matrix <- rcorr(as.matrix(df))
+  correlation_matrix_r <- round(correlation_matrix$r, digits = 2)
+  
+  # Extract lower triangle of the correlation matrix
+  lower_triangle <- correlation_matrix_r[lower.tri(correlation_matrix_r)]
+  
+  # Create a clean correlation matrix
+  correlation_matrix_clean <- matrix(NA, nrow = ncol(correlation_matrix_r), ncol = ncol(correlation_matrix_r))
+  correlation_matrix_clean[lower.tri(correlation_matrix_clean)] <- lower_triangle
+  
+  # Compute significance stars
+  stars_matrix <- matrix("", nrow = ncol(correlation_matrix_clean), ncol = ncol(correlation_matrix_clean))
+  stars_matrix[correlation_matrix$P < 0.01 & correlation_matrix$P > 0] <- "**"
+  stars_matrix[correlation_matrix$P >= 0.01 & correlation_matrix$P < 0.05 & correlation_matrix$P > 0] <- "*"
+  
+  # Append stars to the lower triangle of the correlation matrix
+  correlation_matrix_clean[lower.tri(correlation_matrix_clean)] <- paste(correlation_matrix_clean[lower.tri(correlation_matrix_clean)], stars_matrix[lower.tri(stars_matrix)], sep = "")
+  
+  # Create data frame
+  correlation_df <- data.frame(Measure = display_names, correlation_matrix_clean)
+  
+  colnames(correlation_df)[2:ncol(correlation_df)] <- as.character(1:ncol(correlation_matrix_clean))
+  
+  # Create flextable
+  flextable(correlation_df) %>%
+    set_header_labels(
+      Measure = "Measure"
+    ) %>%
+    add_header_row(
+      values = c("", "Correlations"), 
+      colwidths = c(1, ncol(correlation_matrix_clean))
+    ) %>%
+    align(align = "center", part = "all") %>%
+    autofit() %>%
+    bold(part = "header") %>%
+    font(fontname = "Times New Roman", part = "all") %>%
+    fontsize(size = 12, part = "all") %>%
+    padding(padding.top = 3, padding.bottom = 3, part = "all") %>%
+    border_remove() %>%
+    hline_top(border = fp_border(width = 1.5), part = "header") %>%
+    hline_bottom(border = fp_border(width = 1.5), part = "body") %>%
+    hline(border = fp_border(width = 1), part = "header")
+}
+
 ## Example usage
 #correlation_names <- c("Age", "Gender","Weekly Kilometers")
 #x<-generate_correlation_table(df[,c("Age","Gender","WeeklyKM_base")], correlation_names)

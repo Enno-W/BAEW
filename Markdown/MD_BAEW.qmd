@@ -183,6 +183,16 @@ In der Präregistrierung wurde als Haupttest eine Mehrebenenanalyse spezifiziert
 
 ## Deskriptive Statistiken
 
+
+
+```{r}
+#| label: tbl-stattable
+#| tbl-cap: Deskriptive Statistiken
+#| apa-note: Das Konfidenzintervall ist als Abstand vom Mittelwert zum unteren bzw. oberen Konfidenzintervall notiert. 
+table_stat
+```
+
+
 @fig-overview zeigt eine Übersicht der Variablen, zur Überprüfung der Hypothesen herangezogen wurden. 
 
 Die wöchentlichen Variablen (Kilometer, Stunden und Session RPE bei der Baseline), das Alter, die Variabilität der Attribution sowie der Positive und negative Affekt, und auch der Affekt bei der Baseline sowie die Anzahl der abgeschlossenen Trainingseinheiten <!--# see the object "vars_not_normal" --> waren signifikant. Bei diesen Variablen ist also nicht von einer Normalverteilung auszugehen.
@@ -191,7 +201,7 @@ Die wöchentlichen Variablen (Kilometer, Stunden und Session RPE bei der Baselin
 #| label: fig-overview
 #| fig-cap: The Figure Caption
 #| apa-note: This is the note below the figure.
-#| fig-height: 5
+#| fig-height: 10
 #| fig-width: 10
 
 violin_plots

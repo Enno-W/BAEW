@@ -38,10 +38,59 @@ base_variables<-df %>% select(ends_with("_base")) %>% names()
 correlation_variables<-c("Age", "Locus", "Dynamics", "completed_count", average_variables, base_variables)
 correlation_variables <- correlation_variables[!correlation_variables %in% c("PA_ave", "PA_base", "Commit_ave")]# Excluding not needed variables
 ave_corr_table<-df[,correlation_variables] %>% 
-  generate_correlation_table(c("Alter", "Locus", "Variabilität", "Abgeschlossene\nTrainingseinheiten", "Durchschnitt\nZiellerreichung", 
-                               "Durchschnitt km pro Einheit", "Durchschnitt\nh pro Einheit", "Durchschnitt\nSessionRPE", 
-                               "Durchschnitt\nNegativer Affekt", "Baseline\nWöchentliche KM", "Baseline\nWöchentliche H", "Baseline\nWöchentliche RPE", 
-                               "Baseline\nNegativer Affekt"))
+  generate_correlation_table2(c("Alter", "Locus", "Variabilität", "Abgeschlossene\nTrainingseinheiten", "Durchschnitt\nZiellerreichung", 
+                                "Durchschnitt km pro Einheit", "Durchschnitt\nh pro Einheit", "Durchschnitt\nSessionRPE", 
+                                "Durchschnitt\nNegativer Affekt", "Baseline\nWöchentliche KM", "Baseline\nWöchentliche H", "Baseline\nWöchentliche RPE", 
+                                "Baseline\nNegativer Affekt"))
+
+#### Skewness, Kurtosis and min-max range table####
+
+df_stat0<-df[, correlation_variables]%>% 
+  stat.desc() %>% 
+  t() %>%
+  as.data.frame() %>% 
+  select(-nbr.val, -nbr.null, -nbr.na, -var, -coef.var, - SE.mean, -sum) %>%
+  round(3)
+
+df_stat1 <- df_stat0 %>%
+  mutate(Variable = rownames(df_stat0)) %>%
+  select(Variable, everything()) %>% 
+  rename(
+    Minimum = min,
+    Maximum = max,
+    Spannweite = range,
+    Median = median,
+    Mittelwert = mean,
+    "95% KI des Mittels" = CI.mean.0.95,
+    "Standardabweichung" = std.dev
+  )
+
+
+df_stat1$Variable <- c(
+  "Alter", 
+  "Locus", 
+  "Variabilität", 
+  "Abgeschlossene\nTrainingseinheiten", 
+  "Durchschnitt\nZiellerreichung", 
+  "Durchschnitt km pro Einheit", 
+  "Durchschnitt\nh pro Einheit", 
+  "Durchschnitt\nSessionRPE", 
+  "Durchschnitt\nNegativer Affekt", 
+  "Baseline\nWöchentliche KM", 
+  "Baseline\nWöchentliche H", 
+  "Baseline\nWöchentliche RPE", 
+  "Baseline\nNegativer Affekt"
+)
+
+table_stat<-df_stat1 %>% flextable() %>% 
+  fontsize(size = 12) %>%  # Set font size to 12 (APA standard)
+  font(font = "Times New Roman") %>%  # APA uses Times New Roman
+  align(align = "center", part = "all") %>%  # Center-align all text
+  align(align = "right", j = 2:8) %>%  # Right-align the numeric columns
+  padding(padding = 3) %>%  # Add padding for spacing
+  width(j = 1, width = 2) %>%  # Adjust the width of the first column
+  width(j = 2:8, width = 1.5)  # Adjust the width of numeric columns
+
 
 #### Power analysis ####
 pwr_result <- pwr.r.test(n = NULL,         
