@@ -16,5 +16,5 @@ custom_labels<-c(
   NA_base = "Baseline\nNegativer Affekt"
 )
 
-violin_plots<-print_all_violin_boxplots(df[correlation_variables], facet_nrow = 5, custom_labels = custom_labels
+violin_plots<-print_all_violin_boxplots(df[correlation_variables], facet_ncol = 2, facet_nrow = NULL, custom_labels = custom_labels
 )

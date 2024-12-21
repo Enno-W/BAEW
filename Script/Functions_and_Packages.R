@@ -229,7 +229,7 @@ print_all_histograms <- function(df, bins_n=20) {
 
 
 #### Print violin Boxplots####
-print_all_violin_boxplots <- function(df, group_col = NULL, dodge_width = 1, facet_nrow = 2, point_jitter = 0.1, custom_labels = NULL) {
+print_all_violin_boxplots <- function(df, group_col = NULL, dodge_width = 1, facet_nrow = 2, facet_ncol = NULL, point_jitter = 0.1, custom_labels = NULL) {
   # Ensure the required libraries are loaded
   library(ggplot2)
   library(dplyr)
@@ -239,6 +239,11 @@ print_all_violin_boxplots <- function(df, group_col = NULL, dodge_width = 1, fac
   df_long <- df %>%
     pivot_longer(cols = where(is.numeric), names_to = "variable", values_to = "value") %>%
     filter(!is.na(value))
+  
+  # Preserve the original order of variables
+  variable_order <- colnames(df)[sapply(df, is.numeric)]
+  df_long <- df_long %>%
+    mutate(variable = factor(variable, levels = variable_order))
   
   # Add group column to the long format if provided
   if (!is.null(group_col)) {
@@ -281,12 +286,13 @@ print_all_violin_boxplots <- function(df, group_col = NULL, dodge_width = 1, fac
           axis.text.x = element_blank(),
           axis.ticks.x = element_blank()) +
     # Faceting with custom labels
-    facet_wrap(~variable, scales = "free", nrow = facet_nrow, 
+    facet_wrap(~variable, scales = "free", as.table = TRUE, nrow = facet_nrow, ncol = facet_ncol,
                labeller = labeller(variable = label_mapping))
   
   # Print the plot
   print(plot)
 }
+
 
 #### function to format gt tables apa style
 

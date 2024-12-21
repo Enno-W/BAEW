@@ -31,39 +31,7 @@ ave_corr_table<-df[,correlation_variables] %>%
 
 #### Skewness, Kurtosis and min-max range table####
 
-get_descriptive_table(df)
-
-df_stat<-df[, correlation_variables]%>% 
-  stat.desc(basic = F, norm = T) %>% 
-  t() %>%
-  as.data.frame() %>% 
-  select(-var, -coef.var, -SE.mean, -kurt.2SE, -normtest.W, -skew.2SE)
-
-df_stat <- df_stat %>%
-  mutate(
-    normtest.p = ifelse(
-      normtest.p < 0.001,
-      "< .001",
-      as.character(round(normtest.p, 3))
-    )
-  )
-
-df_stat <- df_stat %>%
-  mutate(across(where(is.numeric), ~ round(., 3)))
-
-df_stat <- df_stat %>%
-  mutate(Variable = rownames(df_stat0)) %>%
-  select(Variable, everything()) %>% 
-  rename(
-    Median = median,
-    Schiefe = skewness,
-    Exzess = kurtosis,
-    Median = median,
-    Mittelwert = mean,
-    "95% KI des Mittels" = CI.mean.0.95,
-    "Standardabweichung" = std.dev,
-    "p-Wert (Shapiro-Wilk-Test)" = normtest.p
-  )
+df_stat<-get_descriptive_table(df[, correlation_variables], language = "German")
 
 df_stat$Variable <- c(
   "Alter", 
