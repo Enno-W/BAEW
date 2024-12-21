@@ -135,7 +135,7 @@ Da es sich um ein Sample mit internationalen studierenden handelte, wurde bei al
 
 ## Stichprobe:
 
-Die Teilnehmenden waren Freizeitsportler:innen mit einem bestimmten Trainingsziel.
+Die Teilnehmenden waren erwachsene Freizeitsportler:innen mit einem bestimmten Trainingsziel.
 
 Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfohlen \[LIT\]. Basierend auf einer Poweranalyse mit 1 – β = `r round (pwr_result$power, 2)`, α = `r round (pwr_result$sig.level, 2)`, und *r* = `r round (pwr_result$r, 1)` ergab sich eine ideale Teilnehmerzahl von `r round (pwr_result$n, 0)`. Die Frage der Poweranalyse für Mehrebenenanalysen ist allerdings komplex [@Hox2017-dx]. Der Versuch, post-hoc Power des bestimmten Modells durch Simulation mit dem Paket `simr` [@Green2016] zu bestimmen, scheiterte, was teils auf die geringe Stichprobe, teils auf die Datenstruktur zurückgeführt werden kann. *N* = `r raw_data_n` Fälle ergaben sich in dem Rohdatensatz. *n* = `r raw_data_n - filtered_n` wurden von der Analyse und weiteren Befragungen ausgeschlossen, weil sie angaben, nicht an einem systematischen Trainings- oder Bewegungsprogramm teilzunehmen. Aufgrund von mehr als 50 fehlenden Datenpunkten wurden *n* = `r filtered_n - na_removed_n` Teilnehmende ausgeschlossen. Die deskriptiven Statistiken zu den demografischen Daten sind in Tabelle 1.
 
@@ -148,7 +148,7 @@ demographicstable
 
 ```
 
-Die Teilnehmenden waren durchschnittlich `r descriptives_list$Age_mean` Jahre alt (*SD* = `r descriptives_list$Age_sd`). Sie trainierten wöchentlich *M =* `r descriptives_list$WeeklyKM_base_mean` km (*SD =* `r descriptives_list$WeeklyKM_base_sd`); *M =* `r descriptives_list$WeeklyH_base_mean` Stunden (*SD =* `r descriptives_list$WeeklyH_base_sd`); und erlebten die Anstrengung der Trainingseinheiten mit *M =* `r descriptives_list$WeeklyRPE_base_mean` (*SD =* `r descriptives_list$WeeklyRPE_base_sd`) auf der Session-RPE-Skala.
+Die Teilnehmenden waren durchschnittlich `r descriptives_list$Age_mean` Jahre alt (*SD* = `r descriptives_list$Age_sd`). Das Alter reichte von `r descriptives_list$Age_min` bis`r descriptives_list$Age_max`. 
 
 ## Durchführung:
 
@@ -183,7 +183,16 @@ In der Präregistrierung wurde als Haupttest eine Mehrebenenanalyse spezifiziert
 
 ## Deskriptive Statistiken
 
+@tbl-stattable zeigt einen Überblick über deskriptive Statistiken aller relevanten Variablen.
+Das Alter weist eine leichte Rechtsschiefe auf, es gab also viele jüngere und wenig ältere Teilnehmende. 
 
+Die Daten zum Attribution (Locus und Variabilität) folgen einer Normalverteilung, aber alle Werte fielen relativ hoch aus. Sie reichten von `r descriptives_list$Locus_min` bis `r descriptives_list$Locus_max` für den Lokus und von `r descriptives_list$Dynamics_min` bis `r descriptives_list$Dynamics_max` für die Variabilität. 
+
+Die Anzahl der abgeschlossenen Trainingseinheiten, von denen es insgesamt sechs in der Studie gab, weist eine extrem linksschiefe, nicht normalverteilte Verteilung auf, da viele Personen alle Einheiten beendet haben. Ein ähnliches Muster mit vielen hohen Werten weist die durchschnittliche wahrgenommene Zielerreichung auf. 
+
+Im Durchschnitt
+
+<!-- Die Teilnehmenden trainierten wöchentlich *M =* `r descriptives_list$WeeklyKM_base_mean` km (*SD =* `r descriptives_list$WeeklyKM_base_sd`); *M =* `r descriptives_list$WeeklyH_base_mean` Stunden (*SD =* `r descriptives_list$WeeklyH_base_sd`); und erlebten die Anstrengung der Trainingseinheiten mit *M =* `r descriptives_list$WeeklyRPE_base_mean` (*SD =* `r descriptives_list$WeeklyRPE_base_sd`) auf der Session-RPE-Skala. -->
 
 ```{r}
 #| label: tbl-stattable
