@@ -10,27 +10,13 @@ raw_data_n <-nrow(df)
 filtered_n <-nrow(df)
 
 ####demographics table####
-demographicsdata<- select(df, Age, Gender, Sport) %>% tbl_summary( percent = "column", by = Gender) %>%  add_p() %>% add_overall()
+demographicsdata<- select(df, Age, Gender, Sport)  %>% tbl_summary( percent = "column", by = Gender) %>%  add_p() %>% add_overall() %>% as.data.frame()
 
-data <- as.data.frame(demographicsdata) %>%
-  rename_with(~ gsub("\\*\\*", "", .)) # To remove the asterisks from the headers. 
+data <- demographicsdata %>%
+  rename_with(~ gsub("\\*\\*", "", .)) %>% # To remove the asterisks from the headers. 
+  mutate(across(everything(), ~ ifelse(is.na(.), "", .)))
 
-#Creating the table like this does not allow for control of the row height. But if original APA format is needed, this is just right. 
-# data %>% 
-#    flextable() %>% 
-#    theme_apa() %>% 
-#    autofit()
-
-demographicstable<- data %>%
-  flextable() %>%
-  set_table_properties(layout = "autofit") %>%
-  height(height = 0.3, part = "body") %>%  # Set row height for body
-  height(height = 0.5, part = "header") %>% # Set row height for header
-  font(fontname = "Times New Roman", part = "all") %>%
-  fontsize(size = 12, part = "all") %>%
-  padding(padding.top = 5, padding.bottom = 5) %>%
-  align(align = "center", part = "header") %>%
-  align(align = "center", part = "body")
+demographicstable<- data %>% apa()
 
 #### correlation table ####
 average_variables<-df %>% select(ends_with("_ave")) %>% names()
@@ -45,28 +31,41 @@ ave_corr_table<-df[,correlation_variables] %>%
 
 #### Skewness, Kurtosis and min-max range table####
 
-df_stat0<-df[, correlation_variables]%>% 
-  stat.desc() %>% 
+get_descriptive_table(df)
+
+df_stat<-df[, correlation_variables]%>% 
+  stat.desc(basic = F, norm = T) %>% 
   t() %>%
   as.data.frame() %>% 
-  select(-nbr.val, -nbr.null, -nbr.na, -var, -coef.var, - SE.mean, -sum) %>%
-  round(3)
+  select(-var, -coef.var, -SE.mean, -kurt.2SE, -normtest.W, -skew.2SE)
 
-df_stat1 <- df_stat0 %>%
+df_stat <- df_stat %>%
+  mutate(
+    normtest.p = ifelse(
+      normtest.p < 0.001,
+      "< .001",
+      as.character(round(normtest.p, 3))
+    )
+  )
+
+df_stat <- df_stat %>%
+  mutate(across(where(is.numeric), ~ round(., 3)))
+
+df_stat <- df_stat %>%
   mutate(Variable = rownames(df_stat0)) %>%
   select(Variable, everything()) %>% 
   rename(
-    Minimum = min,
-    Maximum = max,
-    Spannweite = range,
+    Median = median,
+    Schiefe = skewness,
+    Exzess = kurtosis,
     Median = median,
     Mittelwert = mean,
     "95% KI des Mittels" = CI.mean.0.95,
-    "Standardabweichung" = std.dev
+    "Standardabweichung" = std.dev,
+    "p-Wert (Shapiro-Wilk-Test)" = normtest.p
   )
 
-
-df_stat1$Variable <- c(
+df_stat$Variable <- c(
   "Alter", 
   "Locus", 
   "Variabilität", 
@@ -82,15 +81,8 @@ df_stat1$Variable <- c(
   "Baseline\nNegativer Affekt"
 )
 
-table_stat<-df_stat1 %>% flextable() %>% 
-  fontsize(size = 12) %>%  # Set font size to 12 (APA standard)
-  font(font = "Times New Roman") %>%  # APA uses Times New Roman
-  align(align = "center", part = "all") %>%  # Center-align all text
-  align(align = "right", j = 2:8) %>%  # Right-align the numeric columns
-  padding(padding = 3) %>%  # Add padding for spacing
-  width(j = 1, width = 2) %>%  # Adjust the width of the first column
-  width(j = 2:8, width = 1.5)  # Adjust the width of numeric columns
-
+ table_stat<- df_stat%>%
+  apa()
 
 #### Power analysis ####
 pwr_result <- pwr.r.test(n = NULL,         

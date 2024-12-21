@@ -3,7 +3,7 @@ if (!requireNamespace("needs", quietly = TRUE)) {
   install.packages("needs")
 }
 library(needs)
-needs(xfun, tidyverse, psych, remotes, Hmisc, flextable, gtsummary, cardx, svglite, pwr, pastecs, nlme, performance, lmerTest, HLMdiag, lmtest, jtools, mice, lattice)
+needs(xfun, tidyverse, psych, remotes, Hmisc, flextable, gtsummary, cardx, svglite, pwr, pastecs, nlme, performance, lmerTest, HLMdiag, lmtest, jtools, mice, lattice, gt)
 xfun::install_github("Enno-W/excelbib")
 library(excelbib)
 # Create .bib file from the excel list
@@ -286,4 +286,106 @@ print_all_violin_boxplots <- function(df, group_col = NULL, dodge_width = 1, fac
   
   # Print the plot
   print(plot)
+}
+
+#### function to format gt tables apa style
+
+apa <- function(x) {
+  gt(x) %>%
+    tab_options(
+      table.border.top.color = "white",
+      heading.title.font.size = px(16),
+      column_labels.border.top.width = 2,
+      column_labels.border.top.color = "black",
+      column_labels.border.bottom.width = 2,
+      column_labels.border.bottom.color = "black",
+      table_body.border.bottom.color = "black",
+      table.border.bottom.color = "white",
+      table.width = pct(100),
+      table.background.color = "white"
+    ) %>%
+    cols_align(align="center") %>%
+    tab_style(
+      style = list(
+        cell_borders(
+          sides = c("top", "bottom"),
+          color = "white",
+          weight = px(1)
+        ),
+        cell_text(
+          align="center"
+        ),
+        cell_fill(color = "white", alpha = NULL)
+      ),
+      locations = cells_body(
+        columns = everything(),
+        rows = everything()
+      )
+    )  %>%
+    opt_table_font(
+      font = list(
+        "Times New Roman",
+        "serif" # Fallback font
+      )
+    )
+}
+
+get_descriptive_table <- function(df, language = "German") {
+  library(dplyr)
+  library(pastecs)
+  
+  # Compute statistics
+  df_stat <- df %>% 
+    stat.desc(basic = FALSE, norm = TRUE) %>% 
+    t() %>% 
+    as.data.frame() %>% 
+    select(-var, -coef.var, -SE.mean, -kurt.2SE, -normtest.W, -skew.2SE)
+  
+  # Adjust normtest.p formatting
+  df_stat <- df_stat %>%
+    mutate(
+      normtest.p = ifelse(
+        normtest.p < 0.001,
+        "< .001",
+        as.character(round(normtest.p, 3))
+      )
+    )
+  
+  # Round all numeric values
+  df_stat <- df_stat %>%
+    mutate(across(where(is.numeric), ~ round(., 3)))
+  
+  # Add rownames as a variable
+  df_stat <- df_stat %>%
+    mutate(Variable = rownames(df_stat)) %>%
+    select(Variable, everything())
+  
+  # Rename columns based on language
+  if (language == "German") {
+    df_stat <- df_stat %>% 
+      rename(
+        Median = median,
+        Schiefe = skewness,
+        Exzess = kurtosis,
+        Mittelwert = mean,
+        "95% KI des Mittels" = CI.mean.0.95,
+        "Standardabweichung" = std.dev,
+        "p-Wert (Shapiro-Wilk-Test)" = normtest.p
+      )
+  } else if (language == "English") {
+    df_stat <- df_stat %>% 
+      rename(
+        Median = median,
+        Skewness = skewness,
+        Kurtosis = kurtosis,
+        Mean = mean,
+        "95% CI of Mean" = CI.mean.0.95,
+        "Standard Deviation" = std.dev,
+        "p-Value (Shapiro-Wilk Test)" = normtest.p
+      )
+  } else {
+    stop("Unsupported language. Please choose either 'German' or 'English'.")
+  }
+  
+  return(df_stat)
 }
