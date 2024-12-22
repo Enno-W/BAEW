@@ -24,10 +24,21 @@ base_variables<-df %>% select(ends_with("_base")) %>% names()
 correlation_variables<-c("Age", "Locus", "Dynamics", "completed_count", average_variables, base_variables)
 correlation_variables <- correlation_variables[!correlation_variables %in% c("PA_ave", "PA_base", "Commit_ave")]# Excluding not needed variables
 ave_corr_table<-df[,correlation_variables] %>% 
-  generate_correlation_table2(c("Alter", "Locus", "Variabilität", "Abgeschlossene\nTrainingseinheiten", "Durchschnitt\nZiellerreichung", 
-                                "Durchschnitt km pro Einheit", "Durchschnitt\nh pro Einheit", "Durchschnitt\nSessionRPE", 
-                                "Durchschnitt\nNegativer Affekt", "Baseline\nWöchentliche KM", "Baseline\nWöchentliche H", "Baseline\nWöchentliche RPE", 
-                                "Baseline\nNegativer Affekt"))
+  generate_correlation_table2(c(
+    "Alter", 
+    "Locus", 
+    "Variabilität", 
+    "n (Trainingseinheiten)", 
+    "M (Ziellerreichung)", 
+    "M (km pro Einheit)", 
+    "M (h pro Einheit)", 
+    "M (SessionRPE)", 
+    "M (Negativer Affekt)", 
+    "Baseline wöchentliche KM", 
+    "Baseline wöchentliche H", 
+    "Baseline wöchentliche RPE", 
+    "Baseline negativer Affekt"
+  ))
 
 #### Skewness, Kurtosis and min-max range table####
 
@@ -37,20 +48,21 @@ df_stat$Variable <- c(
   "Alter", 
   "Locus", 
   "Variabilität", 
-  "Abgeschlossene\nTrainingseinheiten", 
-  "Durchschnitt\nZiellerreichung", 
-  "Durchschnitt km pro Einheit", 
-  "Durchschnitt\nh pro Einheit", 
-  "Durchschnitt\nSessionRPE", 
-  "Durchschnitt\nNegativer Affekt", 
-  "Baseline\nWöchentliche KM", 
-  "Baseline\nWöchentliche H", 
-  "Baseline\nWöchentliche RPE", 
-  "Baseline\nNegativer Affekt"
+  "n (Trainingseinheiten)", 
+  "M (Ziellerreichung)", 
+  "M (km pro Einheit)", 
+  "M (h pro Einheit)", 
+  "M (SessionRPE)", 
+  "M (Negativer Affekt)", 
+  "Baseline wöchentliche KM", 
+  "Baseline wöchentliche H", 
+  "Baseline wöchentliche RPE", 
+  "Baseline negativer Affekt"
 )
 
- table_stat<- df_stat%>%
-  apa()
+table_stat<-df_stat %>% flextable() %>% flextable::theme_apa() %>% autofit()
+ 
+
 
 #### Power analysis ####
 pwr_result <- pwr.r.test(n = NULL,         

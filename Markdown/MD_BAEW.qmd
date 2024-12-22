@@ -31,8 +31,8 @@ keywords: [keyword1, keyword2, keyword3]
 bibliography: bibliography.bib
 lang: de
 format:
- apaquarto-html: default
- #apaquarto-docx: default
+ #apaquarto-html: default
+ apaquarto-docx: default
  #apaquarto-typst: 
    #keep-typ: true
   #apaquarto-pdf:
@@ -137,7 +137,7 @@ Da es sich um ein Sample mit internationalen studierenden handelte, wurde bei al
 
 Die Teilnehmenden waren erwachsene Freizeitsportler:innen mit einem bestimmten Trainingsziel.
 
-Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfohlen \[LIT\]. Basierend auf einer Poweranalyse mit 1 – β = `r round (pwr_result$power, 2)`, α = `r round (pwr_result$sig.level, 2)`, und *r* = `r round (pwr_result$r, 1)` ergab sich eine ideale Teilnehmerzahl von `r round (pwr_result$n, 0)`. Die Frage der Poweranalyse für Mehrebenenanalysen ist allerdings komplex [@Hox2017-dx]. Der Versuch, post-hoc Power des bestimmten Modells durch Simulation mit dem Paket `simr` [@Green2016] zu bestimmen, scheiterte, was teils auf die geringe Stichprobe, teils auf die Datenstruktur zurückgeführt werden kann. *N* = `r raw_data_n` Fälle ergaben sich in dem Rohdatensatz. *n* = `r raw_data_n - filtered_n` wurden von der Analyse und weiteren Befragungen ausgeschlossen, weil sie angaben, nicht an einem systematischen Trainings- oder Bewegungsprogramm teilzunehmen. Aufgrund von mehr als 50 fehlenden Datenpunkten wurden *n* = `r filtered_n - na_removed_n` Teilnehmende ausgeschlossen. Die deskriptiven Statistiken zu den demografischen Daten sind in Tabelle 1.
+Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfohlen \[LIT\]. Basierend auf einer Poweranalyse mit 1 – β = `r round (pwr_result$power, 2)`, α = `r round (pwr_result$sig.level, 2)`, und *r* = `r round (pwr_result$r, 1)` ergab sich eine ideale Teilnehmerzahl von `r round (pwr_result$n, 0)`. Die Frage der Poweranalyse für Mehrebenenanalysen ist allerdings komplex [@Hox2017-dx]. Der Versuch, post-hoc Power des bestimmten Modells durch Simulation mit dem Paket `simr` [@Green2016] zu bestimmen, scheiterte, was teils auf die kleine Stichprobe, teils auf die Datenstruktur zurückgeführt werden kann. *N* = `r raw_data_n` Fälle ergaben sich in dem Rohdatensatz. *n* = `r raw_data_n - filtered_n` wurden von der Analyse und weiteren Befragungen ausgeschlossen, weil sie angaben, nicht an einem systematischen Trainings- oder Bewegungsprogramm teilzunehmen. Aufgrund von mehr als 50 fehlenden Datenpunkten wurden *n* = `r filtered_n - na_removed_n` Teilnehmende ausgeschlossen. Die deskriptiven Statistiken zu den demografischen Daten sind in Tabelle 1.
 
 ```{r Tabelle 1}
 #| label: tbl-demogrtable
@@ -148,7 +148,7 @@ demographicstable
 
 ```
 
-Die Teilnehmenden waren durchschnittlich `r descriptives_list$Age_mean` Jahre alt (*SD* = `r descriptives_list$Age_sd`). Das Alter reichte von `r descriptives_list$Age_min` bis`r descriptives_list$Age_max`. 
+Die Teilnehmenden waren durchschnittlich `r descriptives_list$Age_mean` Jahre alt (*SD* = `r descriptives_list$Age_sd`). Das Alter reichte von `r descriptives_list$Age_min` bis`r descriptives_list$Age_max`.
 
 ## Durchführung:
 
@@ -174,8 +174,7 @@ In dem bereinigten Datensatz befanden sich immer noch `r sum(is.na(df_less_na))`
 
 Die Daten bestanden aus einem Baseline-Test und Angaben aus einem Fragebogen zu sechs darauffolgenden Trainingseinheiten. Diese wöchentlichen Angaben wurden zu Mittelwerten zusammengefasst. Außerdem wurde ausgezählt, wie viele Trainingseinheiten eine Person ausgefüllt hatte.
 
-Eine Überprüfung der Voraussetzungen für die weitere Analyse erfolgte anhand von **visueller Inspektion von Histogrammen und Q-Q-Plots aller numerischen Variablen**, sowie Shapiro-Wilk-Tests der Normalität.
-<!-- Include the figures in markdown?? -->
+Eine Überprüfung der Voraussetzungen für die weitere Analyse erfolgte anhand von **visueller Inspektion von Histogrammen und Q-Q-Plots aller numerischen Variablen**, sowie Shapiro-Wilk-Tests der Normalität. <!-- Include the figures in markdown?? -->
 
 In der Präregistrierung wurde als Haupttest eine Mehrebenenanalyse spezifiziert. Zur Aufstellung der Mehrebenenmodelle wurde der Datensatz in ein Langformat transformiert, und zwar so, dass jeder Messzeitpunkt in einer Zeile aufgeführt war. So entstanden für jede Versuchsperson sechs Zeilen für die 6 Messzeitpunkte. Die Werte, die nur zu einem Messzeitpunkt erhoben wurden, wie etwa Attributionsstil oder Alter, wiederholten sich in jeder dieser sechs Zeilen. Die Voraussage der Trainingsausfälle durch ein Mehrebeneenmodell scheiterte daran, dass diese Variable nur 6 diskrete Ausprägungen (Anzahl der abgeschlossenen Trainingseinheiten) hatte und das Modell somit nicht konvergieren konnte. Als Alternative wurden Hypothesen 1.1 und 2.1 mit einem verallgemeinerten Linearen Modell (GLMM) getestet. Für Hypothesen 1.2 und 2.2 konnte ein Mehrebenenmodell berechnet werden. Dafür wurden die wiederholten Angaben zu negativem Affekt zentriert. Die Residuen der aufgestellten Modelle erfüllten allerdings die Voraussetzung der Homoskedastizität und Normalverteilung nicht. Daher wurde explorativ ...
 
@@ -183,26 +182,25 @@ In der Präregistrierung wurde als Haupttest eine Mehrebenenanalyse spezifiziert
 
 ## Deskriptive Statistiken
 
-@tbl-stattable zeigt einen Überblick über deskriptive Statistiken aller relevanten Variablen.
-Das Alter weist eine leichte Rechtsschiefe auf, es gab also viele jüngere und wenig ältere Teilnehmende. 
+@tbl-stattable zeigt einen Überblick über deskriptive Statistiken aller relevanten Variablen. Das Alter weist eine leichte Rechtsschiefe auf, es gab also viele jüngere und wenig ältere Teilnehmende.
 
-Die Daten zum Attribution (Locus und Variabilität) folgen einer Normalverteilung, aber alle Werte fielen relativ hoch aus. Sie reichten von `r descriptives_list$Locus_min` bis `r descriptives_list$Locus_max` für den Lokus und von `r descriptives_list$Dynamics_min` bis `r descriptives_list$Dynamics_max` für die Variabilität. 
+Die Daten zum Attribution (Locus und Variabilität) folgen einer Normalverteilung, aber alle Werte fielen relativ hoch aus. Sie reichten von `r descriptives_list$Locus_min` bis `r descriptives_list$Locus_max` für den Lokus und von `r descriptives_list$Dynamics_min` bis `r descriptives_list$Dynamics_max` für die Variabilität.
 
-Die Anzahl der abgeschlossenen Trainingseinheiten, von denen es insgesamt sechs in der Studie gab, weist eine extrem linksschiefe, nicht normalverteilte Verteilung auf, da viele Personen alle Einheiten beendet haben. Ein ähnliches Muster mit vielen hohen Werten weist die durchschnittliche wahrgenommene Zielerreichung auf. 
+Für die Variablen, die nach jeder Trainingseinheit erfasst wurden, wurden für eine deskriptive Einschätzung Durchschnittswerte gebildet. Die Anzahl der abgeschlossenen Trainingseinheiten, von denen es insgesamt sechs in der Studie gab, weist eine extrem linksschiefe Verteilung auf, da `r sum(df$completed_count ==6)` Personen alle Einheiten beendet haben. Ein ähnliches Muster mit vielen hohen Werten weist die durchschnittliche wahrgenommene Zielerreichung auf. `r sum(df$Goal_ave>89)` Personen hatten Werte größer als neunzig, und sämtliche Durchschnittswerte der Ziellerreichung reichten von `r descriptives_list$Goal_ave_min` bis `r descriptives_list$Goal_ave_max`. Die Variablen der durchschnittlich gelaufenen Kilometer und Minuten pro Einheit wies viele Werte am unteren Ende der Verteilung auf und einige extreme Werte am oberen Ende. Von allen Variablen, die auf zu den Trainingseinheiten erhoben wurden, war nur die durchschnittliche wahrgenommene Trainingsintensität normalverteilt. --> P-Werte
+
 
 Im Durchschnitt
 
 <!-- Die Teilnehmenden trainierten wöchentlich *M =* `r descriptives_list$WeeklyKM_base_mean` km (*SD =* `r descriptives_list$WeeklyKM_base_sd`); *M =* `r descriptives_list$WeeklyH_base_mean` Stunden (*SD =* `r descriptives_list$WeeklyH_base_sd`); und erlebten die Anstrengung der Trainingseinheiten mit *M =* `r descriptives_list$WeeklyRPE_base_mean` (*SD =* `r descriptives_list$WeeklyRPE_base_sd`) auf der Session-RPE-Skala. -->
 
+
 ```{r}
 #| label: tbl-stattable
-#| tbl-cap: Deskriptive Statistiken
+#| tbl-cap: Deskriptive Statistiken2
 #| apa-note: Das Konfidenzintervall ist als Abstand vom Mittelwert zum unteren bzw. oberen Konfidenzintervall notiert. 
 table_stat
 ```
-
-
-@fig-overview zeigt eine Übersicht der Variablen, zur Überprüfung der Hypothesen herangezogen wurden. 
+@fig-overview zeigt eine Übersicht der Variablen, zur Überprüfung der Hypothesen herangezogen wurden.
 
 Die wöchentlichen Variablen (Kilometer, Stunden und Session RPE bei der Baseline), das Alter, die Variabilität der Attribution sowie der Positive und negative Affekt, und auch der Affekt bei der Baseline sowie die Anzahl der abgeschlossenen Trainingseinheiten <!--# see the object "vars_not_normal" --> waren signifikant. Bei diesen Variablen ist also nicht von einer Normalverteilung auszugehen.
 
@@ -216,7 +214,6 @@ Die wöchentlichen Variablen (Kilometer, Stunden und Session RPE bei der Baselin
 violin_plots
 ```
 
-
 ::: landscape
 ```{r}
 #| label: tbl-corrtable
@@ -226,13 +223,7 @@ ave_corr_table
 ```
 :::
 
-
-
-
-
 *Attributionsstil:*
-
-
 
 # Diskussion
 

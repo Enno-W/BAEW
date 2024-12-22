@@ -56,7 +56,6 @@ replace_patterns <- function(data, column_name, patterns) {
 #df <- replace_patterns(df, "Sport", patterns)
 
 # Now df will have the patterns replaced in the 'Sport' column
-
 #### Create Correlation Table #####
 generate_correlation_table <- function(df, display_names) {
   library(Hmisc)
@@ -293,9 +292,7 @@ print_all_violin_boxplots <- function(df, group_col = NULL, dodge_width = 1, fac
   print(plot)
 }
 
-
-#### function to format gt tables apa style
-
+#### function to format gt tables apa style####
 apa <- function(x) {
   gt(x) %>%
     tab_options(
@@ -336,6 +333,8 @@ apa <- function(x) {
     )
 }
 
+##Generate a talbe with descriptives
+
 get_descriptive_table <- function(df, language = "German") {
   library(dplyr)
   library(pastecs)
@@ -374,9 +373,9 @@ get_descriptive_table <- function(df, language = "German") {
         Schiefe = skewness,
         Exzess = kurtosis,
         Mittelwert = mean,
-        "95% KI des Mittels" = CI.mean.0.95,
-        "Standardabweichung" = std.dev,
-        "p-Wert (Shapiro-Wilk-Test)" = normtest.p
+        "95% KI" = CI.mean.0.95,
+        "SD" = std.dev,
+        "p-Wert " = normtest.p
       )
   } else if (language == "English") {
     df_stat <- df_stat %>% 
@@ -385,13 +384,11 @@ get_descriptive_table <- function(df, language = "German") {
         Skewness = skewness,
         Kurtosis = kurtosis,
         Mean = mean,
-        "95% CI of Mean" = CI.mean.0.95,
-        "Standard Deviation" = std.dev,
-        "p-Value (Shapiro-Wilk Test)" = normtest.p
+        "95% CI" = CI.mean.0.95,
+        "SD" = std.dev,
+        "p-Value" = normtest.p
       )
   } else {
     stop("Unsupported language. Please choose either 'German' or 'English'.")
   }
-  
-  return(df_stat)
-}
+  return(df_stat)}
