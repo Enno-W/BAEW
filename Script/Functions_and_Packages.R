@@ -3,7 +3,7 @@ if (!requireNamespace("needs", quietly = TRUE)) {
   install.packages("needs")
 }
 library(needs)
-needs(xfun, tidyverse, psych, remotes, Hmisc, flextable, gtsummary, cardx, svglite, pwr, pastecs, nlme, performance, lmerTest, HLMdiag, lmtest, jtools, mice, lattice, gt)
+needs(xfun, tidyverse, psych, remotes, Hmisc, flextable, gtsummary, cardx, svglite, pwr, pastecs, nlme, performance, lmerTest, HLMdiag, lmtest, jtools, mice, lattice)
 xfun::install_github("Enno-W/excelbib")
 library(excelbib)
 # Create .bib file from the excel list
@@ -265,7 +265,7 @@ print_all_violin_boxplots <- function(df, group_col = NULL, dodge_width = 1, fac
     geom_violin(aes(fill = Group), linewidth = 1, color = "black", 
                 show.legend = FALSE, position = position_dodge(width = dodge_width)) +
     # Boxplot
-    geom_boxplot(aes(fill = Group), outlier.size = 2, outlier.shape = 16, 
+    geom_boxplot(aes(fill = Group), outlier.size = 2, outlier.shape = 18, outlier.colour = "blue", 
                  width = 0.1, position = position_dodge(width = dodge_width), show.legend = FALSE) +
     # Raw data points with horizontal jitter
     geom_point(position = position_jitter(width = point_jitter, height = 0), 

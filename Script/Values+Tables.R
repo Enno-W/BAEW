@@ -16,7 +16,7 @@ data <- demographicsdata %>%
   rename_with(~ gsub("\\*\\*", "", .)) %>% # To remove the asterisks from the headers. 
   mutate(across(everything(), ~ ifelse(is.na(.), "", .)))
 
-demographicstable<- data %>% apa()
+demographicstable<- data %>% flextable() %>% flextable::theme_apa() %>% autofit()
 
 #### correlation table ####
 average_variables<-df %>% select(ends_with("_ave")) %>% names()
@@ -25,19 +25,19 @@ correlation_variables<-c("Age", "Locus", "Dynamics", "completed_count", average_
 correlation_variables <- correlation_variables[!correlation_variables %in% c("PA_ave", "PA_base", "Commit_ave")]# Excluding not needed variables
 ave_corr_table<-df[,correlation_variables] %>% 
   generate_correlation_table2(c(
-    "Alter", 
-    "Locus", 
-    "Variabilität", 
-    "n (Trainingseinheiten)", 
-    "M (Ziellerreichung)", 
-    "M (km pro Einheit)", 
-    "M (h pro Einheit)", 
-    "M (SessionRPE)", 
-    "M (Negativer Affekt)", 
-    "Baseline wöchentliche KM", 
-    "Baseline wöchentliche H", 
-    "Baseline wöchentliche RPE", 
-    "Baseline negativer Affekt"
+    "1. Alter", 
+    "2. Locus", 
+    "3. Variabilität", 
+    "4. n (Trainingseinheiten)", 
+    "5. M (Ziellerreichung)", 
+    "6. M (km pro Einheit)", 
+    "7. M (h pro Einheit)", 
+    "8. M (SessionRPE)", 
+    "9. M (Negativer Affekt)", 
+    "10. Baseline wöchentliche KM", 
+    "11. Baseline wöchentliche H", 
+    "12. Baseline wöchentliche RPE", 
+    "13. Baseline negativer Affekt"
   ))
 
 #### Skewness, Kurtosis and min-max range table####
