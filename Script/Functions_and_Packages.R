@@ -3,7 +3,7 @@ if (!requireNamespace("needs", quietly = TRUE)) {
   install.packages("needs")
 }
 library(needs)
-needs(xfun, tidyverse, psych, remotes, Hmisc, flextable, gtsummary, cardx, svglite, pwr, pastecs, nlme, performance, lmerTest, HLMdiag, lmtest, jtools, mice, lattice)
+needs(xfun, tidyverse, psych, remotes, Hmisc, flextable, gtsummary, cardx, svglite, pwr, pastecs, nlme, performance, lmerTest, HLMdiag, lmtest, jtools, mice, lattice, huxtable)
 xfun::install_github("Enno-W/excelbib")
 library(excelbib)
 # Create .bib file from the excel list
@@ -99,16 +99,16 @@ generate_correlation_table <- function(df, display_names) {
       values = c("", "Descriptive Statistics", "Correlations"), 
       colwidths = c(1, 2, ncol(correlation_matrix_clean))
     ) %>%
-    align(align = "center", part = "all") %>%
-    autofit() %>%
-    bold(part = "header") %>%
-    font(fontname = "Times New Roman", part = "all") %>%
-    fontsize(size = 12, part = "all") %>%
-    padding(padding.top = 3, padding.bottom = 3, part = "all") %>%
-    border_remove() %>%
-    hline_top(border = fp_border(width = 1.5), part = "header") %>%
-    hline_bottom(border = fp_border(width = 1.5), part = "body") %>%
-    hline(border = fp_border(width = 1), part = "header")
+    flextable::align(align = "center", part = "all") %>%
+    flextable::autofit() %>%
+    flextable::bold(part = "header") %>%
+    flextable::font(fontname = "Times New Roman", part = "all") %>%
+    flextable::fontsize(size = 12, part = "all") %>%
+    flextable::padding(padding.top = 3, padding.bottom = 3, part = "all") %>%
+    flextable::border_remove() %>%
+    flextable::hline_top(border = fp_border(width = 1.5), part = "header") %>%
+    flextable::hline_bottom(border = fp_border(width = 1.5), part = "body") %>%
+    flextable::hline(border = fp_border(width = 1), part = "header")
 }
 
 
@@ -150,16 +150,16 @@ generate_correlation_table2 <- function(df, display_names) {
       values = c("", "Correlations"), 
       colwidths = c(1, ncol(correlation_matrix_clean))
     ) %>%
-    align(align = "center", part = "all") %>%
-    autofit() %>%
-    bold(part = "header") %>%
-    font(fontname = "Times New Roman", part = "all") %>%
-    fontsize(size = 12, part = "all") %>%
-    padding(padding.top = 3, padding.bottom = 3, part = "all") %>%
-    border_remove() %>%
-    hline_top(border = fp_border(width = 1.5), part = "header") %>%
-    hline_bottom(border = fp_border(width = 1.5), part = "body") %>%
-    hline(border = fp_border(width = 1), part = "header")
+    flextable::align(align = "center", part = "all") %>%
+    flextable::autofit() %>%
+    flextable::bold(part = "header") %>%
+    flextable::font(fontname = "Times New Roman", part = "all") %>%
+    flextable::fontsize(size = 12, part = "all") %>%
+    flextable::padding(padding.top = 3, padding.bottom = 3, part = "all") %>%
+    flextable::border_remove() %>%
+    flextable::hline_top(border = fp_border(width = 1.5), part = "header") %>%
+    flextable::hline_bottom(border = fp_border(width = 1.5), part = "body") %>%
+    flextable::hline(border = fp_border(width = 1), part = "header")
 }
 
 ## Example usage

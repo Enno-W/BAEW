@@ -74,15 +74,25 @@ pwr_result <- pwr.r.test(n = NULL,
 #
 #### Multilevel Analysis ####
 # Nullmodell
-null_model<- lme(Goal ~ 1, 
+null_model_goal<- lme(Goal ~ 1, 
                  data=long_df, 
                  random= ~1|ID, 
                  method="ML", 
                  na.action = na.omit) # See the documentation for lme: ?lme --> other options: na.exclude, na.pass...#
 # The "1" stands for the "intercept"
 #The formula means: Fixed effects: for "Goal", only the intercepts are estimated. Random effects: "The intercept varies between participants". 
-summary(null_model)
-icc(null_model) # The ICC is a lot lower with multiple imputation
+summary(null_model_goal)
+icc_goal<--icc(null_model_goal) # The ICC is a lot lower with multiple imputation
+
+null_model_sessions<- lme(completed_count ~ 1, 
+                      data=long_df, 
+                      random= ~1|ID, 
+                      method="ML", 
+                      na.action = na.omit) 
+
+summary(null_model_sessions)
+icc(null_model_sessions)
+
 #### Model with fixed and Random effects
 #Center the time varying predictors to disentangle the repeated measurements from PA and NA traits
 long_df$PositiveAffect_centered <- long_df$PositiveAffect - ave(long_df$PositiveAffect, long_df$ID, FUN = mean)
@@ -93,8 +103,7 @@ h1.1_model <- glmer(completed_count ~ 1 + Time + Locus + Dynamics + (1 | ID),
                     data = long_df, 
                     family = "poisson")
 summary(h1.1_model)
-
-
+h1.1_table<-huxreg(h1.1_model, statistics = c("N" = "nobs", "R2" = "r.squared"))
 # Hypothesis 2.1
 h2.1_model <- glmer(completed_count ~ 1 + Time + NA_base + NegativeAffect_centered + (1 | ID), 
                     data = long_df, 
@@ -109,6 +118,7 @@ goal_model1 <- lme(Goal ~ 1+ Time+Locus+Dynamics, # This would mean I assume tha
                   na.action = na.omit, correlation = corAR1(form = ~ Time|ID))# I am not using ~ 1|ID)), because the gap between measurement points was not uniform and some data are missing. 
 summary(goal_model1)
 
+#Hypothesis 2.2
 goal_model2 <- lme(Goal ~ 1+ Time+NA_base+NegativeAffect_centered, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
                   data=long_df, 
                   random= ~ 1 |ID, method="ML", # The "|" sort of means "group by"
