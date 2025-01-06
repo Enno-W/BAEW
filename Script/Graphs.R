@@ -18,3 +18,14 @@ custom_labels<-c(
 
 violin_plots<-print_all_violin_boxplots(df[correlation_variables], facet_ncol = 2, facet_nrow = NULL, custom_labels = custom_labels
 )
+long_df$fitted <- fitted(goal_model1)
+
+ggplot(long_df, aes(x = Time, y = fitted, group = ID, color = as.factor(ID))) +
+  geom_line()+
+  labs(x = "Time", y = "Fitted Goal", title = "Predicted Goal Over Time by ID") +
+  theme_minimal()+
+  labs(
+    x = "Trainingseinheit Nr.",
+    y = "Wahrgenommene Zielerreichung",
+    color = "ID"
+  )

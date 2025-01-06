@@ -235,26 +235,26 @@ violin_plots
 
 Für jede Hypothese gab es ein Modell. Die Modelle zur Vorhersage der abgeschlossenen Trainingseinheiten sind in @tbl-hlmtable1 zu sehen, und die Modelle zur Vorhersage von wahrgenommener Zielerreichung sind in @tbl-hlmtable2 .
 
-Das Nullmodell für die Vorhersage der wahrgenommenen Zielerreichung hatte einen Intraklassenkoeffizienten von *ICC* = `r round(icc_goal$ICC_adjusted,3)`.
-Der Intraklassenkoeffizient gibt wieder, wie viel Varianz auf die Unterschiede zwischen Gruppen zurückgeführt werden kann. Für beide Modelle waren lediglich der Interzept signifikant. 
-
-Die Residuen aus den beiden Modellen zur Zielerreichung aus jeweils Attribution und Affekt waren nicht normalverteilt. Ein Shapiro-Wilk-Test ergab einen p-Wert von *p* `r shaptest_goal_attrib_p` für das erstere, und
-
 ```{r}
 #| label: tbl-hlmtable1
-#| tbl-cap: Hlm tabelle 1
-#| apa-note: \*p \< 0.05; \*\*p \< 0.01
+#| tbl-cap: Modellkoeffizienten des General Linear Models zur Vorhersage der abgeschlossenen Trainingseinheiten. 
+#| apa-note:
 
 hlmtable1
 ```
 
 ```{r}
 #| label: tbl-hlmtable2
-#| tbl-cap: Hlm tabelle 2
-#| apa-note: \*p \< 0.05; \*\*p \< 0.01
+#| tbl-cap: Hierarchisches Modell zur Vorhersage von wahrgenommener Zielerreichung
+#| apa-note: Die Interzepte und Slopes gingen als Random-Effekt in die Modellberechnung ein. Das heißt, jede Person konnte als am Anfang eine unterschiedliche wahrgenommene Zielerreichung haben, und die Veränderung über die Zeit konnte variieren. 
 
 hlmtable2
 ```
+
+Das Nullmodell für die Vorhersage der wahrgenommenen Zielerreichung hatte einen Intraklassenkoeffizienten von *ICC* = `r round(icc_goal$ICC_adjusted,3)`.
+Der Intraklassenkoeffizient gibt wieder, wie viel Varianz auf die Unterschiede zwischen Gruppen zurückgeführt werden kann. Für beide Modelle waren lediglich der Interzept signifikant. 
+
+Die Residuen aus den beiden Modellen zur Zielerreichung aus jeweils Attribution und Affekt waren nicht normalverteilt. Ein Shapiro-Wilk-Test ergab einen p-Wert von *p* `r shaptest_goal_attrib_p` für das erstere, und
 
 
 
@@ -266,6 +266,8 @@ Multiple imputation
 
 Ein hoher ICC ist aus verschiedenen Gründen wünschenswert ... 
 Laut @nezlek2008introduction sind hierarchische lineare Modelle aber auch sinnvoll, wenn der ICC niedrig ist, weil ...
+
+In der Präregistrierung war ein HLM für alle Vorhersagen angedacht. Außerdem wurde nicht wie in der Präregistrierung beschrieben das Pakte lme4 [@lme42025] verwendet, sondern nlme [@nlme2023], da es für Längsschnittstudien besser geeignet ist [@ellis2020hierarchical]. 
 
 # Literaturverzeichnis
 

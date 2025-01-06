@@ -1,4 +1,4 @@
-#### Creating a list with all commonly used descriptive statistics + other descriptive values####
+#### Creating a list with all commonly used descriptive statistics + other descriptive values ###############################################
 descriptives_list<-mean_sd_median_min_max(df)
 vars_not_normal<-which_var_not_normal(df)
 vars_not_normal_with_p_values<-which_var_not_normal_p(df) %>% mutate(across(where(is.numeric), ~ ifelse(. < 0.001, "< .001", as.character(round(.,3)))))
@@ -9,7 +9,7 @@ hist(df$Locus, breaks = 15)
 raw_data_n <-nrow(df)
 filtered_n <-nrow(df)
 
-####demographics table####
+####demographics table ###############################################
 demographicsdata<- select(df, Age, Gender, Sport)  %>% tbl_summary( percent = "column", by = Gender) %>%  add_p() %>% add_overall() %>% as.data.frame()
 
 data <- demographicsdata %>%
@@ -40,7 +40,7 @@ ave_corr_table<-df[,correlation_variables] %>%
     "13. Baseline negativer Affekt"
   ))
 
-#### Skewness, Kurtosis and min-max range table####
+#### Skewness, Kurtosis and min-max range table###############################################
 
 df_stat<-get_descriptive_table(df[, correlation_variables], language = "German")
 
@@ -72,7 +72,7 @@ pwr_result <- pwr.r.test(n = NULL,
                      alternative = "greater") 
 
 #
-#### Multilevel Analysis ####
+#### Regression Analyses ###############################################
 
 null_model_sessions<- lme(completed_count ~ 1, 
                       data=long_df, 
@@ -90,13 +90,17 @@ null_model_goal<- lme(Goal ~ 1,
                       na.action = na.omit) # See the documentation for lme: ?lme --> other options: na.exclude, na.pass...#
 # The "1" stands for the "intercept"
 #The formula means: Fixed effects: for "Goal", only the intercepts are estimated. Random effects: "The intercept varies between participants". 
+
+###ICC####
 summary(null_model_goal)
 icc_goal<--icc(null_model_goal) # The ICC is a lot lower with multiple imputation
-#### Model with fixed and Random effects
+
+###Centering###
 #Center the time varying predictors to disentangle the repeated measurements from PA and NA traits
 long_df$PositiveAffect_centered <- long_df$PositiveAffect - ave(long_df$PositiveAffect, long_df$ID, FUN = mean)
 long_df$NegativeAffect_centered <- long_df$NegativeAffect - ave(long_df$NegativeAffect, long_df$ID, FUN = mean)
 
+###General Linear Models####
 #Hypothesis 1.1
 h1.1_model <- glmer(completed_count ~ 1 + Time + Locus + Dynamics + (1 | ID), 
                     data = long_df, 
@@ -109,7 +113,13 @@ h2.1_model <- glmer(completed_count ~ 1 + Time + NA_base + NegativeAffect_center
                     family = "poisson")
 summary(h2.1_model)
 
-hlmtable1<-huxreg("Nullmodell" = null_model_sessions, "Attribution-Modell (H 1.1)" = h1.1_model, "Affekt-Modell (H 2.1)" = h2.1_model ,statistics = NULL, number_format = 3, bold_signif = 0.05) 
+### Table Output ####
+hlmtable1<-huxreg("Nullmodell" = null_model_sessions, "Attributions-Modell (H 1.1)" = h1.1_model, "Affekt-Modell (H 2.1)" = h2.1_model ,statistics = NULL, number_format = 3, bold_signif = 0.05, omit_coefs = T )
+hlmtable1[is.na(hlmtable1)] <- ""  # Replace NA with an empty string
+hlmtable1
+
+
+### Hierarchical Linear Model ####
 # Hypothesis 1.2
 goal_model1 <- lme(Goal ~ 1+ Time+Locus+Dynamics, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
                   data=long_df, 
@@ -124,8 +134,11 @@ goal_model2 <- lme(Goal ~ 1+ Time+NA_base+NegativeAffect_centered, # This would 
                   na.action = na.omit, correlation = corAR1(form = ~ Time|ID))# I am not using ~ 1|ID)), because the gap between measurement points was not uniform and some data are missing. 
 summary(goal_model2)
 
-hlmtable2<-huxreg("Nullmodell" = null_model_goal, "Attribution-Modell (H 1.1)" = goal_model1, "Affekt-Modell (H 2.1)" = goal_model2 ,statistics = NULL, number_format = 3, bold_signif = 0.05)
+### Table Output #####
+hlmtable2<-huxreg("Nullmodell" = null_model_goal, "Attributions-Modell (H 1.1)" = goal_model1, "Affekt-Modell (H 2.1)" = goal_model2 ,statistics = NULL, number_format = 3, bold_signif = 0.05)
 
+
+### Joint Model #####
 #Hypothesis 2.2 + 1.2
 goal_model3 <- lme(Goal ~ 1+ Time+Locus+Dynamics+NA_base+NegativeAffect_centered, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
                   data=long_df, 
@@ -133,16 +146,21 @@ goal_model3 <- lme(Goal ~ 1+ Time+Locus+Dynamics+NA_base+NegativeAffect_centered
                   na.action = na.omit, correlation = corAR1(form = ~ Time|ID))# I am not using ~ 1|ID)), because the gap between measurement points was not uniform and some data are missing. 
 summary(goal_model3)
 
-##### Checking Assumptions http://www.regorz-statistik.de/inhalte/r_HLM_2.html#####
+##### Checking Assumptions http://www.regorz-statistik.de/inhalte/r_HLM_2.html ###############################################
 goal1_residuals <- hlm_resid(goal_model1, level=1) # Funktion aus HLMdiag-Package
-#Now, I use the ".ls.resid" to make a graph. these are the "Least squares residuals", and they have the advantage that influences from level 2 and 1 are not mixed up. 
+#Now, I use the "..._residuals" to make a graph. these are the "Least squares residuals", and they have the advantage that influences from level 2 and 1 are not mixed up. 
 ggplot(data = goal1_residuals, aes(.ls.resid)) +
   geom_histogram(aes(y = after_stat(density)), bins=10) +
   stat_function(fun = dnorm,
                 args = list(mean = mean(goal1_residuals$.ls.resid),
-                            sd = sd(goal1_residuals$.ls.resid)), size=2) # Seems pretty normal to me. 
-######Shapiro test of normality#######
-shaptest_goal_attrib <-shapiro.test(goal1_residuals$.ls.resid)# not normally distributed after removing Participants with too many NaS
+                            sd = sd(goal1_residuals$.ls.resid)), linewidth=2) 
+
+###### Shapiro test of normality ###############################################
+
+#### Test for the Attribution Model #####
+shaptest_goal_attrib <-shapiro.test(goal1_residuals$.ls.resid)
+
+### Markdown Output of p value ####
 shaptest_goal_attrib_p <-if (shaptest_goal_attrib$p.value < 0.001) {
   "< .001"
 } else {
@@ -150,15 +168,17 @@ shaptest_goal_attrib_p <-if (shaptest_goal_attrib$p.value < 0.001) {
 }
 goal2_residuals <- hlm_resid(goal_model2, level=1)
 
+### Test for the Affect model ####
+shaptest_goal_affect<-shapiro.test(goal2_residuals$.ls.resid)
 
-shaptest_goal_affect<-shapiro.test(goal1_residuals$.ls.resid)
-
+### Markdown Output ####
 shaptest_goal_affect_p <-if (shaptest_goal_affect$p.value < 0.001) {
   "< .001"
 } else {
   round( shaptest_goal_affect$p.value, 3)
 }
-# Testing for homoscedasticity: The varianz of residuals must be constant for all values
+
+##### Testing for homoscedasticity and Outliers: The variance of residuals must be constant for all values####
 ggplot(data=goal1_residuals, aes(x=.ls.fitted, y=.ls.resid)) +
   geom_point() # Weird linear patterns emerge: This means, homoscedasticity is violated. 
 # Outliers
