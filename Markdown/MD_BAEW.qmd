@@ -31,8 +31,8 @@ keywords: [keyword1, keyword2, keyword3]
 bibliography: bibliography.bib
 lang: de
 format:
- apaquarto-html: default
- #apaquarto-docx: default
+ #apaquarto-html: default
+ apaquarto-docx: default
  #apaquarto-typst: 
    #keep-typ: true
   #apaquarto-pdf:
@@ -72,7 +72,9 @@ source(magic_path("Import+Bereinigung.R"))
 source(magic_path("Values+Tables.R")); source(magic_path("Graphs.R"))
 ```
 
-Die Empfehlungen zu regelmäßiger physischer Aktivität [PA, @caspersen1985physical] der WHO [@WHO2010] werden von nur etwa 26% der erwachsenen Bevölkerung in Deutschland in Bezug auf Muskel- und Ausdauertraining erreicht [@RKI_2022]. Das hat großen gesundheitlichen und finanziellen Schaden zur Folge. @Ding2016 gingen der Frage nach, welche Kosten sich jährlich und weltweit durch Produktivitätsausfälle und Behandlungskosten als Folge von Inaktivität ergeben. Als Endergebnis nennen die Autor:innen, dass der Gesamtbetrag einer konservativen Schätzung nach zwischen 19 und 182 Milliarden, einer weniger konservativen Schätzung nach allerdings zwischen 47 und 339 Milliarden Dollar liegt. Dabei sind die gesundheitlichen Vorteile von PA ermutigend. Menschen, die ein relativ hohes Niveau an PA berichten, zeigen eine deutlich reduzierte Mortalität [@Warburton2006]. Auch Studien mit direkten Messmethoden kommen zu diesem Ergebnis. So fanden @Myers2004 in einer Analyse der Trainingskapazität von Männern im fortgeschrittenen Erwachsenenalter eine um etwa 20% reduzierte Mortalität pro Zuwachs des Aktivitätsniveaus um ein metabolisches Äquivalent. Eine Erklärung dafür ist, dass aktivere Individuen seltener an chronischen Krankheiten erkranken. @Lee2012 berichten in einer Meta-Analyse, dass die Krankheitslast von Herz-Kreislaufkrankheiten, Krebs und Diabetes bei Inaktivität um 6-10% erhöht ist und dass damit eine um mehr als ein halbes Jahr verkürzte durchschnittliche Lebenserwartung einhergeht. Körperliche Aktivität bringt auch Vorteile für die psychische Gesundheit. Das geschieht sowohl durch die Veränderung physiologischer als auch psychologischer Zustände im Körper [@Mikkelsen2017]. Einschränkend ist anzumerken, dass sich eine solche Wirkung nicht immer zeigt. Beispielsweise zeigt sich PA effektiv in der Behandlung, nicht aber in der Prävention von Depression [@Carter2016; @Paluska2000].
+Die Empfehlungen zu regelmäßiger physischer Aktivität [PA, @caspersen1985physical] der WHO [@WHO2010] werden von nur etwa 26% der erwachsenen Bevölkerung in Deutschland in Bezug auf Muskel- und Ausdauertraining erreicht [@RKI_2022]. Das hat großen gesundheitlichen und finanziellen Schaden zur Folge. @Ding2016 gingen der Frage nach, welche Kosten sich jährlich und weltweit durch Produktivitätsausfälle und Behandlungskosten als Folge von Inaktivität ergeben. Als Endergebnis nennen die Autor:innen, dass der Gesamtbetrag einer konservativen Schätzung nach zwischen 19 und 182 Milliarden, einer weniger konservativen Schätzung nach allerdings zwischen 47 und 339 Milliarden Dollar liegt. Dabei sind die gesundheitlichen Vorteile von PA ermutigend. Menschen, die ein relativ hohes Niveau an PA berichten, zeigen eine deutlich reduzierte Mortalität [@Warburton2006]. Auch Studien mit direkten Messmethoden kommen zu diesem Ergebnis. So fanden @Myers2004 in einer Analyse der Trainingskapazität von Männern im fortgeschrittenen Erwachsenenalter eine um etwa 20% reduzierte Mortalität pro Zuwachs des Aktivitätsniveaus um ein metabolisches Äquivalent. Eine Erklärung dafür ist, dass aktivere Individuen seltener an chronischen Krankheiten erkranken. @Lee2012 berichten in einer Meta-Analyse, dass die Krankheitslast von Herz-Kreislaufkrankheiten, Krebs und Diabetes bei Inaktivität um 6-10% erhöht ist und dass damit eine um mehr als ein halbes Jahr verkürzte durchschnittliche Lebenserwartung einhergeht. Körperliche Aktivität bringt auch Vorteile für die psychische Gesundheit. Das geschieht sowohl durch die Veränderung physiologischer als auch psychologischer Zustände im Körper [@Mikkelsen2017].
+
+Die Wirkung von PA gegen Depression ist eine vieldiskutierte Forschungsfrage, die noch nicht abschließend geklärt ist. @Ledochowski2016 kommen in einer systematischen Literaturrecherche zu dem Ergebnis, dass depressive Symptomatik sich durch moderate, zum Trainingszustand des:der Patientin passende PA reduzieren lässt, und dass sich dadurch affektive Zustände verbessern. Die Autor:innen 😇 sprechen die Empfehlung aus, Bewegung als Teil der Behandlung von Depression zu nutzen. In einer systematischen Literaturrecherche der Cochrane-Datenbank [@Cooney08] äußern sich die Autor:innen eher zurückhaltend. Die Effekte für Depression sind allenfalls moderat, und bei alleinigem Einbezug von rigoros kontrollierten Studien entziehen sich die Effekte statistischer Signifikanz. Es gibt außerdem Befunde, die zeigen, dass PA zwar effektiv in der Behandlung, nicht aber in der Prävention von Depression [@Carter2016; @Paluska2000] ist. Die Forschungsgruppe um Ioannis D. Morres berichtet ermutigendere Ergebnisse. In einer Meta-Analyse zu aerobischer Bewegung finden @Morres2018 mittlere bis große Effekte in der Behandlung von Depression. Hier zeigen sich Hinweise, dass z.B. eine Berücksichtigung der Vorlieben für Sport wichtig ist. Die Art der Bewegungs-Intervention spielt eine Rolle und bedarf weiterer Forschung.
 
 Der Fokus von Studien zur Bewegungsförderung lag bisher auf Interventionen, die inaktive Personen dazu ermutigen, sich mehr zu bewegen und auf der Adhärenz zu solchen Interventionen [siehe z.B. @Gillison2009]. Weniger Studien befassten sich mit der Frage, welche Faktoren die Aufrechterhaltung einer Bewegungsgewohnheit von Personen, die bereits gewohnheitsmäßig aktiv sind, beeinflussen [z.B. @Stetson2005]. Das Rückfallpräventionsmodell (Relapse Prevention Model, @Marlatt1984) könnte einen geeigneten Rahmen zur Untersuchung dieser Fragestellung darstellen.
 
@@ -80,7 +82,7 @@ Der Fokus von Studien zur Bewegungsförderung lag bisher auf Interventionen, die
 
 ## Physische Aktivität und Bewegung
 
-Physische Aktivität (physical activity [PA]), auch *körperliche Aktivität* [z.B. @Krug2013] wird in vielen Definitionen als mechanistisch verstanden. So definiert @caspersen1985physical physische Aktivität als jedwede Aktivität der Skelettmuskeln, die einen Energieumsatz zur Folge hat. Andere Autor:innen unterscheiden sich in der Definition von physischer Aktivät in den Bedeutungsnuancen. So spezifizieren beispielsweise @hollmann2009sportmedizin, dass die Aktivität in einer *Steigerung* des Energieumsatzes resultieren muss, um als PA zu gelten. Zweifelsohne sind klare und einfache Definitionen essenziell für den wissenschaftlichen Zugang zu diesem Phänomen. @Piggin2020 argumentiert jedoch, dass diese reduktionistische Auffassung von PA wird dem komplexen Erleben und Verhalten im Zusammenhang mit physicher Aktivität nicht gerecht wird und steht einer ganzheitlichen Betrachtung im Wege steht. Das ist auch im Einklang mit dem Biopsychosozialen Ansatz \[\[\[LIT\]\]\]. Um den Zusammenhang psychischer Phänomene (Affekt, Attribution) mit PA in dem Kontext der Gesundheitsförderung zu diskutieren, übernehme ich daher die Definition von @Piggin2020: "Physical activity involves people moving, acting and performing within culturally specific spaces and contexts, and influenced by a unique array of interests, emotions, ideas, instructions and relationships." (S. 5).
+Physische Aktivität (physical activity [PA]), auch *körperliche Aktivität* [z.B. @Krug2013] wird in vielen Definitionen als mechanistisch verstanden. So definiert @caspersen1985physical physische Aktivität als jedwede Aktivität der Skelettmuskeln, die einen Energieumsatz zur Folge hat. Andere Autor:innen unterscheiden sich in der Definition von physischer Aktivät in den Bedeutungsnuancen. So spezifizieren beispielsweise @hollmann2009sportmedizin, dass die Aktivität in einer *Steigerung* des Energieumsatzes resultieren muss, um als PA zu gelten. Zweifelsohne sind klare und einfache Definitionen essenziell für den wissenschaftlichen Zugang zu diesem Phänomen. @Piggin2020 argumentiert jedoch, dass diese reduktionistische Auffassung von PA wird dem komplexen Erleben und Verhalten im Zusammenhang mit physicher Aktivität nicht gerecht wird und steht einer ganzheitlichen Betrachtung im Wege steht. Das ist auch im Einklang mit dem Biopsychosozialen Ansatz [@Engel1977], der auf dem biomedizinischen Ansatz aufbaut und ihn erweitert. Im Gegensatz zum krankheits- und defizitorientierten Biomedizinischen Ansatz berücksichtigt der Biopsychosoziale Ansatz auch psychische und soziale Faktoren, zusätzliche zu den biologischen Faktoren. Um den Zusammenhang psychischer Phänomene (Affekt, Attribution) mit PA in dem Kontext der Gesundheitsförderung zu diskutieren, übernehme ich daher die Definition von @Piggin2020: "Physical activity involves people moving, acting and performing within culturally specific spaces and contexts, and influenced by a unique array of interests, emotions, ideas, instructions and relationships." (S. 5).
 
 Bewegungsadhärenz (exercise adherence, z.B. [@Mcauley1994]) beinhaltet das Einhalten von selbst-oder fremdgesetzten Zielen im Zusammenhang mit PA [@Buckworth2007] und hat in der Regel das Ziel der Bewegungsförderung in einem gesundheitlichen Kontext [@Ainsworth2020].
 
@@ -251,12 +253,9 @@ hlmtable1
 hlmtable2
 ```
 
-Das Nullmodell für die Vorhersage der wahrgenommenen Zielerreichung hatte einen Intraklassenkoeffizienten von *ICC* = `r round(icc_goal$ICC_adjusted,3)`.
-Der Intraklassenkoeffizient gibt wieder, wie viel Varianz auf die Unterschiede zwischen Gruppen zurückgeführt werden kann. Für beide Modelle waren lediglich der Interzept signifikant. 
+Das Nullmodell für die Vorhersage der wahrgenommenen Zielerreichung hatte einen Intraklassenkoeffizienten von *ICC* = `r round(icc_goal$ICC_adjusted,3)`. Der Intraklassenkoeffizient gibt wieder, wie viel Varianz auf die Unterschiede zwischen Gruppen zurückgeführt werden kann. Für beide Modelle waren lediglich der Interzept signifikant.
 
 Die Residuen aus den beiden Modellen zur Zielerreichung aus jeweils Attribution und Affekt waren nicht normalverteilt. Ein Shapiro-Wilk-Test ergab einen p-Wert von *p* `r shaptest_goal_attrib_p` für das erstere, und
-
-
 
 *Attributionsstil:*
 
@@ -264,10 +263,9 @@ Die Residuen aus den beiden Modellen zur Zielerreichung aus jeweils Attribution 
 
 Multiple imputation
 
-Ein hoher ICC ist aus verschiedenen Gründen wünschenswert ... 
-Laut @nezlek2008introduction sind hierarchische lineare Modelle aber auch sinnvoll, wenn der ICC niedrig ist, weil ...
+Ein hoher ICC ist aus verschiedenen Gründen wünschenswert ... Laut @nezlek2008introduction sind hierarchische lineare Modelle aber auch sinnvoll, wenn der ICC niedrig ist, weil ...
 
-In der Präregistrierung war ein HLM für alle Vorhersagen angedacht. Außerdem wurde nicht wie in der Präregistrierung beschrieben das Pakte lme4 [@lme42025] verwendet, sondern nlme [@nlme2023], da es für Längsschnittstudien besser geeignet ist [@ellis2020hierarchical]. 
+In der Präregistrierung war ein HLM für alle Vorhersagen angedacht. Außerdem wurde nicht wie in der Präregistrierung beschrieben das Pakte lme4 [@lme42025] verwendet, sondern nlme [@nlme2023], da es für Längsschnittstudien besser geeignet ist [@ellis2020hierarchical].
 
 # Literaturverzeichnis
 

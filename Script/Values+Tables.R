@@ -74,14 +74,7 @@ pwr_result <- pwr.r.test(n = NULL,
 #
 #### Regression Analyses ###############################################
 
-null_model_sessions<- lme(completed_count ~ 1, 
-                      data=long_df, 
-                      random= ~1|ID, 
-                      method="ML", 
-                      na.action = na.omit) 
-
-summary(null_model_sessions)
-
+###ICC####
 # Nullmodell
 null_model_goal<- lme(Goal ~ 1, 
                       data=long_df, 
@@ -90,8 +83,6 @@ null_model_goal<- lme(Goal ~ 1,
                       na.action = na.omit) # See the documentation for lme: ?lme --> other options: na.exclude, na.pass...#
 # The "1" stands for the "intercept"
 #The formula means: Fixed effects: for "Goal", only the intercepts are estimated. Random effects: "The intercept varies between participants". 
-
-###ICC####
 summary(null_model_goal)
 icc_goal<--icc(null_model_goal) # The ICC is a lot lower with multiple imputation
 
@@ -105,21 +96,21 @@ long_df$NegativeAffect_centered <- long_df$NegativeAffect - ave(long_df$Negative
 h1.1_model <- glmer(completed_count ~ 1 + Time + Locus + Dynamics + (1 | ID), 
                     data = long_df, 
                     family = "poisson")
+tidy(h1.1_model, effects = "fixed", conf.int = TRUE) # see huxreg documentation as for why this is necessary. This is defining a "tidy()-function"
 summary(h1.1_model)
 
 # Hypothesis 2.1
 h2.1_model <- glmer(completed_count ~ 1 + Time + NA_base + NegativeAffect_centered + (1 | ID), 
                     data = long_df, 
                     family = "poisson")
+tidy(h2.1_model, effects = "fixed", conf.int = TRUE)
 summary(h2.1_model)
 
 ### Table Output ####
-hlmtable1<-huxreg("Nullmodell" = null_model_sessions, "Attributions-Modell (H 1.1)" = h1.1_model, "Affekt-Modell (H 2.1)" = h2.1_model ,statistics = NULL, number_format = 3, bold_signif = 0.05, omit_coefs = T )
-hlmtable1[is.na(hlmtable1)] <- ""  # Replace NA with an empty string
-hlmtable1
-
+hlmtable1<-huxreg("Attributions-Modell (H 1.1)" = h1.1_model, "Affekt-Modell (H 2.1)" = h2.1_model ,statistics = NULL, number_format = 3, bold_signif = 0.05, omit_coefs = "Time" , error_pos = "right")
 
 ### Hierarchical Linear Model ####
+
 # Hypothesis 1.2
 goal_model1 <- lme(Goal ~ 1+ Time+Locus+Dynamics, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
                   data=long_df, 
@@ -135,16 +126,8 @@ goal_model2 <- lme(Goal ~ 1+ Time+NA_base+NegativeAffect_centered, # This would 
 summary(goal_model2)
 
 ### Table Output #####
-hlmtable2<-huxreg("Nullmodell" = null_model_goal, "Attributions-Modell (H 1.1)" = goal_model1, "Affekt-Modell (H 2.1)" = goal_model2 ,statistics = NULL, number_format = 3, bold_signif = 0.05)
+hlmtable2<-huxreg("Nullmodell" = null_model_goal, "Attributions-Modell (H 1.1)" = goal_model1, "Affekt-Modell (H 2.1)" = goal_model2 ,statistics = NULL, number_format = 3, bold_signif = 0.05, tidy_args =  list(effects = "fixed"), error_pos="right")# only use fixed effects in the parentheses
 
-
-### Joint Model #####
-#Hypothesis 2.2 + 1.2
-goal_model3 <- lme(Goal ~ 1+ Time+Locus+Dynamics+NA_base+NegativeAffect_centered, # This would mean I assume that the fluctuations of affect across time predict goal Achivement
-                  data=long_df, 
-                  random= ~ Time |ID, method="ML", # The "|" sort of means "group by"
-                  na.action = na.omit, correlation = corAR1(form = ~ Time|ID))# I am not using ~ 1|ID)), because the gap between measurement points was not uniform and some data are missing. 
-summary(goal_model3)
 
 ##### Checking Assumptions http://www.regorz-statistik.de/inhalte/r_HLM_2.html ###############################################
 goal1_residuals <- hlm_resid(goal_model1, level=1) # Funktion aus HLMdiag-Package
@@ -188,7 +171,7 @@ ggplot(data = goal1_residuals, aes( x= .ls.resid, y= as.factor(ID))) + theme_gra
 # Homoskedastizität
 ggplot(data=goal1_residuals, aes(x=.fitted, y=.resid)) +
   geom_point()
-qqmath(~resid(goal_model3), # Interesting, especially low values of "goal" are messy
+qqmath(~resid(goal_model2), # Interesting, especially low values of "goal" are messy
        type = c("p", "g"), 
        xlab = "Theoretical Quantiles", 
        ylab = "Standardized Residuals")
