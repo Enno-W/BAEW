@@ -195,6 +195,13 @@ Für die Variablen, die nach jeder Trainingseinheit erfasst wurden, wurden für 
 
 Die Baseline-Werte waren allesamt rechtsschief und nicht normalverteilt. Die wöchentlich gelaufenen Kilometer wiesen zwei Ausreißer mit extremen Werten von mehr als 200km pro Woche auf. Diese Werte waren nicht plausibel, da sie, mit der wöchentlichen Laufzeit verrechnet, eine Durchschnittsgeschwindigkeit von jeweils `r df$WeeklyKM_base[6]/df$WeeklyH_base[6]` und `r df$WeeklyKM_base[10]/df$WeeklyH_base[10]` Kilometern pro Stunde suggerierten. Da diese Baseline-Werte aber nicht in die statistischen Analysen einbezogen wurden, wurden die Daten dieser Versuchspersonen beibehalten.
 
+```{r}
+#| label: tbl-stattable
+#| tbl-cap: Deskriptive Statistiken 
+#| apa-note: Das Konfidenzintervall ist als Abstand vom Mittelwert zum unteren bzw. oberen Konfidenzintervall notiert. 
+table_stat
+```
+
 ## Korrelationen
 
 Laut @Cohen2013 kann der Korrelationskoeffizient in den Sozialwissenschaften ab *r* = .1 als schwach, ab *r* = .3 als mittelmäßig und von *r* = .5 bis *r* = 1 als stark interpretiert werden. Die Korrelationen für relevante Variablen sind in @tbl-corrtable dargestellt. In Bezug auf die Hypothesen ist lediglich einer der Korrelationswerte bedeutsam. Zwischen dem negativen Affekt und der wahrgenommen Zielerreichung zeigte sich eine signifikante, mittelmäßig stark ausgeprägte Korrelation. Je mehr negativen Affekt Versuchspersonen also nach einer Trainingseinheit im Durchschnitt berichteten, desto schlechter erlebten sie ihre Zielerreichung. Negativer Affekt nach der Trainingseinheit war ebenso mit einer höheren RPE im Durchschnitt assoziiert.
@@ -202,13 +209,6 @@ Laut @Cohen2013 kann der Korrelationskoeffizient in den Sozialwissenschaften ab 
 Die Trainingsbezogen Variablen brachten mehrere starke, signifikante Korrelationen hervor. Die Baseline-Werte für Trainingszeit und Distanz waren sowohl mit der gemittelten Trainingszeit als auch der Distanz aus den einzelnen Trainingseinheiten signifikant korreliert. Auch die anderen Baseline-Werte korrelierten mit den Durchschnittswerten aus den einzelnen Trainingseinheiten.
 
 Sowohl als zwischen Baseline-RPE und Baseline negativem Affekt als auch der durchschnittlichen Session-RPE und negativem Affekt ergaben sich positive Korrelationen. Je höher der negative Affekt ausgeprägt war, desto anstrengender erlebten Personen ihre Trainingseinheit.
-
-```{r}
-#| label: tbl-stattable
-#| tbl-cap: Deskriptive Statistiken 
-#| apa-note: Das Konfidenzintervall ist als Abstand vom Mittelwert zum unteren bzw. oberen Konfidenzintervall notiert. 
-table_stat
-```
 
 <!-- Die Teilnehmenden trainierten wöchentlich *M =* `r descriptives_list$WeeklyKM_base_mean` km (*SD =* `r descriptives_list$WeeklyKM_base_sd`); *M =* `r descriptives_list$WeeklyH_base_mean` Stunden (*SD =* `r descriptives_list$WeeklyH_base_sd`); und erlebten die Anstrengung der Trainingseinheiten mit *M =* `r descriptives_list$WeeklyRPE_base_mean` (*SD =* `r descriptives_list$WeeklyRPE_base_sd`) auf der Session-RPE-Skala. -->
 

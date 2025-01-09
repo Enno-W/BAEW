@@ -10,9 +10,9 @@ raw_data_n <-nrow(df)
 df_filtered<-df %>% filter(Programme == 1|is.na(Programme))
 filtered_n <-nrow(df_filtered)
 #### NAs and Outliers ####
-df_filtered$NA_amount <- rowSums(is.na(df_filtered))
-df_filtered$NA_amount <- rowSums(is.na(df_filtered))
-df_less_na<-df_filtered %>% filter(NA_amount<50)#removing participants with more than 50 missings
+df_filtered$missings_amount <- rowSums(is.na(df_filtered))
+df_filtered$missings_amount <- rowSums(is.na(df_filtered))
+df_less_na<-df_filtered %>% filter(missings_amount<50)#removing participants with more than 50 missings
 na_removed_n <-nrow(df_less_na)
 df<-df_less_na
 
