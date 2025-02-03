@@ -119,8 +119,8 @@ Es ergibt sich die Forschungsfrage, inwiefern Affekt oder der Attributionsstil d
 Wenn negatives Gefühlserleben und eine undienliche Attribution nach einem Rückfall häufiger zum schlussenlichen Unterlassen des Gesundheitsverhaltens fühlen, dann sollten ein tendenziell negatives Affekterleben und ein external - stabiler Attributionsstil weniger Trainingseinheiten und eine schwächer ausgeprägte Erreichung des gesetzen Ziels erreichen.
 
 H1: Ein internal - variabler Attributionsstil sagt weniger Trainingsausfälle (H1.1), sowie eine geringere wahrgenommene Zielerreichung vorher (H1.2).
-
 H2: Ein negativeres Affekterleben sagt mehr Trainingsausfälle (H2.1) und eine geringere wahrgenommene Zielerreichung vorher (H2.2).
+
 
 # Methode
 
@@ -177,7 +177,7 @@ Diese Arbeit wurde mit R (Version `r getRversion()` ) und Quarto (Version 1.6.32
 
 Versuchspersonen, die angaben, kein konkretes Trainingsziel zu verfolgen oder mehr als 50 fehlende Werte hatten, wurden von der weiteren Analyse ausgeschlossen. Die Variablen zu Stolz und der Motivstruktur wurden eliminert, da sie in dieser Arbeit nicht berücksichtigt werden. Für Werte, bei denen die Versuchspersonen einen Bereich (z.B. 10-15 km) angegeben hatten, wurde der Durchschnitt der beiden Werte gebildet. Da die Skalen von Affekt und Attribution keine gegensätzlich gepolten Items beinhalten, wurde keine Umpolung vorgenommen. Angaben zur Sportart mit dem Wortbestandteil "lauf" wurden zu "Laufen", und mit "kraft" zu "Kraftsport" zusammengefasst.
 
-In dem bereinigten Datensatz befanden sich immer noch `r sum(is.na(df_less_na))` fehlende Werte, die per multipler Imputation per *predictive mean matching* mit 5 Iterationen geschätzt wurden. Bei diesem Verfahren werden in mehreren Durchläufen bzw. Iterationen plausible Werte anhand der Verteilungen und Beziehungen der Variablen untereinander geschätzt [@Li2015]. 
+In dem bereinigten Datensatz befanden sich immer noch `r sum(is.na(df_less_na))` fehlende Werte, die per multipler Imputation per *predictive mean matching* mit 5 Iterationen geschätzt wurden. Bei diesem Verfahren werden in mehreren Durchläufen bzw. Iterationen plausible Werte anhand der Verteilungen und Beziehungen der Variablen untereinander geschätzt [@Li2015].
 
 Die Daten bestanden aus einem Baseline-Test und Angaben aus einem Fragebogen zu sechs darauffolgenden Trainingseinheiten. Diese wöchentlichen Angaben wurden zu Mittelwerten zusammengefasst. Außerdem wurde ausgezählt, wie viele Trainingseinheiten eine Person ausgefüllt hatte.
 
@@ -214,6 +214,7 @@ Sowohl als zwischen Baseline-RPE und Baseline negativem Affekt als auch der durc
 
 <!-- Die Teilnehmenden trainierten wöchentlich *M =* `r descriptives_list$WeeklyKM_base_mean` km (*SD =* `r descriptives_list$WeeklyKM_base_sd`); *M =* `r descriptives_list$WeeklyH_base_mean` Stunden (*SD =* `r descriptives_list$WeeklyH_base_sd`); und erlebten die Anstrengung der Trainingseinheiten mit *M =* `r descriptives_list$WeeklyRPE_base_mean` (*SD =* `r descriptives_list$WeeklyRPE_base_sd`) auf der Session-RPE-Skala. -->
 
+
 ::: landscape
 ```{r}
 #| label: tbl-corrtable
@@ -240,17 +241,14 @@ violin_plots
 Für jede Hypothese gab es ein Modell. Die Modelle zur Vorhersage der abgeschlossenen Trainingseinheiten sind in @tbl-hlmtable1 zu sehen, und die Modelle zur Vorhersage von wahrgenommener Zielerreichung sind in @tbl-hlmtable2 .
 
 ### Vorhersagen von Trainingsausfällen
-
 Teilnehmende wurden in der Studie dazu aufgefordert, sechs Trainingseinheiten zu dokumentieren und die Fragebögen dazu auszufüllen. Ich habe ausgezählt, zu wie vielen Trainingseinheiten Daten vorlagen und diese Anzahl als Dummy-Variable eingetragen. Die resultierende Variable, also die Anzahl der Trainingsausfälle, war linksschief, und da es nur sechs diskrete Ausprägungen gab, scheiterte die Analyse mit einem Hierarchischen Linearen Modell. Stattdessen habe ich ein **General Linear Model** verwendet, was passender für Daten mit diskreten Ausprägungen ist.
 
 ```{r}
-#| label: tbl-glm
+#| label: tbl-hlmtable1
 #| tbl-cap: Modellkoeffizienten des General Linear Models zur Vorhersage der abgeschlossenen Trainingseinheiten. 
 #| apa-note:
 glmtable
 ```
-
-@tbl-glm zeigt,
 
 ```{r}
 #| label: tbl-hlmtable2
@@ -272,6 +270,7 @@ Das Nullmodell für die Vorhersage der wahrgenommenen Zielerreichung hatte einen
 Plot_across_time
 ```
 
+
 ```{r}
 #| label: fig-na_predictive_value
 #| fig-cap: The Figure Caption
@@ -282,13 +281,14 @@ Plot_across_time
 PA_NA_plot
 ```
 
+
+
 ```{r}
 #| label: fig-homoscedasticity
 #| fig-cap: The Figure Caption
 #| apa-note: This is the note below the figure.
 #| fig-height: 10
 #| fig-width: 10
-
 Homoscedasticity_plot
 ```
 
