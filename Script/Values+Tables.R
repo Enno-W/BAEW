@@ -5,9 +5,6 @@ vars_not_normal_with_p_values<-which_var_not_normal_p(df) %>% mutate(across(wher
 stat.desc(df$Locus, basic = F, norm = T)
 stat.desc(df$Dynamics, basic = F, norm = T)
 hist(df$Locus, breaks = 15)
-#### counting excluded participants ####
-raw_data_n <-nrow(df)
-filtered_n <-nrow(df)
 
 ####demographics table ###############################################
 demographicsdata<- select(df, Age, Gender, Sport)  %>% tbl_summary( percent = "column", by = Gender) %>%  add_p() %>% add_overall() %>% as.data.frame()
@@ -90,7 +87,11 @@ icc_goal<--icc(null_model_goal) # The ICC is a lot lower with multiple imputatio
 #Center the time varying predictors to disentangle the repeated measurements from PA and NA traits
 long_df$PositiveAffect_centered <- long_df$PositiveAffect - ave(long_df$PositiveAffect, long_df$ID, FUN = mean)
 long_df$NegativeAffect_centered <- long_df$NegativeAffect - ave(long_df$NegativeAffect, long_df$ID, FUN = mean)
-
+long_df$Locus_centered <- long_df$Locus - ave(long_df$Locus, long_df$ID, FUN = mean)
+long_df$Dynamics_centered <- long_df$Dynamics - ave(long_df$Dynamics, long_df$ID, FUN = mean)
+long_df$NA_base_centered <- long_df$NA_base - ave(long_df$NA_base, long_df$ID, FUN = mean)
+x<-scale(long_df$Locus)
+x==long_df$Locus_centered
 ###General Linear Models####
 #Hypothesis 1.1
 h1.1_model <- glmer(completed_count ~ 1 + Time + Locus + Dynamics + (1 | ID), 
@@ -100,7 +101,7 @@ tidy(h1.1_model, effects = "fixed", conf.int = TRUE) # see huxreg documentation 
 summary(h1.1_model)
 
 # Hypothesis 2.1
-h2.1_model <- glmer(completed_count ~ 1 + Time + NA_base + NegativeAffect_centered + (1 | ID), 
+h2.1_model <- glmer(completed_count ~ 1 + Time + NA_base_centered + NegativeAffect_centered + (1 | ID), 
                     data = long_df, 
                     family = "poisson")
 tidy(h2.1_model, effects = "fixed", conf.int = TRUE)
@@ -109,19 +110,18 @@ summary(h2.1_model)
 ### Table Output ####
 glmtable<-huxreg("Attributions-Modell (H 1.1)" = h1.1_model, "Affekt-Modell (H 2.1)" = h2.1_model ,statistics = NULL, number_format = 3, bold_signif = 0.05, omit_coefs = "Time" , error_pos = "right")
 
-### Hierarchical Linear Model ####
 
-#################Combined Advanced Models #################
+#################Hierarchical linear models #################
 
 #Without PA
-goal_model_centered <- lme(
-  Goal ~ 1 + Time + Locus + Dynamics +  NegativeAffect_centered,
-  data = long_df,
-  random = ~ Time| ID,
-  method = "ML",
-  na.action = na.omit,
-  correlation = corAR1(form = ~ Time | ID)
-)
+# goal_model_centered <- lme(
+#   Goal ~ 1 + Time + Locus_centered + Dynamics +  NegativeAffect_centered,
+#   data = long_df,
+#   random = ~ Time| ID,
+#   method = "ML",
+#   na.action = na.omit,
+#   correlation = corCAR1(form = ~ Time | ID)
+# )
 
 goal_model_raw <- lme(
   Goal ~ 1 + Time + Locus + Dynamics +  NegativeAffect,
@@ -132,7 +132,7 @@ goal_model_raw <- lme(
   correlation = corAR1(form = ~ Time | ID)
 )
 
-anova(goal_model_centered,goal_model_raw) # Both models are good,  choose this /(raw)) because it is slightly better and easier for interpretation 
+#anova(goal_model_centered,goal_model_raw) # Both models are good,  choose this /(raw)) because it is slightly better and easier for interpretation 
 
 goal_model_basic_pa <- lme(
   Goal ~ 1 + Time + Locus + Dynamics +  NegativeAffect+ PositiveAffect,
@@ -145,8 +145,8 @@ goal_model_basic_pa <- lme(
 summary(goal_model_basic_pa)
 anova(goal_model_raw, goal_model_basic_pa)
 ### Table Output #####
-hlmtable<-huxreg("Nullmodell" = null_model_goal, "NA zentriert" = goal_model_centered, "NA nicht zentriert" = goal_model_raw , "Modell mit PA" = goal_model_basic_pa ,statistics = NULL, number_format = 3, bold_signif = 0.05, tidy_args =  list(effects = "fixed"), error_pos="right")# only use fixed effects in the parentheses
-
+hlmtable<-huxreg("Nullmodell" = null_model_goal, "NA nicht zentriert" = goal_model_raw , "Modell mit PA" = goal_model_basic_pa ,statistics = NULL, number_format = 3, bold_signif = 0.05, tidy_args =  list(effects = "fixed"), error_pos="right")# only use fixed effects in the parentheses
+#"NA zentriert" = goal_model_centered
 
 ##### Checking Assumptions http://www.regorz-statistik.de/inhalte/r_HLM_2.html ###############################################
 goal_model_pa_residuals  <- hlm_resid(goal_model_basic_pa, level=1) # Funktion aus HLMdiag-Package

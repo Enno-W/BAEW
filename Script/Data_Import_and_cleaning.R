@@ -1,5 +1,4 @@
 #### Import and data cleansing ####
-# The commands in this script lead to the data frame that is loaded from the script "Import+Bereinigung.R". This script is not used in the markdown file
 ####Importing the dataset####
 load(magic_path("241021PRIMOCA_data.Rdata"))
 sum(is.na(df))

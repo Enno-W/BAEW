@@ -1,6 +1,6 @@
 #### Import and data cleansing ####
-# The commands in this script lead to the data frame that is loaded from the script "Import+Bereinigung.R". This script is not used in the markdown file
-####Importing the dataset####
+# The commands in this script lead to the data frame that is loaded from the script "Data import and cleaning. This script is not used in the markdown file
+####Importing the original dataset to get data on missings etc. ####
 load(magic_path("241021PRIMOCA_data.Rdata")) # load original data
 sum(is.na(df))
 #### counting excluded participants ####

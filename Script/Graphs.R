@@ -40,4 +40,4 @@ negative_affect_plot<-plot_model(goal_model_basic_pa, type = "pred", terms = "Ne
 positive_affect_plot<-plot_model(goal_model_basic_pa, type = "pred", terms = "PositiveAffect", show.data = T, jitter = .2, grid = T, axis.title = c("Positive Affect", "Wahrgenommene Zielerreichung"), title = "Vorhergesagte Ziellerreichung durch PA")
 
 PA_NA_plot <-negative_affect_plot+positive_affect_plot
-plot_model(goal_model_basic_pa, type = "diag") 
+Homoscedasticity_plot <-plot_model(goal_model_basic_pa, type = "diag") 
