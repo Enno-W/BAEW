@@ -32,9 +32,9 @@ bibliography: bibliography.bib
 lang: de
 format:
  apaquarto-html: default
- #apaquarto-docx: default
- #apaquarto-typst: 
-   #keep-typ: true
+ apaquarto-docx: default
+ apaquarto-typst: 
+   keep-typ: true
   #apaquarto-pdf:
     # Can be jou (journal), man (manuscript), stu (student), or doc (document)
     #documentmode: man
@@ -118,9 +118,7 @@ Es ergibt sich die Forschungsfrage, inwiefern Affekt oder der Attributionsstil d
 
 Wenn negatives Gefühlserleben und eine undienliche Attribution nach einem Rückfall häufiger zum schlussenlichen Unterlassen des Gesundheitsverhaltens fühlen, dann sollten ein tendenziell negatives Affekterleben und ein external - stabiler Attributionsstil weniger Trainingseinheiten und eine schwächer ausgeprägte Erreichung des gesetzen Ziels erreichen.
 
-H1: Ein internal - variabler Attributionsstil sagt weniger Trainingsausfälle (H1.1), sowie eine geringere wahrgenommene Zielerreichung vorher (H1.2).
-H2: Ein negativeres Affekterleben sagt mehr Trainingsausfälle (H2.1) und eine geringere wahrgenommene Zielerreichung vorher (H2.2).
-
+H1: Ein internal - variabler Attributionsstil sagt weniger Trainingsausfälle (H1.1), sowie eine geringere wahrgenommene Zielerreichung vorher (H1.2). H2: Ein negativeres Affekterleben sagt mehr Trainingsausfälle (H2.1) und eine geringere wahrgenommene Zielerreichung vorher (H2.2).
 
 # Methode
 
@@ -173,17 +171,25 @@ Die Daten der einzelnen Versuchspersonen wurden mittels eines Pseudonyms zugeord
 
 ## Statistische Analyse
 
-Diese Arbeit wurde mit R (Version `r getRversion()` ) und Quarto (Version 1.6.32) erstellt. Die reproduzierbare Version dieses Artikels ist auf GitHub unter <https://github.com/Enno-W/BAEW> verfügbar.
+\###**Datenbereinigung und Transformation**\* Diese Arbeit wurde mit R (Version `r getRversion()` ) und Quarto (Version 1.6.32) erstellt. Die reproduzierbare Version dieses Artikels ist auf GitHub unter <https://github.com/Enno-W/BAEW> verfügbar.
 
 Versuchspersonen, die angaben, kein konkretes Trainingsziel zu verfolgen oder mehr als 50 fehlende Werte hatten, wurden von der weiteren Analyse ausgeschlossen. Die Variablen zu Stolz und der Motivstruktur wurden eliminert, da sie in dieser Arbeit nicht berücksichtigt werden. Für Werte, bei denen die Versuchspersonen einen Bereich (z.B. 10-15 km) angegeben hatten, wurde der Durchschnitt der beiden Werte gebildet. Da die Skalen von Affekt und Attribution keine gegensätzlich gepolten Items beinhalten, wurde keine Umpolung vorgenommen. Angaben zur Sportart mit dem Wortbestandteil "lauf" wurden zu "Laufen", und mit "kraft" zu "Kraftsport" zusammengefasst.
 
 In dem bereinigten Datensatz befanden sich immer noch `r sum(is.na(df_less_na))` fehlende Werte, die per multipler Imputation per *predictive mean matching* mit 5 Iterationen geschätzt wurden. Bei diesem Verfahren werden in mehreren Durchläufen bzw. Iterationen plausible Werte anhand der Verteilungen und Beziehungen der Variablen untereinander geschätzt [@Li2015].
 
-Die Daten bestanden aus einem Baseline-Test und Angaben aus einem Fragebogen zu sechs darauffolgenden Trainingseinheiten. Diese wöchentlichen Angaben wurden zu Mittelwerten zusammengefasst. Außerdem wurde ausgezählt, wie viele Trainingseinheiten eine Person ausgefüllt hatte.
+Die Daten bestanden aus einem Baseline-Test und Angaben aus einem Fragebogen zu sechs darauffolgenden Trainingseinheiten. Diese wöchentlichen Angaben wurden zu Mittelwerten zusammengefasst. Außerdem wurde ausgezählt, wie viele Trainingseinheiten eine Person ausgefüllt hatte. Für die Berechnung der Hierarchischen linearen Modelle wurden die Daten in ein Langformat transformiert, und zwar so, dass jeder Messzeitpunkt in einer Zeile aufgeführt war. So entstanden für jede Versuchsperson sechs Zeilen für die 6 Messzeitpunkte. Die Werte, die nur zu einem Messzeitpunkt erhoben wurden, wie etwa Attributionsstil oder Alter, wiederholten sich in jeder dieser sechs Zeilen.
 
-Eine Überprüfung der Voraussetzungen für die weitere Analyse erfolgte anhand von **visueller Inspektion von Histogrammen und Q-Q-Plots aller numerischen Variablen**, sowie Shapiro-Wilk-Tests der Normalität. <!-- Include the figures in markdown?? -->
+\###**Statistische Tests**
 
-In der Präregistrierung wurde als Haupttest eine Mehrebenenanalyse spezifiziert. Zur Aufstellung der Mehrebenenmodelle wurde der Datensatz in ein Langformat transformiert, und zwar so, dass jeder Messzeitpunkt in einer Zeile aufgeführt war. So entstanden für jede Versuchsperson sechs Zeilen für die 6 Messzeitpunkte. Die Werte, die nur zu einem Messzeitpunkt erhoben wurden, wie etwa Attributionsstil oder Alter, wiederholten sich in jeder dieser sechs Zeilen. Die Voraussage der Trainingsausfälle durch ein Mehrebeneenmodell scheiterte daran, dass diese Variable nur 6 diskrete Ausprägungen (Anzahl der abgeschlossenen Trainingseinheiten) hatte und das Modell somit nicht konvergieren konnte. Als Alternative wurden Hypothesen 1.1 und 2.1 mit einem verallgemeinerten Linearen Modell (GLMM) getestet. Für Hypothesen 1.2 und 2.2 konnte ein Mehrebenenmodell berechnet werden. Dafür wurden die wiederholten Angaben zu negativem Affekt zentriert. Die Residuen der aufgestellten Modelle erfüllten allerdings die Voraussetzung der Homoskedastizität und Normalverteilung nicht. Daher wurde explorativ ...
+In der Präregistrierung wurde als Haupttest eine Mehrebenenanalyse, auch bekannt als **Hierarchisches Lineares Modell** spezifiziert. Die Voraussage der Trainingsausfälle durch ein Mehrebeneenmodell scheiterte daran, dass diese Variable nur 6 diskrete Ausprägungen (Anzahl der abgeschlossenen Trainingseinheiten) hatte, wodurch nicht genug Variablität entstand und das Modell somit nicht konvergieren konnte. Als Alternative wurden Hypothesen 1.1 und 2.1 mit einem verallgemeinerten Linearen Modell (GLMM) getestet. Für Hypothesen 1.2 und 2.2 konnte ein Mehrebenenmodell berechnet werden.
+
+**Hierarchische Lineare Modelle** Hierarchische Lineare Modelle stellen komplexe statistische Verfahren dar, die besonders gut für längsschnittliche Daten geeignet sind [@Nezlek2006]. Der Vorteil solcher Modelle ist, dass "genestete" Daten in die Analyse mit einbezogen werden können. Im vorliegenden Datensatz sind die Daten eines Individuums über die sechs Messzeitpunkte hinweg nicht unabhängig voneinander, sondern die Daten sind im Individuum "genestet". Schließlich reagiert jede Versuchsperson unterschiedlich auf die Anforderungen dieser Studie. Bei manchen Versuchspersonen könnte die wahrgenommene Zielerreichung über die Zeit hinweg steigen, bei anderen wiederum könnte sie weniger stark steigen oder sogar sinken. Das Interzept, also der Startpunkt der Vorhersagegeraden eines jeden Individuums, könnte sich ebenso unterscheiden, schließlich starten nicht alle mit genau dem gleichen Ausmaß an wahrgenommener Zielerreichung. Im vorliegenden Modell wird dem Rechnung getragen, indem die Veränderung über die Zeit je nach Person (ID) als **random effect** in das Modell eingeht. Dabei wird im Modell zugellassen, dass sowohl das Interzept als auch die Steigung ("slope") frei variieren. Daneben gibt es aber auch Effekte, von denen erwartet wird, dass sie alle Versuchspersonen in gleicher Weise beeinflussen, wenn auch unterschiedlich stark. In diesem Modell sind das der negative Affekt nach der Trainingseinheit, beziehungsweise der Lokus und die Variabilität des Attributionsstils.
+
+Bei hierarchischen linearen Modellen ergibt sich die Frage der Zentrierung.
+
+Um die Intraklassen-Korrelation zu berechnen, wurde zunächst ein Nullmodell berechnet. Bei einem Nullmodell handelt es sich um die einfachste mögliche Form eines hierarchischen linearen Modells.
+
+Dafür wurden die wiederholten Angaben zu negativem Affekt zentriert. Die Residuen der aufgestellten Modelle erfüllten allerdings die Voraussetzung der Homoskedastizität und Normalverteilung nicht. Daher wurde explorativ ...
 
 # Ergebnisse
 
@@ -214,7 +220,6 @@ Sowohl als zwischen Baseline-RPE und Baseline negativem Affekt als auch der durc
 
 <!-- Die Teilnehmenden trainierten wöchentlich *M =* `r descriptives_list$WeeklyKM_base_mean` km (*SD =* `r descriptives_list$WeeklyKM_base_sd`); *M =* `r descriptives_list$WeeklyH_base_mean` Stunden (*SD =* `r descriptives_list$WeeklyH_base_sd`); und erlebten die Anstrengung der Trainingseinheiten mit *M =* `r descriptives_list$WeeklyRPE_base_mean` (*SD =* `r descriptives_list$WeeklyRPE_base_sd`) auf der Session-RPE-Skala. -->
 
-
 ::: landscape
 ```{r}
 #| label: tbl-corrtable
@@ -241,6 +246,7 @@ violin_plots
 Für jede Hypothese gab es ein Modell. Die Modelle zur Vorhersage der abgeschlossenen Trainingseinheiten sind in @tbl-hlmtable1 zu sehen, und die Modelle zur Vorhersage von wahrgenommener Zielerreichung sind in @tbl-hlmtable2 .
 
 ### Vorhersagen von Trainingsausfällen
+
 Teilnehmende wurden in der Studie dazu aufgefordert, sechs Trainingseinheiten zu dokumentieren und die Fragebögen dazu auszufüllen. Ich habe ausgezählt, zu wie vielen Trainingseinheiten Daten vorlagen und diese Anzahl als Dummy-Variable eingetragen. Die resultierende Variable, also die Anzahl der Trainingsausfälle, war linksschief, und da es nur sechs diskrete Ausprägungen gab, scheiterte die Analyse mit einem Hierarchischen Linearen Modell. Stattdessen habe ich ein **General Linear Model** verwendet, was passender für Daten mit diskreten Ausprägungen ist.
 
 ```{r}
@@ -249,6 +255,8 @@ Teilnehmende wurden in der Studie dazu aufgefordert, sechs Trainingseinheiten zu
 #| apa-note:
 glmtable
 ```
+
+# Hierarchiche Lineare Modelle
 
 ```{r}
 #| label: tbl-hlmtable2
@@ -270,7 +278,6 @@ Das Nullmodell für die Vorhersage der wahrgenommenen Zielerreichung hatte einen
 Plot_across_time
 ```
 
-
 ```{r}
 #| label: fig-na_predictive_value
 #| fig-cap: The Figure Caption
@@ -280,8 +287,6 @@ Plot_across_time
 
 PA_NA_plot
 ```
-
-
 
 ```{r}
 #| label: fig-homoscedasticity
