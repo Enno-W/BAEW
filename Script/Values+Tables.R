@@ -83,25 +83,17 @@ null_model_goal<- lme(Goal ~ 1,
 summary(null_model_goal)
 icc_goal<--icc(null_model_goal) # The ICC is a lot lower with multiple imputation
 
-###Centering###
-#Center the time varying predictors to disentangle the repeated measurements from PA and NA traits
-long_df$PositiveAffect_centered <- long_df$PositiveAffect - ave(long_df$PositiveAffect, long_df$ID, FUN = mean)
-long_df$NegativeAffect_centered <- long_df$NegativeAffect - ave(long_df$NegativeAffect, long_df$ID, FUN = mean)
-long_df$Locus_centered <- long_df$Locus - ave(long_df$Locus, long_df$ID, FUN = mean)
-long_df$Dynamics_centered <- long_df$Dynamics - ave(long_df$Dynamics, long_df$ID, FUN = mean)
-long_df$NA_base_centered <- long_df$NA_base - ave(long_df$NA_base, long_df$ID, FUN = mean)
-x<-scale(long_df$Locus)
-x==long_df$Locus_centered
+
 ###General Linear Models####
-#Hypothesis 1.1
-h1.1_model <- glmer(completed_count ~ 1 + Time + Locus + Dynamics + (1 | ID), 
+#Hypothese 1.1 Ein internal - variabler Attributionsstil sagt weniger Trainingsausfälle voraus
+h1.1_model <- glmer(completed_count ~ 1 + Time + Locus_centered + Dynamics_centered + (1 | ID), 
                     data = long_df, 
                     family = "poisson")
 tidy(h1.1_model, effects = "fixed", conf.int = TRUE) # see huxreg documentation as for why this is necessary. This is defining a "tidy()-function"
 summary(h1.1_model)
 
 # Hypothesis 2.1
-h2.1_model <- glmer(completed_count ~ 1 + Time + NA_base_centered + NegativeAffect_centered + (1 | ID), 
+h2.1_model <- glmer(completed_count ~ 1 + Time + NA_base_centered + NegativeAffect_cm_centered + (1 | ID), 
                     data = long_df, 
                     family = "poisson")
 tidy(h2.1_model, effects = "fixed", conf.int = TRUE)
@@ -112,19 +104,11 @@ glmtable<-huxreg("Attributions-Modell (H 1.1)" = h1.1_model, "Affekt-Modell (H 2
 
 
 #################Hierarchical linear models #################
+long_df$Goal_log <-log(long_df$Goal)
+long_df$Goal_log[is.infinite(long_df$Goal_log)] <- 0.000001
 
-#Without PA
-# goal_model_centered <- lme(
-#   Goal ~ 1 + Time + Locus_centered + Dynamics +  NegativeAffect_centered,
-#   data = long_df,
-#   random = ~ Time| ID,
-#   method = "ML",
-#   na.action = na.omit,
-#   correlation = corCAR1(form = ~ Time | ID)
-# )
-
-goal_model_raw <- lme(
-  Goal ~ 1 + Time + Locus + Dynamics +  NegativeAffect,
+null_model_goal<-lme(
+  Goal_log ~1,
   data = long_df,
   random = ~ 1| ID,
   method = "ML",
@@ -132,23 +116,157 @@ goal_model_raw <- lme(
   correlation = corAR1(form = ~ Time | ID)
 )
 
-#anova(goal_model_centered,goal_model_raw) # Both models are good,  choose this /(raw)) because it is slightly better and easier for interpretation 
-
-goal_model_basic_pa <- lme(
-  Goal ~ 1 + Time + Locus + Dynamics +  NegativeAffect+ PositiveAffect,
+goal_model1 <- lme(
+  Goal_log ~ 1 + Time + Locus_centered + Dynamics_centered ,
   data = long_df,
   random = ~ 1| ID,
   method = "ML",
   na.action = na.omit,
   correlation = corAR1(form = ~ Time | ID)
 )
-summary(goal_model_basic_pa)
-anova(goal_model_raw, goal_model_basic_pa)
+
+goal_model2 <- lme(
+  Goal_log ~ 1 + Time + Locus_centered + Dynamics_centered +  NegativeAffect_cm_centered,
+  data = long_df,
+  random = ~ 1| ID,
+  method = "ML",
+  na.action = na.omit,
+  correlation = corAR1(form = ~ Time | ID)
+)
+goal_model3 <- lme(
+  Goal_log ~ 1 + Time + Locus_centered + Dynamics_centered +  NegativeAffect_cm_centered + NA_base_centered, 
+  data = long_df,
+  random = ~ 1| ID,
+  method = "ML",
+  na.action = na.omit,
+  correlation = corAR1(form = ~ Time | ID)
+)
+
+
+
 ### Table Output #####
-hlmtable<-huxreg("Nullmodell" = null_model_goal, "NA nicht zentriert" = goal_model_raw , "Modell mit PA" = goal_model_basic_pa ,statistics = NULL, number_format = 3, bold_signif = 0.05, tidy_args =  list(effects = "fixed"), error_pos="right")# only use fixed effects in the parentheses
-#"NA zentriert" = goal_model_centered
+hlmtable<-huxreg("Nullmodell" = null_model_goal, 
+                 "Modell 1" = goal_model1 , 
+                 "Modell 2" = goal_model2 ,
+                 "Modell 3" = goal_model3 ,
+                 statistics = NULL, 
+                 number_format = 3, 
+                 bold_signif = 0.05, 
+                 tidy_args =  list(effects = "fixed"), error_pos="right")
 
-##### Checking Assumptions http://www.regorz-statistik.de/inhalte/r_HLM_2.html ###############################################
+#####Überprüfen der Voraussetzungen  http://www.regorz-statistik.de/inhalte/r_HLM_2.html ###############################################
+# Extrahieren der Residuen
+Goal_residuals <- hlm_resid(goal_model3, level=1, include.ls = T) 
+########Normality Plots #####
+# Normality Plot with least square residuals
+ndist_plot_km_ls <- ggplot(data = Goal_residuals  , aes(.ls.resid)) +
+  geom_histogram(aes(y = after_stat(density)), bins=30) +
+  stat_function(fun = dnorm,
+                args = list(mean = mean(Goal_residuals  $.ls.resid),
+                            sd = sd(Goal_residuals  $.ls.resid)), linewidth=2) # The "groups" (measurement points) are small, thus some are "rank deficient" - the regular residuals provide a less biased estimate
+
+# Normality Plot with residuals
+ndist_plot_km<- ggplot(data = Goal_residuals, aes(.resid)) +
+  geom_histogram(aes(y = after_stat(density)),
+                 bins = 30,
+                 fill = "gray80",
+                 color = "black") +
+  stat_function(
+    fun = dnorm,
+    args = list(
+      mean = mean(Goal_residuals$.resid),
+      sd = sd(Goal_residuals$.resid)
+    ),
+    linewidth = 1,
+    color = "black",
+    linetype = "dashed"
+  ) +
+  labs(
+    x = "Residuals",
+    y = "Density"
+  ) +
+  theme_classic(base_size = 12) +
+  theme(
+    axis.title = element_text(size = 12),
+    axis.text = element_text(size = 10),
+    panel.border = element_rect(fill = NA, color = "black")
+  )
+
+# QQ line
+qqplot_km<-ggplot(Goal_residuals, aes(sample = .resid)) +
+  stat_qq(shape = 21, color = "black", fill = "gray80", size = 2) +
+  stat_qq_line(color = "black", linetype = "dashed") +
+  labs(
+    x = "Theoretical Quantiles",
+    y = "Sample Quantiles"
+  ) +
+  theme_classic(base_size = 12) +
+  theme(
+    axis.title = element_text(size = 12),
+    axis.text = element_text(size = 10),
+    panel.border = element_rect(fill = NA, color = "black")
+  )
+
+
+
+###### Tests of normality ###############################################
+
+#### Test for the Attribution Model #####
+ntest_shapiro_km <-shapiro.test(Goal_residuals $.resid)  
+ntest_ks_km <-ks.test(Goal_residuals  $.resid, "pnorm", mean(Goal_residuals  $.resid), sd(Goal_residuals  $.resid), exact = T)
+
+######Variance Incluence Factor ####
+model_SessionKM_2_lmer <- lmer(
+  SessionKM_lead1 ~ 
+    Pride_cm_centered * PA_cm_centered +
+    Pride_cm_centered * Dynamics_centered + 
+    Pride_cm_centered * Locus_centered + 
+    Pride_cm_centered * Globality_centered +
+    (1 | ID),
+  data = long_df,
+  na.action = na.omit,
+  REML = TRUE
+)
+vif(model_SessionKM_2_lmer) 
+
+
+##### Testing for homoscedasticity (homogeneity of variance of residuals), and outliers in the residuals####
+
+resid_plot_km<-ggplot(data = Goal_residuals, aes(x = .fitted, y = .resid)) +
+  geom_point(shape = 21, color = "black", fill = "gray80", size = 2) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  labs(
+    x = "Fitted Values",
+    y = "Residuals",
+    title = NULL
+  ) +
+  theme_classic(base_size = 12) +
+  theme(
+    axis.title = element_text(size = 12),
+    axis.text = element_text(size = 10),
+    panel.border = element_rect(fill = NA, color = "black")
+  )
+
+#resid_plot_km+resid_plot_km_no_logtransform
+# Outliers (All)
+ggplot(data = Goal_residuals , aes(y= .resid)) + theme_gray() + geom_boxplot()
+
+#Outliers per individual
+outl_plot_km <- ggplot(Goal_residuals, aes(x = .resid, y = ID)) +
+  geom_boxplot(outlier.shape = 21, outlier.fill = "gray80", outlier.color = "black", outlier.size = 2) +
+  labs(
+    y = "Individual No.",
+    x = "Residuals"
+  ) +
+  theme_classic(base_size = 12) +
+  theme(
+    axis.title = element_text(size = 12),
+    axis.text = element_text(size = 10),
+    panel.border = element_rect(fill = NA, color = "black")
+  )
+
+
+
 goal_model_pa_residuals  <- hlm_resid(goal_model_basic_pa, level=1) # Funktion aus HLMdiag-Package
 #Now, I use the "..._residuals" to make a graph. these are the "Least squares residuals", and they have the advantage that influences from level 2 and 1 are not mixed up. 
 ggplot(data = goal_model_pa_residuals , aes(.ls.resid)) +

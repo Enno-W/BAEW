@@ -17,6 +17,8 @@ na_removed_n <-nrow(df_less_na)
 df<-df_less_na
 
 load(magic_path("df.Rdata"))
+
+
 #####Convert Data to long format#####
 weekly_measures<-select(df, matches("_[1-6]$")) %>% names()# This is a regex, a regular expression to find a certain pattern. The Dollar sign is for "Ends with". Learn more here: https://github.com/ziishaned/learn-regex/blob/master/translations/README-de.md
 
@@ -35,4 +37,24 @@ long_df<-long_df %>% rename( PositiveAffect=PA,NegativeAffect="NA")
 nrow(long_df)== nrow(df)*6
 df$Goal_5[1]==long_df$Goal[5]# The 5th measurement point of "Goal" is equal to the variable "Goal_5" of participant number 1 in the original df. 
 
+###Zentrieren der Stabilen Prädiktoren anhand des Gesamtmittelwerts, und der variablen Prädiktoren Pride und Affekt anhand des Gruppenmittelwerts
 
+long_df[, c("Dynamics_centered",
+            "Locus_centered",
+            "Globality_centered",
+            "NA_base_centered",
+            "PA_base_centered")] <- scale(
+              long_df[, c("Dynamics",
+                          "Locus",
+                          "Globality", 
+                          "NA_base",
+                          "PA_base")],
+              center = TRUE, scale = FALSE)
+
+# Zentrieren von negativem Affekt anhand des Gruppenmittelwerts
+long_df <- long_df %>%
+  group_by(ID) %>%
+  mutate(across(c(NegativeAffect), 
+                ~ . - mean(., na.rm = TRUE), 
+                .names = "{.col}_cm_centered")) %>%
+  ungroup()
