@@ -18,8 +18,7 @@ demographicstable<- data %>% flextable() %>% flextable::theme_apa() %>% autofit(
 #### correlation table ####
 average_variables<-df %>% select(ends_with("_ave")) %>% names()
 base_variables<-df %>% select(ends_with("_base")) %>% names()
-correlation_variables<-c("Age", "Locus", "Dynamics", "completed_count", average_variables, base_variables)
-correlation_variables <- correlation_variables[!correlation_variables %in% c("PA_ave", "PA_base", "Commit_ave")]# Excluding not needed variables
+correlation_variables<-c("Age", "Locus", "Dynamics", "completed_count", "Goal_ave", "NA_ave", "NA_base")
 ave_corr_table<-df[,correlation_variables] %>% 
   generate_correlation_table2(c(
     "1. Alter", 
@@ -27,14 +26,8 @@ ave_corr_table<-df[,correlation_variables] %>%
     "3. Variabilität", 
     "4. n (Trainingseinheiten)", 
     "5. M (Ziellerreichung)", 
-    "6. M (km pro Einheit)", 
-    "7. M (h pro Einheit)", 
-    "8. M (SessionRPE)", 
-    "9. M (Negativer Affekt)", 
-    "10. Baseline wöchentliche KM", 
-    "11. Baseline wöchentliche H", 
-    "12. Baseline wöchentliche RPE", 
-    "13. Baseline negativer Affekt"
+    "6. M (Negativer Affekt)", 
+    "7. Negativer Affekt bei Baseline Messung"
   ))
 
 #### Skewness, Kurtosis and min-max range table###############################################
@@ -47,13 +40,7 @@ df_stat$Variable <- c(
   "Variabilität", 
   "n (Trainingseinheiten)", 
   "M (Ziellerreichung)", 
-  "M (km pro Einheit)", 
-  "M (h pro Einheit)", 
-  "M (SessionRPE)", 
   "M (Negativer Affekt)", 
-  "Baseline wöchentliche KM", 
-  "Baseline wöchentliche H", 
-  "Baseline wöchentliche RPE", 
   "Baseline negativer Affekt"
 )
 
@@ -85,62 +72,168 @@ icc_goal<--icc(null_model_goal) # The ICC is a lot lower with multiple imputatio
 
 
 ###General Linear Models####
-#Hypothese 1.1 Ein internal - variabler Attributionsstil sagt weniger Trainingsausfälle voraus
-h1.1_model <- glmer(completed_count ~ 1 + Time + Locus_centered + Dynamics_centered + (1 | ID), 
+#Hypothese 1.1 Ein internal - variabler Attributionsstil sagt weniger Trainingsausfälle voraus; # Hypothesis 2.1 Ein negatives Affekterleben sagt mehr Trainingsausfälle voraus
+count_model <- glmer(completed_count ~ 1 + Time + 
+                       Locus_centered + 
+                       Dynamics_centered + 
+                       NA_base_centered+
+                       NegativeAffect_cm_centered + 
+                       PositiveAffect_cm_centered+ 
+                       SessionRPE_cm_centered+ 
+                       PA_base_centered+
+                       (1 | ID), 
                     data = long_df, 
                     family = "poisson")
-tidy(h1.1_model, effects = "fixed", conf.int = TRUE) # see huxreg documentation as for why this is necessary. This is defining a "tidy()-function"
-summary(h1.1_model)
-
-# Hypothesis 2.1
-h2.1_model <- glmer(completed_count ~ 1 + Time + NA_base_centered + NegativeAffect_cm_centered + (1 | ID), 
-                    data = long_df, 
-                    family = "poisson")
-tidy(h2.1_model, effects = "fixed", conf.int = TRUE)
-summary(h2.1_model)
+tidy_model<-tidy(count_model, effects = "fixed", p.value=TRUE ,conf.int = TRUE) # see huxreg documentation as for why this is necessary. This is defining a "tidy()-function"
+summary(count_model)
 
 ### Table Output ####
-glmtable<-huxreg("Attributions-Modell (H 1.1)" = h1.1_model, "Affekt-Modell (H 2.1)" = h2.1_model ,statistics = NULL, number_format = 3, bold_signif = 0.05, omit_coefs = "Time" , error_pos = "right")
+glmtable<-huxreg("Modell 1" = count_model ,
+                 statistics = c("Anzahl der Beobachtungen im Modell" ="nobs", 
+                                "Freiheitsgrade" = "df.residual"), 
+                 number_format = 3, 
+                 bold_signif = 0.05, 
+                 error_pos = "right",
+                 coefs = c("Interzept"                      = "(Intercept)",
+                           "Attributionsstil: Lokus"        = "Locus_centered",
+                           "Attributionsstil: Variabilität" = "Dynamics_centered",
+                           "Negativer Affekt (Trait)"       = "NA_base_centered",
+                           "Negativer Affekt (State)"       = "NegativeAffect_cm_centered",
+                           "Positiver Affekt (Trait)"       = "PA_base_centered",
+                           "Positiver Affekt (State)"       = "PositiveAffect_cm_centered",
+                           "Wahrgenommene Erschöpfung"      = "SessionRPE_cm_centered",
+                           "Zeit"                           = "Time"))
 
 
-#################Hierarchical linear models #################
+####Binomiales Modell ###
+long_df<-long_df%>% mutate(completion_status = ifelse(completed_count == 6, 1, 0))
+
+long_df <- long_df %>%
+  mutate(
+    Locus_z = scale(Locus),
+    Dynamics_z = scale(Dynamics),
+    NA_base_z = scale(NA_base),
+    NegativeAffect_z = scale(NegativeAffect)
+  )
+count_model_binomial <- glmer(completion_status ~ 1 +
+                       Locus_z + 
+                       Dynamics_z + 
+                       NA_base_z +
+                       NegativeAffect_z +
+                       (1 | ID), 
+                     data = long_df, 
+                     family = "binomial")
+
+binomialglmm_table<-huxreg("Modell 1" = count_model_binomial ,
+                 statistics = c("Anzahl der Beobachtungen im Modell" ="nobs", 
+                                "Freiheitsgrade" = "df.residual"), 
+                 number_format = 3, 
+                 bold_signif = 0.05, 
+                 error_pos = "right",
+                 coefs = c("Interzept"                      = "(Intercept)",
+                           "Attributionsstil: Lokus"        = "Locus_z",
+                           "Attributionsstil: Variabilität" = "Dynamics_z",
+                           "Negativer Affekt (Trait)"       = "NA_base_z",
+                           "Negativer Affekt (State)"       = "NegativeAffect_z"))
+
+### Direkter Vergleich der Gruppenunterschiede
+df<-df%>% mutate(completion_status = ifelse(completed_count == 6, 1, 0))
+t.test(NA_ave ~ completion_status, data = df)
+t.test(Dynamics ~ completion_status, data = df)
+t.test(NA_base ~ completion_status, data = long_df)
+t.test(Locus ~ completion_status, data = long_df)
+
+
+## Ausgabe der Werte in einer Tabelle ##
+# Load required packages
+# Run t-tests
+test_results <- list(
+  NA_ave = t.test(NA_ave ~ completion_status, data = df),
+  Dynamics = t.test(Dynamics ~ completion_status, data = df),
+  NA_base = t.test(NA_base ~ completion_status, data = long_df),
+  Locus = t.test(Locus ~ completion_status, data = long_df)
+)
+
+# Sample sizes per group (assuming consistent across vars)
+n1 <- table(df$completion_status)[["1"]]
+n0 <- table(df$completion_status)[["0"]]
+
+# Build result table with Cohen's d, 95% CI, and Power
+results_df <- bind_rows(lapply(names(test_results), function(var) {
+  test <- test_results[[var]]
+  data_used <- if (var %in% c("NA_base", "Locus")) long_df else df
+  
+  # Calculate effect size
+  effsize <- cohens_d(as.formula(paste(var, "~ completion_status")), 
+                      data = data_used, ci = 0.95)
+  d_val <- round(effsize$Cohens_d, 2)
+  ci_lower <- round(effsize$CI_low, 2)
+  ci_upper <- round(effsize$CI_high, 2)
+  d_ci <- paste0(d_val, " [", ci_lower, ", ", ci_upper, "]")
+  
+  # Power calculation
+  power_val <- round(pwr.t.test(d = d_val, 
+                                n = min(n1, n0), 
+                                sig.level = 0.05, 
+                                type = "two.sample", 
+                                alternative = "two.sided")$power, 2)
+  
+  data.frame(
+    Prädiktor = var,
+    t_Wert = round(test$statistic, 2),
+    df = round(test$parameter, 0),
+    p_Wert = format.pval(test$p.value, digits = 3),
+    `Mittelwert vollständig` = round(test$estimate[["mean in group 1"]], 2),
+    `Mittelwert unvollständig` = round(test$estimate[["mean in group 0"]], 2),
+    `Cohen’s d (95% CI)` = d_ci,
+    Power = power_val
+  )
+}))
+
+# Create formatted flextable
+ttesttable<-flextable(results_df) %>%
+  set_header_labels(
+    Prädiktor = "Prädiktor",
+    t_Wert = "t-Wert",
+    df = "df",
+    p_Wert = "p-Wert",
+    `Mittelwert vollständig` = "Mittelwert\nvollständig",
+    `Mittelwert unvollständig` = "Mittelwert\nunvollständig",
+    `Cohen’s d (95% CI)` = "Cohen’s d (95%-KI)",
+    Power = "Power"
+  ) %>% 
+  autofit()
+
+
+
+  #################Hierarchical linear models #################
 long_df$Goal_log <-log(long_df$Goal)
 long_df$Goal_log[is.infinite(long_df$Goal_log)] <- 0.000001
+long_df$Goal_rank <-rank(long_df$Goal)
 
 null_model_goal<-lme(
-  Goal_log ~1,
+  Goal_rank~1,
   data = long_df,
   random = ~ 1| ID,
-  method = "ML",
+  method = "REML",
   na.action = na.omit,
   correlation = corAR1(form = ~ Time | ID)
 )
+icc(null_model_goal)
 
-goal_model1 <- lme(
-  Goal_log ~ 1 + Time + Locus_centered + Dynamics_centered ,
-  data = long_df,
-  random = ~ 1| ID,
-  method = "ML",
-  na.action = na.omit,
-  correlation = corAR1(form = ~ Time | ID)
-)
+goal_model1 <- update(null_model_goal, . ~ . + Locus_centered + Dynamics_centered)
 
-goal_model2 <- lme(
-  Goal_log ~ 1 + Time + Locus_centered + Dynamics_centered +  NegativeAffect_cm_centered,
-  data = long_df,
-  random = ~ 1| ID,
-  method = "ML",
-  na.action = na.omit,
-  correlation = corAR1(form = ~ Time | ID)
-)
-goal_model3 <- lme(
-  Goal_log ~ 1 + Time + Locus_centered + Dynamics_centered +  NegativeAffect_cm_centered + NA_base_centered, 
-  data = long_df,
-  random = ~ 1| ID,
-  method = "ML",
-  na.action = na.omit,
-  correlation = corAR1(form = ~ Time | ID)
-)
+goal_model2 <- update(goal_model1, . ~ . + Locus_centered + Dynamics_centered+ NA_base_centered + NegativeAffect_cm_centered)
+
+goal_model3 <- update(goal_model2, . ~ . + Locus_centered * NegativeAffect_cm_centered + 
+                        Dynamics_centered * NegativeAffect_cm_centered)
+
+goal_model4 <- update(goal_model3, . ~ . + Locus_centered * NA_base_centered + 
+                        Dynamics_centered * NA_base_centered)
+
+goal_model5 <- update(goal_model4, . ~ . +NegativeAffect_cm_centered * NA_base_centered + 
+                        Dynamics_centered * Locus_centered)
+
 
 
 
@@ -149,14 +242,28 @@ hlmtable<-huxreg("Nullmodell" = null_model_goal,
                  "Modell 1" = goal_model1 , 
                  "Modell 2" = goal_model2 ,
                  "Modell 3" = goal_model3 ,
+                 "Modell 4" = goal_model4 ,
+                 "Modell 5" = goal_model5 ,
                  statistics = NULL, 
                  number_format = 3, 
-                 bold_signif = 0.05, 
-                 tidy_args =  list(effects = "fixed"), error_pos="right")
+                 bold_signif = 0.1, 
+                 tidy_args =  list(effects = "fixed"), error_pos="right",
+                 coefs = c("Interzept"                                = "(Intercept)",
+                           "Attributionsstil: Lokus"                  = "Locus_centered",
+                           "Attributionsstil: Variabilität"           = "Dynamics_centered",
+                           "NA (Trait)"                 = "NA_base_centered",
+                           "NA (State)"                 = "NegativeAffect_cm_centered",
+                           "Lokus x NA (State)"          = "Locus_centered:NegativeAffect_cm_centered",
+                           "Variabilität x NA (State)"   = "Dynamics_centered:NegativeAffect_cm_centered",
+                           "Lokus x NA (Trait)"          = "Locus_centered:NA_base_centered",
+                           "Variabilität x NA (Trait)"   = "Dynamics_centered:NA_base_centered",
+                           "NA (Trait) x NA (State)" = "NA_base_centered:NegativeAffect_cm_centered",
+                           "Lokus x Variabilität"                     = "Locus_centered:Dynamics_centered")
+)
 
 #####Überprüfen der Voraussetzungen  http://www.regorz-statistik.de/inhalte/r_HLM_2.html ###############################################
 # Extrahieren der Residuen
-Goal_residuals <- hlm_resid(goal_model3, level=1, include.ls = T) 
+Goal_residuals <- hlm_resid(goal_model5, level=1, include.ls = T) 
 ########Normality Plots #####
 # Normality Plot with least square residuals
 ndist_plot_km_ls <- ggplot(data = Goal_residuals  , aes(.ls.resid)) +
@@ -216,18 +323,18 @@ ntest_shapiro_km <-shapiro.test(Goal_residuals $.resid)
 ntest_ks_km <-ks.test(Goal_residuals  $.resid, "pnorm", mean(Goal_residuals  $.resid), sd(Goal_residuals  $.resid), exact = T)
 
 ######Variance Incluence Factor ####
-model_SessionKM_2_lmer <- lmer(
-  SessionKM_lead1 ~ 
-    Pride_cm_centered * PA_cm_centered +
-    Pride_cm_centered * Dynamics_centered + 
-    Pride_cm_centered * Locus_centered + 
-    Pride_cm_centered * Globality_centered +
-    (1 | ID),
-  data = long_df,
-  na.action = na.omit,
-  REML = TRUE
-)
-vif(model_SessionKM_2_lmer) 
+# model_SessionKM_2_lmer <- lmer(
+#   SessionKM_lead1 ~ 
+#     Pride_cm_centered * PA_cm_centered +
+#     Pride_cm_centered * Dynamics_centered + 
+#     Pride_cm_centered * Locus_centered + 
+#     Pride_cm_centered * Globality_centered +
+#     (1 | ID),
+#   data = long_df,
+#   na.action = na.omit,
+#   REML = TRUE
+# )
+# vif(model_SessionKM_2_lmer) 
 
 
 ##### Testing for homoscedasticity (homogeneity of variance of residuals), and outliers in the residuals####
@@ -248,61 +355,15 @@ resid_plot_km<-ggplot(data = Goal_residuals, aes(x = .fitted, y = .resid)) +
   )
 
 #resid_plot_km+resid_plot_km_no_logtransform
-# Outliers (All)
-ggplot(data = Goal_residuals , aes(y= .resid)) + theme_gray() + geom_boxplot()
-
-#Outliers per individual
-outl_plot_km <- ggplot(Goal_residuals, aes(x = .resid, y = ID)) +
-  geom_boxplot(outlier.shape = 21, outlier.fill = "gray80", outlier.color = "black", outlier.size = 2) +
-  labs(
-    y = "Individual No.",
-    x = "Residuals"
-  ) +
-  theme_classic(base_size = 12) +
-  theme(
-    axis.title = element_text(size = 12),
-    axis.text = element_text(size = 10),
-    panel.border = element_rect(fill = NA, color = "black")
-  )
-
-
-
-goal_model_pa_residuals  <- hlm_resid(goal_model_basic_pa, level=1) # Funktion aus HLMdiag-Package
-#Now, I use the "..._residuals" to make a graph. these are the "Least squares residuals", and they have the advantage that influences from level 2 and 1 are not mixed up. 
-ggplot(data = goal_model_pa_residuals , aes(.ls.resid)) +
-  geom_histogram(aes(y = after_stat(density)), bins=10) +
-  stat_function(fun = dnorm,
-                args = list(mean = mean(goal_model_pa_residuals $.ls.resid),
-                            sd = sd(goal_model_pa_residuals $.ls.resid)), linewidth=2) 
 
 ###### Shapiro test of normality ###############################################
 
 #### Test for the Attribution Model #####
-shaptest_goal_attrib <-shapiro.test(goal_model_pa_residuals $.ls.resid)
+shaptest_goal <-shapiro.test(Goal_residuals $.ls.resid)
 
 ### Markdown Output of p value ####
-shaptest_goal_attrib_p <-if (shaptest_goal_attrib$p.value < 0.001) {
+shaptest_goal_p <-if (shaptest_goal$p.value < 0.001) {
   "< .001"
 } else {
-  round( shaptest_goal_affect$p.value, 3)
+  round( shaptest_goal$p.value, 3)
 }
-
-##### Testing for homoscedasticity and Outliers: The variance of residuals must be constant for all values####
-ggplot(data=goal_model_pa_residuals , aes(x=.ls.fitted, y=.ls.resid)) +
-  geom_point() # Weird linear patterns emerge: This means, homoscedasticity is violated. 
-# Outliers
-ggplot(data = goal_model_pa_residuals , aes(y= .ls.resid)) + theme_gray() + geom_boxplot() #overall
-ggplot(data = goal_model_pa_residuals , aes( x= .ls.resid, y= as.factor(ID))) + theme_gray() + geom_boxplot() # per group, the outliers are pretty random and the width varies substantially between groups
-
-
-# Ausreißer
-ggplot(data = goal_model_pa_residuals , aes(y= .resid)) + theme_gray() + geom_boxplot()
-ggplot(data = goal_model_pa_residuals , aes(x= .resid, y= as.factor(ID))) + theme_gray() + geom_boxplot()
-# Assumptions of normality and homoscedasticity are violated. Possible solutions could come from "robustlmm" package - to deal with "contamination", or using robust standard errors with "clubSandwich" and lme4
-
-
-# Ausreißer
-ggplot(data = goal_model_pa_residuals , aes(y= .resid)) + theme_gray() + geom_boxplot()
-ggplot(data = goal_model_pa_residuals , aes(x= .resid, y= as.factor(ID))) + theme_gray() + geom_boxplot()
-# Assumptions of normality and homoscedasticity are violated. Possible solutions could come from "robustlmm" package - to deal with "contamination", or using robust standard errors with "clubSandwich" and lme4
-

@@ -3,11 +3,11 @@ if (!requireNamespace("needs", quietly = TRUE)) {
   install.packages("needs")
 }
 library(needs)
-needs(xfun, tidyverse, psych, remotes, Hmisc, flextable, gtsummary, cardx, svglite, pwr, pastecs, nlme, performance, lmerTest, HLMdiag, lmtest, jtools, mice, lattice, huxtable, broom.mixed, patchwork, sjPlot, misty, car)
+needs(xfun, tidyverse, psych, remotes, Hmisc, flextable, gtsummary, cardx, svglite, pwr, pastecs, nlme, performance, lmerTest, HLMdiag, lmtest, jtools, mice, lattice, huxtable, broom.mixed, patchwork, sjPlot, misty, car, effectsize)
 xfun::install_github("Enno-W/excelbib")
 library(excelbib)
 # Create .bib file from the excel list
-xlsx_to_bib(magic_path("References_BAEW.xlsx"))
+xlsx_to_bib(magic_path("References_BAEW.xlsx"), "C:/Users/enno_/OneDrive - Ennos Deutschkurs/A Fernstudium Kursmaterial/Bachelorarbeit/Markdown/bibliography.bib")
 
 #### Average two numbers if there is a hyphen####
 handle_hyphen <- function(data, column_name) {
