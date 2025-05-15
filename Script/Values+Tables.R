@@ -106,7 +106,7 @@ glmtable<-huxreg("Modell 1" = count_model ,
 
 
 ####Binomiales Modell ###
-long_df<-long_df%>% mutate(completion_status = ifelse(completed_count == 6, 1, 0))
+long_df<-long_df%>% mutate(Status = ifelse(completed_count == 6, 1, 0))
 
 long_df <- long_df %>%
   mutate(
@@ -115,7 +115,7 @@ long_df <- long_df %>%
     NA_base_z = scale(NA_base),
     NegativeAffect_z = scale(NegativeAffect)
   )
-count_model_binomial <- glmer(completion_status ~ 1 +
+count_model_binomial <- glmer(Status ~ 1 +
                        Locus_z + 
                        Dynamics_z + 
                        NA_base_z +
@@ -137,26 +137,51 @@ binomialglmm_table<-huxreg("Modell 1" = count_model_binomial ,
                            "Negativer Affekt (State)"       = "NegativeAffect_z"))
 
 ### Direkter Vergleich der Gruppenunterschiede
-df<-df%>% mutate(completion_status = ifelse(completed_count == 6, 1, 0))
-t.test(NA_ave ~ completion_status, data = df)
-t.test(Dynamics ~ completion_status, data = df)
-t.test(NA_base ~ completion_status, data = long_df)
-t.test(Locus ~ completion_status, data = long_df)
 
 
+df <- df %>%
+  mutate(Status = if_else(completed_count == 6, "abgeschlossen", "nicht abgeschlossen"))
+
+vergleich_plot <- function(data, y_var_name, y_label = NULL) {
+  ggplot(data, aes(x = Status, y = .data[[y_var_name]], group = Status, fill = Status)) +
+    geom_violin(trim = FALSE, color = NA, alpha = 0.5) +
+    geom_boxplot(width = 0.1, outlier.shape = NA, color = "black", fill="grey") +
+    stat_boxplot(geom="errorbar", width=.5)+
+    geom_point(position = position_jitter(width = 0.15), shape = 21, color = "black") +
+    scale_fill_manual(values = c("abgeschlossen" = "black", "nicht abgeschlossen" = "grey")) +
+    labs(
+      x = NULL,
+      y = if (!is.null(y_label)) y_label else y_var_name
+    ) +
+    theme_blank()+
+    theme(legend.position = "none")
+}
+
+A<-vergleich_plot(df, "NA_ave", "M negativer Affekt")
+B<-vergleich_plot(df, "NA_base", "Negativer Affekt bei Baseline")
+C<-vergleich_plot(df, "Dynamics", "Variabilität")
+D<-vergleich_plot(df, "Locus", "Locus")
+
+Status_vergleich_plot<-((A+B)/(C+D))
+
+df<-df%>% mutate(Status = ifelse(completed_count == 6, 1, 0))
+t.test(NA_ave ~ Status, data = df)
+t.test(Dynamics ~ Status, data = df)
+t.test(NA_base ~ Status, data = df)
+t.test(Locus ~ Status, data = df)
 ## Ausgabe der Werte in einer Tabelle ##
 # Load required packages
 # Run t-tests
 test_results <- list(
-  NA_ave = t.test(NA_ave ~ completion_status, data = df),
-  Dynamics = t.test(Dynamics ~ completion_status, data = df),
-  NA_base = t.test(NA_base ~ completion_status, data = long_df),
-  Locus = t.test(Locus ~ completion_status, data = long_df)
+  NA_ave = t.test(NA_ave ~ Status, data = df),
+  Dynamics = t.test(Dynamics ~ Status, data = df),
+  NA_base = t.test(NA_base ~ Status, data = long_df),
+  Locus = t.test(Locus ~ Status, data = long_df)
 )
 
 # Sample sizes per group (assuming consistent across vars)
-n1 <- table(df$completion_status)[["1"]]
-n0 <- table(df$completion_status)[["0"]]
+n1 <- table(df$Status)[["1"]]
+n0 <- table(df$Status)[["0"]]
 
 # Build result table with Cohen's d, 95% CI, and Power
 results_df <- bind_rows(lapply(names(test_results), function(var) {
@@ -164,7 +189,7 @@ results_df <- bind_rows(lapply(names(test_results), function(var) {
   data_used <- if (var %in% c("NA_base", "Locus")) long_df else df
   
   # Calculate effect size
-  effsize <- cohens_d(as.formula(paste(var, "~ completion_status")), 
+  effsize <- cohens_d(as.formula(paste(var, "~ Status")), 
                       data = data_used, ci = 0.95)
   d_val <- round(effsize$Cohens_d, 2)
   ci_lower <- round(effsize$CI_low, 2)

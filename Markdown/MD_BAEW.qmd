@@ -190,7 +190,7 @@ Diese Arbeit wurde mit R (Version `r getRversion()` ) und Quarto (Version 1.6.32
 
 Versuchspersonen, die angaben, kein konkretes Trainingsziel zu verfolgen oder mehr als 50 fehlende Werte hatten, wurden von der weiteren Analyse ausgeschlossen. Die Variablen zu Stolz und der Motivstruktur wurden eliminert, da sie in dieser Arbeit nicht berücksichtigt werden. Für Werte, bei denen die Versuchspersonen einen Bereich (z.B. 10-15 km) angegeben hatten, wurde der Durchschnitt der beiden Werte gebildet. Da die Skalen von Affekt und Attribution keine gegensätzlich gepolten Items beinhalten, wurde keine Umpolung vorgenommen. Angaben zur Sportart mit dem Wortbestandteil "lauf" wurden zu "Laufen", und mit "kraft" zu "Kraftsport" zusammengefasst.
 
-In dem bereinigten Datensatz befanden sich immer noch `r sum(is.na(df_less_na))` fehlende Werte, die per multipler Imputation per **predictive mean matching** mit 5 Iterationen geschätzt wurden. Bei diesem Verfahren werden in mehreren Durchläufen bzw. Iterationen plausible Werte anhand der Verteilungen und Beziehungen der Variablen untereinander geschätzt [@Li2015].
+In dem bereinigten Datensatz befanden sich immer noch `r sum(is.na(df_less_na))` fehlende Werte, die per multipler Imputation per *predictive mean matching* mit 5 Iterationen geschätzt wurden. Bei diesem Verfahren werden in mehreren Durchläufen bzw. Iterationen plausible Werte anhand der Verteilungen und Beziehungen der Variablen untereinander geschätzt [@Li2015].
 
 Die Daten bestanden aus einem Baseline-Test und Angaben aus einem Fragebogen zu sechs darauffolgenden Trainingseinheiten. Diese wöchentlichen Angaben wurden zu Mittelwerten zusammengefasst. Außerdem wurde ausgezählt, wie viele Trainingseinheiten eine Person ausgefüllt hatte. Für die Berechnung der Hierarchischen linearen Modelle wurden die Daten in ein Langformat transformiert, und zwar so, dass jeder Messzeitpunkt in einer Zeile aufgeführt war. So entstanden für jede Versuchsperson sechs Zeilen für die 6 Messzeitpunkte. Die Werte, die nur zu einem Messzeitpunkt erhoben wurden, wie etwa Attributionsstil oder Alter, wiederholten sich in jeder dieser sechs Zeilen.
 
@@ -262,7 +262,9 @@ Es wurde jeweils ein Modell zur Vorhersage der Trainingsausfälle sowie der wahr
 
 ### Vorhersagen von Trainingsausfällen
 
-Teilnehmende wurden in der Studie dazu aufgefordert, sechs Trainingseinheiten zu dokumentieren und die Fragebögen dazu auszufüllen. Es wurde ausgezählt, zu wie vielen Trainingseinheiten Daten vorlagen und diese Anzahl als Dummy-Variable eingetragen. Die resultierende Variable, also die Anzahl der Trainingsausfälle, war linksschief (*Skew* = `r skew(df$completed_count)`), und hatte eine geringe Varianz: `r sum(df$completed_count==6)` Teilnehmende von `r length(df$completed_count)` (`r (sum(df$completed_count==6)/length(df$completed_count))*100 %>% round(0)` %) hatten alle sechs Trainingseinheiten abgeschlossen, daher konnte kein Hierarchisches Lineares Modell berechnet werden: Die Konvergenz des Modells scheiterte. Die Alternative eines *generalisierten linearen gemischten Modell (GLMM)* mit Poisson-Verteilung lieferte ein passendes Modell. Die Parameter des Modells, in @tbl-glmmtable gezeigt, deckten keine signifikanten Werte auf. (INfos über diese Modelle). Explorativ wurde ein binomiales genralisiertes lineares gemischtes Modell mit binomialer Zielvariable berechnet. Dafür wurden die abgeschlossenen Trainingseinheiten in zwei Kategorien aufgeteilt, je nachdem ob Versuchspersonen alle Trainingseinheiten abgeschlossen hatten oder weniger. Für dieses Modell wurden die Variablen z-standardisiert und ein einfacheres Modell wurde implementiert, um Rankinsuffizienz zu addressieren (INFO). Auch hier wurde lediglich der Interzept signifikant. Der Interzept stellt hier die **log-odds og-odds of the outcome (here: completing all training units) when all predictors are at zero. *** , was eine Wahrscheinlichkeit von `r plogis(13.278) %>% round(2)` bedeutet, alle Trainingseinheiten abzuschließen, wenn alle Prädiktoren dem Durchschnitt entsprechen. Das bedeutet, dass immer noch zu viele der Teilnehmenden alle Einheiten abgeschlossen haben. Als Alternative dazu wurde in einer Reihe t-tests die Gruppen direkt verglichen, und für den negativen Affekt nach der Trainingseinheit, eine wiederholt gemessene Variable, wurde das arithmetische Mittel herangezogen. 
+Teilnehmende wurden in der Studie dazu aufgefordert, sechs Trainingseinheiten zu dokumentieren und die Fragebögen dazu auszufüllen. Es wurde ausgezählt, zu wie vielen Trainingseinheiten Daten vorlagen und diese Anzahl als Dummy-Variable eingetragen. Die resultierende Variable, also die Anzahl der Trainingsausfälle, war linksschief (*Skew* = `r skew(df$completed_count)`), und hatte eine geringe Varianz: `r sum(df$completed_count==6)` Teilnehmende von `r length(df$completed_count)` (`r (sum(df$completed_count==6)/length(df$completed_count))*100 %>% round(0)` %) hatten alle sechs Trainingseinheiten abgeschlossen, daher konnte kein Hierarchisches Lineares Modell berechnet werden: Die Konvergenz des Modells scheiterte. Die Alternative eines *generalisierten linearen gemischten Modell (GLMM)* mit Poisson-Verteilung lieferte ein passendes Modell. Wie in @tbl-glmmtable gezeigt, deckte das Modell keine signifikanten Prädiktoren auf. Ach nach Hinzufügen der rate of perceived exhaustion als Prädiktor gab es keine signifikanten Prädiktoren, die die Anzahl an abgeschlossenen Trainingseinheiten vorhersagen. (INfos über diese Modelle). 
+
+Weiterhin wurden explorative Analysen durchgeführt. Das Paket lme4 bietet eine Funktion für hierarchische lineare Modelle an, wobei die Zielvariable binomial ist. Es wurde ein binomiales genralisiertes lineares gemischtes Modell mit binomialer Zielvariable berechnet. Dafür wurden die abgeschlossenen Trainingseinheiten in zwei Kategorien aufgeteilt, je nachdem ob Versuchspersonen alle Trainingseinheiten abgeschlossen hatten oder weniger. Für dieses Modell wurden die Variablen z-standardisiert und ein einfacheres Modell wurde implementiert, um Rankinsuffizienz zu addressieren (INFO). Auch hier wurde lediglich der Interzept signifikant. Der Interzept stellt hier die **log-odds og-odds of the outcome (here: completing all training units) when all predictors are at zero. *** , was eine Wahrscheinlichkeit von `r plogis(13.278) %>% round(2)` bedeutet, alle Trainingseinheiten abzuschließen, wenn alle Prädiktoren dem Durchschnitt entsprechen. Das bedeutet, dass immer noch zu viele der Teilnehmenden alle Einheiten abgeschlossen haben. Als Alternative dazu wurde in einer Reihe t-tests die Gruppen direkt verglichen, und für den negativen Affekt nach der Trainingseinheit, eine wiederholt gemessene Variable, wurde das arithmetische Mittel herangezogen. Auch hier waren die Werte nicht signifikant. Die Ergebnisse sind mit Effektgrößen und p-Werten in @tbl-ttests abgetragen. 
 ***----Binomiales GLMM mit 6 complete vs nicht https://youtu.be/_p0PAD9ooZw?si=j-WMY0Up2UtpBWpH&t=367 ????***
 
 
@@ -287,7 +289,22 @@ binomialglmm_table
 ttesttable
 ```
 
+```{r}
+#| label: fig-status-vergleich
+#| fig-cap: Gruppenvergleich je nach Vollendungsstatus des Trainingsplans
+#| apa-note: Bei sechs abgeschlossenen Trainingseinheiten wurde Teilnehmenden der Status "abgeschlossen" zugewiesen
+#| fig-height: 15
+#| fig-width: 10
+
+Status_vergleich_plot
+```
+
+### Hier noch Plots oder deskriptive gegenüberstellung?
+
+
 ## Hierarchiche Lineare Modelle
+
+Für die Prädiktoren wurde zunächst eine Zentrierung vorgenommen. Dabei wurden die stabilen Prädiktoren, also wahrgenommener negativer Affekt bei der Baseline-Messung, sowie Lokus und Variabilität des Attributionsstils am Gesamtmittelwert, und die wiederholten Messwerte des negativen Affekts am Gruppenmittelwert zentriert. Das resultierende Modell erfüllte die Voraussetzungen der Homoskedastizität und der Normalverteilungen der Residuen nicht. (Gegenüberstellung) 
 
 ```{r}
 #| label: tbl-hlmtable2
@@ -308,6 +325,16 @@ Das Nullmodell für die Vorhersage der wahrgenommenen Zielerreichung hatte einen
 
 Plot_across_time
 ```
+
+```{r}
+#| label: fig-interaktion
+#| fig-cap: The Figure Captionfd
+#| apa-note: Auf der X-Achse der drei Facetten (von -1 bis 1) ist das Ausmaß der Variablität der Kausalattribution zu sehen. Je höher also der negative Affekt (Trait), desto stärker war die Vorhersagekraft der Variabilität. eine höhere Variabilität ging dabei mit einer geringeren Zielerreichung einher. 
+#| fig-height: 10
+#| fig-width: 10
+interaction_plot_NA.Dynamics
+```
+
 
 ```{r}
 #| label: fig-homoscedasticity

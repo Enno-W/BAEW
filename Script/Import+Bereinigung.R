@@ -6,7 +6,7 @@ sum(is.na(df))
 #### counting excluded participants ####
 raw_data_n <-nrow(df)
 
-#### Removing Participants based on the filter varialbe "Programme"#####
+#### Entfernen der TN anhand der Filtervariable "Programme"#####
 df_filtered<-df %>% filter(Programme == 1|is.na(Programme))
 filtered_n <-nrow(df_filtered)
 #### NAs and Outliers ####
@@ -16,10 +16,10 @@ df_less_na<-df_filtered %>% filter(missings_amount<50)#removing participants wit
 na_removed_n <-nrow(df_less_na)
 df<-df_less_na
 
-load(magic_path("df.Rdata"))
+load(magic_path("df.Rdata")) # Laden des Datensets mit multipler imputation, siehe "Data import and cleaning.R" für den Code zur Erstellung dieses Datensatzes
 
 
-#####Convert Data to long format#####
+#####Konvertierung in ein Langformat#####
 weekly_measures<-select(df, matches("_[1-6]$")) %>% names()# This is a regex, a regular expression to find a certain pattern. The Dollar sign is for "Ends with". Learn more here: https://github.com/ziishaned/learn-regex/blob/master/translations/README-de.md
 
 long_df <- df %>%
@@ -33,7 +33,7 @@ long_df <- df %>%
   )
 long_df<-long_df %>% rename( PositiveAffect=PA,NegativeAffect="NA")
 
-# Test that the transformation worked as intended: We have 33 obs. in "df", and here, each individual gets 6 rows for each measurement point. 
+# Testen, ob die Transformation wie gewünscht funktioniert hat: Wir haben 33 Beobachtungen in „df“, und hier erhält jedes Individuum 6 Zeilen für jeden Messpunkt.
 nrow(long_df)== nrow(df)*6
 df$Goal_5[1]==long_df$Goal[5]# The 5th measurement point of "Goal" is equal to the variable "Goal_5" of participant number 1 in the original df. 
 
@@ -54,7 +54,7 @@ long_df[, c("Dynamics_centered",
 # Zentrieren von negativem Affekt anhand des Gruppenmittelwerts
 long_df <- long_df %>%
   group_by(ID) %>%
-  mutate(across(c(NegativeAffect), 
+  mutate(across(c(NegativeAffect, PositiveAffect, SessionRPE), 
                 ~ . - mean(., na.rm = TRUE), 
                 .names = "{.col}_cm_centered")) %>%
   ungroup()
