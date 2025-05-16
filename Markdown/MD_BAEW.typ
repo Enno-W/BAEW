@@ -262,9 +262,9 @@ if sys.version.at(1) >= 11 or sys.version.at(0) > 0 {
   // format figure captions
   show figure.where(kind: "quarto-float-fig"): it => [
     #if int(appendixcounter.display().at(0)) > 0 [
-      #heading(level: 2)[#it.supplement #appendixcounter.display("A")#it.counter.display()]
+      #heading(level: 2, outlined: false)[#it.supplement #appendixcounter.display("A")#it.counter.display()]
     ] else [
-      #heading(level: 2)[#it.supplement #it.counter.display()]
+      #heading(level: 2, outlined: false)[#it.supplement #it.counter.display()]
     ]
     #par[#emph[#it.caption.body]]
     #align(center)[#it.body]
@@ -273,9 +273,9 @@ if sys.version.at(1) >= 11 or sys.version.at(0) > 0 {
   // format table captions
   show figure.where(kind: "quarto-float-tbl"): it => [
     #if int(appendixcounter.display().at(0)) > 0 [
-      #heading(level: 2)[#it.supplement #appendixcounter.display("A")#it.counter.display()]
+      #heading(level: 2, outlined: false)[#it.supplement #appendixcounter.display("A")#it.counter.display()]
     ] else [
-      #heading(level: 2)[#it.supplement #it.counter.display()]
+      #heading(level: 2, outlined: false)[#it.supplement #it.counter.display()]
     ]
     #par[#emph[#it.caption.body]]
     #block[#it.body]
@@ -332,6 +332,7 @@ if sys.version.at(1) >= 11 or sys.version.at(0) > 0 {
 
 }
 
+
 #show: document => man(
   runninghead: "AFFEKT, ATTRIBUTION UND BEWEGUNGSADHÄRENZ",
   lang: "de",
@@ -385,7 +386,7 @@ Author Note
 ]
 #par()[#text(size:0.5em)[#h(0.0em)]]
 #v(-18pt)
-Enno Winkler #box(image("_extensions/wjschne/apaquarto/ORCID-iD_icon-vector.svg", width: 4.23mm)) http:\/\/orcid.org/0000-0000-0000-0001
+Enno Winkler #box(image("_extensions/apaquarto/ORCID-iD_icon-vector.svg", width: 4.23mm)) https:\/\/orcid.org/0000-0000-0000-0001
 
 #pagebreak()
 
@@ -439,9 +440,9 @@ Die Wirkung von PA gegen Depression ist eine vieldiskutierte Forschungsfrage, di
 
 Der Fokus von Studien zur Bewegungsförderung lag bisher auf Interventionen, die inaktive Personen dazu ermutigen, sich mehr zu bewegen und auf der Adhärenz zu solchen Interventionen (siehe z.B. #link(<ref-Gillison2009>)[Gillison et al., 2009];). Weniger Studien befassten sich mit der Frage, welche Faktoren die Aufrechterhaltung einer Bewegungsgewohnheit von Personen, die bereits gewohnheitsmäßig aktiv sind, beeinflussen (z.B. #link(<ref-Stetson2005>)[Stetson et al., 2005];). Das Rückfallpräventionsmodell (Relapse Prevention Model, Marlatt and George (#link(<ref-Marlatt1984>)[1984];)) könnte einen geeigneten Rahmen zur Untersuchung dieser Fragestellung darstellen.
 
-Theorie
-
-= Physische Aktivität und Bewegung
+= Theorie
+<theorie>
+== Physische Aktivität und Bewegung
 <physische-aktivität-und-bewegung>
 #par()[#text(size:0.5em)[#h(0.0em)]]
 #v(-18pt)
@@ -451,15 +452,31 @@ Bewegungsadhärenz (exercise adherence, z.B. (#link(<ref-Mcauley1994>)[Mcauley e
 
 - Empfohlene PA
 
+=== Messung von Physischer Aktivität
+<messung-von-physischer-aktivität>
 #par()[#text(size:0.5em)[#h(0.0em)]]
 #v(-18pt)
-Messung von Physischer Aktivität
+Es gibt drei grobe Kategorien, in die Messmethoden für physische Aktivität fallen, und zwar direkte, indirekte und Fragebogen.
 
-= Affekt
+Die Messung per Fragebogen unterliegt typischen Problemen des Selbstberichts. Da beim Beantworten an Vergangenes erinnert wird, und bei der Konstruktion der Erinnerung abweichen auftreten können, ergibt sich das Problem der Retrospektivität. Außerdem kann sich das Antwortverhalten von Versuchspersonen verändern, wenn sie sich Bewusst sind, dass ihre Antworten analysiert werden, also Reaktivität herrscht. Zum Beispiel könnten Personen so antworten, wie es sozial erwünscht ist. Wenn eine Versuchsperson sich bewusst oder unbewusst als besonders sportliche Person darstellen möchte, könnte sie eine erhöhte Trainingsintensität berichten. Zur Messung physischer Aktivität gibt es Fragebögen, die das durchschnittliche Niveau physischer Aktivität im Alltag zu erfassen suchen, und Fragebögen, die sich spezifisch auf einzelne Trainingseinheiten beziehen.
+
+Direkte Messmethoden beziehen sich auf die Beobachtung von physischer Aktivität oder Messmethoden von physischen Parametern, die direkt mit physischer Aktivität zusammenhängen. Dazu zählen Herzschlag oder der Laktat-Level im Blut, oder die strukturierte Beobachtung (SOCARP), wozu auch das Stoppen der Zeit bei dem Rundenlauf (e.g.~Cooper-Test) beinahltet.
+
+== Affekt
 <affekt>
-= Attribution
+#par()[#text(size:0.5em)[#h(0.0em)]]
+#v(-18pt)
+Affekt wird auf zwei Dimensionen konzipiert, und zwar Valenz und Aktivierung. Positiver affekt fühlt sich gut an und zieht uns dazu
+
+Aktivierender Affekt geht mit erhöhtem Puls, Aufgeregtheit, gehobener Stimmung etc. einher. Niedrige Ausprägungen auf dieser Dimension des Affekts gehen mit Entspannung oder Rückzug einher. Im Circumplex Model of Affect \[LIT\] wird diese Konzeption vereint.
+
+== Attribution
 <attribution>
-= Das Rückfallmodell
+#par()[#text(size:0.5em)[#h(0.0em)]]
+#v(-18pt)
+Menschen ziehen für ihre Erfolge und Misserfolge unterschiedliche Erklärungen heran. Diese Erklärungen werden als Attribution bezeichnet, und unterscheiden sich auf den Dimensionen des Lokus, der Variabilität und der Globalität. Das Nichteinhalten eines Trainingsregimens könnte beispielsweise auf externe Faktoren oder interne, in der Person befindliche Faktoren attribuiert werden (Lokus). Ebenso könnte die variable Erklärung des "einmaligen Ausrutschers" oder die stabile Erklärung der "Fehlenden Sportlichkeit" herangezogen werden. Zuletzt könnten Personen sich den Misserfolg durch Faktoren erklären, die sich nur auf diese Situation beziehen ("ich kann mich zwar nicht an meine Bewegungsziele halten, aber meine Studienziele schaffe ich"), oder auf andere Situationen generalisieren ("Ich bin generell ein wenig Zielstrebiger Mensch").
+
+== Das Rückfallmodell
 <das-rückfallmodell>
 #par()[#text(size:0.5em)[#h(0.0em)]]
 #v(-18pt)
@@ -479,7 +496,7 @@ Verstöße gegen die Abstinenz werden von persönlicher Attribution begleitet. D
 
 Kritik am Rückfallmodell Innerhalb dieses Modells ist die wichtige Rolle der Selbstwirksamkeit bereits gut untersucht, in Bezug auf andere Variablen ist die Studienlage allerdings noch dünn (#link(<ref-Amireault2013>)[Amireault et al., 2013];).
 
-= Hypothesen und Forschungsfrage
+== Hypothesen und Forschungsfrage
 <hypothesen-und-forschungsfrage>
 #par()[#text(size:0.5em)[#h(0.0em)]]
 #v(-18pt)
@@ -487,13 +504,11 @@ Es ergibt sich die Forschungsfrage, inwiefern Affekt oder der Attributionsstil d
 
 Wenn negatives Gefühlserleben und eine undienliche Attribution nach einem Rückfall häufiger zum schlussenlichen Unterlassen des Gesundheitsverhaltens fühlen, dann sollten ein tendenziell negatives Affekterleben und ein external - stabiler Attributionsstil weniger Trainingseinheiten und eine schwächer ausgeprägte Erreichung des gesetzen Ziels erreichen.
 
-H1: Ein internal - variabler Attributionsstil sagt weniger Trainingsausfälle (H1.1), sowie eine geringere wahrgenommene Zielerreichung vorher (H1.2).
+H1: Ein internal - variabler Attributionsstil sagt weniger Trainingsausfälle (H1.1), sowie eine geringere wahrgenommene Zielerreichung vorher (H1.2). H2: Ein negativeres Affekterleben sagt mehr Trainingsausfälle (H2.1) und eine geringere wahrgenommene Zielerreichung vorher (H2.2).
 
-H2: Ein negativeres Affekterleben sagt mehr Trainingsausfälle (H2.1) und eine geringere wahrgenommene Zielerreichung vorher (H2.2).
-
-Methode
-
-= Instrumente
+= Methode
+<methode>
+== Instrumente
 <instrumente>
 #par()[#text(size:0.5em)[#h(0.0em)]]
 #v(-18pt)
@@ -511,7 +526,7 @@ Da es sich um ein Sample mit internationalen studierenden handelte, wurde bei al
 
 #emph[Weitere Instrumente:] In diesem Forschungsprojekt wurden außerdem authentischer und überheblicher Stolz (authentic and hubristic pride, Tracy and Robins (#link(<ref-Tracy2007>)[2007];)), und implizite Motive (#link(<ref-Sokolowski2000>)[Sokolowski et al., 2000];; #link(<ref-winter1994manual>)[Winter, 1994];) erfasst. In dieser Arbeit werden diese Daten nicht berücksichtigt.
 
-= Stichprobe:
+== Stichprobe:
 <stichprobe>
 #par()[#text(size:0.5em)[#h(0.0em)]]
 #v(-18pt)
@@ -519,31 +534,15 @@ Die Teilnehmenden waren erwachsene Freizeitsportler:innen mit einem bestimmten T
 
 Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfohlen \[LIT\]. Basierend auf einer Poweranalyse mit 1 – β = 0.95, α = 0.05, und #emph[r] = 0.5 ergab sich eine ideale Teilnehmerzahl von 38. Die Frage der Poweranalyse für Mehrebenenanalysen ist allerdings komplex (#link(<ref-Hox2017-dx>)[Hox et al., 2017];). Der Versuch, post-hoc Power des bestimmten Modells durch Simulation mit dem Paket `simr` (#link(<ref-Green2016>)[Green & MacLeod, 2016];) zu bestimmen, scheiterte, was teils auf die kleine Stichprobe, teils auf die Datenstruktur zurückgeführt werden kann. #emph[N] = 48 Fälle ergaben sich in dem Rohdatensatz. #emph[n] = 9 wurden von der Analyse und weiteren Befragungen ausgeschlossen, weil sie angaben, nicht an einem systematischen Trainings- oder Bewegungsprogramm teilzunehmen. Aufgrund von mehr als 50 fehlenden Datenpunkten wurden #emph[n] = 12 Teilnehmende ausgeschlossen. Die deskriptiven Statistiken zu den demografischen Daten sind in Tabelle 1.
 
-#figure([
-#box(image("MD_BAEW_files/figure-typst/tbl-demogrtable-1.png"))
+#box(image("MD_BAEW_files/figure-typst/Demografietabelle-1.png"))
 
-], caption: figure.caption(
-position: top, 
-[
-Tabelle der Absoluten und Relativen Häufigkeiten Demografischer Variablen in der Stichprobe
-]), 
-kind: "quarto-float-tbl", 
-supplement: "Tabelle", 
-)
-<tbl-demogrtable>
-
-
-#block[
-#emph[Hinweis];. Die Sportarten wurden in einer offenen Frage erfragt. Eine männliche Person gab zwei Sportarten an — Kraftsport und Laufen. Es wurde hier die erste Antwort (Kraftsport) gezählt. Vier Personen gaben keine demographischen Daten an.
-
-]
 #par()[#text(size:0.5em)[#h(0.0em)]]
 #v(-18pt)
 Die Teilnehmenden waren durchschnittlich 34.52 Jahre alt (#emph[SD] = 13.82). Das Alter reichte von 19 bis64.
 
-= Durchführung:
+== Durchführung:
 <durchführung>
-== #emph[Prozedur]
+=== #emph[Prozedur]
 <prozedur>
 #par()[#text(size:0.5em)[#h(0.0em)]]
 #v(-18pt)
@@ -557,29 +556,39 @@ Darauf folgte die Trainingsphase, in der die Trainierenden über einen Zeitraum 
 
 Die Daten der einzelnen Versuchspersonen wurden mittels eines Pseudonyms zugeordnet, das keinen Rückschluss auf Einzelpersonen ermöglichte. Nach der Datenerhebung wurden der Datensatz komplett anonymisiert. Die Versuchspersonen wurden schriftlich debrieft.
 
-= Statistische Analyse
+== Statistische Analyse
 <statistische-analyse>
+=== #strong[Datenbereinigung und Transformation]
+<datenbereinigung-und-transformation>
 #par()[#text(size:0.5em)[#h(0.0em)]]
 #v(-18pt)
-Diese Arbeit wurde mit R (Version 4.4.2 ) und Quarto (Version 1.6.32) erstellt. Die reproduzierbare Version dieses Artikels ist auf GitHub unter #link("https://github.com/Enno-W/BAEW") verfügbar.
+Diese Arbeit wurde mit R (Version 4.5.0 ) und Quarto (Version 1.6.32) erstellt. Die reproduzierbare Version dieses Artikels ist auf GitHub unter #link("https://github.com/Enno-W/BAEW") verfügbar.
 
 Versuchspersonen, die angaben, kein konkretes Trainingsziel zu verfolgen oder mehr als 50 fehlende Werte hatten, wurden von der weiteren Analyse ausgeschlossen. Die Variablen zu Stolz und der Motivstruktur wurden eliminert, da sie in dieser Arbeit nicht berücksichtigt werden. Für Werte, bei denen die Versuchspersonen einen Bereich (z.B. 10-15 km) angegeben hatten, wurde der Durchschnitt der beiden Werte gebildet. Da die Skalen von Affekt und Attribution keine gegensätzlich gepolten Items beinhalten, wurde keine Umpolung vorgenommen. Angaben zur Sportart mit dem Wortbestandteil "lauf" wurden zu "Laufen", und mit "kraft" zu "Kraftsport" zusammengefasst.
 
 In dem bereinigten Datensatz befanden sich immer noch 404 fehlende Werte, die per multipler Imputation per #emph[predictive mean matching] mit 5 Iterationen geschätzt wurden. Bei diesem Verfahren werden in mehreren Durchläufen bzw. Iterationen plausible Werte anhand der Verteilungen und Beziehungen der Variablen untereinander geschätzt (#link(<ref-Li2015>)[Li et al., 2015];).
 
-Die Daten bestanden aus einem Baseline-Test und Angaben aus einem Fragebogen zu sechs darauffolgenden Trainingseinheiten. Diese wöchentlichen Angaben wurden zu Mittelwerten zusammengefasst. Außerdem wurde ausgezählt, wie viele Trainingseinheiten eine Person ausgefüllt hatte.
+Die Daten bestanden aus einem Baseline-Test und Angaben aus einem Fragebogen zu sechs darauffolgenden Trainingseinheiten. Diese wöchentlichen Angaben wurden zu Mittelwerten zusammengefasst. Außerdem wurde ausgezählt, wie viele Trainingseinheiten eine Person ausgefüllt hatte. Für die Berechnung der Hierarchischen linearen Modelle wurden die Daten in ein Langformat transformiert, und zwar so, dass jeder Messzeitpunkt in einer Zeile aufgeführt war. So entstanden für jede Versuchsperson sechs Zeilen für die 6 Messzeitpunkte. Die Werte, die nur zu einem Messzeitpunkt erhoben wurden, wie etwa Attributionsstil oder Alter, wiederholten sich in jeder dieser sechs Zeilen.
 
-Eine Überprüfung der Voraussetzungen für die weitere Analyse erfolgte anhand von #strong[visueller Inspektion von Histogrammen und Q-Q-Plots aller numerischen Variablen];, sowie Shapiro-Wilk-Tests der Normalität.
+\#\#\#\*\*Statistische Tests
 
-In der Präregistrierung wurde als Haupttest eine Mehrebenenanalyse spezifiziert. Zur Aufstellung der Mehrebenenmodelle wurde der Datensatz in ein Langformat transformiert, und zwar so, dass jeder Messzeitpunkt in einer Zeile aufgeführt war. So entstanden für jede Versuchsperson sechs Zeilen für die 6 Messzeitpunkte. Die Werte, die nur zu einem Messzeitpunkt erhoben wurden, wie etwa Attributionsstil oder Alter, wiederholten sich in jeder dieser sechs Zeilen. Die Voraussage der Trainingsausfälle durch ein Mehrebeneenmodell scheiterte daran, dass diese Variable nur 6 diskrete Ausprägungen (Anzahl der abgeschlossenen Trainingseinheiten) hatte und das Modell somit nicht konvergieren konnte. Als Alternative wurden Hypothesen 1.1 und 2.1 mit einem verallgemeinerten Linearen Modell (GLMM) getestet. Für Hypothesen 1.2 und 2.2 konnte ein Mehrebenenmodell berechnet werden. Dafür wurden die wiederholten Angaben zu negativem Affekt zentriert. Die Residuen der aufgestellten Modelle erfüllten allerdings die Voraussetzung der Homoskedastizität und Normalverteilung nicht. Daher wurde explorativ …
+In der Präregistrierung wurde als Haupttest eine Mehrebenenanalyse, auch bekannt als #emph[Hierarchisches Lineares Modell] spezifiziert. Die Voraussage der Trainingsausfälle durch ein Mehrebeneenmodell scheiterte daran, dass diese Variable nur 6 diskrete Ausprägungen (Anzahl der abgeschlossenen Trainingseinheiten) hatte, wodurch nicht genug Variablität entstand und das Modell somit nicht konvergieren konnte. Als Alternative wurden Hypothesen 1.1 und 2.1 mit einem verallgemeinerten Linearen Modell (GLMM) getestet. Für Hypothesen 1.2 und 2.2 konnte ein Mehrebenenmodell berechnet werden.
 
-Ergebnisse
+#strong[Hierarchische Lineare Modelle] Hierarchische Lineare Modelle stellen komplexe statistische Verfahren dar, die besonders gut für längsschnittliche Daten geeignet sind (#link(<ref-Nezlek2006>)[Nezlek et al., 2006];). Der Vorteil solcher Modelle ist, dass "genestete" Daten in die Analyse mit einbezogen werden können. Im vorliegenden Datensatz sind die Daten eines Individuums über die sechs Messzeitpunkte hinweg nicht unabhängig voneinander, sondern die Daten sind im Individuum "genestet". Schließlich reagiert jede Versuchsperson unterschiedlich auf die Anforderungen dieser Studie. Bei manchen Versuchspersonen könnte die wahrgenommene Zielerreichung über die Zeit hinweg steigen, bei anderen wiederum könnte sie weniger stark steigen oder sogar sinken. Das Interzept, also der Startpunkt der Vorhersagegeraden eines jeden Individuums, könnte sich ebenso unterscheiden, schließlich starten nicht alle mit genau dem gleichen Ausmaß an wahrgenommener Zielerreichung. Im vorliegenden Modell wird dem Rechnung getragen, indem die Veränderung über die Zeit je nach Person (ID) als #strong[random effect] in das Modell eingeht. Dabei wird im Modell zugellassen, dass sowohl das Interzept als auch die Steigung ("slope") frei variieren. Daneben gibt es aber auch Effekte, von denen erwartet wird, dass sie alle Versuchspersonen in gleicher Weise beeinflussen, wenn auch unterschiedlich stark. In diesem Modell sind das der negative Affekt nach der Trainingseinheit, beziehungsweise der Lokus und die Variabilität des Attributionsstils.
 
-= Deskriptive Statistiken
+Bei hierarchischen linearen Modellen ergibt sich die Frage der Zentrierung.
+
+Um die Intraklassen-Korrelation zu berechnen, wurde zunächst ein Nullmodell berechnet. Bei einem Nullmodell handelt es sich um die einfachste mögliche Form eines hierarchischen linearen Modells.
+
+Dafür wurden die wiederholten Angaben zu negativem Affekt zentriert. Die Residuen der aufgestellten Modelle erfüllten allerdings die Voraussetzung der Homoskedastizität und Normalverteilung nicht. Daher wurde explorativ …
+
+= Ergebnisse
+<ergebnisse>
+== Deskriptive Statistiken
 <deskriptive-statistiken>
 #par()[#text(size:0.5em)[#h(0.0em)]]
 #v(-18pt)
-#link(<tbl-stattable>)[Tabelle~2] zeigt einen Überblick über deskriptive Statistiken aller relevanten Variablen. Das Alter weist eine leichte Rechtsschiefe auf, es gab also viele jüngere und wenig ältere Teilnehmende.
+#link(<tbl-stattable>)[Tabelle~1] zeigt einen Überblick über deskriptive Statistiken aller relevanten Variablen. Das Alter weist eine leichte Rechtsschiefe auf, es gab also viele jüngere und wenig ältere Teilnehmende.
 
 Die Daten zum Attribution (Locus und Variabilität) folgen einer Normalverteilung, aber alle Werte fielen relativ hoch aus. Sie reichten von 4.3 bis 6.9 für den Lokus und von 4.3 bis 7 für die Variabilität.
 
@@ -605,11 +614,11 @@ supplement: "Tabelle",
 #emph[Hinweis];. Das Konfidenzintervall ist als Abstand vom Mittelwert zum unteren bzw. oberen Konfidenzintervall notiert.
 
 ]
-= Korrelationen
+== Korrelationen
 <korrelationen>
 #par()[#text(size:0.5em)[#h(0.0em)]]
 #v(-18pt)
-Laut Cohen (#link(<ref-Cohen2013>)[2013];) kann der Korrelationskoeffizient in den Sozialwissenschaften ab #emph[r] = .1 als schwach, ab #emph[r] = .3 als mittelmäßig und von #emph[r] = .5 bis #emph[r] = 1 als stark interpretiert werden. Die Korrelationen für relevante Variablen sind in #link(<tbl-corrtable>)[Tabelle~3] dargestellt. In Bezug auf die Hypothesen ist lediglich einer der Korrelationswerte bedeutsam. Zwischen dem negativen Affekt und der wahrgenommen Zielerreichung zeigte sich eine signifikante, mittelmäßig stark ausgeprägte Korrelation. Je mehr negativen Affekt Versuchspersonen also nach einer Trainingseinheit im Durchschnitt berichteten, desto schlechter erlebten sie ihre Zielerreichung. Negativer Affekt nach der Trainingseinheit war ebenso mit einer höheren RPE im Durchschnitt assoziiert.
+Laut Cohen (#link(<ref-Cohen2013>)[2013];) kann der Korrelationskoeffizient in den Sozialwissenschaften ab #emph[r] = .1 als schwach, ab #emph[r] = .3 als mittelmäßig und von #emph[r] = .5 bis #emph[r] = 1 als stark interpretiert werden. Die Korrelationen für relevante Variablen sind in #link(<tbl-corrtable>)[Tabelle~2] dargestellt. In Bezug auf die Hypothesen ist lediglich einer der Korrelationswerte bedeutsam. Zwischen dem negativen Affekt und der wahrgenommen Zielerreichung zeigte sich eine signifikante, mittelmäßig stark ausgeprägte Korrelation. Je mehr negativen Affekt Versuchspersonen also nach einer Trainingseinheit im Durchschnitt berichteten, desto schlechter erlebten sie ihre Zielerreichung. Negativer Affekt nach der Trainingseinheit war ebenso mit einer höheren RPE im Durchschnitt assoziiert.
 
 Die Trainingsbezogen Variablen brachten mehrere starke, signifikante Korrelationen hervor. Die Baseline-Werte für Trainingszeit und Distanz waren sowohl mit der gemittelten Trainingszeit als auch der Distanz aus den einzelnen Trainingseinheiten signifikant korreliert. Auch die anderen Baseline-Werte korrelierten mit den Durchschnittswerten aus den einzelnen Trainingseinheiten.
 
@@ -656,31 +665,41 @@ supplement: "Abbildung",
 #emph[Hinweis];. This is the note below the figure.
 
 ]
-= Hierarchische Modelle
-<hierarchische-modelle>
+== Regressionsmodelle
+<regressionsmodelle>
 #par()[#text(size:0.5em)[#h(0.0em)]]
 #v(-18pt)
-Für jede Hypothese gab es ein Modell. Die Modelle zur Vorhersage der abgeschlossenen Trainingseinheiten sind in #link(<tbl-hlmtable1>)[Tabelle~4] zu sehen, und die Modelle zur Vorhersage von wahrgenommener Zielerreichung sind in #link(<tbl-hlmtable2>)[Tabelle~5] .
+Für jede Hypothese gab es ein Modell. Die Modelle zur Vorhersage der abgeschlossenen Trainingseinheiten sind in #link(<tbl-hlmtable1>)[Tabelle~3] zu sehen, und die Modelle zur Vorhersage von wahrgenommener Zielerreichung sind in #link(<tbl-hlmtable2>)[Tabelle~4] .
+
+=== Vorhersagen von Trainingsausfällen
+<vorhersagen-von-trainingsausfällen>
+#par()[#text(size:0.5em)[#h(0.0em)]]
+#v(-18pt)
+Teilnehmende wurden in der Studie dazu aufgefordert, sechs Trainingseinheiten zu dokumentieren und die Fragebögen dazu auszufüllen. Ich habe ausgezählt, zu wie vielen Trainingseinheiten Daten vorlagen und diese Anzahl als Dummy-Variable eingetragen. Die resultierende Variable, also die Anzahl der Trainingsausfälle, war linksschief, und da es nur sechs diskrete Ausprägungen gab, scheiterte die Analyse mit einem Hierarchischen Linearen Modell. Stattdessen habe ich ein #strong[General Linear Model] verwendet, was passender für Daten mit diskreten Ausprägungen ist.
 
 #figure([
 ───────────────────────────────────────────────────────────────────────── Attributions-Modell (H Affekt-Modell (H 2.1) \
 1.1) \
-────────────────────────────────────────────────────────── (Intercept) 1.967 \* (0.883) 1.223 \*\*\* (0.297) \
-Locus -0.105~~ (0.125) ~~~~~~~~ ~~~~~ \
-Dynamics 0.021~~ (0.119) ~~~~~~~~ ~~~~~ \
-sd\_\_(Interce 0.378~~ (NA)~~~~~ 0.374~~~~ (NA)~~~~~ \
+────────────────────────────────────────────────────────── (Intercept) 1.499 \*\*\* (0.110) 1.499 \*\*\* (0.110) \
+Locus\_center -0.105~~~~ (0.125) ~~~~~~~~ ~~~~~ \
+ed \
+Dynamics\_cen 0.021~~~~ (0.119) ~~~~~~~~ ~~~~~ \
+tered \
+sd\_\_(Interce 0.378~~~~ (NA)~~~~~ 0.374~~~~ (NA)~~~~~ \
 pt) \
-NA\_base ~~~~~~ ~~~~~ 0.205~~~~ (0.203) \
-NegativeAffe ~~~~~~ ~~~~~ 0.000~~~~ (0.088) \
-ct\_centered \
-────────────────────────────────────────────────────────── nobs 162~~~~~~ ~~~~~ 162~~~~~~~~ ~~~~~ \
-nobs.1 162.000~~ ~~~~~ 162.000~~~~ ~~~~~ \
-sigma 1.000~~ ~~~~~ 1.000~~~~ ~~~~~ \
-logLik -307.751~~ ~~~~~ -307.599~~~~ ~~~~~ \
-AIC 625.501~~ ~~~~~ 625.198~~~~ ~~~~~ \
-BIC 640.939~~ ~~~~~ 640.636~~~~ ~~~~~ \
-deviance 9.002~~ ~~~~~ 9.224~~~~ ~~~~~ \
-df.residual 157.000~~ ~~~~~ 157.000~~~~ ~~~~~ \
+NA\_base\_cent ~~~~~~~~ ~~~~~ 0.205~~~~ (0.203) \
+ered \
+NegativeAffe ~~~~~~~~ ~~~~~ -0.000~~~~ (0.088) \
+ct\_cm\_center \
+ed \
+────────────────────────────────────────────────────────── nobs 162~~~~~~~~ ~~~~~ 162~~~~~~~~ ~~~~~ \
+nobs.1 162.000~~~~ ~~~~~ 162.000~~~~ ~~~~~ \
+sigma 1.000~~~~ ~~~~~ 1.000~~~~ ~~~~~ \
+logLik -307.751~~~~ ~~~~~ -307.599~~~~ ~~~~~ \
+AIC 625.501~~~~ ~~~~~ 625.198~~~~ ~~~~~ \
+BIC 640.939~~~~ ~~~~~ 640.636~~~~ ~~~~~ \
+deviance 9.002~~~~ ~~~~~ 9.225~~~~ ~~~~~ \
+df.residual 157.000~~~~ ~~~~~ 157.000~~~~ ~~~~~ \
 ───────────────────────────────────────────────────────────────────────── \*\*\* p \< 0.001; \*\* p \< 0.01; \* p \< 0.05.
 
 Column names: names, Attributions-Modell (H 1.1), Attributions-Modell (H 1.1).error, Affekt-Modell (H 2.1), Affekt-Modell (H 2.1).error
@@ -700,43 +719,44 @@ supplement: "Tabelle",
 #emph[Hinweis];. {}
 
 ]
+= Hierarchiche Lineare Modelle
+<hierarchiche-lineare-modelle>
 #figure([
-───────────────────────────────────────────────────────────────────────────── Nullmodell NA zentriert NA nicht \
-zentriert \
-────────────────────────────────────────────────────────────────── (Interce 86.142 (1.749) 85.033 (19.409) 95.025 (17.594) \
+─────────────────────────────────────────────────────────────────────────── Nullmodell Modell 1 Modell 2 \
+──────────────────────────────────────────────────────────────── (Interce 4.365 (0.048) 4.552 (0.108) 4.562 (0.107) \
 pt) \*\*\* \*\*\* \*\*\* \
-Time ~~~~~~~~ ~~~~~ -0.935~~ (0.964) -1.091~~ (0.840) \
-~~ ~~ \
-Locus ~~~~~~~~ ~~~~~ 0.458~~~ (2.711) -0.010~~ (2.409) \
-~ ~~ \
-Dynamics ~~~~~~~~ ~~~~~ 0.305~~~ (2.614) 1.100~~~ (2.328) \
-~ ~ \
-Negative ~~~~~~~~ ~~~~~ -5.421~~ (3.766) ~~~~~~~~ ~~~~~ \
+Time ~~~~~~~~ ~~~~~ -0.053~~ (0.028) -0.056 (0.027) \
+~~ #emph[~~ \
+Locus\_ce ~~~~~~~~ ~~~~~ 0.027~~~ (0.073) 0.027~~~ (0.073) \
+ntered ~ ~ \
+Dynamics ~~~~~~~~ ~~~~~ 0.005~~~ (0.070) 0.005~~~ (0.070) \
+#emph[centere ~ ~ \
+d \
+Negative ~~~~~~~~ ~~~~~ ~~~~~~~~ ~~~~~ -0.209~~ (0.117) \
 Affect\_c ~~ \
-entered \
-Negative ~~~~~~~~ ~~~~~ ~~~~~~~~ ~~~~~ -8.375 (2.894) \
-Affect #strong[~ \
-Positive ~~~~~~~~ ~~~~~ ~~~~~~~~ ~~~~~ ~~~~~~~~ ~~~~~ \
-Affect \
-────────────────────────────────────────────────────────────────── nobs 162~~~~~ ~~~~~ 162~~~~~ ~~~~~ 162~~~~~ ~~~~~ \
+m\_center \
+ed \
+NA\_base] ~~~~~~~~ ~~~~~ ~~~~~~~~ ~~~~~ ~~~~~~~~ ~~~~~ \
+centered \
+──────────────────────────────────────────────────────────────── nobs 162~~~~~ ~~~~~ 162~~~~~ ~~~~~ 162~~~~~ ~~~~~ \
 ~~~ ~~~ ~~~ \
 nobs.1 162.000~ ~~~~~ 162.000~ ~~~~~ 162.000~ ~~~~~ \
 ~~~ ~~~ ~~~ \
-sigma 20.385~~ ~~~~~ 19.976~~ ~~~~~ 19.755~~ ~~~~~ \
-~~ ~~ ~~ \
-logLik -720.558 ~~~~~ -718.825 ~~~~~ -715.127 ~~~~~ \
+sigma 0.633~~~ ~~~~~ 0.623~~~ ~~~~~ 0.616~~~ ~~~~~ \
+~ ~ ~ \
+logLik -155.666 ~~~~~ -153.777 ~~~~~ -152.148 ~~~~~ \
 ~~~~ ~~~~ ~~~~ \
-AIC 1447.116 ~~~~~ 1457.650 ~~~~~ 1446.254 ~~~~~ \
-~~~~ ~~~~ ~~~~ \
-BIC 1456.379 ~~~~~ 1488.526 ~~~~~ 1470.955 ~~~~~ \
-~~~~ ~~~~ ~~~~ \
-deviance 1441.116 ~~~~~ 1437.650 ~~~~~ 1430.254 ~~~~~ \
-~~~~ ~~~~ ~~~~ \
-df.resid 135.000~ ~~~~~ 133.000~ ~~~~~ 133.000~ ~~~~~ \
+AIC 319.331~ ~~~~~ 321.554~ ~~~~~ 320.296~ ~~~~~ \
+~~~ ~~~ ~~~ \
+BIC 331.681~ ~~~~~ 343.167~ ~~~~~ 344.996~ ~~~~~ \
+~~~ ~~~ ~~~ \
+deviance 311.331~ ~~~~~ 307.554~ ~~~~~ 304.296~ ~~~~~ \
+~~~ ~~~ ~~~ \
+df.resid 135.000~ ~~~~~ 134.000~ ~~~~~ 133.000~ ~~~~~ \
 ual ~~~ ~~~ ~~~ \
-───────────────────────────────────────────────────────────────────────────── ];\* p \< 0.001; \*\* p \< 0.01; \* p \< 0.05.
+─────────────────────────────────────────────────────────────────────────── ];\*\* p \< 0.001; \*\* p \< 0.01; \* p \< 0.05.
 
-Column names: names, Nullmodell, Nullmodell.error, NA zentriert, NA zentriert.error, NA nicht zentriert, NA nicht zentriert.error, Modell mit PA, Modell mit PA.error
+Column names: names, Nullmodell, Nullmodell.error, Modell 1, Modell 1.error, Modell 2, Modell 2.error, Modell 3, Modell 3.error
 
 7/9 columns shown.
 
@@ -764,7 +784,7 @@ Das Nullmodell für die Vorhersage der wahrgenommenen Zielerreichung hatte einen
 ], caption: figure.caption(
 position: top, 
 [
-The Figure Caption
+Vorhergesagte Veränderung der wahrgenommenen Zielerreichung über die Zeit hinweg
 ]), 
 kind: "quarto-float-fig", 
 supplement: "Abbildung", 
@@ -773,24 +793,7 @@ supplement: "Abbildung",
 
 
 #block[
-#emph[Hinweis];. This is the note below the figure.
-
-]
-#figure([
-#box(image("MD_BAEW_files/figure-typst/fig-na_predictive_value-1.svg"))
-], caption: figure.caption(
-position: top, 
-[
-The Figure Caption
-]), 
-kind: "quarto-float-fig", 
-supplement: "Abbildung", 
-)
-<fig-na_predictive_value>
-
-
-#block[
-#emph[Hinweis];. This is the note below the figure.
+#emph[Hinweis];. Die Abbildung links zeigt die Veränderung je Teilnehmer:in, die Abbildung rechts die Gesamtvorhersage des Modells.
 
 ]
 #block[
@@ -866,8 +869,8 @@ Die Residuen aus den beiden Modellen zur Zielerreichung aus jeweils Attribution 
 
 #emph[Attributionsstil:]
 
-Diskussion
-
+= Diskussion
+<diskussion>
 #par()[#text(size:0.5em)[#h(0.0em)]]
 #v(-18pt)
 Multiple imputation
@@ -876,8 +879,8 @@ Ein hoher ICC ist aus verschiedenen Gründen wünschenswert … Laut Nezlek (#li
 
 In der Präregistrierung war ein HLM für alle Vorhersagen angedacht. Außerdem wurde nicht wie in der Präregistrierung beschrieben das Pakte lme4 (#link(<ref-lme42025>)[Bates et al., 2015];) verwendet, sondern nlme (#link(<ref-nlme2023>)[Pinheiro et al., 2023];), da es für Längsschnittstudien besser geeignet ist (#link(<ref-ellis2020hierarchical>)[Ellis & Mayer, 2020];).
 
-Literaturverzeichnis
-
+= Literaturverzeichnis
+<literaturverzeichnis>
 #set par(first-line-indent: 0in, hanging-indent: 0.5in)
 #block[
 #block[
@@ -1017,6 +1020,10 @@ Nezlek, J. B. (2008). An Introduction to Multilevel Modeling for Social and Pers
 
 ] <ref-nezlek2008introduction>
 #block[
+Nezlek, J. B., Schröder-Abé, M., & Schütz, A. (2006). Mehrebenenanalysen in der psychologischen Forschung. #emph[Psychologische Rundschau];, #emph[57];(4), 213–223. #link("https://doi.org/10.1026/0033-3042.57.4.213")
+
+] <ref-Nezlek2006>
+#block[
 Paluska, S. A., & Schwenk, T. L. (2000). Physical Activity and Mental Health: Current Concepts. #emph[Sports Medicine];, #emph[29];(3), 167–180. #link("https://doi.org/10.2165/00007256-200029030-00003")
 
 ] <ref-Paluska2000>
@@ -1066,10 +1073,12 @@ World Health Organization (Hrsg.). (2010). #emph[Global Recommendations on Physi
 ] <ref-WHO2010>
 ] <refs>
 #set par(first-line-indent: 0.5in, hanging-indent: 0in)
-Anhang
+= Anhang
+<anhang>
+
 
  
   
-#set bibliography(style: "\_extensions/wjschne/apaquarto/apa.csl") 
+#set bibliography(style: "../\_extensions/wjschne/apaquarto/apa.csl") 
 
 
