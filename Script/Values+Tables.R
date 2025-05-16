@@ -1,7 +1,7 @@
 #### Creating a list with all commonly used descriptive statistics + other descriptive values ###############################################
 descriptives_list<-mean_sd_median_min_max(df)
 vars_not_normal<-which_var_not_normal(df)
-vars_not_normal_with_p_values<-which_var_not_normal_p(df) %>% mutate(across(where(is.numeric), ~ ifelse(. < 0.001, "< .001", as.character(round(.,3)))))
+vars_not_normal_with_p_values<-df %>% select(-ends_with("_1"), -ends_with("_2"), -ends_with("_3"), -ends_with("_4"), -ends_with("_5"), -ends_with("_6"), -"completed_count", -"Missings_amount", -"SesseionH_ave", -"WeeklyKM_base", -"WeeklyH_base", -"SessionKM_ave") %>% which_var_not_normal_p() %>% mutate(across(where(is.numeric), ~ ifelse(. < 0.001, "< .001", as.character(round(.,3)))))
 stat.desc(df$Locus, basic = F, norm = T)
 stat.desc(df$Dynamics, basic = F, norm = T)
 hist(df$Locus, breaks = 15)
@@ -48,28 +48,15 @@ table_stat<-df_stat %>% flextable() %>% flextable::theme_apa() %>% autofit()
  
 
 
-#### Power analysis ####
+#### Power-Analyse ####
 pwr_result <- pwr.r.test(n = NULL,         
                      r = 0.5,           
                      sig.level = 0.05,  
                      power = 0.95,      
                      alternative = "greater") 
 
-#
+
 #### Regression Analyses ###############################################
-
-###ICC####
-# Nullmodell
-null_model_goal<- lme(Goal ~ 1, 
-                      data=long_df, 
-                      random= ~1|ID, 
-                      method="ML", 
-                      na.action = na.omit) # See the documentation for lme: ?lme --> other options: na.exclude, na.pass...#
-# The "1" stands for the "intercept"
-#The formula means: Fixed effects: for "Goal", only the intercepts are estimated. Random effects: "The intercept varies between participants". 
-summary(null_model_goal)
-icc_goal<--icc(null_model_goal) # The ICC is a lot lower with multiple imputation
-
 
 ###General Linear Models####
 #Hypothese 1.1 Ein internal - variabler Attributionsstil sagt weniger Trainingsausfälle voraus; # Hypothesis 2.1 Ein negatives Affekterleben sagt mehr Trainingsausfälle voraus
@@ -137,7 +124,6 @@ binomialglmm_table<-huxreg("Modell 1" = count_model_binomial ,
                            "Negativer Affekt (State)"       = "NegativeAffect_z"))
 
 ### Direkter Vergleich der Gruppenunterschiede
-
 
 df <- df %>%
   mutate(Status = if_else(completed_count == 6, "abgeschlossen", "nicht abgeschlossen"))
@@ -232,19 +218,19 @@ ttesttable<-flextable(results_df) %>%
 
 
   #################Hierarchical linear models #################
-long_df$Goal_log <-log(long_df$Goal)
-long_df$Goal_log[is.infinite(long_df$Goal_log)] <- 0.000001
-long_df$Goal_rank <-rank(long_df$Goal)
+
+
+long_df_z$Goal_rank <-rank(long_df_z$Goal) # Identisch: rank(long_df$Goal)==rank(long_df_z$Goal)
 
 null_model_goal<-lme(
   Goal_rank~1,
-  data = long_df,
+  data = long_df_z,
   random = ~ 1| ID,
   method = "REML",
   na.action = na.omit,
   correlation = corAR1(form = ~ Time | ID)
 )
-icc(null_model_goal)
+icc_goal<-icc(null_model_goal)
 
 goal_model1 <- update(null_model_goal, . ~ . + Locus_centered + Dynamics_centered)
 
@@ -259,6 +245,27 @@ goal_model4 <- update(goal_model3, . ~ . + Locus_centered * NA_base_centered +
 goal_model5 <- update(goal_model4, . ~ . +NegativeAffect_cm_centered * NA_base_centered + 
                         Dynamics_centered * Locus_centered)
 
+null_model_goal_no_ranktransform<-lme(
+  Goal~1,
+  data = long_df_z,
+  random = ~ 1| ID,
+  method = "REML",
+  na.action = na.omit,
+  correlation = corAR1(form = ~ Time | ID)
+)
+
+goal_model1_no_ranktransform <- update(null_model_goal_no_ranktransform, . ~ . + Locus_centered + Dynamics_centered)
+
+goal_model2_no_ranktransform <- update(goal_model1_no_ranktransform, . ~ . + Locus_centered + Dynamics_centered+ NA_base_centered + NegativeAffect_cm_centered)
+
+goal_model3_no_ranktransform <- update(goal_model2_no_ranktransform, . ~ . + Locus_centered * NegativeAffect_cm_centered + 
+                        Dynamics_centered * NegativeAffect_cm_centered)
+
+goal_model4_no_ranktransform <- update(goal_model3_no_ranktransform, . ~ . + Locus_centered * NA_base_centered + 
+                        Dynamics_centered * NA_base_centered)
+
+goal_model5_no_ranktransform <- update(goal_model4_no_ranktransform, . ~ . +NegativeAffect_cm_centered * NA_base_centered + 
+                        Dynamics_centered * Locus_centered)
 
 
 
@@ -269,13 +276,13 @@ hlmtable<-huxreg("Nullmodell" = null_model_goal,
                  "Modell 3" = goal_model3 ,
                  "Modell 4" = goal_model4 ,
                  "Modell 5" = goal_model5 ,
-                 statistics = NULL, 
+                 statistics = c("AIC", "BIC"), 
                  number_format = 3, 
                  bold_signif = 0.1, 
                  tidy_args =  list(effects = "fixed"), error_pos="right",
                  coefs = c("Interzept"                                = "(Intercept)",
-                           "Attributionsstil: Lokus"                  = "Locus_centered",
-                           "Attributionsstil: Variabilität"           = "Dynamics_centered",
+                           " Lokus"                  = "Locus_centered",
+                           "Variabilität"           = "Dynamics_centered",
                            "NA (Trait)"                 = "NA_base_centered",
                            "NA (State)"                 = "NegativeAffect_cm_centered",
                            "Lokus x NA (State)"          = "Locus_centered:NegativeAffect_cm_centered",

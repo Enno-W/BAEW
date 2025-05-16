@@ -3,7 +3,7 @@ title: "Was uns am Laufen hält: Vorhersagen von Bewegungsadhärenz durch Affekt
 shorttitle: "Affekt, Attribution und Bewegungsadhärenz"
 author:
   - name: Enno Winkler
-    corresponding: false
+    corresponding: true
     orcid: 0000-0000-0000-0001
     email: janedoe@generic.edu
     affiliations:
@@ -31,12 +31,14 @@ keywords: [keyword1, keyword2, keyword3]
 bibliography: bibliography.bib
 lang: de
 format:
- apaquarto-html: default
+ #apaquarto-html: default
  apaquarto-docx:
-  number-sections: true
-  
+    number-sections: true
  #apaquarto-typst: 
-   #keep-typ: true
+    #keep-typ: true
+    #list-of-figures: true
+    #list-of-tables: true
+    #toc: true
   #apaquarto-pdf:
     # Can be jou (journal), man (manuscript), stu (student), or doc (document)
     #documentmode: man
@@ -74,13 +76,39 @@ source(magic_path("Import+Bereinigung.R"))
 source(magic_path("Values+Tables.R")); source(magic_path("Graphs.R"))
 ```
 
+# Inhaltsverzeichnis
+
+::: pagebreak
+:::
+
+# Tabellenverzeichnis
+
+::: pagebreak
+:::
+
+# Abbildungsverzeichnis
+
+::: pagebreak
+:::
+
+# Symbol- und Abkürzungsverzeichnis
+
+| Abkürzung | Bedeutung           |
+|-----------|---------------------|
+| PA        | Physische Aktivität |
+|           |                     |
+|           |                     |
+
+::: pagebreak
+:::
+
 Die Empfehlungen zu regelmäßiger physischer Aktivität [PA, @caspersen1985physical] der WHO [@WHO2010] werden von nur etwa 26% der erwachsenen Bevölkerung in Deutschland in Bezug auf Muskel- und Ausdauertraining erreicht [@RKI_2022]. Das hat großen gesundheitlichen und finanziellen Schaden zur Folge. @Ding2016 gingen der Frage nach, welche Kosten sich jährlich und weltweit durch Produktivitätsausfälle und Behandlungskosten als Folge von Inaktivität ergeben. Als Endergebnis nennen die Autor:innen, dass der Gesamtbetrag einer konservativen Schätzung nach zwischen 19 und 182 Milliarden, einer weniger konservativen Schätzung nach allerdings zwischen 47 und 339 Milliarden Dollar liegt. Dabei sind die gesundheitlichen Vorteile von PA ermutigend. Menschen, die ein relativ hohes Niveau an PA berichten, zeigen eine deutlich reduzierte Mortalität [@Warburton2006]. Auch Studien mit direkten Messmethoden kommen zu diesem Ergebnis. So fanden @Myers2004 in einer Analyse der Trainingskapazität von Männern im fortgeschrittenen Erwachsenenalter eine um etwa 20% reduzierte Mortalität pro Zuwachs des Aktivitätsniveaus um ein metabolisches Äquivalent. Eine Erklärung dafür ist, dass aktivere Individuen seltener an chronischen Krankheiten erkranken. @Lee2012 berichten in einer Meta-Analyse, dass die Krankheitslast von Herz-Kreislaufkrankheiten, Krebs und Diabetes bei Inaktivität um 6-10% erhöht ist und dass damit eine um mehr als ein halbes Jahr verkürzte durchschnittliche Lebenserwartung einhergeht. Körperliche Aktivität bringt auch Vorteile für die psychische Gesundheit. Das geschieht sowohl durch die Veränderung physiologischer als auch psychologischer Zustände im Körper [@Mikkelsen2017].
 
 Die Wirkung von PA gegen Depression ist eine vieldiskutierte Forschungsfrage, die noch nicht abschließend geklärt ist. @Ledochowski2016 kommen in einer systematischen Literaturrecherche zu dem Ergebnis, dass depressive Symptomatik sich durch moderate, zum Trainingszustand des:der Patientin passende PA reduzieren lässt, und dass sich dadurch affektive Zustände verbessern. Die Autor:innen sprechen die Empfehlung aus, Bewegung als Teil der Behandlung von Depression zu nutzen. In einer systematischen Literaturrecherche der Cochrane-Datenbank [@Cooney08] äußern sich die Autor:innen eher zurückhaltend. Die Effekte für Depression sind allenfalls moderat, und bei alleinigem Einbezug von rigoros kontrollierten Studien entziehen sich die Effekte statistischer Signifikanz. Es gibt außerdem Befunde, die zeigen, dass PA zwar effektiv in der Behandlung, nicht aber in der Prävention von Depression [@Carter2016; @Paluska2000] ist. Die Forschungsgruppe um Ioannis D. Morres berichtet ermutigendere Ergebnisse. In einer Meta-Analyse zu aerobischer Bewegung finden @Morres2018 mittlere bis große Effekte in der Behandlung von Depression. Hier zeigen sich Hinweise, dass z.B. eine Berücksichtigung der Vorlieben für Sport wichtig ist. Die Art der Bewegungs-Intervention spielt eine Rolle und bedarf weiterer Forschung.
 
 Der Fokus von Studien zur Bewegungsförderung lag bisher auf Interventionen, die inaktive Personen dazu ermutigen, sich mehr zu bewegen und auf der Adhärenz zu solchen Interventionen [siehe z.B. @Gillison2009]. Weniger Studien befassten sich mit der Frage, welche Faktoren die Aufrechterhaltung einer Bewegungsgewohnheit von Personen, die bereits gewohnheitsmäßig aktiv sind, beeinflussen [z.B. @Stetson2005]. Das Rückfallpräventionsmodell (Relapse Prevention Model, @Marlatt1984) könnte einen geeigneten Rahmen zur Untersuchung dieser Fragestellung darstellen.
 
-# Theorie
+# Theoretischer Hintergrund
 
 ## Physische Aktivität und Bewegung
 
@@ -126,6 +154,35 @@ Verstöße gegen die Abstinenz werden von persönlicher Attribution begleitet. D
 
 Kritik am Rückfallmodell Innerhalb dieses Modells ist die wichtige Rolle der Selbstwirksamkeit bereits gut untersucht, in Bezug auf andere Variablen ist die Studienlage allerdings noch dünn [@Amireault2013].
 
+## Mehrebenenanalysen 
+
+
+In der Präregistrierung wurde als Haupttest eine Mehrebenenanalyse, auch bekannt als *Hierarchisches Lineares Modell* spezifiziert.
+
+Hierarchische Lineare Modelle stellen komplexe statistische Verfahren dar, die besonders gut für längsschnittliche Daten geeignet sind [@Nezlek2006]. Der Vorteil solcher Modelle ist, dass genestete Daten in die Analyse mit einbezogen werden können. Ein oft genanntes, anschauliches Beispiel hierfür ist die Situation in Studien, bei denen Daten aus verschiedenen Klassen erhoben werden [LIT]: Aus praktischen Gründen können Schüler:innen nur selten völlig randomsiert einer Intervention zugeordnet werden. Stattdessen durchlaufen einige Klassen die Intervention, andere wiederum nicht. Die Zugehörigkeit zu einer bestimmten Klasse hat einen Einfluss auf die Daten: So könnte eine Intervention, die das Mathematik-Interesse [LIT AUS BIPSY] erhöhen soll, in einer Klasse besonders erfolgreich sein, in der der Mathematikunterricht bisweil als weniger interessant wahrgenommen wurde. Innerhalb einer Klasse sind die Daten eizelner Schüler:innen also nicht unabhängig voneinander, die Datenstruktur weist trennbare "Cluster" auf. Um diese Tatsache zu berücksichtigen, muss es in der Regel ermöglicht sein, dass das Interzept, also der "Startpunkt" der Regressionsgeraden, an dam alle Prädiktoren gleich null sind, variieren kann. Dazu könnten auch die Steigungen der Regressionsgeraden je nach Klasse variieren. Diese je nach Klasse variierenden Effekte werden als *Zufallseffekte* (random effects) bezeichnet.
+Auch bei längsschnittlichen Daten hat man solche "genesteten" Daten. Wenn ein Individuum zu mehreren Messezeitpunkten den gleichen Fragebogen ausfüllt, dann ist schließlich anzunehmen, dass die Daten eines Individuums zusammenhängen. Hier sind Daten dann in Individuen statt in Klassen genestet. Ein Individuum ist also ein Cluster. 
+
+Die Zentrierung der Prädiktoren ist ein wichtiger Schritt in der Spezifikation einer Mehrebenenanalyse. Hier gibt es zwei Möglichkeiten: Die Zentrierung am Gesamtmittelwert (grand mean centering) und die Zentrierung am Gruppenmittelwert (cluster mean centering). Am Gesamtmittelwert zentrieren heißt, dass die einzelnen Werte in die Differenz vom Gesamtmittelwert umgerechnet werden. Hier ändert sich die Interpretation des Interzepts: Das Interzept ist dann die Ausprägung der Zielvariablen, wenn die jeweiligen Prädiktoren dem Gesamtmittelwert entsprechen. Beim cluster mean centering ist der Unterschied lediglich, dass die Differenz zum Mittelwert innerhalb eines Clusters berechnet wird. 
+
+Bei längsschnittlichen Daten ergeben sich zwei Besonderheiten: Erstens ist anzunehmen, dass die einzelnen Messzeitpunkte untereinander korrelieren (Daten von Messzeitpunkt 1 hängen stärker mit Messzeitpunkt 2 zusammen als mit Messzeitpunkt 10). Zweitens ist die Trennung von intraindividuellen (within-person) Effekten und interindividuellen (between-person) wichtig. Ein Beispiel von [LIT]: Über Personen hinweg hängt mehr physische Aktivität mit einem geringeren Risiko für Herzinfarkte zusammen (between-person-effect). Allerdings kommen Herzinfarkte häufig beim Trainieren vor (within-person-effect). 
+
+Um der Korrelation zwischen Messzeitpunkten Rechnung zu tragen, wird eine Korrelationsmatrix spezifiziert. Diese fügt dem Modell die angenommene Korrelationsstruktur hinzu und somit kann für die Korrelation zwischen Messzeitpunkten kontrolliert werden. 
+
+Für die Trennung von within- und between-person-Effekten wird empfohlen, wiederholt gemessene Prädiktoren anhand des Gruppenmittelwertes zu zentrieren und stabile Prädiktoren anhand des Gesamtmittelwertes.  @Wang2015
+
+
+[@rlanguage2024]
+
+ [@nlme] 
+
+Das Interzept ist der "Startpunkt" der Vorhersagegeraden eines jeden Individuums, hier repräsentiert dieser Wert das Ausmaß an wahrgenommener Zielerreichung, wenn alle Prädiktoren dem Mittelwert entsprechen. Da nicht anzunehmen ist, dass alle Versuchspersonen mit genau dem gleichen Ausmaß an wahrgenommener Zielerreichung in die Studie starten, geht das Interzept als *random effect* in das Modell ein. Es wird also zugelassen, dass die Interzepte jeder Versuchsperson frei variieren.
+
+Von den Prädiktoren wird wiederum erwartet, dass sie alle Versuchspersonen in gleicher Weise beeinflussen In diesem Modell sind das der negative Affekt nach der Trainingseinheit sowie als Trait, beziehungsweise der Lokus und die Variabilität des Attributionsstils. Diese Prädiktoren gelten also als *fixed effects* des Modells.
+
+
+Um die Intraklassen-Korrelation zu berechnen, wurde zunächst ein Nullmodell berechnet. Bei einem Nullmodell handelt es sich um die einfachste mögliche Form eines hierarchischen linearen Modells.
+
+
 ## Hypothesen und Forschungsfrage
 
 Es ergibt sich die Forschungsfrage, inwiefern Affekt oder der Attributionsstil den Trainingsausfall bzw. die wahrgenommene Zielerreichung vorhersagen. Hierbei bezieht sich Affekt auf den *State*
@@ -169,9 +226,7 @@ Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfo
 
 Die Teilnehmenden waren durchschnittlich `r descriptives_list$Age_mean` Jahre alt (*SD* = `r descriptives_list$Age_sd`). Das Alter reichte von `r descriptives_list$Age_min` bis`r descriptives_list$Age_max`.
 
-## Durchführung:
-
-### *Prozedur*
+## *Durchführung*
 
 Diese Studie wurde von der Ethikkommission der Uni Leipzig genehmigt (Fallnr. 2023.05.03 \_cb_196).
 
@@ -185,25 +240,25 @@ Die Daten der einzelnen Versuchspersonen wurden mittels eines Pseudonyms zugeord
 
 ## Statistische Analyse
 
-### Datenbereinigung und Transformation
+### Datenimport, Bereinigung und Transformation
 
 Diese Arbeit wurde mit R (Version `r getRversion()` ) und Quarto (Version 1.6.32) erstellt. Die reproduzierbare Version dieses Artikels ist auf GitHub unter <https://github.com/Enno-W/BAEW> verfügbar.
 
-Versuchspersonen, die angaben, kein konkretes Trainingsziel zu verfolgen oder mehr als 50 fehlende Werte hatten, wurden von der weiteren Analyse ausgeschlossen. Variablen, die im Rahmend des Forschungsprojekts erfasst wurden, aber in dieser Arbeit nicht berücksichtigt werden, wurden eliminiert. Für Werte, bei denen die Versuchspersonen einen Bereich (z.B. 10-15 km) angegeben hatten, wurde der Durchschnitt der beiden Werte gebildet. Da die Skalen von Affekt und Attribution keine gegensätzlich gepolten Items beinhalten, wurde keine Umpolung vorgenommen. Angaben zur Sportart mit dem Wortbestandteil "lauf" wurden zu "Laufen", und mit "kraft" zu "Kraftsport" zusammengefasst.
+Die Daten bestanden aus einem Baseline-Test und Angaben aus einem Fragebogen zu sechs darauffolgenden Trainingseinheiten. Diese wöchentlichen Angaben wurden zu Mittelwerten zusammengefasst. Außerdem wurde ausgezählt, wie viele Trainingseinheiten eine Person ausgefüllt hatte.
 
-In dem Datensatz befanden sich immer noch `r sum(is.na(df_less_na))` fehlende Werte, die per multipler Imputation per *predictive mean matching* mit 5 Iterationen geschätzt wurden. Bei diesem Verfahren werden in mehreren Durchläufen bzw. Iterationen plausible Werte anhand der Verteilungen und Beziehungen der Variablen untereinander geschätzt [@Li2015].
+Versuchspersonen, die angaben, kein konkretes Trainingsziel zu verfolgen oder mehr als 50 fehlende Werte hatten, wurden von der weiteren Analyse ausgeschlossen. Variablen, die im Rahmen des Forschungsprojekts erfasst wurden, aber in dieser Arbeit nicht berücksichtigt werden, wurden eliminiert. Für Werte, bei denen die Versuchspersonen einen Bereich (z.B. 10-15 km) angegeben hatten, wurde der Durchschnitt der beiden Werte gebildet. Da die Skalen von Affekt und Attribution keine gegensätzlich gepolten Items beinhalten, wurde keine Umpolung vorgenommen. Angaben zur Sportart mit dem Wortbestandteil "lauf" wurden zu "Laufen", und mit "kraft" zu "Kraftsport" zusammengefasst.
 
-Die Daten bestanden aus einem Baseline-Test und Angaben aus einem Fragebogen zu sechs darauffolgenden Trainingseinheiten. Diese wöchentlichen Angaben wurden zu Mittelwerten zusammengefasst. Außerdem wurde ausgezählt, wie viele Trainingseinheiten eine Person ausgefüllt hatte. Die Normalverteilung bei wurde bei sämtlichen Variablen überprüft. Für die Berechnung der hierarchischen linearen Modelle wurden die Daten in ein Langformat transformiert, und zwar so, dass jeder Messzeitpunkt in einer Zeile aufgeführt war. So entstanden für jede Versuchsperson sechs Zeilen für die 6 Messzeitpunkte. Die Werte, die nur zu einem Messzeitpunkt erhoben wurden, wie etwa Attributionsstil oder Alter, wiederholten sich in jeder dieser sechs Zeilen.
+Die Normalverteilung bei wurde bei sämtlichen Variablen überprüft. Nicht normalverteilt waren das Alter (*p* = `r vars_not_normal_with_p_values$Age`), der negative Affekt (Trait) (*p* = `r vars_not_normal_with_p_values$NA_base`), die durchschnittliche wahrgenommene Zielerreichung nach jeder Trainingseinheit (*p* = `r vars_not_normal_with_p_values$Goal_ave`) und der durchschnittliche negative Affekt nach jeder Trainingseinheit (*p* = `r vars_not_normal_with_p_values$NA_ave`)
+
+In dem Datensatz befanden sich immer noch `r sum(is.na(df_less_na))` fehlende Werte (`r round(100 * sum(is.na(df_less_na)) / (nrow(df_less_na) * ncol(df_less_na)), 2)`%), die per multipler Imputation per *predictive mean matching* mit 5 Iterationen geschätzt wurden. Bei diesem Verfahren werden in mehreren Durchläufen bzw. Iterationen plausible Werte anhand der Verteilungen und Beziehungen der Variablen untereinander geschätzt [@Li2015].
+
+Für die Berechnung der hierarchischen linearen Modelle wurden die Daten in ein Langformat transformiert, und zwar so, dass jeder Messzeitpunkt in einer Zeile aufgeführt war. So entstanden für jede Versuchsperson sechs Zeilen für die 6 Messzeitpunkte. Die Werte, die nur zu einem Messzeitpunkt erhoben wurden, wie etwa Attributionsstil oder Alter, wiederholten sich in jeder dieser sechs Zeilen.
 
 ### Statistische Tests
 
-In der Präregistrierung wurde als Haupttest eine Mehrebenenanalyse, auch bekannt als *Hierarchisches Lineares Modell* spezifiziert. Die Voraussage der Trainingsausfälle durch ein Mehrebeneenmodell scheiterte an einer geringen Variabilität dieser Zielvariable, denn die meisten Versuchspersonen hatten alle Einheiten abgeschlossen. Das hierarchische lineare Modell somit nicht konvergieren konnte. Als Alternative wurden Hypothesen 1.1 und 2.1 explorativ mit einem verallgemeinerten Linearen Modell (GLMM) getestet. Für Hypothesen 1.2 und 2.2 konnte ein hierarchisches lineares Modell berechnet werden.
+ Die Voraussage der Trainingsausfälle durch ein Mehrebeneenmodell scheiterte an einer geringen Variabilität dieser Zielvariable, denn die meisten Versuchspersonen hatten alle Einheiten abgeschlossen. Das hierarchische lineare Modell somit nicht konvergieren konnte. Als Alternative wurden Hypothesen 1.1 und 2.1 explorativ mit einem verallgemeinerten Linearen Modell (GLMM) getestet. Für Hypothesen 1.2 und 2.2 konnte ein hierarchisches lineares Modell berechnet werden.
 
-**Hierarchische Lineare Modelle** Hierarchische Lineare Modelle stellen komplexe statistische Verfahren dar, die besonders gut für längsschnittliche Daten geeignet sind [@Nezlek2006]. Der Vorteil solcher Modelle ist, dass "genestete" Daten in die Analyse mit einbezogen werden können. Im vorliegenden Datensatz sind die Daten eines Individuums über die sechs Messzeitpunkte hinweg nicht unabhängig voneinander, sondern die Daten sind im Individuum "genestet". Schließlich reagiert jede Versuchsperson unterschiedlich auf die Anforderungen dieser Studie. Bei manchen Versuchspersonen könnte die wahrgenommene Zielerreichung über die Zeit hinweg steigen, bei anderen wiederum könnte sie weniger stark steigen oder sogar sinken. Das Interzept, also der Startpunkt der Vorhersagegeraden eines jeden Individuums, könnte sich ebenso unterscheiden, schließlich starten nicht alle mit genau dem gleichen Ausmaß an wahrgenommener Zielerreichung. Im vorliegenden Modell wird dem Rechnung getragen, indem die Veränderung über die Zeit je nach Person (ID) als *random effect* in das Modell eingeht. Dabei wird im Modell zugellassen, dass sowohl das Interzept als auch die Steigung ("slope") frei variieren. Daneben gibt es aber auch Effekte, von denen erwartet wird, dass sie alle Versuchspersonen in gleicher Weise beeinflussen, wenn auch unterschiedlich stark. In diesem Modell sind das der negative Affekt nach der Trainingseinheit sowie als Trait, beziehungsweise der Lokus und die Variabilität des Attributionsstils.
 
-Bei hierarchischen linearen Modellen ergibt sich die Frage der Zentrierung. Dafür wurden die wiederholten Angaben zu negativem Affekt zentriert. Die Residuen der aufgestellten Modelle erfüllten allerdings die Voraussetzung der Homoskedastizität und Normalverteilung nicht. Daher wurde explorativ ...
-
-Um die Intraklassen-Korrelation zu berechnen, wurde zunächst ein Nullmodell berechnet. Bei einem Nullmodell handelt es sich um die einfachste mögliche Form eines hierarchischen linearen Modells.
 
 # Ergebnisse
 
@@ -214,8 +269,6 @@ Um die Intraklassen-Korrelation zu berechnen, wurde zunächst ein Nullmodell ber
 Die Daten zum Attribution (Locus und Variabilität) folgen einer Normalverteilung, aber alle Werte fielen relativ hoch aus. Sie reichten von `r descriptives_list$Locus_min` bis `r descriptives_list$Locus_max` für den Lokus und von `r descriptives_list$Dynamics_min` bis `r descriptives_list$Dynamics_max` für die Variabilität.
 
 Für die Variablen, die nach jeder Trainingseinheit erfasst wurden, Durchschnittswerte gebildet. Die Anzahl der abgeschlossenen Trainingseinheiten, von denen es insgesamt sechs in der Studie gab, weist eine linksschiefe Verteilung auf, da `r sum(df$completed_count ==6)` Personen alle Einheiten beendet haben. Ein ähnliches Muster mit vielen hohen Werten weist die durchschnittliche wahrgenommene Zielerreichung auf. `r sum(df$Goal_ave>89)` Personen hatten Werte größer als neunzig, und sämtliche Durchschnittswerte der Ziellerreichung reichten von `r descriptives_list$Goal_ave_min` bis `r descriptives_list$Goal_ave_max`. Die Variablen der durchschnittlich gelaufenen Kilometer und Minuten pro Einheit wies viele Werte am unteren Ende der Verteilung auf und einige extreme Werte am oberen Ende. Von allen Variablen, die auf zu den Trainingseinheiten erhoben wurden, war nur die durchschnittliche wahrgenommene Trainingsintensität normalverteilt. Der negative Affekt nach jeder Trainingseinheit hatte einen Maximalwert von `r round(descriptives_list$NA_ave_max)` und eine hohe Konzentration von Werten am unteren Ende der Verteilung.
-
-**Die Baseline-Werte waren allesamt rechtsschief und nicht normalverteilt. Die wöchentlich gelaufenen Kilometer wiesen zwei Ausreißer mit extremen Werten von mehr als 200km pro Woche auf. Diese Werte waren nicht plausibel, da sie, mit der wöchentlichen Laufzeit verrechnet, eine Durchschnittsgeschwindigkeit von jeweils `r df$WeeklyKM_base[6]/df$WeeklyH_base[6]` und `r df$WeeklyKM_base[10]/df$WeeklyH_base[10]` Kilometern pro Stunde suggerierten. Da aber diese Baseline-Werte aber nicht in die statistischen Analysen einbezogen wurden, wurden die Daten dieser Versuchspersonen beibehalten.**
 
 ```{r}
 #| label: tbl-stattable
@@ -230,7 +283,7 @@ table_stat
 #| label: fig-overview
 #| fig-cap: Violinen-Diagramme aller Variablen, die 
 #| apa-note: This is the note below the figure.
-#| fig-height: 15
+#| fig-height: 7
 #| fig-width: 10
 
 violin_plots
@@ -246,22 +299,20 @@ Sowohl als zwischen Baseline-RPE und Baseline negativem Affekt als auch der durc
 
 <!-- Die Teilnehmenden trainierten wöchentlich *M =* `r descriptives_list$WeeklyKM_base_mean` km (*SD =* `r descriptives_list$WeeklyKM_base_sd`); *M =* `r descriptives_list$WeeklyH_base_mean` Stunden (*SD =* `r descriptives_list$WeeklyH_base_sd`); und erlebten die Anstrengung der Trainingseinheiten mit *M =* `r descriptives_list$WeeklyRPE_base_mean` (*SD =* `r descriptives_list$WeeklyRPE_base_sd`) auf der Session-RPE-Skala. -->
 
-::: landscape
 ```{r}
 #| label: tbl-corrtable
 #| tbl-cap: Korrelationstabelle der gemittelten durchschnittlichen Werte aus den Werten der einzelnen Sessions
 #| apa-note: \*p \< 0.05; \*\*p \< 0.01
 ave_corr_table
 ```
-:::
 
 ## Regressionsmodelle
 
-Es wurde jeweils ein Modell zur Vorhersage der Trainingsausfälle sowie der wahrgenommenen Zielerreichung gebildet. Das Regressionsmodell zur Vorhersage der abgeschlossenen Trainingseinheiten sind in @tbl-hlmtable2 zu sehen, und die Hierarchischen Regressionsmodelle zur Vorhersage von wahrgenommener Zielerreichung sind in @tbl-glmmtable abgebildet.
+Es wurde jeweils ein Modell zur Vorhersage der Trainingsausfälle sowie der wahrgenommenen Zielerreichung gebildet. Das Regressionsmodell zur Vorhersage der abgeschlossenen Trainingseinheiten sind in @tbl-hlmtable2 zu sehen, und die Hierarchischen Regressionsmodelle zur Vorhersage von wahrgenommener Zielerreichung sind in @tbl-glmtable abgebildet.
 
 ### Vorhersagen von Trainingsausfällen
 
-Teilnehmende wurden in der Studie dazu aufgefordert, sechs Trainingseinheiten zu dokumentieren und die Fragebögen dazu auszufüllen. Es wurde ausgezählt, zu wie vielen Trainingseinheiten Daten vorlagen und diese Anzahl als Dummy-Variable eingetragen. Die resultierende Variable, also die Anzahl der Trainingsausfälle, war linksschief (*Skew* = `r skew(df$completed_count)`), und hatte eine geringe Varianz: `r sum(df$completed_count==6)` Teilnehmende von `r length(df$completed_count)` (`r (sum(df$completed_count==6)/length(df$completed_count))*100 %>% round(0)` %) hatten alle sechs Trainingseinheiten abgeschlossen, daher konnte kein Hierarchisches Lineares Modell berechnet werden: Die Konvergenz des Modells scheiterte. Die Alternative eines *generalisierten linearen gemischten Modell (GLMM)* mit Poisson-Verteilung lieferte ein passendes Modell. Wie in @tbl-glmmtable gezeigt, deckte das Modell keine signifikanten Prädiktoren auf. Ach nach Hinzufügen der rate of perceived exhaustion als Prädiktor gab es keine signifikanten Prädiktoren, die die Anzahl an abgeschlossenen Trainingseinheiten vorhersagen. (INfos über diese Modelle).
+Teilnehmende wurden in der Studie dazu aufgefordert, sechs Trainingseinheiten zu dokumentieren und die Fragebögen dazu auszufüllen. Es wurde ausgezählt, zu wie vielen Trainingseinheiten Daten vorlagen und diese Anzahl als Dummy-Variable eingetragen. Die resultierende Variable, also die Anzahl der Trainingsausfälle, war linksschief (*Skew* = `r skew(df$completed_count)`), und hatte eine geringe Varianz: `r sum(df$completed_count==6)` Teilnehmende von `r length(df$completed_count)` (`r (sum(df$completed_count==6)/length(df$completed_count))*100 %>% round(0)` %) hatten alle sechs Trainingseinheiten abgeschlossen, daher konnte kein Hierarchisches Lineares Modell berechnet werden: Die Konvergenz des Modells scheiterte. Die Alternative eines *generalisierten linearen gemischten Modell (GLMM)* mit Poisson-Verteilung lieferte ein passendes Modell. Wie in @tbl-glmtable gezeigt, deckte das Modell keine signifikanten Prädiktoren auf. Ach nach Hinzufügen der rate of perceived exhaustion als Prädiktor gab es keine signifikanten Prädiktoren, die die Anzahl an abgeschlossenen Trainingseinheiten vorhersagen. (INfos über diese Modelle).
 
 Weiterhin wurden explorative Analysen durchgeführt. Das Paket lme4 bietet eine Funktion für hierarchische lineare Modelle an, wobei die Zielvariable binomial ist. Es wurde ein binomiales genralisiertes lineares gemischtes Modell mit binomialer Zielvariable berechnet. Dafür wurden die abgeschlossenen Trainingseinheiten in zwei Kategorien aufgeteilt, je nachdem ob Versuchspersonen alle Trainingseinheiten abgeschlossen hatten oder weniger. Für dieses Modell wurden die Variablen z-standardisiert und ein einfacheres Modell wurde implementiert, um Rankinsuffizienz zu addressieren (INFO). Auch hier wurde lediglich der Interzept signifikant. Der Interzept stellt hier die **log-odds og-odds of the outcome (here: completing all training units) when all predictors are at zero.** \* , was eine Wahrscheinlichkeit von `r plogis(13.278) %>% round(2)` bedeutet, alle Trainingseinheiten abzuschließen, wenn alle Prädiktoren dem Durchschnitt entsprechen. Das bedeutet, dass immer noch zu viele der Teilnehmenden alle Einheiten abgeschlossen haben. Als Alternative dazu wurde in einer Reihe t-tests die Gruppen direkt verglichen, und für den negativen Affekt nach der Trainingseinheit, eine wiederholt gemessene Variable, wurde das arithmetische Mittel herangezogen. Auch hier waren die Werte nicht signifikant. Die Ergebnisse sind mit Effektgrößen und p-Werten in @tbl-ttests abgetragen. \*\*\*----Binomiales GLMM mit 6 complete vs nicht https://youtu.be/\_p0PAD9ooZw?si=j-WMY0Up2UtpBWpH&t=367 ????\*\*\*
 
@@ -272,6 +323,7 @@ Weiterhin wurden explorative Analysen durchgeführt. Das Paket lme4 bietet eine 
 glmtable
 ```
 
+::: landscape
 ```{r}
 #| label: tbl-glmtablebinomial
 #| tbl-cap: Modellkoeffizienten des General Linear Models zur Vorhersage der abgeschlossenen Trainingseinheiten. 
@@ -285,23 +337,43 @@ binomialglmm_table
 #| apa-note:
 ttesttable
 ```
+:::
 
 ```{r}
 #| label: fig-status-vergleich
 #| fig-cap: Gruppenvergleich je nach Vollendungsstatus des Trainingsplans
 #| apa-note: Bei sechs abgeschlossenen Trainingseinheiten wurde Teilnehmenden der Status "abgeschlossen" zugewiesen
-#| fig-height: 15
-#| fig-width: 10
+#| fig-height: 6
+#| fig-width: 8
 
 Status_vergleich_plot
 ```
 
-### Hier noch Plots oder deskriptive gegenüberstellung?
-
 ## Hierarchiche Lineare Modelle
 
-Für die Prädiktoren wurde zunächst eine Zentrierung vorgenommen. Dabei wurden die stabilen Prädiktoren, also wahrgenommener negativer Affekt bei der Baseline-Messung, sowie Lokus und Variabilität des Attributionsstils am Gesamtmittelwert, und die wiederholten Messwerte des negativen Affekts am Gruppenmittelwert zentriert. Das resultierende Modell erfüllte die Voraussetzungen der Homoskedastizität und der Normalverteilungen der Residuen nicht. (Gegenüberstellung)
+Für die Prädiktoren wurde zunächst eine Zentrierung vorgenommen. Dabei wurden die stabilen Prädiktoren, also wahrgenommener negativer Affekt bei der Baseline-Messung, sowie Lokus und Variabilität des Attributionsstils am Gesamtmittelwert, und die wiederholten Messwerte des negativen Affekts am Gruppenmittelwert zentriert. Es wurden *n* = `r goal_model5$data %>% nrow()` Fälle (Messzeitpunkte, genestet in Personen) einbezogen. Das resultierende Modell erfüllte die Voraussetzungen der Homoskedastizität und der Normalverteilungen der Residuen nicht.
 
+```{r}
+#| label: fig-residnormality
+#| fig-cap:  QQ-Plot und Verteilungskurve der Residuen des hierarchischen linearen Modells zur Vorhersage der wahrgenommenen Zielerreichung
+#| apa-note: Das Diagramm links zeigt die Verteilung der Residuen im Vergleich zu einer theoretisch angenommenen perfekten Normalverteilung (die blaue Linie). Rechts ist die Verteilungskurve der Residuen zu sehen. Die erste Zeile zeigt die Diagramme ohne Rangtransformation des Modells. Das Modell mit Rangtransformation (zweite Zeile) wurde beibehalten. 
+#| fig-height: 7
+#| fig-width: 10
+  (plot_resid_vs_fitted_no_ranktransform + plot_norm_no_ranktransform )/
+(plot_resid_vs_fitted + plot_norm )
+
+```
+
+```{r}
+#| label: fig-heteroscedasticity_check
+#| fig-cap:  Streudiagramm aus vorhergesagten Werten und Residuen des hierarchischen linearen Modells zur Vorhersage der wahrgenommenen Zielerreichung
+#| apa-note: Um die Annahme der Homoskedastizität zu erfüllen, sollten die Anzahl der Datenpunkte und deren Distanz zur Linie jeweils über und unter der Linie gleich sein. Zeile eins zeigt das Ergebnis des Modells ohne Rangtransformation der Zielvariablen 
+#| fig-height: 10
+#| fig-width: 10
+plot_heteroscedasticity_diag_no_ranktransform+plot_heteroscedasticity_diag
+```
+
+::: landscape
 ```{r}
 #| label: tbl-hlmtable2
 #| tbl-cap: Hierarchisches Modell zur Vorhersage von wahrgenommener Zielerreichung
@@ -309,6 +381,7 @@ Für die Prädiktoren wurde zunächst eine Zentrierung vorgenommen. Dabei wurden
 
 hlmtable
 ```
+:::
 
 Das Nullmodell für die Vorhersage der wahrgenommenen Zielerreichung hatte einen Intraklassenkoeffizienten von *ICC* = `r round(icc_goal$ICC_adjusted,3)`. Der Intraklassenkoeffizient gibt wieder, wie viel Varianz auf die Unterschiede zwischen Gruppen zurückgeführt werden kann.
 
@@ -316,8 +389,8 @@ Das Nullmodell für die Vorhersage der wahrgenommenen Zielerreichung hatte einen
 #| label: fig-model_overview
 #| fig-cap: Vorhergesagte Veränderung der wahrgenommenen Zielerreichung über die Zeit hinweg
 #| apa-note: Die Abbildung links zeigt die Veränderung je Teilnehmer:in, die Abbildung rechts die Gesamtvorhersage des Modells. 
-#| fig-height: 15
-#| fig-width: 10
+#| fig-height: 6
+#| fig-width: 8
 
 Plot_across_time
 ```
@@ -326,18 +399,10 @@ Plot_across_time
 #| label: fig-interaktion
 #| fig-cap: The Figure Captionfd
 #| apa-note: Auf der X-Achse der drei Facetten (von -1 bis 1) ist das Ausmaß der Variablität der Kausalattribution zu sehen. Je höher also der negative Affekt (Trait), desto stärker war die Vorhersagekraft der Variabilität. eine höhere Variabilität ging dabei mit einer geringeren Zielerreichung einher. 
-#| fig-height: 10
-#| fig-width: 10
+#| fig-height: 6
+#| fig-width: 8
+#| echo: false
 interaction_plot_NA.Dynamics
-```
-
-```{r}
-#| label: fig-homoscedasticity
-#| fig-cap: The Figure Caption
-#| apa-note: This is the note below the figure.
-#| fig-height: 10
-#| fig-width: 10
-Homoscedasticity_plot
 ```
 
 Die Residuen aus den beiden Modellen zur Zielerreichung aus jeweils Attribution und Affekt waren nicht normalverteilt. Ein Shapiro-Wilk-Test ergab einen p-Wert von *p* `r shaptest_goal_p` für das erstere, und

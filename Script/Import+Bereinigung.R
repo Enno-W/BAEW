@@ -60,8 +60,8 @@ long_df <- long_df %>%
   ungroup()
 
 #z-Standardisierung zur besseren Interpretierbarkeit aller Variablen
-zstandard_varnames<-df %>% ungroup() %>% dplyr::select(-"Notes", -"Sport2", - "ID",-"Age"    ,- "Aim", -"Sport", -   "Gender" , - "WeeklyKM_base", "WeeklyH_base", -ends_with("_ave"), -starts_with("complet")) %>% names() #https://stackoverflow.com/questions/38511743/adding-missing-grouping-variables-message-in-dplyr-in-r
+zstandard_varnames<-df %>% ungroup() %>% dplyr::select( -"Notes", -"Sport2", - "ID",-"Age"    ,- "Aim", -"Sport", -   "Gender" , - "WeeklyKM_base", "WeeklyH_base", -ends_with("_ave"), -starts_with("complet")) %>% names() #https://stackoverflow.com/questions/38511743/adding-missing-grouping-variables-message-in-dplyr-in-r
 df_z <- df %>%  mutate_at(zstandard_varnames, ~ as.numeric(scale(.)))
-zstandard_varnames_long<-long_df %>% ungroup() %>% dplyr::select(-"Notes", -"Sport2", - "ID",-"Age"    ,- "Aim", -"Sport", -   "Gender" , - "WeeklyKM_base", "WeeklyH_base", -ends_with("_ave"), -starts_with("complet")) %>% names() #https://stackoverflow.com/questions/38511743/adding-missing-grouping-variables-message-in-dplyr-in-r
+zstandard_varnames_long<-long_df %>% ungroup() %>% dplyr::select(-"Time", -"Notes", -"Sport2", - "ID",-"Age"    ,- "Aim", -"Sport", -   "Gender" , - "WeeklyKM_base", "WeeklyH_base", -ends_with("_ave"), -starts_with("complet")) %>% names() #https://stackoverflow.com/questions/38511743/adding-missing-grouping-variables-message-in-dplyr-in-r
 long_df_z <- long_df %>%  mutate_at(zstandard_varnames_long, ~ as.numeric(scale(.)))
 class(df_z$Locus)
