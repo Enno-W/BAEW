@@ -154,6 +154,14 @@ Verstöße gegen die Abstinenz werden von persönlicher Attribution begleitet. D
 
 Kritik am Rückfallmodell Innerhalb dieses Modells ist die wichtige Rolle der Selbstwirksamkeit bereits gut untersucht, in Bezug auf andere Variablen ist die Studienlage allerdings noch dünn [@Amireault2013].
 
+## Reproduzierbarkeit
+
+Zusätzlich zur Replizierbarkeit von Studien ist die Reproduzierbarkeit von Ergebnissen ein Qualitätskriterium moderner Forschung. Deshalb habe ich diese Arbeit als reproduzierbares Manuskript erstellt. Bei der herkömmlichen Erstellung eines Manuskripts werden die Ergebnisse aus der Statistik-Software in das Manuskript kopiert werden. In einem reproduzierbaren Manuskript wird hingegen der Programmiercode direkt in das Dokument geschrieben, und die Ergebnisse werden bei Ausgabe ("Rendern") aus den Rohdaten berechnet und erscheinen dann im Dokument. Mehrere Artikel betonen die Wichtigkeit einer solch genauen Nachvollziehbarkeit der Ergebnisse. @manyanalysts sprechen sich dafür aus, Datenanalysen vermehrt als eine Art Crowdsourcing zu betreiben. Die Forscher:innen haben in ihrer Studie ein Datensatz von 13 verschiedenen Forscherteams analysieren lassen und fanden, dass nur ..% zum selben Ergebnis kommen.  Durch das bereitstellen von reproduzierbaren Manuskripten in Repositorien wie z.B. GitHub wird ermöglicht, dass dritte die Skripte nicht nur einsehen, sondern auch bearbeiten und sich an der Diskussion beteiligen können. @manyanalystsimplications betont, dass aufgrund der einfach Verfügbarkeit unzähliger Analysemethoden weitere Schritte in der Wissenschaftspraxis nötig sind, um das "viele Analyst:innen"-Problem zu adressieren.
+[@Perkel2022] Diskutiert das herkömmliche *Copy-Paste-Reporting* als potentiell fehleranfällig. 
+[Lit] betonen, dass Reproduzierbarkeit in mehreren Stufen vorliegt. Den Code zur Berechnung der Ergebnisse bereitzustellen, ist demnach der erste Schritt. [@Munaf2017] betonen die Wichtigkeit von Open Science Praktiken, einschließlich offener Analyseskripte. 
+
+ngegen die Ergebnisse 
+
 ## Mehrebenenanalysen 
 
 
