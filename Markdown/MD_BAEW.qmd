@@ -130,7 +130,7 @@ Direkte Messmethoden beziehen sich auf die Beobachtung von physischer Aktivität
 
 Affekt wird auf zwei Dimensionen konzipiert, und zwar Valenz und Aktivierung. Positiver affekt fühlt sich gut an und zieht uns dazu
 
-Aktivierender Affekt geht mit erhöhtem Puls, Aufgeregtheit, gehobener Stimmung etc. einher. Niedrige Ausprägungen auf dieser Dimension des Affekts gehen mit Entspannung oder Rückzug einher. Im Circumplex Model of Affect \[LIT\] wird diese Konzeption vereint.
+Aktivierender Affekt geht mit erhöhtem Puls, Aufgeregtheit, gehobener Stimmung etc. einher. Niedrige Ausprägungen auf dieser Dimension des Affekts gehen mit Entspannung oder Rückzug einher. Im Circumplex Model of Affect \[LIT\] wird diese Konzeption vereint. ****State-Trait++++----###
 
 ## Attribution
 
@@ -168,10 +168,10 @@ Bei längsschnittlichen Daten ergeben sich zwei Besonderheiten: Erstens ist anzu
 
 Um der Korrelation zwischen Messzeitpunkten Rechnung zu tragen, wird eine Korrelationsmatrix spezifiziert. Diese fügt dem Modell die angenommene Korrelationsstruktur hinzu und somit kann für die Korrelation zwischen Messzeitpunkten kontrolliert werden. 
 
-Für die Trennung von within- und between-person-Effekten wird empfohlen, wiederholt gemessene Prädiktoren anhand des Gruppenmittelwertes zu zentrieren und stabile Prädiktoren anhand des Gesamtmittelwertes.  @Wang2015
+Für die Trennung von within- und between-person-Effekten wird empfohlen, wiederholt gemessene Prädiktoren anhand des Gruppenmittelwertes zu zentrieren und stabile Prädiktoren anhand des Gesamtmittelwertes [@Wang2015]. 
 
 
-[@rlanguage2024]
+
 
  [@nlme] 
 
@@ -397,7 +397,7 @@ Plot_across_time
 
 ```{r}
 #| label: fig-interaktion
-#| fig-cap: The Figure Captionfd
+#| fig-cap: Interaktion von negativem Affekt (Trait) und Variabilität
 #| apa-note: Auf der X-Achse der drei Facetten (von -1 bis 1) ist das Ausmaß der Variablität der Kausalattribution zu sehen. Je höher also der negative Affekt (Trait), desto stärker war die Vorhersagekraft der Variabilität. eine höhere Variabilität ging dabei mit einer geringeren Zielerreichung einher. 
 #| fig-height: 6
 #| fig-width: 8
@@ -410,6 +410,16 @@ Die Residuen aus den beiden Modellen zur Zielerreichung aus jeweils Attribution 
 *Attributionsstil:*
 
 # Diskussion
+
+In dieser Arbeit wurde aus einer Perspektive des RÜckfallmodells von @Marlatt1984 die Frage untersucht, inwiefern der Attributionsstil und negativer Affekt vorhersagen kann, wie gut sich Personen an einen Trainingsplan halten. 
+Dabei wurde der Lokus der Attribution, also ob Personen das erfolgreiche oder nicht erfolgreiche Abschließen einer Trainingseinheit internal oder external attribuieren, sowie die Variabilität, also die Attribution auf stabile vs. nicht stabile Faktoren untersucht. Der negative Affekt wurde sowohl als Eigenschaft (Trait) als auch als Zustand nach einer Trainingseinheit erfasst (State). 
+
+Zunächst zeigt sich eine negative Korrelation zwischen dem gemittelten Messungen des negativen Affekts jeweils nach einer Trainingseinheit und der Zielerreichung. Je mehr negativen Affekt Versuchspersonen also im Durchschnitt nach der Trainingseinheit berichteten, desto geringer war auch ihre Zielerreichung ausgeprägt. Gleichzeitig war dieser gemittelte negative Affekt auch stark mit dem negativen Affekt als Trait korreliert. 
+
+Die Vorhersage der Anzahl abgeschlossener Trainingseinheiten durch diese Variablen war durch die unzureichende Datenlage erschwert: Es gab lediglich sechs Einheiten, von denen die meisten Versuchspersonen alle abgeschlossen hatten. Auch durch Hinzunahme weiterer Prädiktoren, nämlich wahrgenommene Erschöpfung und positiver Affekt, kam kein aussagekräftiges Modell zustande. Negativer Affekt als Trait stand als Prädiktor mit dem größten nicht-signifikanten Effekt hervor. 
+Deshalb wurde ein ** binomiales Modell** berechnet, bei dem lediglich vorhergesagt werden sollte, ob die Trainingseinheiten komplett abgeschlossen wurden oder nicht. Auch hier hatte der negative Affekt als Trait den größten, wenngleich nicht signifikanten Effekt. Das Konfidenzintervall des Lokus überlappte null nur knapp. 
+Explorativ wurde ebenso untersucht, ob ein direkter Gruppenvergleich mit t-tests bedeutsame Unterschiede zwischen Personen, die alle Einheiten abgeschlossen hatten und solchen, die nicht alle Einheiten abgeschlossen hatten, offenlegt. Die post-hoc-Power war hier viel zu gering, um eine Aussage zu treffen. Allerdings tat sich hier, wie auch bei der Untersuchung der Korrelationen, der Durchschnitt des negativen Affekts (State) hervor. Dieser hatte hier einen negativen Effekt auf den Abschluss der Trainingseinheiten. Unter den Personen, die alle Einheiten abgeschlossen hatten, war der negative Affekt also insgesamt etwas höher, wenngleich der Effekt nicht signifikant war. Genauso war die Korrelation zwischen dem durchschnittlichen negativen Affekt und der Anzahl abgeschlossener Einheiten positiv: Je mehr negativer Affekt im Durchschnitt nach einer Trainingseinheit vorherrschte, deste mehr Einheiten wurden auch abgeschlossen. Dieser zunächst widersprüchlich erscheinende Effekt könnte bedeuten, dass Personen sich mehr anstrengen, wenn sie unzufrieden nach dem Trainings sind, wie auch bei Gilchrist (2921)############
+
 
 Multiple imputation
 
