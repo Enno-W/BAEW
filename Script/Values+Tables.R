@@ -217,7 +217,7 @@ ttesttable<-flextable(results_df) %>%
 
 
 
-  #################Hierarchical linear models #################
+  #################HLMs #################
 
 
 long_df_z$Goal_rank <-rank(long_df_z$Goal) # Identisch: rank(long_df$Goal)==rank(long_df_z$Goal)
@@ -350,9 +350,25 @@ qqplot_km<-ggplot(Goal_residuals, aes(sample = .resid)) +
 
 ###### Tests of normality ###############################################
 
-#### Test for the Attribution Model #####
-ntest_shapiro_km <-shapiro.test(Goal_residuals $.resid)  
-ntest_ks_km <-ks.test(Goal_residuals  $.resid, "pnorm", mean(Goal_residuals  $.resid), sd(Goal_residuals  $.resid), exact = T)
+#### Für das Modell zur Vorhersage von Zielerreichung, transformiert #####
+shaptest_goal<-shapiro.test(Goal_residuals $.resid)  
+ntest_ks_km <-ks.test(Goal_residuals  $.resid, "pnorm", mean(Goal_residuals  $.resid), sd(Goal_residuals  $.resid), exact = F)
+## Nicht rangtransformiert##
+Goal_residuals_no_ranktransform <- hlm_resid(goal_model5_no_ranktransform, level=1, include.ls = T) 
+shaptest_goal_no_ranktransform<-shapiro.test(Goal_residuals_no_ranktransform  $.resid)  
+
+### Markdown Output of p value ####
+shaptest_goal_p <-if (shaptest_goal$p.value < 0.001) {
+  "< .001"
+} else {
+  round( shaptest_goal$p.value, 3)
+}
+shaptest_goal_p_no_rank <-if (shaptest_goal_no_ranktransform$p.value < 0.001) {
+  "< .001"
+} else {
+  round( shaptest_goal$p.value, 3)
+}
+
 
 ######Variance Incluence Factor ####
 # model_SessionKM_2_lmer <- lmer(
@@ -386,16 +402,58 @@ resid_plot_km<-ggplot(data = Goal_residuals, aes(x = .fitted, y = .resid)) +
     panel.border = element_rect(fill = NA, color = "black")
   )
 
-#resid_plot_km+resid_plot_km_no_logtransform
 
-###### Shapiro test of normality ###############################################
+#### Testen der Voraussetzungen auf Level 2 #####
+Goal_residuals_level2 <- hlm_resid(goal_model5, level="ID", include.ls = F)
+ggplot(data = Goal_residuals_level2, aes(.ranef.intercept)) +
+  
+  geom_histogram(aes(y = ..density..), bins=10) + stat_function(fun = dnorm,
+                                                                args = list(mean = mean(Goal_residuals_level2$.ranef.intercept),
+                                                                            sd = sd(Goal_residuals_level2$.ranef.intercept)), size=2)
+level2.resids.shapirotest<-shapiro.test(Goal_residuals_level2$.ranef.intercept)
 
-#### Test for the Attribution Model #####
-shaptest_goal <-shapiro.test(Goal_residuals $.ls.resid)
 
-### Markdown Output of p value ####
-shaptest_goal_p <-if (shaptest_goal$p.value < 0.001) {
-  "< .001"
-} else {
-  round( shaptest_goal$p.value, 3)
-}
+l2_residuen <- ranef(goal_model5) %>%
+  tibble::rownames_to_column(var = "ID") %>%
+  rename(ranef_intercept = `(Intercept)`)
+
+### ChatGPT generiert: 
+# Mittelwerte der Level-2-Prädiktoren auf Personenebene
+l2_preds <- long_df_z %>%
+  group_by(ID) %>%
+  dplyr::summarize(
+    Locus = mean(Locus_centered, na.rm = TRUE),
+    Dynamics = mean(Dynamics_centered, na.rm = TRUE),
+    NA_base = mean(NA_base_centered, na.rm = TRUE),
+    NegAff = mean(NegativeAffect_cm_centered, na.rm = TRUE)
+  )
+
+
+# Fixeffekte manuell einfügen (aus summary(goal_model5))
+fixefs <- fixef(goal_model5)
+
+# Vorhersage berechnen (z. B. auf Basis von Locus & Dynamics)
+l2_preds <- l2_preds %>%
+  mutate(pred = fixefs["(Intercept)"] +
+           fixefs["Locus_centered"] * Locus +
+           fixefs["Dynamics_centered"] * Dynamics)
+
+# Stelle sicher, dass beide IDs als character vorliegen:
+l2_preds <- l2_preds %>%
+  mutate(ID = as.character(ID))
+
+l2_residuen <- l2_residuen %>%
+  mutate(ID = as.character(ID))
+# Zusammenführen
+plot_df <- left_join(l2_preds, l2_residuen, by = "ID")
+
+# Plot
+ggplot(plot_df, aes(x = pred, y = ranef_intercept)) +
+  geom_point() +
+  geom_smooth(method = "loess") +
+  theme_minimal() +
+  labs(x = "Vorhergesagte Level-2-Werte", y = "Random Intercepts",
+       title = "Diagnose: Homoskedastizität auf Level 2")
+
+
+
