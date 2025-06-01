@@ -193,7 +193,6 @@ Which style of creating figures you choose depends on preference and need.
 
 We can make a table the same way as a figure. Generating a table that conforms to APA format in all document formats can be tricky. When the table is simple, the `kable` function from knitr works well. Feel free to experiment with different methods, but I have found that David Gohel's [flextable](https://davidgohel.github.io/flextable/) to be the best option when I need something more complex.
 
-
 ```{r}
 #| label: tbl-mytable
 #| tbl-cap: The Table Caption
@@ -202,7 +201,6 @@ tibble(Numbers = seq(1,4), Letters = LETTERS[seq(Numbers)]) %>%
   knitr::kable()
 
 ```
-
 
 To refer to this table in text, use the `@` symbol followed by the reference label like so: As seen in @tbl-mytable, the first few numbers and letters of the alphabet are displayed.
 
@@ -365,8 +363,3 @@ Tables and figures in the first appendix automatically get the prefix "A", and t
 If there were a second appendix, tables and figures would get the prefix "B", and the numbering starts again at 1. Make as many appendices as needed.
 
 ![Appendix Figure](sampleimage.png){#fig-appendfig apa-note="A note below the figure"}
-
-
-
-
-

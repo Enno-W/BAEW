@@ -1,0 +1,11 @@
+---
+title: Test APA
+author: You
+format:
+  apaquarto-pdf: default
+---
+
+# Introduction
+
+This is a test document.
+
