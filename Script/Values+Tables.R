@@ -18,7 +18,7 @@ demographicstable<- data %>% flextable() %>% flextable::theme_apa() %>% autofit(
 #### correlation table ####
 average_variables<-df %>% select(ends_with("_ave")) %>% names()
 base_variables<-df %>% select(ends_with("_base")) %>% names()
-correlation_variables<-c("Age", "Locus", "Dynamics", "completed_count", "Goal_ave", "NA_ave", "NA_base")
+correlation_variables<-c("Age", "Locus", "Dynamics", "completed_count", "Goal_ave", "NA_ave", "NA_base", "SessionRPE_ave", "WeeklyRPE_base")
 ave_corr_table<-df[,correlation_variables] %>% 
   generate_correlation_table2(c(
     "1. Alter", 
@@ -27,7 +27,9 @@ ave_corr_table<-df[,correlation_variables] %>%
     "4. n (Trainingseinheiten)", 
     "5. M (Ziellerreichung)", 
     "6. M (Negativer Affekt)", 
-    "7. Negativer Affekt bei Baseline Messung"
+    "7. Negativer Affekt bei Baseline Messung",
+    "8. M Session RPE",
+    "9. Baseline Session RPE"
   ))
 
 #### Skewness, Kurtosis and min-max range table###############################################
@@ -41,7 +43,9 @@ df_stat$Variable <- c(
   "n (Trainingseinheiten)", 
   "M (Ziellerreichung)", 
   "M (Negativer Affekt)", 
-  "Baseline negativer Affekt"
+  "Baseline negativer Affekt",
+  "M Session RPE",
+  "Baseline Session RPE"
 )
 
 table_stat<-df_stat %>% flextable() %>% flextable::theme_apa() %>% autofit()
