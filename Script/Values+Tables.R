@@ -64,24 +64,42 @@ pwr_result <- pwr.r.test(n = NULL,
 
 ###General Linear Models####
 #Hypothese 1.1 Ein internal - variabler Attributionsstil sagt weniger Trainingsausfälle voraus; # Hypothesis 2.1 Ein negatives Affekterleben sagt mehr Trainingsausfälle voraus
-count_model <- glmer(completed_count ~ 1 + Time + 
+count_model_log <- glmer(completed_count ~ 1 + Time + 
                        Locus_centered + 
                        Dynamics_centered + 
                        NA_base_centered+
                        NegativeAffect_cm_centered + 
-                       PositiveAffect_cm_centered+ 
                        SessionRPE_cm_centered+ 
-                       PA_base_centered+
                        (1 | ID), 
-                    data = long_df, 
-                    family = "poisson")
-tidy_model<-tidy(count_model, effects = "fixed", p.value=TRUE ,conf.int = TRUE) # see huxreg documentation as for why this is necessary. This is defining a "tidy()-function"
-summary(count_model)
+                    data = long_df_z, 
+                    family = poisson(link="log"))
+count_model_sqrt <- glmer(completed_count ~ 1 + Time + 
+                       Locus_centered + 
+                       Dynamics_centered + 
+                       NA_base_centered+
+                       NegativeAffect_cm_centered + 
+                       SessionRPE_cm_centered+ 
+                       (1 | ID), 
+                     data = long_df_z, 
+                     family = poisson(link="sqrt"))
+count_model_identity <- glmer(completed_count ~ 1 + Time + 
+                       Locus_centered + 
+                       Dynamics_centered + 
+                       NA_base_centered+
+                       NegativeAffect_cm_centered + 
+                       SessionRPE_cm_centered+ 
+                       (1 | ID), 
+                     data = long_df_z, 
+                     family = poisson(link="identity"))
 
+anova(count_model_log, count_model_sqrt, count_model_identity)
 ### Table Output ####
-glmtable<-huxreg("Modell 1" = count_model ,
-                 statistics = c("Anzahl der Beobachtungen im Modell" ="nobs", 
-                                "Freiheitsgrade" = "df.residual"), 
+glmtable<-huxreg("Modell 1 (Logarithmische Link-Funktion)" = count_model_log ,
+                 "Modell 2 (Quadratwurzel-Link-Funktion )" = count_model_sqrt ,
+                 "Modell 1 (Identitäts-Link-Funktion)" = count_model_identity ,
+                 statistics = c("Anzahl Fälle im Modell" ="nobs", 
+                                "Freiheitsgrade" = "df.residual",
+                                "AIC", "BIC"), 
                  number_format = 3, 
                  bold_signif = 0.05, 
                  error_pos = "right",
@@ -90,46 +108,57 @@ glmtable<-huxreg("Modell 1" = count_model ,
                            "Attributionsstil: Variabilität" = "Dynamics_centered",
                            "Negativer Affekt (Trait)"       = "NA_base_centered",
                            "Negativer Affekt (State)"       = "NegativeAffect_cm_centered",
-                           "Positiver Affekt (Trait)"       = "PA_base_centered",
-                           "Positiver Affekt (State)"       = "PositiveAffect_cm_centered",
                            "Wahrgenommene Erschöpfung"      = "SessionRPE_cm_centered",
                            "Zeit"                           = "Time"))
 
 
 ####Binomiales Modell ###
-long_df<-long_df%>% mutate(Status = ifelse(completed_count == 6, 1, 0))
+long_df_z<-long_df_z%>% mutate(Status = ifelse(completed_count == 6, 1, 0))
 
-long_df <- long_df %>%
-  mutate(
-    Locus_z = scale(Locus),
-    Dynamics_z = scale(Dynamics),
-    NA_base_z = scale(NA_base),
-    NegativeAffect_z = scale(NegativeAffect)
-  )
-count_model_binomial <- glmer(Status ~ 1 +
-                       Locus_z + 
-                       Dynamics_z + 
-                       NA_base_z +
-                       NegativeAffect_z +
-                       (1 | ID), 
-                     data = long_df, 
-                     family = "binomial")
+count_model_binomial_logit <- glmer(Status ~ 1 +
+                                Locus + 
+                                Dynamics + 
+                                NA_base +
+                                NegativeAffect +
+                                (1 | ID), 
+                              data = long_df_z, 
+                              family = binomial(link= "logit"))
 
-binomialglmm_table<-huxreg("Modell 1" = count_model_binomial ,
-                 statistics = c("Anzahl der Beobachtungen im Modell" ="nobs", 
-                                "Freiheitsgrade" = "df.residual"), 
+count_model_binomial_probit <- glmer(Status ~ 1 +
+                                Locus + 
+                                Dynamics + 
+                                NA_base +
+                                NegativeAffect +
+                                (1 | ID), 
+                              data = long_df_z, 
+                              family = binomial(link= "probit"))
+count_model_binomial_cloglog <- glmer(Status ~ 1 +
+                                Locus + 
+                                Dynamics + 
+                                NA_base +
+                                NegativeAffect +
+                                (1 | ID), 
+                              data = long_df_z, 
+                              family = binomial(link= "cloglog"))
+binomialglmm_table<-huxreg(
+                "Modell 1 (Logit-Link-Funktion)"    = count_model_binomial_logit,
+                "Modell 2 (Probit-Link-Funktion)"   = count_model_binomial_probit,
+                "Modell 3 (Complementary Log-Log-Link-Funktion)" = count_model_binomial_cloglog,
+                statistics = c("Anzahl Fälle im Modell" ="nobs", 
+                               "Freiheitsgrade" = "df.residual",
+                               "AIC", "BIC"),
                  number_format = 3, 
                  bold_signif = 0.05, 
                  error_pos = "right",
                  coefs = c("Interzept"                      = "(Intercept)",
-                           "Attributionsstil: Lokus"        = "Locus_z",
-                           "Attributionsstil: Variabilität" = "Dynamics_z",
-                           "Negativer Affekt (Trait)"       = "NA_base_z",
-                           "Negativer Affekt (State)"       = "NegativeAffect_z"))
+                           "Attributionsstil: Lokus"        = "Locus",
+                           "Attributionsstil: Variabilität" = "Dynamics",
+                           "Negativer Affekt (Trait)"       = "NA_base",
+                           "Negativer Affekt (State)"       = "NegativeAffect"))
 
 ### Direkter Vergleich der Gruppenunterschiede
 
-df <- df %>%
+df_z <- df_z %>%
   mutate(Status = if_else(completed_count == 6, "abgeschlossen", "nicht abgeschlossen"))
 
 vergleich_plot <- function(data, y_var_name, y_label = NULL) {
@@ -147,36 +176,36 @@ vergleich_plot <- function(data, y_var_name, y_label = NULL) {
     theme(legend.position = "none")
 }
 
-A<-vergleich_plot(df, "NA_ave", "M negativer Affekt")
-B<-vergleich_plot(df, "NA_base", "Negativer Affekt bei Baseline")
-C<-vergleich_plot(df, "Dynamics", "Variabilität")
-D<-vergleich_plot(df, "Locus", "Locus")
+A<-vergleich_plot(df_z, "NA_ave", "M negativer Affekt")
+B<-vergleich_plot(df_z, "NA_base", "Negativer Affekt bei Baseline")
+C<-vergleich_plot(df_z, "Dynamics", "Variabilität")
+D<-vergleich_plot(df_z, "Locus", "Locus")
 
 Status_vergleich_plot<-((A+B)/(C+D))
 
-df<-df%>% mutate(Status = ifelse(completed_count == 6, 1, 0))
-t.test(NA_ave ~ Status, data = df)
-t.test(Dynamics ~ Status, data = df)
-t.test(NA_base ~ Status, data = df)
-t.test(Locus ~ Status, data = df)
+df_z<-df_z%>% mutate(Status = ifelse(completed_count == 6, 1, 0))
+t.test(NA_ave ~ Status, data = df_z)
+t.test(Dynamics ~ Status, data = df_z)
+t.test(NA_base ~ Status, data = df_z)
+t.test(Locus ~ Status, data = df_z)
 ## Ausgabe der Werte in einer Tabelle ##
 # Load required packages
 # Run t-tests
 test_results <- list(
-  NA_ave = t.test(NA_ave ~ Status, data = df),
-  Dynamics = t.test(Dynamics ~ Status, data = df),
-  NA_base = t.test(NA_base ~ Status, data = long_df),
-  Locus = t.test(Locus ~ Status, data = long_df)
+  NA_ave = t.test(NA_ave ~ Status, data = df_z),
+  Dynamics = t.test(Dynamics ~ Status, data = df_z),
+  NA_base = t.test(NA_base ~ Status, data = long_df_z),
+  Locus = t.test(Locus ~ Status, data = long_df_z)
 )
 
 # Sample sizes per group (assuming consistent across vars)
-n1 <- table(df$Status)[["1"]]
-n0 <- table(df$Status)[["0"]]
+n1 <- table(df_z$Status)[["1"]]
+n0 <- table(df_z$Status)[["0"]]
 
 # Build result table with Cohen's d, 95% CI, and Power
 results_df <- bind_rows(lapply(names(test_results), function(var) {
   test <- test_results[[var]]
-  data_used <- if (var %in% c("NA_base", "Locus")) long_df else df
+  data_used <- if (var %in% c("NA_base", "Locus")) long_df_z else df_z
   
   # Calculate effect size
   effsize <- cohens_d(as.formula(paste(var, "~ Status")), 
@@ -257,6 +286,22 @@ null_model_goal_no_ranktransform<-lme(
   na.action = na.omit,
   correlation = corAR1(form = ~ Time | ID)
 )
+
+## VIF ###
+goal_model5_vif <- lmer(
+  Goal_rank ~ 
+    Locus_centered * NegativeAffect_cm_centered +
+    Dynamics_centered * NegativeAffect_cm_centered +
+    Locus_centered * NA_base_centered +
+    Dynamics_centered * NA_base_centered +
+    NegativeAffect_cm_centered * NA_base_centered +
+    Dynamics_centered * Locus_centered +
+    (1 | ID),
+  data = long_df_z,
+  REML = TRUE,
+  na.action = na.omit
+)
+vif_goal_model<-vif(goal_model5_vif)
 
 goal_model1_no_ranktransform <- update(null_model_goal_no_ranktransform, . ~ . + Locus_centered + Dynamics_centered)
 
