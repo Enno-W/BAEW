@@ -31,7 +31,7 @@ keywords: [keyword1, keyword2, keyword3]
 bibliography: bibliography.bib
 lang: de
 format:
- #apaquarto-html: default
+ apaquarto-html: default
  apaquarto-docx:
     number-sections: true
     floatsintext: false
@@ -111,7 +111,7 @@ source(magic_path("Values+Tables.R")); source(magic_path("Graphs.R"))
 
 Es gibt überwältigende Evidenz zu den gesundheitlichen Vorteilen physischer Aktivität [@Warburton2006].
 Dennoch werden Empfehlungen zu regelmäßiger physischer Aktivität [PA, @caspersen1985physical] der WHO [@WHO2010] von nur etwa 26% der erwachsenen Bevölkerung in Deutschland in Bezug auf Muskel- und Ausdauertraining erreicht [@RKI_2022].
-Das hat großen erhebliche gesundheitliche und ökonomische Folgen.
+Das hat bedeutsame gesundheitliche und ökonomische Folgen.
 @Ding2016 gingen der Frage nach, welche Kosten sich jährlich und weltweit durch Produktivitätsausfälle und Behandlungskosten als Folge von Inaktivität ergeben.
 Als Endergebnis nennen die Autor:innen, dass der Gesamtbetrag einer konservativen Schätzung nach zwischen 19 und 182 Milliarden, einer weniger konservativen Schätzung nach allerdings zwischen 47 und 339 Milliarden Dollar liegt.
 
@@ -120,24 +120,26 @@ Menschen, die ein relativ hohes Niveau an PA berichten, zeigen eine deutlich red
 Auch Studien mit direkten Messmethoden kommen zu diesem Ergebnis.
 So fanden @Myers2004 in einer Analyse der Trainingskapazität von Männern im fortgeschrittenen Erwachsenenalter eine um etwa 20% reduzierte Mortalität pro Zuwachs des Aktivitätsniveaus um ein metabolisches Äquivalent.
 Eine Erklärung dafür ist, dass aktivere Individuen seltener an chronischen Krankheiten erkranken.
-@Lee2012 berichten in einer Meta-Analyse, dass die Krankheitslast von Herz-Kreislaufkrankheiten, Krebs und Diabetes bei Inaktivität um 6-10% erhöht ist und dass damit eine um mehr als ein halbes Jahr verkürzte durchschnittliche Lebenserwartung einhergeht.
+@Lee2012 berichten in einer Meta-Analyse, dass die Krankheitslast von Herz-Kreislaufkrankheiten, Krebs und Diabetes bei Inaktivität um 6-10% erhöht ist und dass damit mit einer um mehr als ein halbes Jahr verkürzten durchschnittlichen Lebenserwartung einhergeht.
 Körperliche Aktivität bringt auch Vorteile für die psychische Gesundheit.
-In diesem Zusammenhang existiert zur Wirkung von PA in der Behandlung von Depression reichhaltige Forschungsarbeiten, die sich teils skeptisch [@Cooney08], aber überwiegend positiv über die Wirkung von PA äußern [@Ledochowski2016; @Carter2016; @Paluska2000; @Morres2018].
+In diesem Zusammenhang existiert zur Wirkung von PA in der Behandlung von Depression reichhaltige Forschung die sich teils skeptisch [@Cooney08], aber überwiegend positiv über die Wirkung von PA äußern [@Ledochowski2016; @Carter2016; @Paluska2000; @Morres2018].
 Die Mechanismen, durch die PA die Gesundheit von Individuen verbessert, sind komplex und werden interdisziplinär untersucht.
 Grob können biologische, mentale und gesellschaftliche bzw.
-gruppenbasierte Mechanismen unterschieden werden: Erstens stößt Anpassungsprozesse an, die den Zellstoffwechsel positiv beeinflussen [@Neufer2015].
-Der Bewegungsapparat reagiert auf PA mit Muskelwachstum und besserer Knochengesundheit, was langfristig ein Schutzfaktor für die Gesundheit des Muskelskelettsystems ist @Khan2001.
+gruppenbasierte Mechanismen unterschieden werden: Erstens stößt PA Anpassungsprozesse an, die den Zellstoffwechsel positiv beeinflussen [@Neufer2015].
+Der Bewegungsapparat reagiert außerdem auf PA mit Muskelwachstum und besserer Knochengesundheit, was langfristig ein Schutzfaktor für die Gesundheit des Muskelskelettsystems ist @Khan2001.
 Physische Aktivität verbessert eine Vielzahl von psychologischen Variablen, wie unter anderem die Selbstwahrnehmung, Selbstbewusstsein oder die Befriedigung psychologischer Grundbedürfnisse, die als Ressourcen für die mentale Gesundheit gelten [@Lubans2016].
-Physische Aktivität steht außerdem in einem Zusammenhang mit verbesserter sozialer Unterstützung und sozialen Netzwerken, sowie weiteren Gesellschaftlichen Gesundheitsfaktoren, wobei diese Mechanismen noch nicht sehr gut untersucht sind [@McNeill2006].
+PA steht außerdem in einem Zusammenhang mit verbesserter sozialer Unterstützung und sozialen Netzwerken, sowie weiteren gesellschaftlichen Gesundheitsfaktoren, wobei diese Mechanismen noch nicht sehr gut untersucht sind [@McNeill2006].
 
-Der Fokus von Studien zur Bewegungsförderung lag bisher auf Interventionen, die inaktive Personen dazu ermutigen, sich mehr zu bewegen und auf der Adhärenz zu solchen Interventionen [siehe z.B. @Gillison2009].
+Der Fokus von Studien zur Bewegungsförderung lag bisher auf Interventionen, die zuvor inaktive Personen dazu ermutigen, sich mehr zu bewegen und auf der Adhärenz zu solchen Interventionen [siehe z.B. @Gillison2009].
 Weniger Studien befassten sich mit der Frage, welche Faktoren die Adhärenz von Personen, die bereits gewohnheitsmäßig aktiv sind, beeinflussen [z.B. @Stetson2005].
 Das Rückfallmodell nach Marlatt und Gordon (Relapse Prevention Model, @Marlatt1984) liefert einen geeigneten Rahmen zur Untersuchung dieser Fragestellung.
 
 Die vorliegende Arbeit greift auf Daten aus dem Forschungsprojekt „PRIMOCA“ zurück, das emotionale, motivationale und kognitive Einflussfaktoren auf Trainingserleben und -verhalten untersucht.
+Zentrale Variablen sind Stolz (*pri*de), implizite Motive (implicit *mo*tives) und Kausalattributionen (*ca*usal attributions).
 Stolz soll als Ressource für Performanz und positives Trainingserleben erörtert werden.
 Dazu wurden Daten zu impliziten Motiven , Motivkomponenten, Stolz und Kausalattributionen, Commitment, wahrgenommener Zielerreichung, wahrgenommener Erschöpfung, positivem und negativem Affekt und Sportart, Attributionsstile, Alter sowie Laufdistanz und -dauer in KM erhoben.
-Die Datenerhebung wurde im Februar 2024 abgeschlossen, die Publikation des dazugehörigen Forschungsartikels steht noch aus.Diese Datengrundlage bietet neben dem primären Forschungsinteresse des Projekts auch die Möglichkeit der Betrachtung aus einer gesundheitspsychologischen Perspektive.
+Die Datenerhebung wurde im Februar 2024 abgeschlossen, die Publikation des dazugehörigen Forschungsartikels steht noch aus. Ich war an der Konzeptionalisierung, Datenerhebung, und Datenauswertung—insbesondere dem Codieren der impliziten Motive—sowie an einer Pilotstudie maßgeblich beteiligt.
+Diese Datengrundlage bietet neben dem primären Forschungsinteresse des Projekts auch die Möglichkeit der Betrachtung aus einer gesundheitspsychologischen Perspektive.
 Sowohl Affekt als auch Attributionen sind Teil des Relapse Prevention Models nach Marlatt und Gordon, und können basierend auf diesen Daten als Prädiktoren für die Adhärenz zu dem selbstgesetzen Trainingsprogramm in dieser Studie untersucht werden.
 
 # Theoretischer Hintergrund
@@ -153,19 +155,20 @@ So spezifizieren beispielsweise @hollmann2009sportmedizin, dass die Aktivität i
 Solche Definitionen von PA ermöglichen eine klare Operationalisierung, @Piggin2020 argumentiert jedoch, dass diese reduktionistische Auffassung von PA dem komplexen Erleben und Verhalten im Zusammenhang mit physicher Aktivität nicht gerecht wird wird und einer ganzheitlichen Betrachtung im Wege steht.
 Das ist auch im Einklang mit dem biopsychosozialen Ansatz [@Engel1977].
 Im Gegensatz zum krankheits- und defizitorientierten biomedizinischen Ansatz berücksichtigt der biopsychosoziale Ansatz auch psychische und soziale Faktoren, zusätzliche zu den biologischen Faktoren.
-Um den Zusammenhang psychischer Phänomene (Affekt, Attribution) mit PA in dem Kontext der Gesundheitsförderung zu diskutieren, übernehme ich daher die Definition von @Piggin2020: "Physical activity involves people moving, acting and performing within culturally specific spaces and contexts, and influenced by a unique array of interests, emotions, ideas, instructions and relationships." (S. 5).
+Um den Zusammenhang psychischer Phänomene (Affekt, Attribution) mit PA in dem Kontext der Gesundheitsförderung zu diskutieren, übernehme ich daher die umfassendere Definition von @Piggin2020: "Physical activity involves people moving, acting and performing within culturally specific spaces and contexts, and influenced by a unique array of interests, emotions, ideas, instructions and relationships." (S. 5).
 
 ### Messmethoden physischer Aktivität
 
 Die Messmethode für PA richtet sich nach der Forschungsfrage und dem Studiendesign.
 Eine wichtige Unterscheidung betrifft indirekte und direkte Messmethoden: Bei direkten Methoden entsprechen die erhobenen Daten der Zielgröße, während bei indirekten Messmethoden eine Umrechnung bzw.
-weitere Auswertung nötig ist @Eckert2014.
-Daneben werden Kriteriumsmethoden [@Kohl2000] verwendet, die PA durch Indikatoren des oxidativen Energiestoffwechsels oder Beobachtung erfassen.
-@Mueller2010 ordnet Messmethoden für PA auf zwei Achsen, der Validität und der Anwendbarkeit an.
+weitere Auswertung nötig ist [@Eckert2014]. Außerdem werden Kriteriumsmethoden [@Kohl2000] verwendet, die PA durch Indikatoren des oxidativen Energiestoffwechsels oder Beobachtung erfassen.
+
+@Mueller2010 systematisierte Messmethoden von PA anhand ihrer Validität und Anwendbarkeit.
+Je höher die Validität, desto geringer ist auch die Anwendbarkeit und andersherum.
 Die Double-Labled-Water-Methode weist demnach z.B.
 eine sehr hohe Validität auf, ist aber sehr aufwendig in der Anwendung.
-Andersherum ist es bei Fragebögen, die ressourcenschonend sind und die Erhebung an großen Stichproben erlauben.
-Fragebögen mit bekannten Problemen des Selbstberichts wie sozialer Erwünschtheit und Erinnerungsverzerrung behaftet.
+Umgekehrt verhält es sich bei Fragebögen, die ressourcensparend sind und die Erhebung an großen Stichproben erlauben.
+Fragebögen sind mit bekannten Problemen des Selbstberichts wie sozialer Erwünschtheit und Erinnerungsverzerrung behaftet.
 Sie sind geeignet, um das Aktivitätsniveau verschiedener Populationen, nicht aber von Individuen zu erfassen [@Vanhees2005].
 
 ### Definintion von Bewegungsadhärenz
@@ -192,13 +195,13 @@ Wahrgenommene Zielerreichung ist eine zentrale Determinante für die Adhärenz z
 
 [@Russell1980] konzipierte basierend von der Einteilung von emotionsbeschreibenden Wörtern auf einem zirkulären Arrangement das sogenannte *Circumplex Model of Affect*.
 Versuchspersonen sollten diese Wörter zuerst kategorisieren und dann auf einem Kreis anordnen, mit gegensätzlichen Wörtern gegenüber voneinander, und ähnlichen Wörtern nahe beieinander.
-Hier zeigte sich, dass dieser Kreis anhand von zwei bipolaren Basisdimensionen aufgespannt werden kann: pleasure vs. displeasure, also der Affekt, und das Ausmaß von arousal, also Erregung.
+Hier zeigte sich, dass dieser Kreis anhand von zwei bipolaren Basisdimensionen aufgespannt werden kann: pleasure vs. displeasure, also die Valenz des Affekts, und das Ausmaß von arousal, also Erregung.
 
 @Watson1985 legten darauf aufbauend ein modifiziertes, ebenfalls zirkuläres Modell vor, dem die zwei Dimensionen "positiver Affekt" und "negativer Affekt" zugrunde liegen.
 Positiver Affekt bezieht sich hier auf gute Gefühle und Lebensfreude, während negativer Affekt eine unangenehme Erregung meint.
 Diese Dimensionen werden hier als unipolar und unabhängig voneinander betrachtet: So ist beispielsweise niedriger positiver Affekt die Abwesenheit von positivem Affekt und nicht unbedingt eine hohe Ausprägung negativen Affekts.
 
-@Reich2003 fassen Evidenz für beide dieser zunächst als gegensätzlich erscheinenden Konzeptionen von Affekt zusammen und beschreiben das *Dynamic Model of Affect Relationships*, in dem der Kontext einbezogen wird.
+@Reich2003 fassen Evidenz für beide dieser zunächst als inkompatibel erscheinenden Konzeptionen von Affekt zusammen und beschreiben das *Dynamic Model of Affect Relationships*, in dem der Kontext einbezogen wird.
 Dieses Modell postuliert, dass unter Stress eine Verarbeitung von Affekt stattfindet, wie sie von @Russell1980 konzipiert wurde, also auf voneinander abhängigen, bipolaren Dimensionen.
 Bei niedrigem Stress hingegen findet eine komplexere Verarbeitung statt, wobei eine bivariate, unipolare Konzeption mit den Variablen *positiver Affekt* und *negativer Affekt* wie von @Watson1985 erklärungsmächtiger ist.
 Die Positive and Negative Affekt Scale [PANAS, @Watson1988], orientiert sich an letzterer Konzeption.
@@ -215,6 +218,8 @@ Das wäre z.B.
 bei der Instruktion "Wie haben sie sich in der letzten Woche gefühlt?" der Fall.
 Mit der Instruktion "im Allgemeinen" erfasst man die Eigenschaft, wie eine Person tendenziell Affekt erlebt [@Watson1988].
 Die Messung, Konzeptionalisierung und Auswertung von Affekt in der Forschungsliteratur ist inkonsistent und der mangelnde Konsens diesbezüglich wird von Übersichtsarbeiten zu dem Thema bemängelt [@Forster2020].
+In dieser Arbeit wurde Affekt als Aggregat über die letzten zwei Wochen im Prä-Test, und als Zustand nach einer Trainingseinheit erfasst.
+Im den Ergebnissen meiner Arbeit bezeichne ich ersteres als Prä-Test-Affekt oder Affekt im Prä-Test, und letzteres als Zustandsaffekt.
 
 ### Affekt im Kontext physischer Aktivität
 
@@ -223,12 +228,12 @@ In einer online-Umfrage untersuchten @Yang2025 den Zusammenhang zwischen Affektr
 Die Versuchspersonen füllten Fragebögen zu ihren Einstellungen zu 15 verschiedenen Arten von Gesundheitsverhalten aus, wie z.B.
 das Benutzen von Zahnseide oder regelmäßige PA, sowie die Difficulty of Emotion Regulation Scale [@Gratz2004].
 Die Autor_innen kommen zu dem Ergebnis, dass eine ineffektive Regulierung von Affekt eine niedrigere Intention vorhersagte, diese Verhaltensweisen Das stütze die Annahme, dass fehlangepasste Affektregulation zu Schwierigkeiten in Bezug auf Gesundheitsverhalten führen [@Buckholdt2014].
-Besonders im Kontext der selbstgewählten Anpassung der Trainingsintensität durch Teilnehmende an einem Bewegungsprogramm wird Affekt viel diskutiert, da höhere, anaerobe Trainingsintensität mit negativem Affekt in Verbindung steht [@Parfitt2009].
-@Forster2020 nennen mehrere offene Forschungsthemen zu Affekt und PA: Die Frage nach einem passenden theoretischen Rahmenmodell zu der Affekt-PA-Beziehung, Konsenz bezüglich der Messung und Interpretation von Affektmaßen, und zur Übertragbarkeit bisheriger Ergebnisse klinischer Populationen auf Teilnehmende aus der breiten Gesellschaft.
+Besonders im Kontext der selbstgewählten Anpassung der Trainingsintensität durch Teilnehmende an einem Bewegungsprogramm wird Affekt viel diskutiert, da besonders höhere, anaerobe Trainingsintensität mit negativem Affekt in Verbindung steht [@Parfitt2009].
+@Forster2020 nennen mehrere offene Forschungsthemen zu Affekt und PA: Die Frage nach einem passenden theoretischen Rahmenmodell zu der Affekt-PA-Beziehung, Konsenz bezüglich der Messung und Interpretation von Affektmaßen, und Fragen zur Übertragbarkeit bisheriger Ergebnisse klinischer Populationen auf allgemeine Populationen
 
 ## Attribution (Ursachenzuschreibungen) und Attributionsstil
 
-Erste theorotische Überlegungen gehen auf @Heider1958 zurück.
+Erste theoretische Überlegungen gehen auf @Heider1958 zurück.
 Heider sah den Menschen als systematisch nach Erkenntnis seiner sozialen Umwelt strebendes Individuum an.
 Ein Fokus seiner Theorie liegt auf der subjektiven Erklärung von Menschen, die Ereignisse in ihrer sozialen Umwelt eher externalen, in der Umwelt liegenden, oder internalen, in der Person liegenden Ursachen zuschreiben.
 
@@ -240,9 +245,10 @@ Nach dieser Theorie sind die Prozesse, die in einer Ursachenzuschreibung (Attrib
 Diese Informationen können anhand ihres Ursprungs vom *Stimulus*, also des Verhaltens, der *Person* oder *Situativer Rahmenbedingungen* kategorisiert werden.
 Die Attribution erfolgt anhand der Kriterien der Distinktheit (wie stark variiert das Verhalten bei unterschiedlichen Auslösern?), des Konsensus (Inwiefern stimmen Reaktionen unterschiedlicher Personen zu dem Verhalten überein?) und der Konsistenz (Wie stark variiert das Verhalten bei unterschiedlichen Rahmenbedingungen?).
 Ein Individuum fällt zuletzt die Attribution anhand des Kriteriums, das am ehesten mit dem Verhalten kovariiert.
+
 @Seligman1979 untersuchte den Zusammenhang zwischen Depression, erlernter Hilflosigkeit und Ursachenzuschreibungen und zog die Dimensionen Internalität-Externalität, Stabilität und Globalität heran.
 Das Nichteinhalten eines Trainingsprogramms könnte beispielsweise auf externe Faktoren oder interne, in der Person befindliche Faktoren attribuiert werden *(Lokus)*.
-Ebenso könnte die variable Erklärung des einmaligen Ausrutschers oder die stabile Erklärung der fehlenden Sportlichen Begabung herangezogen werden *(Stabilität)*.
+Ebenso könnte die variable Erklärung des einmaligen Ausrutschers oder die stabile Erklärung der fehlenden sportlichen Begabung herangezogen werden *(Stabilität)*.
 Zuletzt könnten Personen sich den Misserfolg durch Faktoren erklären, die sich nur auf diese Situation beziehen, z.B.
 "Ich kann mich zwar nicht an meine Bewegungsziele halten, aber meine Studienziele schaffe ich", oder auf andere Situationen generalisieren z.B.
 "Ich bin generell ein wenig zielstrebiger Mensch".
@@ -261,7 +267,7 @@ In einem Literaturreview heben @Mahmood2023 hervor, dass Bewegungsadhärenz insb
 Die Autor_innen nennen Einflüsse der Person, Krankheit oder Verletzung, Einflüsse des Therapieprogramms, sowie des Gesundheitssystems als Faktoren, welche die Bewegungsadhärenz beeinflussen.
 Die in dieser Arbeit untersuchten Zusammenhänge zwischen Affekt und Attributionsstil sind psychische Konstrukte und damit den Einflüssen der Person zuzuordnen.
 
-Affekt und Attribution zählen zu den psychologischen Prädiktoren gesundheitsförderlichen Verhaltens.
+Affekt und Attribution zählen zu psychologischen Prädiktoren gesundheitsförderlichen Verhaltens.
 Im Rehabilitationskontext diskutieren @Goddard2020 unter anderem Selbstwirksamkeit, Motivation, Intention, Zielorientierung und soziale Unterstützung als relevante Einflussgrößen auf Bewegungsadhärenz.
 Auch Affekt und Attribution werden zunehmend erforscht:
 
@@ -270,53 +276,39 @@ Der Abbruch ging zudem mit negativem Affekt einher.
 @Brewer2000 konnten prospektiv zeigen, dass eine internale, stabile Attribution mit schnellerer subjektiver Genesung assoziiert war.
 Ähnliche Ergebnisse berichten @Courneya2004 bei rehabilitierten Krebspatient_innen: Hier war negativer Affekt mit geringerer Trainingshäufigkeit und -dauer assoziiert, während eine internale Attribution positiv mit beiden Parametern korrelierte.
 
-In allen genannten Studien wurden Attributionen mithilfe der Revised Causal Dimension Scale (CSD II) [@McAuley1992] und Affekt nach der Konzeption von @weiner1986attribution erfasst.
-
-Die Forschung zu psychologischen Faktoren, die Rückfälle in inaktives Verhalten vorhersagen, ist bislang noch nicht systematisch genug entwickelt [@Roordink2021].
-Insbesondere der kombinierte Einfluss von Affekt und Attribution im Sinne des Rückfallmodells nach @Marlatt1984 wurde bisher kaum empirisch untersucht.
-Diese Lücke adressiert die vorliegende Arbeit.
-
-Um diese Zusammenhänge theoretisch zu fundieren, wird im folgenden Kapitel das Rückfallmodell nach Marlatt und Gordon vorgestellt.
+Um die für diese Arbeit relevanten Zusammenhänge theoretisch zu fundieren, wird im folgenden Kapitel das Rückfallmodell nach Marlatt und Gordon vorgestellt.
 
 ## Das Rückfallmodell
 
 Das Rückfallmodell von @Marlatt1984 beschreibt zentrale Mechanismen der Aufrechterhaltung von Gesundheitsverhalten.
-Es basiert auf der Theorie des Sozialen Lernens [@bandura1977social] und beinhaltet sowohl kognitive als auch behaviorale Komponenten.
+Es basiert auf der Theorie des sozialen Lernens [@bandura1977social] und beinhaltet sowohl kognitive als auch behaviorale Komponenten.
 @Marlatt1984 verstehen die Initiierung und Aufrechterhaltung von Gesundheitsverhalten als zwei verschiedene Prozesse.
 Somit ist es in diesem theoretischen Rahmen irrelevant, wie ein Individuum ein Gesundheitsverhalten, wie z.B.
 das Nichtrauchen oder regelmäßige PA, aufgenommen hat.
 Es wird allein die Frage betrachtet, wie Individuen auf Ausfälle bzw.
 Rückfälle vorbereitet werden können.
-Rückfälle werden hier nicht als Versagen behandelt, sondern als Teil des Prozesses zu einem stabilen Gesundheitsverhalten.
-Das macht das Modell auf den Kontext von PA als Gesundheitsverhalten übertragbar [z.B. @Marcus1997].
-Es wurde in Bezug auf Populationen mit bewegungsarmer Lebensweise und bereits aktive Populationen angewendet.
-@Marcus1993 untersuchten die Anwendung des Rückfallsmodells in einer Stichprobe von 120 zuvor Frauen mit einem sedentären Lebensstil.
-Die Teilnahme an einem 18-wöchigen Trainingsprogramm wurde in drei Versuchsgruppen entweder von keiner Intervention, einer Intervention basierend auf Verstärkung, oder basierend auf dem Rückfallmodell begleitet.
-Zwar war die Anwesenheit in der Gruppe mit der Rückfall-Intervention anfangs höher, allerdings war der Dropout in allen Gruppen gravierend.
-Die Schlussfolgerung ist, dass das Rückfallmodell nicht geeignet ist, um die Bewegungsadhärenz in dieser Stichprobe zu erhöhen.
-@Martin1984 untersuchten in einer Studienreihe, inwiefern verschiedene behaviorale und kognitive Techniken die Adhärenz in einem Trainingsprogramm erhöhen.
-Darunter ist auch Rückfalltraining.
-Es gab auch hier keine Unterschiede zwischen den Gruppen.
-Allerdings gab es logistische Schwierigkeiten in der Implementation der Versuchsbedingungen: Nur in der Kontrollbedingung (keine Intervention) vernetzten sich die Versuchspersonen, um sich gegenseitig im weiteren Training zu Unterstützen.
-Deshalb ist es durchaus möglich, dass die Rückfallprävention wirksam war - auch ohne die soziale Unterstützung anderer Teilnehmenden.
+Rückfälle werden hier nicht als endgültiges Versagen behandelt, sondern als Teil des Prozesses zu einem stabilen Gesundheitsverhalten.
+Das Modell ist auf den Kontext von PA als Gesundheitsverhalten übertragbar [siehe z.B. @Marcus1997].
 
-[@Stetson2005] Zentrale Konstrukte in diesem Modell sind nach @Marlatt1984 Hochrisikosituationen (high risk situations), wahrgenommene Kontrolle (perceived control), Coping-Reaktion (coping response), Positive Erwartungen (positive outcome expectancies), und der Verstoß gegen Abstinenz (abstinence violation effect).
+Zentrale Konstrukte in diesem Modell sind gemäß @Marlatt1984 Hochrisikosituationen (high risk situations), wahrgenommene Kontrolle (perceived control), Coping-Reaktion (coping response), Positive Erwartungen (positive outcome expectancies), und der Verstoß gegen Abstinenz (abstinence violation effect).
 In der neuen Konzeptualisierung des Modells von @Witkiewitz2009 gehen die Autor_innen auf Kritik am Modell ein und stellen ein angepasstes Modell vor, dass keine bestimmte zeitliche Abfolge dieser Komponenten mehr annimmt.
 
-Hochrisikosituationen sind Situationen, in denen die Wahrscheinlichkeit eines Rückfalls erhöht ist.
+*Hochrisikosituationen* sind Situationen, in denen die Wahrscheinlichkeit eines Rückfalls erhöht ist.
 Die drei im Sample von @Marlatt1984 am häufigsten berichteten Situationen sind negative emotionale Zustände (55%), sozialer Druck (20%),und zwischenmenschliche Konflikte (16%).
 Im Kontext von PA könnte ein solcher Zustand von negativen Gefühlen nach dem Sport herrühren.
-Individuen erleben dem Modell nach wahrgenommene Kontrolle, wenn sie erfolgreich Abstinenz ausüben oder, im Kontext von PA also von sedentärem Verhalten absehen.
+Individuen erleben dem Modell nach *wahrgenommene Kontrolle*, wenn sie erfolgreich Abstinenz ausüben oder, im Kontext von PA also von sedentärem Verhalten absehen bzw.
+einen Trainingsplan einhalten.
 Wahrgenommene Kontrolle steigt, je länger die Abstinenz andauert und sinkt in einer Hochrisikosituation.
 
-Coping-Reaktionen verbessern die wahrgenommene Kontrolle in einer Hochrisikosituation allerdings erheblich.
+*Coping-Reaktionen* verbessern die wahrgenommene Kontrolle in einer Hochrisikosituation allerdings erheblich.
 Hierbei handelt es sich um ein Repertoire von Verhaltensweisen, um mit Hochrisikosituationen umzugehen.
 Als Beispiel in Bezug auf Sport und Bewegung sei die Angewohnheit genannt, trotz schlechten Wetters mit entsprechender Kleidung laufen zu gehen.
+Hochrisikosituationen führen also nicht immer zu Rückfällen, es kommt vielmehr darauf an, wie Personen mit solchen Situationen umgehen.
 
-Positive Erwartungen stammen von der erwarteten sofortigen Belohnung durch das Unterlassen von Gesundheitsverhalten, wie z.B.
+*Positive Erwartungen* stammen von der erwarteten sofortigen Belohnung durch das Unterlassen von Gesundheitsverhalten, wie z.B.
 wenn das Unterlassen einer Lauf-Einheit kurzfristig belohnend erscheint.
 
-Verstöße gegen die Abstinenz werden von persönlicher Attribution begleitet.
+*Verstöße gegen die Abstinenz* werden von persönlicher Attribution begleitet.
 Das Rückfallmodell postuliert, dass eine internal-variable Attribution dienlich ist.
 Nach einem Rückfall zu sedentärem Verhalten wäre es demnach dienlich, die Ursache bei sich selbst zu sehen und als veränderbar zu betrachten.
 
@@ -324,12 +316,34 @@ Das ursprüngliche Rückfallmodell ist im Bereich des Substanzgebrauchs weitreic
 Die revidierte Fassung von @Witkiewitz2009 ist noch nicht umfassend geprüft.
 Innerhalb dieses Modells ist die wichtige Rolle der Selbstwirksamkeit bereits gut untersucht, in Bezug auf andere Variablen ist die Studienlage allerdings noch dünn [@Amireault2013; @Roordink2021].
 
+Das Rückfallmodell wurde in Bezug auf Populationen mit bewegungsarmer Lebensweise und bereits aktive Populationen angewendet.
+@Marcus1993 untersuchten die Anwendung des Rückfallsmodells in einer Stichprobe von 120 Frauen mit einem zuvor sedentären Lebensstil.
+Die Teilnahme an einem 18-wöchigen Trainingsprogramm wurde in drei Versuchsgruppen entweder von keiner Intervention, einer Intervention basierend auf Verstärkung, oder basierend auf dem Rückfallmodell begleitet.
+Zwar war die Anwesenheit in der Gruppe mit der Rückfall-Intervention anfangs höher, allerdings war der Dropout in allen Gruppen gravierend.
+Die Schlussfolgerung ist, dass das Rückfallmodell nicht geeignet ist, um die Bewegungsadhärenz in dieser Stichprobe zu erhöhen.
+@Martin1984 untersuchten in einer Studienreihe, inwiefern verschiedene behaviorale und kognitive Techniken die Adhärenz in einem Trainingsprogramm erhöhen.
+Eine dieser Techniken war auch das Rückfalltraining.
+Es gab auch hier keine Unterschiede zwischen den Gruppen.
+Allerdings gab es Schwierigkeiten in der Implementation der Versuchsbedingungen: Nur in der Kontrollbedingung (keine Intervention) vernetzten sich die Versuchspersonen, um sich gegenseitig im weiteren Training zu unterstützen.
+Deshalb ist es durchaus möglich, dass die Rückfallprävention wirksam war - auch ohne die soziale Unterstützung anderer Teilnehmenden.
+
+@Stetson2005 rekrutierten 65 Erwachsene, die bereits gewohnheitsmäßig aktiv waren.
+Es wurden Bewegungs- und Gesundheitsgewohnheiten, Schuld (guilt) und wahrgenommene Kontrolle sowie die Selbstwirksamkeit im Umgang mit Problemen bezüglich der Bewegungsgewohnheiten erfasst.
+Hochrisikosituationen wurden in einem offenen Fragebogen erfragt und dann in verschiedene Kategorien, wie etwa soziale Hochrisikosituationen, geografische Distanz, etc. sortiert.
+Auch Coping wurde offen erfasst und codiert.
+Die Ergebnisse stützen die Annahmen des Rückfallmodells, dass Hochrisikosituationen mit positiven Coping-Strategien gemeistert werden können.
+Die wahrgenommene Kontrolle bei einem Rückfall niedriger, was ebenso im Einklang mit dem Modell steht.
+Die Selbstwirksamkeit entwickelte zwar keine Vorhersagekraft, wurde aber nur mit einem Item erfasst.
+
+Die Forschung zu psychologischen Faktoren, die Rückfälle in inaktives Verhalten vorhersagen, ist bislang noch nicht systematisch genug entwickelt [@Roordink2021].
+Insbesondere der kombinierte Einfluss von Affekt und Attribution im Sinne des Rückfallmodells nach @Marlatt1984 wurde bisher kaum empirisch untersucht.
+Diese Lücke adressiert die vorliegende Arbeit.
+
 ## Hypothesen und Forschungsfrage
 
-Die Forschungsfrage ist, inwiefern Affekt oder der Attributionsstil den Trainingsausfall bzw.
-die wahrgenommene Zielerreichung vorhersagen.
+Die Forschungsfrage ist, inwiefern Affekt oder der Attributionsstil Trainingsausfälle und die wahrgenommene Zielerreichung vorhersagen.
 
-Das Rückfallmodell nach Marlatt und Gorden postuliert, dass negatives Gefühlserleben und eine undienliche Attribution nach einem Rückfall häufiger zum schlussendlichen Unterlassen des Gesundheitsverhaltens fühlen.
+Das Rückfallmodell postuliert, dass negatives Gefühlserleben und eine undienliche Attribution nach einem Rückfall häufiger zum schlussendlichen Unterlassen des Gesundheitsverhaltens fühlen.
 Somit sollten negatives Affekterleben und ein external - stabiler Attributionsstil weniger Trainingseinheiten und eine schwächer ausgeprägte wahrgenommene Erreichung des gesetzen Ziels vorhersagen und andersherum.
 Daraus ergeben sich die vier Hypothesen dieser Arbeit:
 
@@ -340,15 +354,17 @@ H2: Ein negativeres Affekterleben sagt mehr Trainingsausfälle (H2.1) und eine g
 
 ## Stichprobe:
 
-Die Teilnehmenden waren erwachsene Freizeitsportler:innen, die aktuell und ohne gesunheitliche oder andwerweitige Einschränkung trainieren.
+Die Teilnehmenden waren erwachsene Freizeitsportler:innen, die aktuell und ohne gesundheitliche oder anderweitige Einschränkung trainieren.
 
-Um ein aussagekräftiges Modell zu bekommen, wird eine Korrelation von 0,5 empfohlen \[LIT\].
-Basierend auf einer Poweranalyse mit 1 – β = `r round (pwr_result$power, 2)`, α = `r round (pwr_result$sig.level, 2)`, und *r* = `r round (pwr_result$r, 1)` ergab sich eine ideale Teilnehmerzahl von `r round (pwr_result$n, 0)`.
 Die Frage der Poweranalyse für Mehrebenenanalysen ist allerdings komplex [@Hox2017-dx].
-Der Versuch, post-hoc Power des bestimmten Modells durch Simulation mit dem Paket `simr` [@Green2016] zu bestimmen, scheiterte, was teils auf die kleine Stichprobe, teils auf die Datenstruktur zurückgeführt werden kann.
+Für die Mehrebenenanalyse selbst wurde lediglich eine Post-Hoc-Analyse berechnet, die im Ergebnisteil berichtet wird.
+
+Basierend auf einer Poweranalyse für rein korrelative Zusammenhänge mit 1 – β = `r round (pwr_result$power, 2)`, α = `r round (pwr_result$sig.level, 2)`, und *r* = `r round (pwr_result$r, 1)` ergab sich eine Teilnehmerzahl von `r round (pwr_result$n, 0)`.
+
 *N* = `r raw_data_n` Fälle ergaben sich in dem Rohdatensatz.
 *n* = `r raw_data_n - filtered_n` wurden von der Analyse und weiteren Befragungen ausgeschlossen, weil sie angaben, nicht an einem systematischen Trainings- oder Bewegungsprogramm teilzunehmen.
-Aufgrund von mehr als 50 fehlenden Datenpunkten wurden *n* = `r filtered_n - na_removed_n` Teilnehmende ausgeschlossen.Die deskriptiven Statistiken zu den demografischen Daten sind in @tbl-demografie dargestellt.
+Aufgrund von mehr als 50 fehlenden Datenpunkten wurden *n* = `r filtered_n - na_removed_n` Teilnehmende ausgeschlossen.
+Die deskriptiven Statistiken zu den demografischen Daten sind in @tbl-demografie dargestellt.
 
 ```{r}
 #| label: tbl-demografie
@@ -362,20 +378,20 @@ Das Alter reichte von `r descriptives_list$Age_min` bis`r descriptives_list$Age_
 
 ## Instrumente
 
-*Demografische Variablen:* In der Baseline-Erhebung wurden das Alter, das Geschlecht, die Sportart und das Sportziel (z.B. "Marathon") abgefragt.
+In dieser Studie wurden ausschließlich Fragebogendaten verwendet. Der Versand erfolgte online über die Umfragesoftware Unipark, per E-Mail. Zur Zusammenführung der Daten aus verschiedenen Umfragen wurde ein Pseudonym verwendet.  
 
-*Attributionsstil:* Zur Erfassung des Attributionsstils wurde das Attribution Style Questionnaire [@Peterson1982] eingesetzt.
-Den Versuchspersonen wurden 16 verschiedene Szenarien präsentiert, die einen Erfolg oder Misserfolg schilderten, z.B.
-"You have been looking for a job unsuccessfully for some time." Es wurde dann die Ursache für den Erfolg oder Misserfolg in einer offenen Frage abgefragt, damit die Teilnehmenden sich beim Antworten auf die darauffolgenden Fragen nur auf diese eine Ursache beziehen.
-Danach wurden auf einem semantischen Differenzial mit Werten von 1-7 die drei Dimensionen Lokus, Stabilität und Globalität erfasst.
-Zum Lokus lautete die Frage z.B.
-"Is the cause of your unsuccessful job search due to something about you or to something about other people or circumstances?", und die Pole des Items waren jeweils "Totally due to other people or circumstances - 1" und "Totally due to me -7".
-Hier repräsentieren niedrigere Werte einen internen, höhere Werte einen internen Lokus.
-Die Stabilität wurde so erfasst, dass niedrige Werte eine niedrige Stabilität repräsentieren und andersherum, genauso wie bei der Globalität.
-Der Mittelwert aller 16 Situationen wurde für jede der drei Dimensionen gebildet.
+*Demografische Variablen:* In der Baseline-Erhebung wurden das Alter, das Geschlecht, die Sportart und das Sportziel (z.B. "Marathon") abgefragt.
+Außerdem wurde als Filtervariable erfragt, ob die Teilnehmenden aktuell an einem Systematischen Trainingsprogramm teilnehmen.
+
+*Attributionsstil:* Zur Erfassung des Attributionsstils wurde das Attribution Style Questionnaire [@Peterson1982] eingesetzt, in dem den Teilnehmenden 16 Alltagssituationen vorgelegt wurden, die entweder mit Erfolg oder Misserfolg zu tun haben. Dabei sollten sie zunächst in einer offenen Frage eine mögliche Ursache für das jeweilige Ereignis benennen.
+Diese frei formulierte Ursache diente dann als Bezugsrahmen für die anschließende Einschätzung auf drei Bewertungsdimensionen: Lokus der Ursache (intern vs. extern), Stabilität (stabil vs. variabel) und Übertragbarkeit auf andere Lebensbereiche (Globalität).
+
+Die Bewertung erfolgte jeweils auf einer siebenteiligen Skala. Beispielsweise wurde beim Lokus eingeschätzt, ob das Geschehen eher auf interne Faktoren oder auf äußere Umstände zurückzuführen ist. Niedrigere Werte standen für externe, höhere Werte für internale Ursachenzuschreibungen. Entsprechend spiegelten bei der Dimension Stabilität niedrige Werte eine eher veränderliche, hohe Werte eine stabilen Attributionsstil wider. Bei der Globalität bedeuteten niedrige Werte, dass die Ursache auf den spezifischen Kontext beschränkt ist, während hohe Werte auf eine Verallgemeinerung auf viele Lebensbereiche hindeuten.
+
+Für jede der drei Dimensionen wurde ein Mittelwert über alle Situationen hinweg berechnet.
 Die Reliablität und Validität des Fragebogen wird unter anderem von @Corr1996 gestützt.
 In dieser Studie wurde die von @stiensmeier1985attributionsstil validierte deutsche Version verwendet.
-Es gibt Belege zur internen Konsistenz, der Retest-Reliabilität und kovergenten Validität mit dem Beck-Depressionsinventar [@beck1974assessment].
+Es gibt für die deutsche Version Belege zur internen Konsistenz, der Retest-Reliabilität und kovergenten Validität mit dem Beck-Depressionsinventar [@beck1974assessment].
 
 *Positive and Negative Affect Scale (PANAS):* Die Positive and Negative Affect Scale (Panas, [@Watson1988]) erfasst auf einer Skala von 1 ("not at all") bis 5 ("extremely") den positiven und negativen Affekt, mit jeweils 10 Items für positiven und 10 Items für negativen Affekt.
 Jedes Item ist nur ein einzelnes Wort, z.B.
@@ -387,15 +403,14 @@ In der Originalstudie wies diese eine Reliabilität von α = .86 auf, und es gib
 Im Prä-Test wurde der Affekt mit der Instruktion "Gib bitte an, wie du dich speziell Training in den letzten 14 Tagen gefühlt hast." erfasst, also als mittelfristiges Aggregat aus Zuständen.
 In den wiederholten Befragungen wurde der Affekt im letzten Training als Zustand erfasst.
 
-*Trainingsbezogene Variablen:* Im Baseline-Fragebogen wruden die wöchentliche Trainingszeit in Stunden und die Lauf-Kilometerzahl abgefragt.
+*Trainingsbezogene Variablen:* Im Baseline-Fragebogen wurden die wöchentliche Trainingszeit in Stunden und die Lauf-Kilometerzahl abgefragt.
 Zu jeder Trainingseinheit wurden ebenso die Trainingszeit und Kilometerzahl, bezogen auf das einzelne Training, abgefragt.
-Dazu wurden die Versuchspersonen gefragt, wie sehr die Intention, das Trainingsziel zu erreichen, ausgeprägt war (Commitment, visuelle Analogskala von 1-100), und zu wieviel Prozent sie ihr Trainingsziel erreicht war (Goal Attainment).
-Es gab sechs mögliche Einheiten, die die Versuchspersonen für die Studie dokumentieren konnten.
-In dieser Arbeit wurde die Bewegungsadhärenz als Anzahl der abgeschlossenen Einheiten, sowie als Ausmaß der wahrgenommenen Zielerreichung operationalisiert.
-Die Daten zu Distanz und Trainingsdauer fanden in dieser Arbeit keine Berücksichtgung.
+Dazu wurden die Versuchspersonen gefragt, wie sehr die Intention, das Trainingsziel zu erreichen, ausgeprägt war (Commitment, visuelle Analogskala von 1-100 als Ganzzahl), und zu wieviel Prozent das Trainingsziel erreicht war (Goal Attainment).
+Es gab sechs mögliche Einheiten, die die Versuchspersonen für die Studie dokumentieren konnten. Die Fragebögen wurden im Abstand von einer Woche versendet, aber der genaue Zeitpunkt des Ausfüllens wurde nicht kontrolliert. 
+Die Daten zu Commitment, Distanz und Trainingsdauer fanden in dieser Arbeit keine Berücksichtigung.
 
 *Weitere Instrumente:* In diesem Forschungsprojekt wurden außerdem authentischer und überheblicher Stolz (authentic and hubristic pride, @Tracy2007), und implizite Motive [@winter1994manual; @Sokolowski2000] erfasst.
-Diese Daten wurden in der Bachelorarbeit nicht berücksichtigt.
+Diese Daten wurden in dieser Arbeit nicht berücksichtigt.
 
 *Session RPE:* Die Session Rate of Perceived Exhaustion [Sessionn-RPE, @Foster2001] misst die wahrgenommene körperliche Belastung einer Trainingseinheit auf einer Skala von 0-10.
 Das Item lautet "How was your workout?" und die Skala soll etwa 30 Minuten nach Beenden des Trainings ausgefüllt werden.
@@ -419,16 +434,18 @@ Der Prä-Test enthielt außerdem die Skala von @Peterson1982 zum Attributionssti
 Darauf folgte die längsschnittliche Phase, in der die Trainierenden über einen Zeitraum von maximal zwei Monaten sechs ihrer Lauf-Trainingseinheiten dokumentieren sollten.
 Dazu wurden sie per E-Mail benachrichtigt und sie wurden gebeten, nach der Trainingseinheit einen Fragebogen auszufüllen.
 Dort wurden jeweils der positive und negative Affekt, Session RPE und die trainingsbezogenen Variablen abgefragt.
+Als Anreiz gab es ein individuelles Feedback zu den individuellen Werten der impliziten Motive.  
 
+Die Teilnehmenden wurden zuvor über den Zweck und Ablauf der Studie aufgeklärt. Die Einwilligung zur Teilnahme wurde auf der Informationseite eingeholt. Teilnehmende wurden darauf hingewiesen, dass sie jederzeit ohne Konsequenzen ihre Einwilligung widerrufen können. 
 Die Daten der einzelnen Versuchspersonen wurden mittels eines Pseudonyms zugeordnet, das keinen Rückschluss auf Einzelpersonen ermöglichte.
-Nach der Datenerhebung wurden der Datensatz komplett anonymisiert.
+Nach der Datenerhebung wurden der Datensatz komplett anonymisiert. 
 Die Versuchspersonen wurden schriftlich debrieft.
 
 ## Strategie für die Reproduzierbarkeit der Ergebnisse
-
-Zusätzlich zur Replizierbarkeit von Studien, also der wiederholten Durchführung derselben oder einer modifizierten Versuchsanordnung, ist die Reproduzierbarkeit (Reproducibility) von Ergebnissen ein Qualitätskriterium moderner Forschung [@NationalAcademies2019].
+<!-- Diesen Absatz evtl. verbessern -->
+Zusätzlich zur Replizierbarkeit von Studien, also der wiederholten Durchführung derselben oder einer modifizierten Versuchsanordnung, ist die Reproduzierbarkeit (reproducibility) von Ergebnissen ein Qualitätskriterium moderner Forschung [@NationalAcademies2019].
 Diese Arbeit wurde als reproduzierbares Manuskript erstellt, in dem die Ergebnisse aus den Berechnungen, inklusive Abbildungen und Tabellen, direkt ins Dokument eingespeist werden.
-Das ist aufwendiger als die Herkömmliche Manuskripterstellung, in der Ergebnisse aus der Statistiksoftware in das Dokument kopiert werden, hat aber mehrere Vorteile.
+Das ist aufwendiger als die herkömmliche Manuskripterstellung, in der Ergebnisse aus der Statistiksoftware in das Dokument kopiert werden, hat aber mehrere Vorteile.
 Wissenschaftliche Artikel betonen die Wichtigkeit einer solch genauen Nachvollziehbarkeit der Ergebnisse.
 @manyanalysts sprechen sich dafür aus, Datenanalysen vermehrt als eine Art Crowdsourcing zu betreiben.
 Die Forscher:innen haben in ihrer Studie ein Datensatz von 13 verschiedenen Forscherteams analysieren lassen und fanden, dass 69% zum selben Ergebnis kommen.
@@ -454,29 +471,32 @@ Variablen, die im Rahmen des Forschungsprojekts erfasst wurden, aber in dieser A
 Für Werte, bei denen die Versuchspersonen einen Bereich (z.B. 10-15 km) angegeben hatten, wurde der Durchschnitt der beiden Werte gebildet.
 Da die Skalen von Affekt und Attribution keine gegensätzlich gepolten Items beinhalten, wurde keine Umpolung vorgenommen.
 Angaben zur Sportart mit dem Wortbestandteil "lauf" wurden zu "Laufen", und mit "kraft" zu "Kraftsport" zusammengefasst.
-
 Die Normalverteilung bei wurde bei sämtlichen Variablen überprüft.
 
 In dem Datensatz befanden sich immer noch `r sum(is.na(df_less_na))` fehlende Werte (`r round(100 * sum(is.na(df_less_na)) / (nrow(df_less_na) * ncol(df_less_na)), 2)`%), die per multipler Imputation per *predictive mean matching* mit 5 Iterationen geschätzt wurden.
 Bei diesem Verfahren werden in mehreren Durchläufen bzw.
 Iterationen plausible Werte anhand der Verteilungen und Beziehungen der Variablen untereinander geschätzt [@Li2015].
 
-Für die Berechnung der hierarchischen linearen Modelle wurden die Daten in ein Langformat transformiert, und zwar so, dass jeder Messzeitpunkt in einer Zeile aufgeführt war.
+Die Daten wurden außerdem in ein Langformat transformiert, und zwar so, dass jeder Messzeitpunkt in einer Zeile aufgeführt war.
 So entstanden für jede Versuchsperson sechs Zeilen für die 6 Messzeitpunkte.
-Die Werte, die nur zu einem Messzeitpunkt erhoben wurden, wie etwa Attributionsstil oder Alter, wiederholten sich in jeder dieser sechs Zeilen.
+Die Werte, die nur zu einem Messzeitpunkt erhoben wurden, wie etwa Attributionsstil oder Alter, wiederholten sich in jeder dieser sechs Zeilen. Das diente vor allem der Modellerstellung. 
+Alle numerischen, kontinuierlichen Variablen wurden für eine einfachere Interpretation z-standardisiert.
 
-### Statistische Tests
+### Deskriptive Statistiken
 
-Die Voraussage der Trainingsausfälle durch ein Mehrebeneenmodell scheiterte an einer geringen Variabilität dieser Zielvariable, denn die meisten Versuchspersonen hatten alle Einheiten abgeschlossen.
+Korrelationen, Mediane, Mittelwerte mit Konfidenzintervall, Standardabweichungen, Schiefe und Exzess wurden berechnet. Für demografische Daten wurden außerdem absolute und relative Häufigkeiten betrachtet. Ebenso erfolgte eine Korrelationsanalyse für alle Variablen. 
+
+### Inferenzstatistische Tests
+In der Präregistrierung wurde als Haupttest eine Mehrebenenanalyse, auch bekannt als *Hierarchisches Lineares Modell* spezifiziert.
+Die Voraussage der Trainingsausfälle durch ein HLM (Hypothesen 1.2 und 2.2) scheiterte an einer geringen Variabilität dieser Zielvariable, denn die meisten Versuchspersonen hatten alle Einheiten abgeschlossen.
 Das hierarchische lineare Modell konnte somit nicht konvergieren.
-Als Alternative wurden Hypothesen 1.1 und 2.1 auf explorativer Basis mit einem verallgemeinerten Linearen Modell (GLMM) getestet.
-Für Hypothesen 1.2 und 2.2 konnte ein hierarchisches lineares Modell berechnet werden.
+Als Alternative wurden diese Hypothesen auf explorativer Basis mit einem verallgemeinerten hierarchischen linearen Modell (GLMM) und per Gruppenvergleich mit t-tests getestet.
+Für Hypothesen 1.2 und 2.2 konnte hingegen ein HLM berechnet werden.
 
 ## Über die inferenzstatistischen Modelle
 
 ### Mehrebenenanalysen
 
-In der Präregistrierung wurde als Haupttest eine Mehrebenenanalyse, auch bekannt als *Hierarchisches Lineares Modell* spezifiziert.
 In meinen Ausführungen zu diesen Modellen berufe ich mich unter anderem auf die Lehrwerke von @Hox2017 und @Field2012, sowie die Dokumentationen der R-Pakete {nlme} [@nlme2023] und {lme4} [@lme42025].
 
 Ein oft genanntes Beispiel für hierarchische Modelle ist die Situation in Studien, bei denen Daten aus verschiedenen Klassen erhoben werden [siehe z.B. @hox2017chapter2]: Aus praktischen Gründen können Schüler:innen nur selten völlig randomsiert einer Intervention zugeordnet werden.
@@ -488,49 +508,76 @@ Wenn ein Individuum zu mehreren Messezeitpunkten den gleichen Fragebogen ausfül
 Hier sind Daten dann in Individuen statt in Klassen genestet.
 Ein Individuum ist also ein Cluster.
 
-In einem HLM werden das *Interzept*, die zufälligen Effekte *random effects* und festen Effekte *fixed effects* modelliert. Das Interzept ist der "Startpunkt" der Vorhersagegeraden eines jeden Individuums, es repräsentiert die Ausprägung der Zielvariablen, wenn alle Prädiktoren gleich null sind. Die festen Effekte beschreiben den durchschnittlichen Zusammenhang zwischen Prädiktoren und Zielvariable über alle Individuen hinweg. Random effects beschreiben wiederum Abweichungen von diesem Durchschnitt in den verschiedenen Ebenen und Clustern. 
+In einem HLM werden das *Interzept*, die zufälligen Effekte *random effects* und festen Effekte *fixed effects* modelliert.
+Das Interzept ist der "Startpunkt" der Vorhersagegeraden eines jeden Individuums, es repräsentiert die Ausprägung der Zielvariablen, wenn alle Prädiktoren gleich null sind.
+Die festen Effekte beschreiben den durchschnittlichen Zusammenhang zwischen Prädiktoren und Zielvariable über alle Individuen hinweg.
+Random effects beschreiben wiederum Abweichungen von diesem Durchschnitt in den verschiedenen Ebenen und Clustern.
 
-In der Regel wird nicht davon ausgegangen, dass alle Versuchspersonen mit dem gleichen Ausgangswert starten, daher geht das Interzept oftmals als *random effect* in das Modell ein, da es zufällig bzw. "random" variiert. 
-Auch die Steigungen der Regressionsgeraden, also die Effekte der Prädiktoren, können als *random effect* in das Modell eingehen. 
-Schließlich kann der Effekt der Prädiktoren auf die Zielvariable je nach Klasse bzw. Individuum variieren. Geht man allerdings davon aus, dass dies aber nicht zutrifft, bleiben die Steigungen fixiert. Ein Modell, bei dem das Interzept zufällig variieren kann, während die Steigungen aber fixiert sind, wird als Random-Interzept-Modell bezeichnet.  
+In der Regel wird nicht davon ausgegangen, dass alle Versuchspersonen mit dem gleichen Ausgangswert starten, daher geht das Interzept oftmals als *random effect* in das Modell ein, da es zufällig bzw.
+"random" variiert.
+Auch die Steigungen der Regressionsgeraden, also die Effekte der Prädiktoren, können als *random effect* in das Modell eingehen.
+Schließlich kann der Effekt der Prädiktoren auf die Zielvariable je nach Klasse bzw.
+Individuum variieren.
+Geht man allerdings davon aus, dass dies aber nicht zutrifft, bleiben die Steigungen fixiert.
+Ein Modell, bei dem das Interzept zufällig variieren kann, während die Steigungen aber fixiert sind, wird als Random-Interzept-Modell bezeichnet.
 
-Die Zentrierung der Prädiktoren ist ein wichtiger Schritt in der Spezifikation einer Mehrebenenanalyse [@Nezlek2006]. Sie dient dazu, die Interpretation der Interzepte zu erleichtern und potenzielle Korreliertheit der Prädiktoren (Multikollinearität) zu reduzieren. Hier gibt es zwei Möglichkeiten: Die Zentrierung am Gesamtmittelwert (grand mean centering) und die Zentrierung am Gruppenmittelwert (cluster mean centering).
+Die Zentrierung der Prädiktoren ist ein wichtiger Schritt in der Spezifikation einer Mehrebenenanalyse [@Nezlek2006].
+Sie dient dazu, die Interpretation der Interzepte zu erleichtern und potenzielle Korreliertheit der Prädiktoren (Multikollinearität) zu reduzieren.
+Hier gibt es zwei Möglichkeiten: Die Zentrierung am Gesamtmittelwert (grand mean centering) und die Zentrierung am Gruppenmittelwert (cluster mean centering).
 Am Gesamtmittelwert zentrieren heißt, dass die einzelnen Werte in die Differenz vom Gesamtmittelwert umgerechnet werden.
-Hier ändert sich die Interpretation des Interzepts: Das Interzept ist dann die Ausprägung der Zielvariablen, wenn die jeweiligen Prädiktoren dem Gesamtmittelwert entsprechen. Eine Gruppenmittelwertzentrierung ist also in jedem Fall sinnvoll, wenn null kein sinnvoller oder möglicher Wert ist, wie es z.B. auch beim negativem Affekt oder Attributionsstil der Fall ist [@Nezlek2006]. 
-Beim cluster mean centering ist der Unterschied lediglich, dass die Differenz zum Mittelwert innerhalb eines Clusters berechnet wird. Das ist besonders bei längsschnittlichen Studien relevant, bei denen die Trennung von intraindividuellen (within-person) Effekten und interindividuellen (between-person) ein Problem darstellt. @Curran2011 illustriert diese Problematik folgendermaßen: Über Personen hinweg hängt mehr physische Aktivität mit einem geringeren Risiko für Herzinfarkte zusammen (between-person-effect).
-Allerdings kommen Herzinfarkte häufig beim Trainieren vor (within-person-effect).  Für die Trennung von within- und between-person-Effekten wird empfohlen, wiederholt gemessene Prädiktoren anhand des Gruppenmittelwertes zu zentrieren und stabile Prädiktoren anhand des Gesamtmittelwertes [@Wang2015].
+Hier ändert sich die Interpretation des Interzepts: Das Interzept ist dann die Ausprägung der Zielvariablen, wenn die jeweiligen Prädiktoren dem Gesamtmittelwert entsprechen.
+Eine Zentrierung am Gesamtmittelwert ist also in jedem Fall sinnvoll, wenn null kein sinnvoller oder möglicher Wert ist, wie es z.B.
+auch beim negativem Affekt oder Attributionsstil der Fall ist [@Nezlek2006].
+Beim cluster mean centering ist der Unterschied lediglich, dass die Differenz zum Mittelwert innerhalb eines Clusters berechnet wird.
+Das ist besonders bei längsschnittlichen Studien relevant, bei denen die Trennung von intraindividuellen (within-person) Effekten und interindividuellen (between-person) ein Problem darstellt.
+@Curran2011 illustriert diese Problematik folgendermaßen: Über Personen hinweg hängt mehr physische Aktivität mit einem geringeren Risiko für Herzinfarkte zusammen (between-person-effect).
+Allerdings kommen Herzinfarkte häufig beim Trainieren vor (within-person-effect). Eine Konfundierung dieser Effekte wäre gravierend. 
+Für die Trennung von within- und between-person-Effekten wird empfohlen, wiederholt gemessene Prädiktoren anhand des Gruppenmittelwertes zu zentrieren und stabile Prädiktoren anhand des Gesamtmittelwertes [@Wang2015].
 
-Außerdem ist in längsschnittlichen Daten anzunehmen, dass die einzelnen Messzeitpunkte untereinander korrelieren (Daten von Messzeitpunkt 1 hängen stärker mit Messzeitpunkt 2 zusammen als mit Messzeitpunkt 6).Um der Korrelation zwischen Messzeitpunkten Rechnung zu tragen, kann eine Korrelationsmatrix spezifiziert werden. Diese fügt dem Modell die angenommene Korrelationsstruktur hinzu und somit kann für die Korrelation zwischen Messzeitpunkten kontrolliert werden.
+Außerdem ist in längsschnittlichen Daten anzunehmen, dass die einzelnen Messzeitpunkte untereinander korrelieren (Daten von Messzeitpunkt 1 hängen stärker mit Messzeitpunkt 2 zusammen als mit Messzeitpunkt 6).Um der Korrelation zwischen Messzeitpunkten Rechnung zu tragen, kann eine Korrelationsmatrix spezifiziert werden.
+Diese fügt dem Modell die angenommene Korrelationsstruktur hinzu und somit kann für die Korrelation zwischen Messzeitpunkten kontrolliert werden.
 
 Der Intraklassenkoeffizient (ICC) gibt wieder, wie viel Varianz auf die Unterschiede zwischen Gruppen bzw.
 Clustern zurückgeführt werden kann.
 Dies rechtfertigt die Anwendung von hierarchischen linearen Modellen, die ebendiese Cluster-Unterschiede berücksichtigt.
 Besonders in der psychologischen Forschung und Sozialwissenschaft werden aber HLMs auch empfohlen, wenn der ICC niedrig ist, obwohl eine Unterscheidung verschiedener Cluster theoretisch zu erwarten ist [@nezlek2008introduction].
 
-Zur Modellgüte werden hauptsächlich das Akaike-Informations-Kriterion (AIC) und das Bayesianische Informations-Kriterion (BIC). Bei beiden Parametern gilt: je niedriger der Wert, desto besser ist die Modellgüte. Beide Parameter werden aus der log-Likelihood des Modells berechnet. Beim BIC werden überflüssige Prädiktoren mit geringer Erklärungskraft eher bestraft als bei AIC. Außerdem passt sich das BIC an die Stichprobengröße an. Das BIC bevorzugt also eher sparsame Modelle. Das AIC ist weniger restriktiv in Bezug auf die Modellkomplexität. Es wird empfohlen, Entscheidungen zur Modellgüte basierend auf beiden dieser Parameter zu treffen [@Vrieze2012]. 
+Zur Modellgüte werden hauptsächlich das Akaike-Informations-Kriterion (AIC) und das Bayesianische Informations-Kriterion (BIC).
+Bei beiden Parametern gilt: je niedriger der Wert, desto besser ist die Modellgüte.
+Beide Parameter werden aus der log-Likelihood des Modells berechnet.
+Beim BIC werden überflüssige Prädiktoren mit geringer Erklärungskraft eher bestraft als bei AIC.
+Außerdem passt sich das BIC an die Stichprobengröße an.
+Das BIC bevorzugt also eher sparsame Modelle.
+Das AIC ist weniger restriktiv in Bezug auf die Modellkomplexität.
+Es wird empfohlen, Entscheidungen zur Modellgüte basierend auf beiden dieser Parameter zu treffen [@Vrieze2012].
 
-Die zentralen statistischen Voraussetzungen einer für HLMs sind nach @Hox2017 (Kapitel 2): 
+Die zentralen statistischen Voraussetzungen einer für HLMs sind nach @Hox2017 (Kapitel 2):
 
-(1) keine hohe Multikollinearität: Weder unter den Prädiktoren, noch mit externen Variablen sollten zu hohe Zusammenhänge bestehen. Besonders zwischen den Ebenen sollte es keine hohe Multikollinearität geben - hier kann Zentrierung helfen. Der Variance Influence Factor (VIF) ist ein statistisches Maß zur Schätzung der Multikollinearität. 
+(1) keine hohe Multikollinearität: Weder unter den Prädiktoren, noch mit externen Variablen sollten zu hohe Zusammenhänge bestehen.
+    Besonders zwischen den Ebenen sollte es keine hohe Multikollinearität geben - hier kann Zentrierung helfen.
+    Der Variance Influence Factor (VIF) ist ein statistisches Maß zur Schätzung der Multikollinearität.
 
-(2) Homoskedastizität, also die konstante Varianz von Residuen auf jeder Ebene. In einem Scatterplot der Residuen sollten sich also keine Muster oder Konzentrationen in einem bestimmten Bereich finden. Schließlich würden solche Muster darauf hindeuten, dass es noch Einflüsse gibt, die nicht berücksichtigt wurden 
+(2) Homoskedastizität, also die konstante Varianz von Residuen auf jeder Ebene.
+    In einem Scatterplot der Residuen sollten sich also keine Muster oder Konzentrationen in einem bestimmten Bereich finden.
+    Schließlich würden solche Muster darauf hindeuten, dass es noch Einflüsse gibt, die nicht berücksichtigt wurden
 
-(3) Normalverteilung der Residuen - die Prädiktoren und Zielvariablen müssen allerdings nicht normalverteilt sein. 
+(3) Normalverteilung der Residuen - die Prädiktoren und Zielvariablen müssen allerdings nicht normalverteilt sein.
 
-(4) Linearität - der modellierte Zusammenhang sollte linear sein. 
+(4) Linearität - der modellierte Zusammenhang sollte linear sein.
 
-Außerdem kann auf Ausreißer oder einflussreiche Fälle geprüft werden. 
+Außerdem kann auf Ausreißer oder einflussreiche Fälle geprüft werden.
 
 ### Generalized Linear Mixed Models
 
 Verallgemeinerte Lineare Hierarchische Modelle (GLMMs) eignen sich, wenn die Zielvariable binär oder ordinal ist oder wenn es sich um eine Zählung handelt.
 Wie HLMs können auch in diesen Modellen *fixed effects* und *random effects* geschätzt werden.
 Bei diesen Modellen wird eine *link function* verwendet, um die Zielvariable so zu transformieren, dass sie als linearer Prädiktor verwendet werden kann.
-Dabei muss eine gute Passung zwischen der *link function* und der Verteilung der Zielvariablen gefunden werden, die die Datenstruktur gut wiedergibt [@Bono2021; @Dean2007; @Stroup2024]. Die Wahl verschiedener Link-Funktionen erlaubt eine Prüfung der Robustheit der Modellschätzungen hinsichtlich unterschiedlicher Verteilungen der Zielvariable. 
+Dabei muss eine gute Passung zwischen der *link function* und der Verteilung der Zielvariablen gefunden werden, die die Datenstruktur gut wiedergibt [@Bono2021; @Dean2007; @Stroup2024].
+Die Wahl verschiedener Link-Funktionen erlaubt eine Prüfung der Robustheit der Modellschätzungen hinsichtlich unterschiedlicher Verteilungen der Zielvariable.
 Dabei wird empfohlen, mehrere Funktionen zu berechnen, um die beste Wahl für die vorliegenden Daten zu finden [@Thiele2012].
 Die praktische Umsetzung erfolgt in dieser Arbeit mithilfe der Funktion `glmer()` aus dem Paket lme4 [@lme4].
 @Bono2021 geben einen Überblick über diese Art von Modellen und deren Anwendung und stellen fest, dass sie immer häufiger in der Psychologie angewendet werden, besonders in der Gesundheitspsychologie.
-
+<!-- Bis hier das erste mal gegengelesen -->
 # Ergebnisse
 
 ## Abweichungen von der Präregistrierung
@@ -593,8 +640,10 @@ ave_corr_table
 ### Hierarchische Modelle zur Vorhersagee von Trainingsausfällen
 
 Die Anzahl der Trainingsausfälle wies eine geringe Varianz auf: `r sum(df$completed_count==6)` Teilnehmende von `r length(df$completed_count)` (`r (sum(df$completed_count==6)/length(df$completed_count)*100) %>% round(0)`% hatten alle sechs Trainingseinheiten abgeschlossen, daher konnte kein Hierarchisches Lineares Modell berechnet werden: Die Konvergenz des Modells scheiterte.
-Die Alternative von *verallgemeinerten linearen gemischten Modellen (GLMMs)* durch die Funktion `glmer` im Paket lme4 [@lme4] mit Poisson-Verteilung lieferte ein passendes Modell. Es wurde ein Random-Interzept-Modell spezifiziert, mit negativem Affekt bei Baseline, situationalem negativem Affekt, Lokus und Stabilität als Prädiktoren.
-Wie in @tbl-glmtable gezeigt, gab es keine aussagekräftigen Prädiktoren, die die Anzahl an abgeschlossenen Trainingseinheiten vorhersagen. Modell 3 mit Identitäts-Link-Funktion zeigte den niedrigsten AIC und BIC - Wert. 
+Die Alternative von *verallgemeinerten linearen gemischten Modellen (GLMMs)* durch die Funktion `glmer` im Paket lme4 [@lme4] mit Poisson-Verteilung lieferte ein passendes Modell.
+Es wurde ein Random-Interzept-Modell spezifiziert, mit negativem Affekt bei Baseline, situationalem negativem Affekt, Lokus und Stabilität als Prädiktoren.
+Wie in @tbl-glmtable gezeigt, gab es keine aussagekräftigen Prädiktoren, die die Anzahl an abgeschlossenen Trainingseinheiten vorhersagen.
+Modell 3 mit Identitäts-Link-Funktion zeigte den niedrigsten AIC und BIC - Wert.
 
 ```{r}
 #| label: tbl-glmtable
@@ -603,18 +652,21 @@ Wie in @tbl-glmtable gezeigt, gab es keine aussagekräftigen Prädiktoren, die d
 glmtable
 ```
 
-Daraufhin wurden weitere explorative Analysen mit einem Gruppenvergleich (alle sechs Einheiten abgeschlossen vs. nicht abgeschlossen) durchgeführt. 
+Daraufhin wurden weitere explorative Analysen mit einem Gruppenvergleich (alle sechs Einheiten abgeschlossen vs. nicht abgeschlossen) durchgeführt.
 
 Für diesen Vergleich bietet die Funktion `glmer` die Möglichkeit, ein hierarchisches Modell mit binomialer Zielvariable zu erstellen.
-Für dieses Modell wurde ein einfacheres Modell wurde implementiert, um Problemen durch Ranginsuffizienz entgegenzuwirken. Die RPE wurde als Prädiktor weggelassen.
+Für dieses Modell wurde ein einfacheres Modell wurde implementiert, um Problemen durch Ranginsuffizienz entgegenzuwirken.
+Die RPE wurde als Prädiktor weggelassen.
 Die Modellkoeffizienten sind in @tbl-glmtablebinomial gezeigt.
 Auch hier wurde lediglich der Interzept signifikant.
 Der Interzept stellt hier die logarithmische Wahrscheinlichkeit der Zielvariablen (hier: der Abschluss aller Trainingseinheiten) dar, wenn alle Prädiktoren null betragen.
 Wegen der z-Standardizierung entspricht null hier dem Mittelwert.
 Die Rücktransformation des Interzepts in eine Wahrscheinlichkeit, alle Trainingseinheiten abzuschließen, zeigt dass es gemäß dem Modell sehr wahrscheinlich ist, alle Einheiten abzuschließen wenn die Prädiktoren dem Durchschnitt entsprechen (P = `r plogis(13.278) %>% round(2)`).
 Das deutet darauf hin, dass zu viele der Teilnehmenden alle Einheiten abgeschlossen haben, was die Modellierung erschwert und die Trennschärfe reduziert.
-Modell 1 zeigte gut interpretierbare Koeffizienten: Die Konfidenzintervalle für den Lokus und negativen Affekt im Prä-Test überlappen Null nur knapp. Allerdings wies Modell 3 die besten Werte für die Modellgüte auf.  
-Da keines der getesteten GLMMs signifikante Prädiktoren aufwies und kein Modell eine überzeugende Vorhersagekraft erzielte, wurde auf eine weiterführende Prüfung der Modellannahmen verzichtet. Der Fokus lag auf der Identifikation relevanter Einflussfaktoren, was durch die vorliegenden Ergebnisse nicht gegeben war.
+Modell 1 zeigte gut interpretierbare Koeffizienten: Die Konfidenzintervalle für den Lokus und negativen Affekt im Prä-Test überlappen Null nur knapp.
+Allerdings wies Modell 3 die besten Werte für die Modellgüte auf.\
+Da keines der getesteten GLMMs signifikante Prädiktoren aufwies und kein Modell eine überzeugende Vorhersagekraft erzielte, wurde auf eine weiterführende Prüfung der Modellannahmen verzichtet.
+Der Fokus lag auf der Identifikation relevanter Einflussfaktoren, was durch die vorliegenden Ergebnisse nicht gegeben war.
 
 ```{r}
 #| label: tbl-glmtablebinomial
@@ -624,8 +676,11 @@ binomialglmm_table
 ```
 
 Als weitere explorative Alternative dazu wurden in einer Reihe t-tests die Gruppen direkt verglichen, und für wiederholt gemessenen Affekt wurde das arithmetische Mittel herangezogen.
-Auch hier waren die Werte nicht signifikant. Die geringe statistische Power deutet auf hohe Wahrscheinlichkeiten für Typ II-Fehler hin.
-Die Ergebnisse sind mit Effektgrößen und p-Werten in @tbl-ttests abgetragen. @fig-status-vergleich zeigt einen visuellen Vergleich der beiden Gruppen in Form von Violinen-Plots, mit überlagerten Box- und Scatterplots. Hier ist zu erkennen, dass wenige, einzelne Personen diesen Effekt bewirkt haben. 
+Auch hier waren die Werte nicht signifikant.
+Die geringe statistische Power deutet auf hohe Wahrscheinlichkeiten für Typ II-Fehler hin.
+Die Ergebnisse sind mit Effektgrößen und p-Werten in @tbl-ttests abgetragen.
+@fig-status-vergleich zeigt einen visuellen Vergleich der beiden Gruppen in Form von Violinen-Plots, mit überlagerten Box- und Scatterplots.
+Hier ist zu erkennen, dass wenige, einzelne Personen diesen Effekt bewirkt haben.
 
 ```{r}
 #| label: tbl-ttests
@@ -651,7 +706,9 @@ Obwohl keiner der getesteten Prädiktoren statistisch signifikant war, liefert d
 Für die Prädiktoren zur Vorhersage von wahrgenommener Zielerreichung wurde zunächst eine Zentrierung vorgenommen.
 Dabei wurden die stabilen Prädiktoren, also wahrgenommener negativer Affekt bei der Baseline-Messung, sowie Lokus und Variabilität des Attributionsstils am Gesamtmittelwert, und die wiederholten Messwerte des negativen Affekts am Gruppenmittelwert zentriert.
 Es wurden *n* = `r goal_model5$data %>% nrow()` Fälle (Messzeitpunkte, genestet in Personen) einbezogen.
-Es wurde ein Random-Intercept-Modell gebildet, mit Lokus, Stabilität, situationalem negativem Affekt und negativem Affekt im Prä-Test als Prädiktoren. Auch die Interaktionsterme zwischen diesen Variablen wurden einbezogen. Der Intraklassenkoeffizient betrug *ICC* = `r round(icc_goal$ICC_adjusted,3)`.
+Es wurde ein Random-Intercept-Modell gebildet, mit Lokus, Stabilität, situationalem negativem Affekt und negativem Affekt im Prä-Test als Prädiktoren.
+Auch die Interaktionsterme zwischen diesen Variablen wurden einbezogen.
+Der Intraklassenkoeffizient betrug *ICC* = `r round(icc_goal$ICC_adjusted,3)`.
 
 ## Statistische Voraussetzungen und Modellgüte
 
@@ -678,10 +735,18 @@ In @fig-heteroscedasticity_check ist aber im Diagramm links eine deutliche Konze
 Durch die Rangtransformation (rechts) sind die Residuen gleichmäßiger verteilt.
 Die linearen Muster in beiden Diagrammen sind der Tatsache geschuldet, dass die wahrgenommene Zielerreichung als diskreter Wert in 1-er Schritten von 0 bis 100 erfasst wurde.
 
+In @fig-outliers sind zehn Ausreißer zu erkennen.
+Um zu prüfen, ob besonders einflussreiche Ausreißer die Modellvorhersagen maßgeblich beeinflussen, wurde eine Sensitivitätsanalyse durchgeführt.
+Dazu wurde das Modell ohne die Daten von Personen mit extremen Residuen mit ID 6, 17 und 23 erneut berechnet.
+
 Auf Level 2 (der Gruppenebene, hier: Individuen) waren die Residuen normalverteilt (*p* = `r level2.resids.shapirotest$p.value %>% round(2)`, nach der Rangtransformation).
 Das Streudiagramm der Residuen zeigt keine systematische Abweichung von der Annahme der Homoskedastizität.
 
 Die Korreliertheit der Prädiktoren (Multikollinearität) war mit einem Maximalwert von *vif* = `r max(vif_goal_model)` sehr niedrig und damit unproblematisch.
+
+Die Post-Hoc Poweranalyse mit der Funktion `powerSim()` aus dem Paket `{simr}` mit 100 Simulationen scheiterte zunächst bei dem Versuch, das Gesamtmodell zu prüfen. Das Modell war zu komplex für die Simulation. Es wurden daher Modelle mit jeweils einem Prädiktor erstellt, um die Power des jeweiligen Prädiktors aufzuzeigen. Für die Interaktion aus situationalem negativen  Affekt und negativem Affekt im Prä-Test ergab sich eine Power von 1-β = .91 (CI= .84; .96), für die Interaktion aus Stabilität und negativem Affekt im Prä-Test 1-β = .6 (.5, .7). 
+<!-- Hier formatierung prüfen  91.00% (83.60, 95.80)  60.00% (49.72, 69.67) - ermöglicht auch Effektgrößen-->
+
 
 ```{r}
 #| label: fig-heteroscedasticity_check
@@ -693,6 +758,15 @@ plot_heteroscedasticity_diag_no_ranktransform+plot_heteroscedasticity_diag
 ```
 
 ```{r}
+#| label: fig-outliers
+#| fig-cap:  Boxplots, die die Ausreißer in den Residuen je nach Versuchspersonen-ID darstellen
+#| apa-note: Um die Annahme der Homoskedastizität zu erfüllen, sollten die Anzahl der Datenpunkte und deren Distanz zur Linie jeweils über und unter der Linie gleich sein. Links ist das Diagramm für das Modell ohne Rangtransformation der Zielvariablen, rechts mit Rangtransformation, zu sehen. 
+#| fig-height: 10
+#| fig-width: 10
+ausreißer.je.ID
+```
+
+```{r}
 #| label: tbl-hlmtable2
 #| tbl-cap: Hierarchisches Modell zur Vorhersage von wahrgenommener Zielerreichung
 #| apa-note: Die Interzepte und Slopes gingen als Random-Effekt in die Modellberechnung ein. Das heißt, jede Person konnte als am Anfang eine unterschiedliche wahrgenommene Zielerreichung haben, und die Veränderung über die Zeit konnte variieren. Die Zielvariable wurde rangtransformiert. 
@@ -700,7 +774,9 @@ plot_heteroscedasticity_diag_no_ranktransform+plot_heteroscedasticity_diag
 hlmtable
 ```
 
-Die Vorhersagekraft des negativen Affekts bei der Baseline im Vergleich zu der Vorhersage für die einzelnen Versuchspersonen ist in @fig-model_overview dargestellt.
+In der schrittweisen Hinzunahme von Prädiktoren verfehlte der negative Affekt im Prä-Test in Modell 3 die Signifikanz (*p* =`r p_nabase`).
+Die Interaktion von negativem Affekt im Prä-Test mit Stabilität verfehlte ebenso knapp die Signifikanz (*p* =`r p_nabase_dynamics_interaction %>% round (3)` in Modell 5.
+Der einzige Prädiktor, der das Signifikanzniveau erreichte, war die Interaktion aus negativem Affekt im Prä-Test und situationalem Affekt (*p* =`r p_nabase_nasession %>% round(3)`) Die Vorhersagekraft des negativen Affekts bei der Baseline im Vergleich zu der Vorhersage für die einzelnen Versuchspersonen ist in @fig-model_overview dargestellt.
 
 ```{r}
 #| label: fig-model_overview
@@ -712,21 +788,26 @@ Die Vorhersagekraft des negativen Affekts bei der Baseline im Vergleich zu der V
 Plot_across_time
 ```
 
-In @fig-interaktion ist die Interaktion von negativem Affekt bei der Baseline und Stabilität aufgeschlüsselt.
+In @fig-interaction ist die Interaktion von negativem Affekt bei der Baseline und Stabilität aufgeschlüsselt.
 
 ```{r}
-#| label: fig-interaktion
+#| label: fig-interaction
 #| fig-cap: Interaktion von negativem Affekt (Baseline) und Stabilität
 #| apa-note: Auf der X-Achse der drei Facetten (von -1 bis 1) ist das Ausmaß der Stabilität der Kausalattribution abgetragen. Je höher also der negative Affekt (Trait), desto stärker war die Vorhersagekraft der Stabilität. Eine höhere Stabilität ging dabei mit einer geringeren Zielerreichung einher, wenn der negative Affekt hoch war und andersherum.  
 #| fig-height: 6
 #| fig-width: 8
 #| echo: false
-interaction_plot_NA.Dynamics
+interaction_plot_NA.Dynamics + interaction_plot_NAbase.NAsession
 ```
+
+Der Versuch, post-hoc Power des bestimmten Modells durch Simulation mit dem Paket `simr` [@Green2016] zu bestimmen, scheiterte, auf die hohe Komplexität des finalen Modells zurückgeführt werden kann.
+Für die Poweranalyse werden hier hypothetische Datensätze erzeugt, und es wird simuliert, wie oft das Modell einen Effekt aufdecken kann.
+Die Simulation scheiterte für Modell 5.
+Es wurde stattdessen ein einfacheres Modell nur für die Power-Analyse verwendet, nur mit den
 
 # Diskussion
 
-In dieser Arbeit wurde aus einer Perspektive des RÜckfallmodells von @Marlatt1984 die Frage untersucht, inwiefern der Attributionsstil und negativer Affekt vorhersagen kann, wie gut sich Personen an einen Trainingsplan halten.
+In dieser Arbeit wurde aus einer Perspektive des Rückfallmodells von @Marlatt1984 die Frage untersucht, inwiefern der Attributionsstil und negativer Affekt vorhersagen kann, wie gut sich Personen an einen Trainingsplan halten.
 Dabei wurde der Lokus der Attribution, also ob Personen das erfolgreiche oder nicht erfolgreiche Abschließen einer Trainingseinheit internal oder external attribuieren, sowie die Variabilität, also die Attribution auf stabile vs. nicht stabile Faktoren untersucht.
 Der negative Affekt wurde sowohl als Baseline-Wert als auch als Zustand nach einer Trainingseinheit erfasst (State).
 Diese Variablen sollten zur Vorhersage zweier Zielvariablen dienen: Die Anzahl abgeschlossener Trainingseinheiten sowie das Ausmaß wahrgenommener Zielerreichung.
@@ -753,14 +834,15 @@ Trotz Abwesenheit von Signifikanz kann ein Ergebnis jedoch bedeutsam sein und au
 *Hypothese 1.1 (internal-variabler Attributionsstil):* Die Stabilität und der Lokus im Attributionsstil standen mit der Anzahl der abgeschlossenen Trainingseinheiten bei einer äußerst geringen statistischen Power in keinem systematischen Zusammenhang.
 Andere Studien finden überwiegend Belege für einen positiven Zusammenhang zwischen einer internal-variablen Attribution und besserer Adhärenz.
 Es ist ausschlaggebend, ob es sich um Attributionen auf Erfolg oder Misserfolg bzw.
-Rückfälle handelt.
-@Minifee1998 fanden, dass Teilnehmende ihre Misserfolge internal-variabel attribuieren, und je instabiler (variabler) die Attribution war, desto eher erwarteten die Teilnehmenden, ihre Bewegungsgewohnheiten ändern zu können.
+Rückfälle handelt: @Minifee1998 fanden, dass Teilnehmende ihre Misserfolge internal-variabel attribuieren, und je instabiler (variabler) die Attribution war, desto eher erwarteten die Teilnehmenden, ihre Bewegungsgewohnheiten ändern zu können.
 @Nickel2013 fanden, dass stabile Attributionen in einer klinischen Population (Multiple Sklerose) mit geringerer Selbstwirksamkeit in Bezug auf ein Trainingsprogramm eingehen.
 Befunde zur *Intention*, einem Bewegungsprogramm zu folgen zeigen wiederum, dass eine externale Attribution von Misserfolgen günstiger ist [@Courneya1996].
 Zusammengenommen zeigen dennoch sich besonders internale Attributionen auf (fehlende) Anstrengung oder Motivation als förderlich zur langfristig Bewegungsadhärenz [@Amireault2013].
 
-*Hypothese 2.1 (negativer Affekt):* Im *binomialen gemischtes Modell*  bei dem lediglich vorhergesagt werden sollte, ob die Trainingseinheiten komplett abgeschlossen wurden oder nicht, erklärte das Modell mit der besten Passung keine nennenswerte Varianz. Auf explorativer Basis können die Koeffizienten von Modell 1 diskutiert werden: Hier hatte der negative Affekt im Prä-Test den größten, wenngleich nicht signifikanten Effekt.
-Das Konfidenzintervall überlappte Null nur knapp. Der Zusammenhang war positiv: Je mehr negativer Affekt bei der Baseline berichtet wurde, desto höher war die Wahrscheinlichkeit, alle Trainingseinheiten abzuschließen.
+*Hypothese 2.1 (negativer Affekt):* Im *binomialen gemischtes Modell* bei dem lediglich vorhergesagt werden sollte, ob die Trainingseinheiten komplett abgeschlossen wurden oder nicht, erklärte das Modell mit der besten Passung keine nennenswerte Varianz.
+Auf explorativer Basis können die Koeffizienten von Modell 1 diskutiert werden: Hier hatte der negative Affekt im Prä-Test den größten, wenngleich nicht signifikanten Effekt.
+Das Konfidenzintervall überlappte Null nur knapp.
+Der Zusammenhang war positiv: Je mehr negativer Affekt bei der Baseline berichtet wurde, desto höher war die Wahrscheinlichkeit, alle Trainingseinheiten abzuschließen.
 Dieser Befund erscheint widersprüchlich.
 Das Rückfallmodell macht die Vorhersage, dass negative affektive Zustände mit einem erhöhten Rückfallrisiko einhergehen.
 @Williams2014 brachten ein Rahmenmodell hervor, das zwischen vier verschiedenen affektbasierten Prozessen unterscheidet.
@@ -772,7 +854,7 @@ Allerdings wurde hier im Prä-Test nicht explizit der *incidental affect* erfrag
 Zwei Literaturreviews zu Affekt und PA unterstreichen die wichtige Rolle von Affekt als Determinant von PA, stellen aber fest, dass es in vorhandenen Studien noch erhebliche Mängel gibt [@Rhodes2015; @Rhodes2009; @Jekauc2015].
 
 Explorativ wurde ebenso untersucht, ob ein direkter Gruppenvergleich mit t-tests bedeutsame Unterschiede zwischen Personen, die alle Einheiten abgeschlossen hatten und solchen, die nicht alle Einheiten abgeschlossen hatten, offenlegt.
-Die post-hoc-Power war hier viel zu gering, um eine Aussage zu treffen, die Wahrscheinlichkeit eines Typ II-Fehlers, also die Verpassung eines vorhandenen Effekts, war hoch. 
+Die post-hoc-Power war hier viel zu gering, um eine Aussage zu treffen, die Wahrscheinlichkeit eines Typ II-Fehlers, also die Verpassung eines vorhandenen Effekts, war hoch.
 Allerdings tat sich hier, wie auch bei der Untersuchung der Korrelationen, der Durchschnitt des negativen Affekts nach den Einheiten hervor.
 Dieser hatte hier einen negativen Effekt auf den Abschluss der Trainingseinheiten.
 Unter den Personen, die alle Einheiten abgeschlossen hatten, war der negative Affekt also insgesamt etwas höher, wenngleich der Effekt nicht signifikant war.
@@ -792,29 +874,62 @@ Auch neuere Forschung betont die wichtige Rolle von variablen Attributionen.
 Bei Erfolg hatte die Stabilität keinen Einfluss auf die Selbstwirksamkeit.
 Auch @Shields2005 betonen, dass Personen, die trotz Rückschlägen ihre Misserfolge intern, aber instabil und kontrollierbar attribuieren, eine höhere Wahrscheinlichkeit zeigen, zukünftig wieder aktiv zu werden.
 
-*Hypothese 2.2 (negativer Affekt)*: In der schrittweisen Hinzunahme von Prädiktoren trat zuerst negativer Affekt bei der Baseline als direkter, signifikanter Prädiktor der wahrgenommenen Zielerreichung hervor. Damit findet sich ein klarer Beleg für diese Hypothese. 
-Die Interaktion aus Stabilität und negativem Affekt erklärte aber die wahrgenommene Zielerreichung noch besser. Ein stabiler Attributionsstil mündete bei hohem negativem Affekt im Prä-test in einer geringeren wahrgenommenen Zielerreichung. Bei geringem negativem Affekt war eine stabile Attribution hingegen günstig. Das gegensätzliche Muster ergibt sich für eine variable Attribution. Auch hier wäre denkbar, dass es Personen mit variablem Attributionsstil eher in den Sinn kam, in der nächsten Trainingseinheit das Ziel besser zu erreichen, um damit ihren negativen Affekt aus der letzten Einheit zu regulieren.
-Dies deutet insgesamt auf eine komplexe und vielschichtige Beziehung zwischen Affekt und PA hin, wie sie u.a. von @Emerson2015 angenommen wird.
+*Hypothese 2.2 (negativer Affekt)*: In der schrittweisen Hinzunahme von Prädiktoren trat zuerst negativer Affekt bei der Baseline als Prädiktor der wahrgenommenen Zielerreichung hervor, wobei dieser Effekt nicht signifkant wahr.
+Damit findet sich ein Beleg für diese Hypothese, wenn auch mit einer großen Unsicherheit behaftet.
+Die Interaktion aus Stabilität und negativem Affekt erklärte aber die wahrgenommene Zielerreichung noch besser.
+Allerdings wurde auch dieser Effekt nur beinahe signifikant.
+Wie in @fig-interaction dargestellt, mündete ein hoher stabiler Attributionsstilbei gleichzeitig hohem negativem Affekt im Prä-test in einer geringeren wahrgenommenen Zielerreichung.
+Bei geringem negativem Affekt war eine stabile Attribution hingegen günstig.
+Das gegensätzliche Muster ergibt sich für eine variable Attribution.
+Auch hier wäre denkbar, dass es Personen mit variablem Attributionsstil eher in den Sinn kam, in der nächsten Trainingseinheit das Ziel besser zu erreichen, um damit ihren negativen Affekt aus der letzten Einheit zu regulieren.
+Dies deutet insgesamt auf eine komplexe und vielschichtige Beziehung zwischen Affekt und PA hin, wie sie u.a.
+von @Emerson2015 angenommen wird.
 Generell wird negativer Affekt in der Literatur eher mit einer schlechteren Adhärenz zu Trainingsprogrammen in Verbindung gebracht [@Rhodes2015].
 Dabei entsteht die negative Valenz eher bei hoher Intensität, gleichzeitig rücken kognitive Faktoren bei höherer Trainingsintensität in den Hintergrund, was im Dual-Mode-Model von Ekkekakis und Kolleg_innen diskutiert wird [@Ekkekakis2003; @Ekkekakis2005].
 @Lee2016 diskutieren neben der Intensität auch die wahrgenommene Nützlichkeit (perceived utility).
 Die Autor_innen vermuten, dass bei niedriger wahrgenommener Nützlichkeit das Training ungeachtet der Intensität in negativem Affekt mündet.
 
-Zusammengenommen liefert diese Arbeit Belege für die Hypothese, dass negativer Affekt eine verminderte wahrgenommene Zielerreichung vorhersagt. Darüber hinaus "verschlimmert" eine stabilie Attribution diesen Effekt. Dies nur für den negativen Affekt bei der Baseline-Messung gezeigt werden. Allerdings war die Korrelation zwischen dem situationalen negativen Affekt und der wahrgenommenen Zielerreichung negativ. 
+Die Vorhersagekraft der Interaktion aus negativem Affekt im Prä-Test und dem situationalen Affekt war hingegen signifikant und deute darauf hin, das hoher Affekt nach Abschließen einer Trainingseinheit besonders dann in einer sehr niedrigen Zielerreichung resultierte, wenn auch im Prä-Test ein hoher negativer Affekt berichtet wurde.
+Bei niedrigem situationalen negativem Affekt war die Zielerreichung hingegen höher, wenn im Prä-Test ein hoher negativer Affekt berichtet wurde.
+War der negative Affekt im Prä-Test niedrig, hatte der situationale negative Effekt einen deutlich geringeren Einfluss auf die Zielerreichung.
+Dies deutet erstens darauf hin, das im Prä-Test und in den wiederholten Messungen distinkte Konstrukte von negativem Affekt gemessen wurden.
+@Williams2014 plädiert für eine differenzierte Betrachtung von negativem Affekt: Neben dem zuver erwähnten *incidental affect* wird auch *affective response*, *affective processing* und die *affectively charged motivation* diskutiert.
+Die *affective response* bezieht sich auf die unmittelbare Reaktion auf einen Stimulus.
+Diese wird vor dem Hintergrund des hedonistischen Prinzips diskutiert: Eine positive *affective response* resultiert in einer häufigeren und/oder intensiveren Ausübung des relevanten Verhaltens.
+Beim negativen Affekt im Prä-Test könnte es sich eher um incidental affect handeln, während der situational gemessene Affekt eine *affektive response* zum Training darstellt.
+Trifft nun eine negative Reaktion zum Training auf ein generell negatives Empfinden, ist die wahrgenommene Zielerreichung besonders niedrig.
+Einen solchen Effekt beschreiben auch @Sirois2018, die in zwei Studien die Zusammenhänge zwischen Affekt, Prokrastination von Aufgaben oder Gesundheitsverhalten, und sozialen Versuchungen untersuchten.
+Sie fanden Belege für die Annahmen, dass Personen Versuchungen eher nachgeben, wenn sie sich schlecht fühlen.
+Bezogen auf die hier erhobenen Variablen bedarf es weiterer Studien, um die Wirkrichtung und das Zusammenspiel von Affekt, Zielerreichung und wahrgenommener Belastung weiter zu untersuchen.
+
+Zusammengenommen liefert diese Arbeit Belege für die Hypothese, dass negativer Affekt eine verminderte wahrgenommene Zielerreichung vorhersagt.
+Darüber hinaus "verschlimmert" eine stabile Attribution in Kombination mit hohem negativem Effekt im Prä-Test diesen Effekt, sowie ein größerer schon vorhandener negativer Affekt im Prä-Test diesen Effekt.
+Dies nur für den negativen Affekt bei der Baseline-Messung gezeigt werden.
+Allerdings war die Korrelation zwischen dem situationalen negativen Affekt und der wahrgenommenen Zielerreichung negativ.
 
 Zusammengenommen finden sich Belege für die Komponente der *Hochrisikosituation* schlechter emotionaler Zustände, sowie die Vorhersage des Modells zur Stabilität der Attribution.
 
 ## Bedeutung der Ergebnisse für die Gültigkeit des Rückfallmodells
 
-Auch wenn das Rückfallmodell von Marlatt und Gordon (1985) eine hilfreiche Perspektive zur Erklärung von Rückfällen in Gesundheitsverhalten bietet, bleibt seine Anwendbarkeit auf Bewegungsadhärenz nicht unproblematisch. Schließlich basiert es auf der Annahme diskreter Rückfallereignisse mit eindeutigem Verstoß gegen ein Abstinenzziel. Im Kontext von PA ist allerdings ist ein "Verstoß" weniger eindeutig. Sicherlich ist einmaliges Auslassen einer Trainingseinheit kein Rückfall in einen sedentären Lebensstil. Um das Rückfallmodell angemessen zu testen, wäre ein langfristiger Rückzug aus einem Trainingsprogramm als Operationalisierung eines Rückfalls passender.
-Darüber hinaus wird im Rückfallmodell eine zentrale Rolle den sogenannten „Hochrisikosituationen“ zugeschrieben, die affektiver, sozialer oder situativer Natur sein können. In der vorliegenden Arbeit wurde negativer Affekt als potenzielle Hochrisikosituation betrachtet. Bei der Baseline-Messung handelt es sich aber um ein Aggregat von Erinnerungen an vergangene affektive Reaktionen auf PA. Außerdem wurden keine expliziten Hochrisikosituationen erfasst, was ein methodischer Unterschied zu klassischen Studien im Rückfallkontext ist.
+Auch wenn das Rückfallmodell von Marlatt und Gordon (1985) eine hilfreiche Perspektive zur Erklärung von Rückfällen in Gesundheitsverhalten bietet, bleibt seine Anwendbarkeit auf Bewegungsadhärenz nicht unproblematisch.
+Schließlich basiert es auf der Annahme diskreter Rückfallereignisse mit eindeutigem Verstoß gegen ein Abstinenzziel.
+Im Kontext von PA ist allerdings ist ein "Verstoß" weniger eindeutig.
+Sicherlich ist einmaliges Auslassen einer Trainingseinheit kein Rückfall in einen sedentären Lebensstil.
+Um das Rückfallmodell angemessen zu testen, wäre ein langfristiger Rückzug aus einem Trainingsprogramm als Operationalisierung eines Rückfalls passender.
+Darüber hinaus wird im Rückfallmodell eine zentrale Rolle den sogenannten „Hochrisikosituationen“ zugeschrieben, die affektiver, sozialer oder situativer Natur sein können.
+In der vorliegenden Arbeit wurde negativer Affekt als potenzielle Hochrisikosituation betrachtet.
+Bei der Baseline-Messung handelt es sich aber um ein Aggregat von Erinnerungen an vergangene affektive Reaktionen auf PA.
+Außerdem wurden keine expliziten Hochrisikosituationen erfasst, was ein methodischer Unterschied zu klassischen Studien im Rückfallkontext ist.
 
 ## Methodische Limitationen und Gültigkeitsbereich
 
 Die Ergebnisse aus dieser Arbeit sollten mit äußerster Vorsicht interpretiert und als explorativ betrachtet werden.
-Die Vorhersage von Trainingsausfällen brachte bei einer sehr geringen Power keine signifikanten Ergebnisse hervor. Diese Auszählung der abgeschlossenen Trainingseinheiten innerhalb von 6 Wochen als Indikator für Adhärenz vs. Rückfall war in dieser Arbeit problematisch. Es ist wahrscheinlich, dass diese stärker durch alltägliche Verpflichtungen, Stress oder andere externe Faktoren beeinflusst war als durch psychologische Eigenschaften und Zustände.
+Die Vorhersage von Trainingsausfällen brachte bei einer sehr geringen Power keine signifikanten Ergebnisse hervor.
+Diese Auszählung der abgeschlossenen Trainingseinheiten innerhalb von 6 Wochen als Indikator für Adhärenz vs. Rückfall war in dieser Arbeit problematisch.
+Es ist wahrscheinlich, dass diese stärker durch alltägliche Verpflichtungen, Stress oder andere externe Faktoren beeinflusst war als durch psychologische Eigenschaften und Zustände.
 
 Für die Vorhersage von wahrgenommener Zielerreichung waren die statistischen Voraussetzungen nicht in Gänze erfüllt.
+Dadurch ist das Risiko einer Verzerrung erhöht.
 Eine weitere Limitation dieser Bachelorarbeit ist, dass es sich bei Konzeption von Rückfall hier eher um einen Dropout aus der Studie handelt als um einen tatsächlichen Rückfall in einen sedentären Lebensstil.
 Es könnte sein, dass Personen, die nicht alle Trainingseinheiten abschlossen, durchaus körperlich aktiv blieben, jedoch nicht motiviert waren, die weiteren Fragebögen auszufüllen.
 Außerdem war die Zeitspanne, in der die Daten erfasst wurden, deutlich kürzer als in vergleichbaren Studien, die das Rückfallmodell testen, wie [@Sallis1990].
@@ -824,8 +939,10 @@ Die Power ist eine weitere Limitation.
 Die Vorhersage von Trainingsausfällen erfolge mit einer sehr geringen Power, und auch für das hierarchische Modell war die statistische Aussagekraft nicht zufriedenstellend.
 Die Präregistrierung für diese Bachelorarbeit erfolgte nach der Datenerhebung, was die Integrität der Ergebnisse erheblich bedroht [@Nosek2018].
 Durch die mit Zeitstempeln versehene Dokumentation der Analyse in Github kann aber zumindest belegt werden, dass die Datenanalyse erst nach der Präregistrierung erfolgte.
-Die Anwendung eines klassischen hierarchischen linearen Modells war nicht ideal: Die Zielvariablen (wahrgenommene Zielerreichung und abgeschlossenene Trainingseinheiten) waren beide nicht kontinuierlich und hatten eine stark eingeschränkte Varianz.
+Die Anwendung eines klassischen hierarchischen linearen Modells war nicht ideal: Die Zielvariablen (wahrgenommene Zielerreichung und abgeschlossenene Trainingseinheiten) waren beide nicht kontinuierlich und hatten eine stark eingeschränkte Varianz. Außerdem wurde der Zeitpunkt des Ausfüllens nicht berücksichtigt. So könnten unregelmäßige Zeitabstände unberücksichtigt bleiben. 
 Eine weitere Limitation betrifft den fehlenden *seriousness check* [@Aust2012].
+Dadurch, dass es es keine experimentelle Kontrolle gab, können Alternativerklärungen oder konfundierende Variablen nicht ausgeschlossen werden.
+Ein Rückschluss auf Wirkrichtungen oder kausale Zusammenhänge ist nicht möglich.
 
 ## Ausblick und Implikationen
 
@@ -836,12 +953,15 @@ Eine Replikation der hier dargestellten Prozedur mit einer rigideren und differe
 Die Entwicklung besserer Erhebungsmethoden für Adhärenz wäre gewinnbringend.
 Ebenso könnte das Problem des geringen Wertebereichs der wahrgenommenen Zielerreichung, des negativen Affekts und der Attribution in einer diverseren Stichprobe weniger gravierend ausfallen.
 Zudem sollten Maßnahmen geprüft werden, um die soziale Erwünschtheit zu reduzieren.
-Insgesamt legen die Ergebnisse dieser Arbeit nahe, dass Rückfallprozesse im Bewegungsverhalten stark durch affektive und kognitive Bewertungsmuster beeinflusst sind – auch wenn die statistische Evidenz limitiert bleibt. Besonders die Interaktion von negativem Affekt und Stabilität der Attribution könnte ein zentraler Ansatzpunkt für Interventionen sein, die Rückfällen vorbeugen und langfristige Bewegungsadhärenz fördern sollen.
+Insgesamt legen die Ergebnisse dieser Arbeit nahe, dass Rückfallprozesse im Bewegungsverhalten stark durch affektive und kognitive Bewertungsmuster beeinflusst sind – auch wenn die statistische Evidenz limitiert bleibt.
+Besonders die Interaktion von negativem Affekt und Stabilität der Attribution könnte ein zentraler Ansatzpunkt für Interventionen sein, die Rückfällen vorbeugen und langfristige Bewegungsadhärenz fördern sollen.
 
 <!-- ChatGPT generiert:  -->
-Für die Praxis ergibt sich die Notwendigkeit, Teilnehmende an Bewegungsprogrammen nicht nur hinsichtlich ihres motivationalen Zustands, sondern auch hinsichtlich ihres Affektprofils und ihrer Attributionstendenzen zu differenzieren. So könnte eine Person mit hoher negativer Affektlage von Bewegungsprogrammen profitieren, die verstärkt auf Selbstregulation und emotionale Entlastung setzen (z.B. durch niedrigschwellige Bewegung, naturbezogene Interventionen oder soziales Training). Gleichzeitig könnten Menschen mit stabilen Attributionen gezielt zur Reflexion ihrer Ursachenzuschreibungen angeleitet werden, etwa durch kognitive Umstrukturierung, Reattributionstrainings oder motivierende Gesprächsführung. Ziel sollte sein, Rückfälle als vorübergehende Episoden zu rahmen, die weder die Person als Ganzes noch deren langfristigen Erfolg in Frage stellen.
 
-
+Für die Praxis ergibt sich die Notwendigkeit, Teilnehmende an Bewegungsprogrammen nicht nur hinsichtlich ihres motivationalen Zustands, sondern auch hinsichtlich ihres Affektprofils und ihrer Attributionstendenzen zu differenzieren.
+So könnte eine Person mit hoher negativer Affektlage von Bewegungsprogrammen profitieren, die verstärkt auf Selbstregulation und emotionale Entlastung setzen (z.B. durch niedrigschwellige Bewegung, naturbezogene Interventionen oder soziales Training).
+Gleichzeitig könnten Menschen mit stabilen Attributionen gezielt zur Reflexion ihrer Ursachenzuschreibungen angeleitet werden, etwa durch kognitive Umstrukturierung, Reattributionstrainings oder motivierende Gesprächsführung.
+Ziel sollte sein, Rückfälle als vorübergehende Episoden zu rahmen, die weder die Person als Ganzes noch deren langfristigen Erfolg in Frage stellen.
 
 # Literaturverzeichnis
 
@@ -849,5 +969,3 @@ Für die Praxis ergibt sich die Notwendigkeit, Teilnehmende an Bewegungsprogramm
 
 ::: {#refs}
 :::
-
-# Anhang
