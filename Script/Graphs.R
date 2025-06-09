@@ -29,6 +29,7 @@ cleaned_diag_plots_no_ranktransform <- lapply(diag_plots_no_ranktransform, funct
     theme_blank()
 })
 
+
 plot_resid_vs_fitted_no_ranktransform <- cleaned_diag_plots_no_ranktransform[[1]]+
   labs(x = "Theoretische Quantile",
        y = "Residuen")
@@ -78,18 +79,19 @@ hlm_plot<-ggplot(long_df, aes(x = Time, y = fitted_attribution, group = ID, colo
     color = "ID"
   )
 
-pred_plot_NA_base<-plot_model(goal_model5, type = "pred", terms = "NA_base_centered", show.data = T, jitter = .2, grid = T ,axis.title = c("Negativer Affekt (Trait)", "Wahrgenommene Zielerreichung"))
-Plot_across_time <- hlm_plot+pred_plot_NA_base
+pred_plot_NA_base<-plot_model(goal_model5, type = "pred", terms = "NA_base_centered", show.data = T, jitter = .2, grid = T ,axis.title = c("Negativer Affekt (Prä-Test)", "Wahrgenommene Zielerreichung"))
+Plot_across_time <- hlm_plot + pred_plot_NA_base
 
 # Vorhersagen für Interaktion berechnen
-pred <- ggpredict(goal_model5, terms = c("Dynamics_centered", "NA_base_centered [meansd]"))
+pred <- ggpredict(goal_model5, terms = c("Dynamics_centered", "NA_base_centered"))
+plot(pred)
 
 # Plotten
 interaction_plot_NA.Dynamics <-ggplot(pred, aes(x = x, y = predicted, color = group)) +
   geom_line(linewidth = 1) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high, fill = group), alpha = 0.2, color = NA) +
   labs(
-    x = "Variabilität der Attribution",
+    x = "Stabilität",
     y = "Vorhergesagte Zielerreichung",
     color = "Negativer Affekt",
     fill = "Negativer Affekt"
@@ -97,12 +99,18 @@ interaction_plot_NA.Dynamics <-ggplot(pred, aes(x = x, y = predicted, color = gr
   theme_minimal()
 
 
-negative_affect_plot<-plot_model(goal_model5, 
-                                 type = "pred", 
-                                 terms = "NegativeAffect_cm_centered", 
-                                 show.data = T, 
-                                 jitter = .2, 
-                                 grid = T, 
-                                 axis.title = c("Negative Affect", "Wahrgenommene Zielerreichung"), 
-                                 title = "Vorhergesagte Ziellerreichung durch NA")
+# Vorhersagen für Interaktion berechnen
+pred2 <- ggpredict(goal_model5, terms = c("NA_base_centered", "NegativeAffect_cm_centered"))
+plot(pred2)
+# Plotten
+interaction_plot_NAbase.NAsession <- ggplot(pred2, aes(x = x, y = predicted, color = group)) +
+  geom_line(linewidth = 1) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high, fill = group), alpha = 0.2, color = NA) +
+  labs(
+    x = "Negativer Affekt (Prä-Test)",
+    y = "Vorhergesagte Zielerreichung",
+    color = "Negativer Affekt (situational)",
+    fill = "Negativer Affekt (situational)"
+  ) +
+  theme_minimal()
 

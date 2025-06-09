@@ -287,8 +287,53 @@ null_model_goal_no_ranktransform<-lme(
   correlation = corAR1(form = ~ Time | ID)
 )
 
+#### Linearität ####
+
+ggplot(data=long_df_z, aes(x=Locus_centered, y=Goal_rank)) +
+  geom_point() + geom_smooth()
+ggplot(data=long_df_z, aes(x=Dynamics_centered, y=Goal_rank)) +
+  geom_point() + geom_smooth()
+ggplot(data=long_df_z, aes(x=NA_base_centered, y=Goal_rank)) +
+  geom_point() + geom_smooth()
+ggplot(data=long_df_z, aes(x=NegativeAffect_cm_centered, y=Goal_rank)) +
+  geom_point() + geom_smooth()
+
+# Als facet plot (ChatGPT generiert)
+# Auswahl der interessierenden Prädiktoren
+facet_df <- long_df_z %>%
+  select(Goal_rank,
+         Locus_centered,
+         Dynamics_centered,
+         NA_base_centered,
+         NegativeAffect_cm_centered) %>%
+  rename(
+    "Lokus" = Locus_centered,
+    "Stabilität" = Dynamics_centered,
+    "Negativer Affekt (Prä-Test)" = NA_base_centered,
+    "Negativer Affekt (situational)" = NegativeAffect_cm_centered
+  ) %>%
+  tidyr::pivot_longer(
+    cols = c("Lokus", "Stabilität", "Negativer Affekt (Prä-Test)", "Negativer Affekt (situational)"),
+    names_to = "Prädiktor",
+    values_to = "Wert"
+  )
+
+# Facet-Plot 
+linearity_check_graph<-ggplot(facet_df, aes(x = Wert, y = Goal_rank)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "loess", color = "firebrick") +
+  facet_wrap(~Prädiktor, scales = "free_x") +
+  labs(x = "Prädiktorwert", y = "Wahrgenommene Zielerreichung") +
+  theme_blank()
+
+
+#linearity_check_model <-  lm(Goal_rank ~ Locus_centered + Dynamics_centered + 
+#                          NA_base_centered + NegativeAffect_cm_centered,
+#                          data = long_df_z)
+#crPlots(lm_check_simple)
+
 ## VIF ###
-goal_model5_vif <- lmer(
+goal_model5_lme4 <- lmer(
   Goal_rank ~ 
     Locus_centered * NegativeAffect_cm_centered +
     Dynamics_centered * NegativeAffect_cm_centered +
@@ -301,7 +346,32 @@ goal_model5_vif <- lmer(
   REML = TRUE,
   na.action = na.omit
 )
-vif_goal_model<-vif(goal_model5_vif)
+vif_goal_model<-vif(goal_model5_lme4)
+
+#### Post-Hoc-Poweranalyse mit simr ###
+
+#power_result_nabase_nasession <- powerSim(goal_model5_lme4, fixed("NA_base_centered:NegativeAffect_cm_centered", "t"), nsim = 100)
+#power_result_nabase_dynamics <- powerSim(goal_model5_lme4, fixed("Dynamics_centered:NA_base_centered", "t"), nsim = 100) 
+# Zu komplex, Simulation konvergiert nicht
+
+goal_model5_reduced_NA <- lmer(
+  Goal_rank ~ NA_base_centered * NegativeAffect_cm_centered+
+    (1 | ID),
+  data = long_df_z,
+  REML = FALSE
+)
+
+goal_model5_reduced_dyn_NA <- lmer(
+  Goal_rank ~ 
+    Dynamics_centered* NA_base_centered+
+    (1 | ID),
+  data = long_df_z,
+  REML = FALSE
+)
+#powerSim(goal_model5_reduced_NA, fixed("NA_base_centered:NegativeAffect_cm_centered", "t"), nsim = 100)
+#powerSim(goal_model5_reduced_dyn_NA, fixed("Dynamics_centered:NA_base_centered", "t"), nsim = 100)
+
+  ### Vergleich mit dem Modell ohne Rangtransformation
 
 goal_model1_no_ranktransform <- update(null_model_goal_no_ranktransform, . ~ . + Locus_centered + Dynamics_centered)
 
@@ -341,6 +411,20 @@ hlmtable<-huxreg("Nullmodell" = null_model_goal,
                            "NA (Trait) x NA (State)" = "NA_base_centered:NegativeAffect_cm_centered",
                            "Lokus x Variabilität"                     = "Locus_centered:Dynamics_centered")
 )
+
+### Berichten der P-Werte
+
+# Zusammenfassung des Modells speichern
+summary_model5 <- summary(goal_model5)
+summary_model3 <- summary(goal_model3)
+# Zugriff auf P-Werte
+
+p_nabase <- summary_model3$tTable["NA_base_centered", "p-value"]
+
+p_nabase_dynamics_interaction <- summary_model5$tTable["Dynamics_centered:NA_base_centered", "p-value"]
+
+p_nabase_nasession <- summary_model5$tTable["NA_base_centered:NegativeAffect_cm_centered", "p-value"]
+
 
 #####Überprüfen der Voraussetzungen  http://www.regorz-statistik.de/inhalte/r_HLM_2.html ###############################################
 # Extrahieren der Residuen
@@ -395,8 +479,16 @@ qqplot_km<-ggplot(Goal_residuals, aes(sample = .resid)) +
     panel.border = element_rect(fill = NA, color = "black")
   )
 
+# Ausreißer 
+ausreißer_überblick<-ggplot(data = Goal_residuals, aes(y= .ls.resid)) + theme_gray() + geom_boxplot() 
+ausreißer.je.ID<- ggplot(data = Goal_residuals, aes( x= .ls.resid, y= as.factor(ID))) + theme_gray() + geom_boxplot() + xlab("Residuen")  + ylab( "Versuchsperson-ID")
 
+## Vergleich des Modells ohne Ausreißer
 
+long_df_z_sensitiv <- subset(long_df_z, ID != 6 & ID != 17 & ID != 23 & ID != 12 & ID != 13 & ID != 14& ID != 15 & ID != 16)
+goal_model5_sensitiv <- update(goal_model5, data = long_df_z_sensitiv)
+summary_goal_model5<-summary(goal_model5)
+summary_goal_model5_sensitiv<-summary(goal_model5_sensitiv)
 ###### Tests of normality ###############################################
 
 #### Für das Modell zur Vorhersage von Zielerreichung, transformiert #####
