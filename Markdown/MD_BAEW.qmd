@@ -672,8 +672,8 @@ Der Fokus lag auf der Identifikation relevanter Einflussfaktoren, was durch die 
 
 ```{r}
 #| label: tbl-glmtablebinomial
-#| tbl-cap: Modellkoeffizienten des General Linear Models zur Vorhersage der abgeschlossenen Trainingseinheiten. 
-#| apa-note: Die Prädiktoren waren in diesem Modell z-Standardisiert. 
+#| tbl-cap: Modellkoeffizienten des General Linear Mixed Models zur Vorhersage der abgeschlossenen Trainingseinheiten. 
+#| apa-note: Die Prädiktoren waren in diesem Modell z-Standardisiert. Die Zielvariable war bionomial (Training abgeschlossen/nicht abgeschlossen)
 binomialglmm_table
 ```
 
