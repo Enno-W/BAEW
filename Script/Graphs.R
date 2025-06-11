@@ -1,5 +1,3 @@
-print_all_histograms(df, bins_n = 30)
-print_all_histograms(df[correlation_variables])
 custom_labels<-c(
   Age = "Alter",
   Locus = "Lokus",
@@ -26,7 +24,7 @@ cleaned_diag_plots_no_ranktransform <- lapply(diag_plots_no_ranktransform, funct
       plot.subtitle = element_blank(),
       plot.caption = element_blank()
     )+
-    theme_blank()
+    theme_blank(base_size=20)
 })
 
 
@@ -52,7 +50,7 @@ cleaned_diag_plots <- lapply(diag_plots, function(p) {
       plot.subtitle = element_blank(),
       plot.caption = element_blank()
     )+
-    theme_blank()
+    theme_blank(base_size = 20)
 })
 
 plot_resid_vs_fitted <- cleaned_diag_plots[[1]]+
@@ -68,19 +66,9 @@ plot_heteroscedasticity_diag <- cleaned_diag_plots[[3]]+
 
 long_df$fitted_attribution <- fitted(goal_model5)
 
-hlm_plot<-ggplot(long_df, aes(x = Time, y = fitted_attribution, group = ID, color = as.factor(ID))) +
-  geom_line(show.legend = F)+
-  geom_point(aes(x= Time, y= Goal), show.legend = F)+
-  labs(x = "Time", y = "Fitted Goal") +
-  theme_minimal()+
-  labs(
-    x = "Trainingseinheit Nr.",
-    y = "Wahrgenommene Zielerreichung",
-    color = "ID"
-  )
 
 pred_plot_NA_base<-plot_model(goal_model5, type = "pred", terms = "NA_base_centered", show.data = T, jitter = .2, grid = T ,axis.title = c("Negativer Affekt (Prä-Test)", "Wahrgenommene Zielerreichung"))
-Plot_across_time <- hlm_plot + pred_plot_NA_base
+Plot_across_time <-  pred_plot_NA_base
 
 # Vorhersagen für Interaktion berechnen
 pred <- ggpredict(goal_model5, terms = c("Dynamics_centered", "NA_base_centered"))

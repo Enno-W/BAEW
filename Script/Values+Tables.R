@@ -23,13 +23,13 @@ ave_corr_table<-df[,correlation_variables] %>%
   generate_correlation_table2(c(
     "1. Alter", 
     "2. Locus", 
-    "3. Variabilität", 
+    "3. Stabilität", 
     "4. n (Trainingseinheiten)", 
     "5. M (Ziellerreichung)", 
     "6. M (Negativer Affekt)", 
-    "7. Negativer Affekt bei Baseline Messung",
+    "7. Negativer Affekt im Prä-Test",
     "8. M Session RPE",
-    "9. Baseline Session RPE"
+    "9. Session RPE im Prä-Test"
   ))
 
 #### Skewness, Kurtosis and min-max range table###############################################
@@ -39,13 +39,13 @@ df_stat<-get_descriptive_table(df[, correlation_variables], language = "German")
 df_stat$Variable <- c(
   "Alter", 
   "Locus", 
-  "Variabilität", 
+  "Stabilität", 
   "n (Trainingseinheiten)", 
   "M (Ziellerreichung)", 
   "M (Negativer Affekt)", 
-  "Baseline negativer Affekt",
+  "Negativer Affekt im Prä-Test",
   "M Session RPE",
-  "Baseline Session RPE"
+  "Session RPE im Prä-Test"
 )
 
 table_stat<-df_stat %>% flextable() %>% flextable::theme_apa() %>% autofit()
@@ -105,9 +105,9 @@ glmtable<-huxreg("Modell 1 (Logarithmische Link-Funktion)" = count_model_log ,
                  error_pos = "right",
                  coefs = c("Interzept"                      = "(Intercept)",
                            "Attributionsstil: Lokus"        = "Locus_centered",
-                           "Attributionsstil: Variabilität" = "Dynamics_centered",
-                           "Negativer Affekt (Trait)"       = "NA_base_centered",
-                           "Negativer Affekt (State)"       = "NegativeAffect_cm_centered",
+                           "Attributionsstil: Stabilität" = "Dynamics_centered",
+                           "Negativer Affekt im Prä-Test"       = "NA_base_centered",
+                           "Situationaler Negativer Affekt"       = "NegativeAffect_cm_centered",
                            "Wahrgenommene Erschöpfung"      = "SessionRPE_cm_centered",
                            "Zeit"                           = "Time"))
 
@@ -152,9 +152,9 @@ binomialglmm_table<-huxreg(
                  error_pos = "right",
                  coefs = c("Interzept"                      = "(Intercept)",
                            "Attributionsstil: Lokus"        = "Locus",
-                           "Attributionsstil: Variabilität" = "Dynamics",
-                           "Negativer Affekt (Trait)"       = "NA_base",
-                           "Negativer Affekt (State)"       = "NegativeAffect"))
+                           "Attributionsstil: Stabilität" = "Dynamics",
+                           "Negativer Affekt im Prä-Test"       = "NA_base",
+                           "Situationaler Negativer Affekt"       = "NegativeAffect"))
 
 ### Direkter Vergleich der Gruppenunterschiede
 
@@ -177,9 +177,9 @@ vergleich_plot <- function(data, y_var_name, y_label = NULL) {
 }
 
 A<-vergleich_plot(df_z, "NA_ave", "M negativer Affekt")
-B<-vergleich_plot(df_z, "NA_base", "Negativer Affekt bei Baseline")
-C<-vergleich_plot(df_z, "Dynamics", "Variabilität")
-D<-vergleich_plot(df_z, "Locus", "Locus")
+B<-vergleich_plot(df_z, "NA_base", "Negativer Affekt im Prä-Test")
+C<-vergleich_plot(df_z, "Dynamics", "Stabilität")
+D<-vergleich_plot(df_z, "Locus", "Lokus")
 
 Status_vergleich_plot<-((A+B)/(C+D))
 
@@ -324,7 +324,7 @@ linearity_check_graph<-ggplot(facet_df, aes(x = Wert, y = Goal_rank)) +
   geom_smooth(method = "loess", color = "firebrick") +
   facet_wrap(~Prädiktor, scales = "free_x") +
   labs(x = "Prädiktorwert", y = "Wahrgenommene Zielerreichung") +
-  theme_blank()
+  theme_blank(base_size = 20)
 
 
 #linearity_check_model <-  lm(Goal_rank ~ Locus_centered + Dynamics_centered + 
@@ -401,16 +401,41 @@ hlmtable<-huxreg("Nullmodell" = null_model_goal,
                  tidy_args =  list(effects = "fixed"), error_pos="right",
                  coefs = c("Interzept"                                = "(Intercept)",
                            " Lokus"                  = "Locus_centered",
-                           "Variabilität"           = "Dynamics_centered",
+                           "Stabilität"           = "Dynamics_centered",
                            "NA (Trait)"                 = "NA_base_centered",
                            "NA (State)"                 = "NegativeAffect_cm_centered",
                            "Lokus x NA (State)"          = "Locus_centered:NegativeAffect_cm_centered",
-                           "Variabilität x NA (State)"   = "Dynamics_centered:NegativeAffect_cm_centered",
+                           "Stabilität x NA (State)"   = "Dynamics_centered:NegativeAffect_cm_centered",
                            "Lokus x NA (Trait)"          = "Locus_centered:NA_base_centered",
-                           "Variabilität x NA (Trait)"   = "Dynamics_centered:NA_base_centered",
+                           "Stabilität x NA (Trait)"   = "Dynamics_centered:NA_base_centered",
                            "NA (Trait) x NA (State)" = "NA_base_centered:NegativeAffect_cm_centered",
-                           "Lokus x Variabilität"                     = "Locus_centered:Dynamics_centered")
+                           "Lokus x Stabilität"                     = "Locus_centered:Dynamics_centered")
 )
+# R Quadrat-Werte
+
+# R²-Werte extrahieren
+r2_goal_model1 <- r2(goal_model1)
+r2_goal_model2 <- r2(goal_model2)
+r2_goal_model3 <- r2(goal_model3)
+r2_goal_model4 <- r2(goal_model4)
+r2_goal_model5 <- r2(goal_model5)
+
+# Werte in ein data.frame schreiben
+r2_tabelle <- data.frame(
+  "Modell 1" = c(r2_goal_model1$R2_marginal, r2_goal_model1$R2_conditional),
+  "Modell 2" = c(r2_goal_model2$R2_marginal, r2_goal_model2$R2_conditional),
+  "Modell 3" = c(r2_goal_model3$R2_marginal, r2_goal_model3$R2_conditional),
+  "Modell 4" = c(r2_goal_model4$R2_marginal, r2_goal_model4$R2_conditional),
+  "Modell 5" = c(r2_goal_model5$R2_marginal, r2_goal_model5$R2_conditional)
+)
+rownames(r2_tabelle) <- c("Marginales R²", "Konditionales R²")
+
+### Berechnen von standardisierten Regressionskoeffizienten für diskutierte Prädiktoren
+
+
+
+#Manuell R2-Werte prüfen
+
 
 ### Berichten der P-Werte
 
@@ -480,8 +505,8 @@ qqplot_km<-ggplot(Goal_residuals, aes(sample = .resid)) +
   )
 
 # Ausreißer 
-ausreißer_überblick<-ggplot(data = Goal_residuals, aes(y= .ls.resid)) + theme_gray() + geom_boxplot() 
-ausreißer.je.ID<- ggplot(data = Goal_residuals, aes( x= .ls.resid, y= as.factor(ID))) + theme_gray() + geom_boxplot() + xlab("Residuen")  + ylab( "Versuchsperson-ID")
+ausreißer_überblick<-ggplot(data = Goal_residuals, aes(y= .ls.resid)) + theme_blank(base_size = 20) + geom_boxplot() 
+ausreißer.je.ID<- ggplot(data = Goal_residuals, aes( x= .ls.resid, y= as.factor(ID))) + theme_blank(base_size = 20) + geom_boxplot() + xlab("Residuen")  + ylab( "Versuchsperson-ID")
 
 ## Vergleich des Modells ohne Ausreißer
 

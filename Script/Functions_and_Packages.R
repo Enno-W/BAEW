@@ -6,10 +6,10 @@ library(needs)
 needs(xfun, tidyverse, psych, remotes, Hmisc, flextable, gtsummary, cardx, svglite, pwr, pastecs, nlme, performance, lmerTest, HLMdiag, lmtest, jtools, mice, lattice, huxtable, broom.mixed, patchwork, sjPlot, misty, car, effectsize, ggeffects, ggplot2, simr)
 
 # Zitation
-xfun::install_github("Enno-W/excelbib")
-library(excelbib)
-# Create .bib file from the excel list
-xlsx_to_bib(magic_path("References_BAEW.xlsx"), "C:/Users/enno_/OneDrive - Ennos Deutschkurs/A Fernstudium Kursmaterial/Bachelorarbeit/Markdown/bibliography.bib")
+# xfun::install_github("Enno-W/excelbib")
+# library(excelbib)
+# # Create .bib file from the excel list
+# xlsx_to_bib(magic_path("References_BAEW.xlsx"), "C:/Users/enno_/OneDrive - Ennos Deutschkurs/A Fernstudium Kursmaterial/Bachelorarbeit/Markdown/bibliography.bib")
 
 ## Funktionen (Chat GPT erstellt)
 
