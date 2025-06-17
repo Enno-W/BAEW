@@ -1,3 +1,4 @@
+# In diesem Skript werden die packages und Funktionen geladen, die im weiteren Verlauf benötigt werden. 
 ##### Packages ####
 if (!requireNamespace("needs", quietly = TRUE)) {
   install.packages("needs")
@@ -380,7 +381,7 @@ get_descriptive_table <- function(df, language = "German") {
         Schiefe = skewness,
         Exzess = kurtosis,
         Mittelwert = mean,
-        "95% KI" = CI.mean.0.95,
+        "95% CI" = CI.mean.0.95,
         "SD" = std.dev,
         "p-Wert " = normtest.p
       )

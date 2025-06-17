@@ -1,4 +1,4 @@
-#### Import and data cleansing ####
+# In diesem Skript wird der bereinigte Datensatz "df.Rdata" weiter für die Analyse vorbereitet. Um einige Parameter wie z.B. das N des original-Datensatzes zu extrahieren, wird dieser geladen und die Werte werden ausgezählt. 
 # The commands in this script lead to the data frame that is loaded from the script "Data import and cleaning. This script is not used in the markdown file
 ####Importing the original dataset to get data on missings etc. ####
 load(magic_path("241021PRIMOCA_data.Rdata")) # load original data
@@ -62,6 +62,6 @@ long_df <- long_df %>%
 #z-Standardisierung zur besseren Interpretierbarkeit aller Variablen
 zstandard_varnames<-df %>% ungroup() %>% dplyr::select( -"Notes", -"Sport2", - "ID",-"Age"    ,- "Aim", -"Sport", -   "Gender" , - "WeeklyKM_base", "WeeklyH_base", -ends_with("_ave"), -starts_with("complet")) %>% names() #https://stackoverflow.com/questions/38511743/adding-missing-grouping-variables-message-in-dplyr-in-r
 df_z <- df %>%  mutate_at(zstandard_varnames, ~ as.numeric(scale(.)))
-zstandard_varnames_long<-long_df %>% ungroup() %>% dplyr::select(-"Time", -"Notes", -"Sport2", - "ID",-"Age"    ,- "Aim", -"Sport", -   "Gender" , - "WeeklyKM_base", "WeeklyH_base", -ends_with("_ave"), -starts_with("complet")) %>% names() #https://stackoverflow.com/questions/38511743/adding-missing-grouping-variables-message-in-dplyr-in-r
+zstandard_varnames_long<-long_df %>% ungroup() %>% dplyr::select(-"Time", -"Notes", -"Sport2", - "ID",-"Age"    ,- "Aim", -"Sport", -   "Gender" , - "WeeklyKM_base", "WeeklyH_base", -ends_with("_ave"), -starts_with("complet")) %>% names()
 long_df_z <- long_df %>%  mutate_at(zstandard_varnames_long, ~ as.numeric(scale(.)))
 class(df_z$Locus)

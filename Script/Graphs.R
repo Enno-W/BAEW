@@ -1,3 +1,5 @@
+# In diesem Skript werden Abbildungen erstellt. 
+# Beschriftungen für die Violinenplots
 custom_labels<-c(
   Age = "Alter",
   Locus = "Lokus",
@@ -70,7 +72,7 @@ long_df$fitted_attribution <- fitted(goal_model5)
 pred_plot_NA_base<-plot_model(goal_model5, type = "pred", terms = "NA_base_centered", show.data = T, jitter = .2, grid = T ,axis.title = c("Negativer Affekt (Prä-Test)", "Wahrgenommene Zielerreichung"))
 Plot_across_time <-  pred_plot_NA_base
 
-# Vorhersagen für Interaktion berechnen
+# Vorhersagen für Interaktion berechnen [1]
 pred <- ggpredict(goal_model5, terms = c("Dynamics_centered", "NA_base_centered"))
 plot(pred)
 
@@ -87,7 +89,7 @@ interaction_plot_NA.Dynamics <-ggplot(pred, aes(x = x, y = predicted, color = gr
   theme_minimal()
 
 
-# Vorhersagen für Interaktion berechnen
+# Vorhersagen für Interaktion berechnen [2]
 pred2 <- ggpredict(goal_model5, terms = c("NA_base_centered", "NegativeAffect_cm_centered"))
 plot(pred2)
 # Plotten

@@ -1,3 +1,4 @@
+#In diesem Skript wird der Datensatz bereinigt und mit multipler imputation werden Missings ausgefüllt. Der Datensatz wurde als df.Rdata gespeichert. 
 #### Import and data cleansing ####
 ####Importing the dataset####
 load(magic_path("241021PRIMOCA_data.Rdata"))
@@ -57,7 +58,7 @@ is.training.completed <- function(x) {
     return("Yes!")
   }
 }
-# Running that whole thing through a for loop
+# Running the function "is.training.completed() through loop
 for (i in 1:6) {
   goal_col <- paste0("Goal_", i)
   newvar_col <- paste0("complete.", i)
@@ -92,5 +93,5 @@ imp <- mice(df, m=5, maxit=5, method="pmm") # number of multiple imputations, ma
 # https://bookdown.org/mwheymans/bookmi/multiple-imputation.html#multiple-imputation-in-r
 df<-complete(imp)
 
-
+## Speichern des Datensatzes
 save(df, file = "df.Rdata")

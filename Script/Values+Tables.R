@@ -1,10 +1,9 @@
+## Hier werden die numerischen Werte und Tabellen berechnet, die in das Dokument gespeist werden. Abbildungen zum Testen von Voraussetzungen werden hier erstellt. 
 #### Creating a list with all commonly used descriptive statistics + other descriptive values ###############################################
 descriptives_list<-mean_sd_median_min_max(df)
-vars_not_normal<-which_var_not_normal(df)
+vars_not_normal<-which_var_not_normal(df) # Mit der Funktion wird gesucht, welche Variablen nicht normalverteilt sind. 
 vars_not_normal_with_p_values<-df %>% select(-ends_with("_1"), -ends_with("_2"), -ends_with("_3"), -ends_with("_4"), -ends_with("_5"), -ends_with("_6"), -"completed_count", -"Missings_amount", -"SesseionH_ave", -"WeeklyKM_base", -"WeeklyH_base", -"SessionKM_ave") %>% which_var_not_normal_p() %>% mutate(across(where(is.numeric), ~ ifelse(. < 0.001, "< .001", as.character(round(.,3)))))
-stat.desc(df$Locus, basic = F, norm = T)
-stat.desc(df$Dynamics, basic = F, norm = T)
-hist(df$Locus, breaks = 15)
+
 
 ####demographics table ###############################################
 demographicsdata<- select(df, Age, Gender, Sport)  %>% tbl_summary( percent = "column", by = Gender) %>%  add_p() %>% add_overall() %>% as.data.frame()
@@ -16,8 +15,7 @@ data <- demographicsdata %>%
 demographicstable<- data %>% flextable() %>% flextable::theme_apa() %>% autofit()
 
 #### correlation table ####
-average_variables<-df %>% select(ends_with("_ave")) %>% names()
-base_variables<-df %>% select(ends_with("_base")) %>% names()
+# Diese wird mit der funktion generate correlation table 2 erstellt. das zweite Argument dieser Funktion erlaubt eine Umbenennung der Variablen. 
 correlation_variables<-c("Age", "Locus", "Dynamics", "completed_count", "Goal_ave", "NA_ave", "NA_base", "SessionRPE_ave", "WeeklyRPE_base")
 ave_corr_table<-df[,correlation_variables] %>% 
   generate_correlation_table2(c(
@@ -34,7 +32,7 @@ ave_corr_table<-df[,correlation_variables] %>%
 
 #### Skewness, Kurtosis and min-max range table###############################################
 
-df_stat<-get_descriptive_table(df[, correlation_variables], language = "German")
+df_stat<-get_descriptive_table(df[, correlation_variables], language = "German") # Sie Skript "Functions and Packages
 
 df_stat$Variable <- c(
   "Alter", 
@@ -48,6 +46,7 @@ df_stat$Variable <- c(
   "Session RPE im Prä-Test"
 )
 
+# Formatierung der Tabelle für das Markdown-Output
 table_stat<-df_stat %>% flextable() %>% flextable::theme_apa() %>% autofit()
  
 
@@ -156,7 +155,7 @@ binomialglmm_table<-huxreg(
                            "Negativer Affekt im Prä-Test"       = "NA_base",
                            "Situationaler Negativer Affekt"       = "NegativeAffect"))
 
-### Direkter Vergleich der Gruppenunterschiede
+### Direkter Vergleich der Gruppenunterschiede mit t-tests
 
 df_z <- df_z %>%
   mutate(Status = if_else(completed_count == 6, "abgeschlossen", "nicht abgeschlossen"))
@@ -252,9 +251,10 @@ ttesttable<-flextable(results_df) %>%
 
   #################HLMs #################
 
-
+# Rangtransformation
 long_df_z$Goal_rank <-rank(long_df_z$Goal) # Identisch: rank(long_df$Goal)==rank(long_df_z$Goal)
 
+# Modellerstellung
 null_model_goal<-lme(
   Goal_rank~1,
   data = long_df_z,
@@ -278,16 +278,8 @@ goal_model4 <- update(goal_model3, . ~ . + Locus_centered * NA_base_centered +
 goal_model5 <- update(goal_model4, . ~ . +NegativeAffect_cm_centered * NA_base_centered + 
                         Dynamics_centered * Locus_centered)
 
-null_model_goal_no_ranktransform<-lme(
-  Goal~1,
-  data = long_df_z,
-  random = ~ 1| ID,
-  method = "REML",
-  na.action = na.omit,
-  correlation = corAR1(form = ~ Time | ID)
-)
 
-#### Linearität ####
+#### Prüfung auf Linearität ####
 
 ggplot(data=long_df_z, aes(x=Locus_centered, y=Goal_rank)) +
   geom_point() + geom_smooth()
@@ -352,8 +344,9 @@ vif_goal_model<-vif(goal_model5_lme4)
 
 #power_result_nabase_nasession <- powerSim(goal_model5_lme4, fixed("NA_base_centered:NegativeAffect_cm_centered", "t"), nsim = 100)
 #power_result_nabase_dynamics <- powerSim(goal_model5_lme4, fixed("Dynamics_centered:NA_base_centered", "t"), nsim = 100) 
-# Zu komplex, Simulation konvergiert nicht
 
+# Zu komplex, Simulation konvergiert nicht
+# Erstellung einfacherer Modelle zur Schätzung der Power dieser Prädiktoren
 goal_model5_reduced_NA <- lmer(
   Goal_rank ~ NA_base_centered * NegativeAffect_cm_centered+
     (1 | ID),
@@ -368,10 +361,20 @@ goal_model5_reduced_dyn_NA <- lmer(
   data = long_df_z,
   REML = FALSE
 )
+
+# Post-Hoc power analyse 
 #powerSim(goal_model5_reduced_NA, fixed("NA_base_centered:NegativeAffect_cm_centered", "t"), nsim = 100)
 #powerSim(goal_model5_reduced_dyn_NA, fixed("Dynamics_centered:NA_base_centered", "t"), nsim = 100)
 
   ### Vergleich mit dem Modell ohne Rangtransformation
+null_model_goal_no_ranktransform<-lme(
+  Goal~1,
+  data = long_df_z,
+  random = ~ 1| ID,
+  method = "REML",
+  na.action = na.omit,
+  correlation = corAR1(form = ~ Time | ID)
+)
 
 goal_model1_no_ranktransform <- update(null_model_goal_no_ranktransform, . ~ . + Locus_centered + Dynamics_centered)
 
@@ -431,11 +434,6 @@ r2_tabelle <- data.frame(
 rownames(r2_tabelle) <- c("Marginales R²", "Konditionales R²")
 
 ### Berechnen von standardisierten Regressionskoeffizienten für diskutierte Prädiktoren
-
-
-
-#Manuell R2-Werte prüfen
-
 
 ### Berichten der P-Werte
 
